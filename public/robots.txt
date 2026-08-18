@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jmchandling.vercel.app/sitemap-index.xml
+
+# Crawl-delay for respectful scraping
+Crawl-delay: 1

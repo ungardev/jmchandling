@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/global/Header.astro';
+import Footer from '../../components/global/Footer.astro';
+import Hero from '../../components/home/Hero.astro';
+import StatsStrip from '../../components/home/StatsStrip.astro';
+import ServicesGrid from '../../components/home/ServicesGrid.astro';
+import SafetySection from '../../components/home/SafetySection.astro';
+import Section from '../../components/ui/Section.astro';
+---
+
+<Layout
+  locale="en"
+  title="JMC Handling — INAC Certified Airport Services"
+  description="Specialized airport services at Simón Bolívar de Maiquetía International Airport. Ramp handling, aircraft cleaning, GSE, flight dispatch. CESEA-021 certified."
+  canonical="/en/"
+>
+  <Header locale="en" />
+  <main id="main-content">
+    <Hero locale="en" />
+    <StatsStrip locale="en" />
+    <ServicesGrid locale="en" />
+    <SafetySection locale="en" />
+    <Section background="deep" padY="lg">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+          Ready to operate with us?
+        </h2>
+        <p class="text-white/60 mb-8">
+          Request a personalized quote and our commercial team will contact you within 24 hours.
+        </p>
+        <a href="/en/quote" class="btn-primary px-8 py-4 text-base">
+          Request a Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </Section>
+  </main>
+  <Footer locale="en" />
+</Layout>

@@ -1,0 +1,130 @@
+---
+import type { Locale } from '../i18n/utils';
+import { getAlternateUrls } from '../i18n/utils';
+import '../styles/global.css';
+
+export interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const { locale, title, description, ogImage = '/assets/brand/og-default.jpg', canonical } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const alternates = getAlternateUrls(currentPath, locale);
+const siteUrl = 'https://jmchandling.vercel.app';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Servicios Especializados JMC, C.A.',
+  alternateName: 'JMC Handling',
+  url: siteUrl,
+  logo: `${siteUrl}/assets/brand/logo-white-512.webp`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+58-212-000-0000',
+    contactType: 'customer service',
+    availableLanguage: ['Spanish', 'English'],
+    areaServed: 'VE',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Aeropuerto Internacional Simón Bolívar, Nivel 1, Sector 8.2',
+    addressLocality: 'Maiquetía',
+    addressRegion: 'La Guaira',
+    postalCode: '1160',
+    addressCountry: 'VE',
+  },
+  sameAs: ['https://www.instagram.com/jmchandling/'],
+  areaServed: {
+    '@type': 'Country',
+    name: 'Venezuela',
+  },
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'JMC Handling - Aeropuerto de Maiquetía',
+  image: `${siteUrl}${ogImage}`,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Aeropuerto Internacional Simón Bolívar, Nivel 1, Sector 8.2',
+    addressLocality: 'Maiquetía',
+    addressRegion: 'La Guaira',
+    postalCode: '1160',
+    addressCountry: 'VE',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 10.5961,
+    longitude: -66.9906,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '05:00',
+    closes: '22:00',
+  },
+};
+---
+
+<!doctype html>
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical ? `${siteUrl}${canonical}` : `${siteUrl}${currentPath}`} />
+
+    <link rel="alternate" hreflang="es" href={`${siteUrl}${alternates.es}`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${alternates.en}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${alternates.xDefault}`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`${siteUrl}${currentPath}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'es_ES'} />
+    <meta property="og:locale:alternate" content={locale === 'en' ? 'es_ES' : 'en_US'} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/webp" sizes="32x32" href="/assets/brand/favicon-32.webp" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script is:inline>
+      // Prevent flash of unstyled content
+      document.documentElement.classList.add('js');
+    </script>
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </head>
+  <body class="bg-cargo-ink text-cargo-white antialiased">
+    <a href="#main-content" class="skip-to-content">
+      {locale === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
+    </a>
+
+    <slot />
+  </body>
+</html>

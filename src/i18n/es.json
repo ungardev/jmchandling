@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "quote": "Cotización",
+    "language": "Idioma"
+  },
+  "utilityBar": {
+    "inac": "Certificados INAC",
+    "hours": "Lun–Sáb 05:00–22:00",
+    "call": "Llamar"
+  },
+  "hero": {
+    "badge": "E.S.E.A. · CESEA-021",
+    "title": "Servicios Aeroportuarios de Excelencia en Tierra",
+    "subtitle": "Apoyamos a las aerolíneas en el Aeropuerto Internacional Simón Bolívar de Maiquetía con operaciones certificadas INAC bajo la regulación RAV 111.",
+    "subtitleEn": "Supporting airlines at Simón Bolívar de Maiquetía International Airport with INAC-certified operations under RAV 111.",
+    "ctaPrimary": "Solicitar Cotización",
+    "ctaSecondary": "Ver Servicios",
+    "awbTitle": "Consultar Guía Aérea",
+    "awbPlaceholder": "000-12345678"
+  },
+  "stats": {
+    "years": "Años en Operación",
+    "yearsValue": "+12",
+    "staff": "Profesionales Certificado",
+    "staffValue": "+120",
+    "dailyFlights": "Operaciones Diarias",
+    "dailyFlightsValue": "+80",
+    "stations": "Estaciones",
+    "stationsValue": "1"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Soluciones integrales de handling aeroportuario certificadas por INAC bajo RAV 111",
+    "gseTitle": "Equipos de Apoyo Terrestre (GSE)",
+    "gseDesc": "Flota robusta de equipos de apoyo terrestre para atender aeronaves de pasajeros y carga en plataforma.",
+    "gseBullets": ["Pushback y towbarless", "GPU y ASU", "Contenedores y pallets ULD", "Banda transportadora de equipaje"],
+    "interiorTitle": "Limpieza Interior de Aeronaves",
+    "interiorDesc": "Servicio meticuloso de limpieza interior para garantizar condiciones óptimas de cabina.",
+    "interiorBullets": ["Limpieza de asientos y moquetas", "Vaciado de basura y reciclaje", "Limpieza de baños y cocina", "Control de residuos conforme a norma"],
+    "exteriorTitle": "Limpieza Exterior de Aeronaves",
+    "exteriorDesc": "Lavado completo de fuselaje, alas y tren de aterrizaje para presentar la aeronave en condiciones óptimas.",
+    "exteriorBullets": ["Lavado a presión certificado", "Productos biodegradables", "Protección anticorrosiva", "Inspección visual post-lavado"],
+    "disinfectionTitle": "Desinfección y Desinsectación",
+    "disinfectionDesc": "Tratamiento especializado de cabina y zona de carga para cumplimiento de normativas sanitarias internacionales.",
+    "disinfectionBullets": ["Desinfección antiviral certificada", "Desinsectación según normativa OMS/OACI", "Certificación de zona tratada", "Productos aprobados por autoridades sanitarias"],
+    "obfTitle": "Operador de Base Fija (OBF)",
+    "obfDesc": "Servicios complementarios de despacho y asistencia en tierra para explotadores aéreos.",
+    "obfBullets": ["Despacho de aeronaves y seguimiento de vuelo (121/135)", "Guía de estacionamiento de aeronaves", "Coordinación de rampa y plataforma", "Comunicación ATS/AOC"],
+    "passengerTitle": "Tráfico de Pasajeros",
+    "passengerDesc": "Atención integral al pasajero en operaciones 121 y 135 conforme a los más altos estándares.",
+    "passengerBullets": ["Check-in y facturación", "Embarque y desembarque", "Asistencia a pasajeros con movilidad reducida (PRM)", "Atención a menores sin acompañantes (UM"],
+    "specialTitle": "Servicios Especiales",
+    "specialDesc": "Asistencia personalizada para pasajeros con necesidades especiales y servicios diferenciados.",
+    "specialBullets": ["Sillas de ruedas y asistencia PRM", "Menores sin acompañantes (UM)", "Pasajeros con mascotas trainedor de servicio", "VIP y fast track"],
+    "maintenanceTitle": "Mantenimiento GSE",
+    "maintenanceDesc": "Soporte técnico preventivo y correctivo para toda la flota de equipos de apoyo terrestre.",
+    "maintenanceBullets": ["Mantenimiento preventivo programado", "Reparación y reemplazo de componentes", "Certificación de equipos críticos", "Servicio 24/7 en estación"]
+  },
+  "safety": {
+    "title": "Seguridad y Certificaciones",
+    "subtitle": "Operamos bajo los más estrictos estándares de seguridad operacional",
+    "inacBadge": "Habilitado por INAC",
+    "ceseaBadge": "CESEA-021",
+    "rav111": "Regulación RAV 111",
+    "smsLabel": "Safety Management System (SMS)",
+    "smsText": "Fomentamos una cultura positiva en Seguridad Operacional mediante la capacitación constante de nuestro equipo humano."
+  },
+  "awb": {
+    "title": "Consultar Guía Aérea",
+    "placeholder": "000-12345678",
+    "track": "Rastrear",
+    "tracking": "Rastreando...",
+    "simulatedNote": "Demostración — para rastrear guías aéreas reales, contacte a nuestro equipo.",
+    "stageReceived": "Documento recibido",
+    "stageVerified": "Verificado",
+    "stageLoaded": "Cargado",
+    "stageInTransit": "En tránsito",
+    "stageArrived": "Llegó a destino",
+    "invalidFormat": "Formato AWB inválido. Use: 000-12345678"
+  },
+  "quote": {
+    "title": "Solicitar Cotización",
+    "subtitle": "Complete el formulario y nuestro equipo comercial se pondrá en contacto en menos de 24 horas.",
+    "name": "Nombre / Empresa",
+    "namePlaceholder": "Ej. Copa Airlines / Juan Pérez",
+    "email": "Correo Electrónico",
+    "emailPlaceholder": "correo@aerolinea.com",
+    "phone": "Teléfono",
+    "phonePlaceholder": "+58 212 000 0000",
+    "service": "Servicio Requerido",
+    "servicePlaceholder": "Seleccione un servicio...",
+    "fleet": "Tipo de Flota / Aeronaves",
+    "fleetPlaceholder": "Ej. Boeing 737-800, Airbus A320",
+    "stations": "Estación(es)",
+    "stationsPlaceholder": "Ej. CCS (Maiquetía)",
+    "message": "Detalles de la Solicitud",
+    "messagePlaceholder": "Describa sus necesidades operacionales: frecuencia de vuelos, temporada, servicios especiales...",
+    "submit": "Enviar Solicitud",
+    "sending": "Enviando...",
+    "successTitle": "¡Solicitud Recibida!",
+    "successText": "Nuestro equipo se pondrá en contacto con usted en las próximas 24 horas hábiles."
+  },
+  "contact": {
+    "title": "Hablemos de Soluciones",
+    "subtitle": "Estamos listos para atender las necesidades de su aerolínea con los más altos estándares de calidad y seguridad operacional.",
+    "subtitleEn": "We are ready to meet your airline's needs with the highest standards of quality and safety management (SMS).",
+    "addressLabel": "Ubicación",
+    "address": "Aeropuerto Internacional Simón Bolívar de Maiquetía, Nivel 1, Sector 8.2, Caracas, Venezuela.",
+    "certLabel": "Certificación",
+    "certValue": "CESEA-021 | INAC | RAV 111",
+    "emailLabel": "Correo",
+    "hoursLabel": "Horario"
+  },
+  "footer": {
+    "company": "Servicios Especializados JMC, C.A.",
+    "companyDesc": "Proveedor certificado de servicios especializados aeroportuarios en Venezuela. Operamos bajo la regulación RAV 111 con certificación CESEA-021.",
+    "services": "Servicios",
+    "servicesLinks": ["Handling en Plataforma", "Limpieza de Aeronaves", "Despacho de Vuelos", "Tráfico de Pasajeros", "Mantenimiento GSE"],
+    "stations": "Estaciones",
+    "stationsList": ["CCS – Maiquetía"],
+    "legal": "© 2026 Servicios Especializados JMC, C.A. Todos los derechos reservados.",
+    "legalCert": "CESEA-021 | INAC RAV 111"
+  },
+  "form": {
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Correo electrónico inválido"
+  },
+  "common": {
+    "learnMore": "Más información",
+    "getQuote": "Solicitar Cotización",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error. Intente de nuevo."
+  },
+  "meta": {
+    "homeTitle": "Inicio — JMC Handling | Servicios Aeroportuarios Certificados INAC",
+    "homeDesc": "Servicios especializados aeroportuarios en el Aeropuerto Internacional Simón Bolívar de Maiquetía. Handling, limpieza, GSE, despacho de vuelos. Certificados CESEA-021.",
+    "servicesTitle": "Servicios — JMC Handling",
+    "servicesDesc": "Catálogo completo de servicios de handling aeroportuario: equipos de apoyo terrestre, limpieza de aeronaves, OBF, tráfico de pasajeros, mantenimiento GSE.",
+    "contactTitle": "Contacto — JMC Handling",
+    "contactDesc": "Solicite cotización para servicios de handling aeroportuario. Certificados INAC, atención 24/7.",
+    "quoteTitle": "Cotización — JMC Handling",
+    "quoteDesc": "Solicite una cotización personalizada para servicios de handling. Respuesta en menos de 24 horas."
+  }
+}

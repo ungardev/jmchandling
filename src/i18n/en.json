@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "contact": "Contact",
+    "quote": "Quote",
+    "language": "Language"
+  },
+  "utilityBar": {
+    "inac": "INAC Certified",
+    "hours": "Mon–Sat 05:00–22:00",
+    "call": "Call"
+  },
+  "hero": {
+    "badge": "E.S.E.A. · CESEA-021",
+    "title": "Premium Ground Handling Services",
+    "subtitle": "Supporting airlines at Simón Bolívar de Maiquetía International Airport with INAC-certified operations under RAV 111.",
+    "subtitleEn": "Providing specialized ground services under standards of excellence and quality.",
+    "ctaPrimary": "Request a Quote",
+    "ctaSecondary": "View Services",
+    "awbTitle": "Track Air Waybill",
+    "awbPlaceholder": "000-12345678"
+  },
+  "stats": {
+    "years": "Years Operating",
+    "yearsValue": "+12",
+    "staff": "Certified Professionals",
+    "staffValue": "+120",
+    "dailyFlights": "Daily Operations",
+    "dailyFlightsValue": "+80",
+    "stations": "Stations",
+    "stationsValue": "1"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive airport handling solutions certified by INAC under RAV 111",
+    "gseTitle": "Ground Support Equipment (GSE)",
+    "gseDesc": "Robust fleet of ground support equipment for passenger and cargo aircraft operations on the ramp.",
+    "gseBullets": ["Pushback and towbarless operations", "GPU and ASU units", "ULD containers and pallets", "Belt loaders and baggage carts"],
+    "interiorTitle": "Aircraft Interior Cleaning",
+    "interiorDesc": "Meticulous interior cabin cleaning to guarantee optimal cabin conditions for every flight.",
+    "interiorBullets": ["Seats and carpet cleaning", "Waste and recycling disposal", "Lavatory and galley cleaning", "Waste control per regulations"],
+    "exteriorTitle": "Aircraft Exterior Cleaning",
+    "exteriorDesc": "Complete fuselage, wing, and landing gear wash to present the aircraft in optimal condition.",
+    "exteriorBullets": ["Certified pressure washing", "Biodegradable cleaning products", "Anti-corrosion protection", "Post-wash visual inspection"],
+    "disinfectionTitle": "Disinfection & Disinsection",
+    "disinfectionDesc": "Specialized cabin and cargo hold treatment for compliance with international health regulations.",
+    "disinfectionBullets": ["Certified antiviral disinfection", "WHO/ICAO disinsection compliance", "Treated area certification", "Authority-approved products"],
+    "obfTitle": "Fixed Base Operator (FBO)",
+    "obfDesc": "Complementary dispatch and ground assistance services for air operators.",
+    "obfBullets": ["Aircraft dispatch and flight following (121/135)", "Aircraft parking guidance", "Ramp and platform coordination", "ATS/AOC communication"],
+    "passengerTitle": "Passenger Traffic",
+    "passengerDesc": "Comprehensive passenger handling for 121 and 135 operations to the highest standards.",
+    "passengerBullets": ["Check-in and ticketing", "Boarding and deplaning", "PRM passenger assistance", "Unaccompanied minors (UM) handling"],
+    "specialTitle": "Special Services",
+    "specialDesc": "Personalized assistance for passengers with special needs and differentiated services.",
+    "specialBullets": ["Wheelchair and PRM assistance", "Unaccompanied minors (UM)", "Service animal and emotional support pet handling", "VIP and fast track"],
+    "maintenanceTitle": "GSE Maintenance",
+    "maintenanceDesc": "Preventive and corrective technical support for the entire ground support equipment fleet.",
+    "maintenanceBullets": ["Scheduled preventive maintenance", "Component repair and replacement", "Critical equipment certification", "24/7 station service"]
+  },
+  "safety": {
+    "title": "Safety & Certifications",
+    "subtitle": "We operate under the strictest operational safety standards",
+    "inacBadge": "INAC Authorized",
+    "ceseaBadge": "CESEA-021",
+    "rav111": "Regulation RAV 111",
+    "smsLabel": "Safety Management System (SMS)",
+    "smsText": "Promoting a positive Safety Management System culture through continuous team training and operational excellence."
+  },
+  "awb": {
+    "title": "Track Air Waybill",
+    "placeholder": "000-12345678",
+    "track": "Track",
+    "tracking": "Tracking...",
+    "simulatedNote": "Demo mode — to track live air waybills, contact our team.",
+    "stageReceived": "Document received",
+    "stageVerified": "Verified",
+    "stageLoaded": "Loaded",
+    "stageInTransit": "In transit",
+    "stageArrived": "Arrived at destination",
+    "invalidFormat": "Invalid AWB format. Use: 000-12345678"
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "subtitle": "Complete the form and our commercial team will contact you within 24 hours.",
+    "name": "Name / Company",
+    "namePlaceholder": "e.g. Copa Airlines / John Doe",
+    "email": "Email Address",
+    "emailPlaceholder": "email@airline.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+58 212 000 0000",
+    "service": "Service Required",
+    "servicePlaceholder": "Select a service...",
+    "fleet": "Fleet Type / Aircraft",
+    "fleetPlaceholder": "e.g. Boeing 737-800, Airbus A320",
+    "stations": "Station(s)",
+    "stationsPlaceholder": "e.g. CCS (Maiquetía)",
+    "message": "Request Details",
+    "messagePlaceholder": "Describe your operational needs: flight frequency, season, special services...",
+    "submit": "Send Request",
+    "sending": "Sending...",
+    "successTitle": "Request Received!",
+    "successText": "Our team will contact you within 24 business hours."
+  },
+  "contact": {
+    "title": "Let's Talk Solutions",
+    "subtitle": "We are ready to meet your airline's needs with the highest standards of quality and safety management (SMS).",
+    "subtitleEn": "We provide specialized ground services under standards of excellence and quality.",
+    "addressLabel": "Location",
+    "address": "Simón Bolívar de Maiquetía International Airport, Level 1, Sector 8.2, Caracas, Venezuela.",
+    "certLabel": "Certification",
+    "certValue": "CESEA-021 | INAC | RAV 111",
+    "emailLabel": "Email",
+    "hoursLabel": "Hours"
+  },
+  "footer": {
+    "company": "Servicios Especializados JMC, C.A.",
+    "companyDesc": "Certified provider of specialized airport services in Venezuela. Operating under RAV 111 regulation with CESEA-021 certification.",
+    "services": "Services",
+    "servicesLinks": ["Ramp Handling", "Aircraft Cleaning", "Flight Dispatch", "Passenger Traffic", "GSE Maintenance"],
+    "stations": "Stations",
+    "stationsList": ["CCS – Maiquetía"],
+    "legal": "© 2026 Servicios Especializados JMC, C.A. All rights reserved.",
+    "legalCert": "CESEA-021 | INAC RAV 111"
+  },
+  "form": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "getQuote": "Request a Quote",
+    "loading": "Loading...",
+    "error": "An error occurred. Please try again."
+  },
+  "meta": {
+    "homeTitle": "JMC Handling — INAC Certified Airport Services",
+    "homeDesc": "Specialized airport services at Simón Bolívar de Maiquetía International Airport. Ramp handling, aircraft cleaning, GSE, flight dispatch. CESEA-021 certified.",
+    "servicesTitle": "Services — JMC Handling",
+    "servicesDesc": "Complete airport handling services catalog: ground support equipment, aircraft cleaning, FBO, passenger traffic, GSE maintenance.",
+    "contactTitle": "Contact — JMC Handling",
+    "contactDesc": "Request a quote for airport handling services. INAC certified, 24/7 support.",
+    "quoteTitle": "Quote — JMC Handling",
+    "quoteDesc": "Request a personalized quote for handling services. Response within 24 hours."
+  }
+}

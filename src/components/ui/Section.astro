@@ -1,0 +1,42 @@
+---
+export interface Props {
+  id?: string;
+  class?: string;
+  background?: 'dark' | 'deep' | 'mist' | 'transparent';
+  padY?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const {
+  id,
+  class: className = '',
+  background = 'dark',
+  padY = 'lg',
+} = Astro.props;
+
+const bgClasses = {
+  dark: 'bg-cargo-ink',
+  deep: 'bg-cargo-deep',
+  mist: 'bg-cargo-mist text-cargo-ink',
+  transparent: 'bg-transparent',
+};
+
+const padClasses = {
+  none: '',
+  sm: 'py-8',
+  md: 'py-12',
+  lg: 'py-16 md:py-24',
+  xl: 'py-24 md:py-32',
+};
+
+const classes = [
+  bgClasses[background],
+  padClasses[padY],
+  className,
+].filter(Boolean).join(' ');
+---
+
+<section id={id} class={classes} aria-labelledby={Astro.props.id ? `${Astro.props.id}-heading` : undefined}>
+  <div class="container-max">
+    <slot />
+  </div>
+</section>

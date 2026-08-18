@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/global/Header.astro';
+import Footer from '../../components/global/Footer.astro';
+import ContactInfo from '../../components/contact/ContactInfo.astro';
+import QuoteForm from '../../components/contact/QuoteForm.astro';
+import Section from '../../components/ui/Section.astro';
+
+const sent = Astro.url.searchParams.get('sent') === 'true';
+---
+
+<Layout
+  locale="en"
+  title="Contact — JMC Handling"
+  description="Request a quote for airport handling services. INAC certified, 24/7 support."
+  canonical="/en/contact"
+>
+  <Header locale="en" />
+  <main id="main-content" class="pt-28">
+    <Section background="deep" padY="md">
+      <div class="container-max text-center">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+          Contact
+        </h1>
+        <p class="text-white/60 max-w-xl mx-auto">
+          We are ready to meet your airline's needs with the highest standards of quality and safety management (SMS).
+        </p>
+      </div>
+    </Section>
+
+    <Section background="dark" padY="lg">
+      <div class="container-max">
+        {sent && (
+          <div class="max-w-2xl mx-auto mb-12 p-6 rounded-2xl bg-cargo-emerald/15 border border-cargo-emerald/30 text-center" role="alert">
+            <svg class="w-12 h-12 text-cargo-emerald mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h2 class="text-2xl font-bold text-white mb-2">Request Received!</h2>
+            <p class="text-white/60">
+              Our team will contact you within 24 business hours.
+            </p>
+          </div>
+        )}
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <ContactInfo locale="en" />
+          <div>
+            <h2 class="text-xl font-bold text-white mb-6">
+              Send us a message
+            </h2>
+            <QuoteForm locale="en" variant="lite" />
+          </div>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer locale="en" />
+</Layout>

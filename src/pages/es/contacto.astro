@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/global/Header.astro';
+import Footer from '../../components/global/Footer.astro';
+import ContactInfo from '../../components/contact/ContactInfo.astro';
+import QuoteForm from '../../components/contact/QuoteForm.astro';
+import Section from '../../components/ui/Section.astro';
+
+const url = Astro.url;
+const sent = url.searchParams.get('sent') === 'true';
+---
+
+<Layout
+  locale="es"
+  title="Contacto — JMC Handling"
+  description="Solicite cotización para servicios de handling aeroportuario. Certificados INAC, atención 24/7."
+  canonical="/es/contacto"
+>
+  <Header locale="es" />
+  <main id="main-content" class="pt-28">
+    <Section background="deep" padY="md">
+      <div class="container-max">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white text-center mb-4">
+          Contacto
+        </h1>
+        <p class="text-white/60 text-center max-w-xl mx-auto">
+          Estamos listos para atender las necesidades de su aerolínea con los más altos estándares de calidad y seguridad operacional.
+        </p>
+      </div>
+    </Section>
+
+    <Section background="dark" padY="lg">
+      <div class="container-max">
+        {sent && (
+          <div class="max-w-2xl mx-auto mb-12 p-6 rounded-2xl bg-cargo-emerald/15 border border-cargo-emerald/30 text-center" role="alert">
+            <svg class="w-12 h-12 text-cargo-emerald mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h2 class="text-2xl font-bold text-white mb-2">¡Solicitud Recibida!</h2>
+            <p class="text-white/60">
+              Nuestro equipo se pondrá en contacto con usted en las próximas 24 horas hábiles.
+            </p>
+          </div>
+        )}
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <ContactInfo locale="es" />
+          <div>
+            <h2 class="text-xl font-bold text-white mb-6">
+              Envíenos un mensaje
+            </h2>
+            <QuoteForm locale="es" variant="lite" />
+          </div>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer locale="es" />
+</Layout>

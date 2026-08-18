@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/global/Header.astro';
+import Footer from '../../components/global/Footer.astro';
+import ServiceDetail from '../../components/services/ServiceDetail.astro';
+import Section from '../../components/ui/Section.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const locale = 'en';
+const t = useTranslations(locale);
+
+const services = [
+  {
+    key: 'gse',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />`,
+    image: '/assets/images/gse-fleet.webp',
+  },
+  {
+    key: 'interior',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />`,
+    image: '/assets/images/equipment-cleaning.webp',
+  },
+  {
+    key: 'exterior',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />`,
+    image: '/assets/images/equipment-cleaning.webp',
+  },
+  {
+    key: 'disinfection',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
+    image: '/assets/images/sms-culture.webp',
+  },
+  {
+    key: 'obf',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />`,
+    image: '/assets/images/sms-training.webp',
+  },
+  {
+    key: 'passenger',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />`,
+    image: '/assets/images/continuous-training.webp',
+  },
+  {
+    key: 'special',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />`,
+    image: '/assets/images/sms-culture.webp',
+  },
+  {
+    key: 'maintenance',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />`,
+    image: '/assets/images/gse-maintenance.webp',
+  },
+];
+---
+
+<Layout
+  locale="en"
+  title="Services — JMC Handling"
+  description="Complete airport handling services catalog: ground support equipment, aircraft cleaning, FBO, passenger traffic, GSE maintenance."
+  canonical="/en/services"
+>
+  <Header locale="en" />
+  <main id="main-content" class="pt-28">
+    <Section background="deep" padY="md">
+      <div class="container-max text-center">
+        <span class="badge-cert mb-4 inline-flex">Service Catalog</span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mt-4 mb-6">
+          Our Services
+        </h1>
+        <p class="text-white/60 max-w-2xl mx-auto text-lg">
+          Comprehensive airport handling solutions certified by INAC under RAV 111.
+        </p>
+      </div>
+    </Section>
+
+    <Section background="dark" padY="lg">
+      <div class="container-max">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((service) => (
+            <ServiceDetail
+              locale="en"
+              title={t(`services.${service.key}Title`)}
+              description={t(`services.${service.key}Desc`)}
+              bullets={t(`services.${service.key}Bullets`).split(',').map((b: string) => b.trim())}
+              icon={service.icon}
+              image={service.image}
+            />
+          ))}
+        </div>
+      </div>
+    </Section>
+
+    <Section background="deep" padY="lg">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+          Need a custom solution?
+        </h2>
+        <p class="text-white/60 mb-8">
+          Contact us and we'll design a tailored solution for your operations.
+        </p>
+        <a href="/en/quote" class="btn-primary px-8 py-4 text-base">
+          Request a Quote
+        </a>
+      </div>
+    </Section>
+  </main>
+  <Footer locale="en" />
+</Layout>

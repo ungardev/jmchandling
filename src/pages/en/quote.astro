@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/global/Header.astro';
+import Footer from '../../components/global/Footer.astro';
+import QuoteForm from '../../components/contact/QuoteForm.astro';
+import Section from '../../components/ui/Section.astro';
+
+const sent = Astro.url.searchParams.get('sent') === 'true';
+---
+
+<Layout
+  locale="en"
+  title="Quote — JMC Handling"
+  description="Request a personalized quote for handling services. Response within 24 hours."
+  canonical="/en/quote"
+>
+  <Header locale="en" />
+  <main id="main-content" class="pt-28">
+    <Section background="deep" padY="md">
+      <div class="container-max text-center max-w-2xl mx-auto">
+        <span class="badge-cert mb-4 inline-flex">Quote</span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mt-4 mb-4">
+          Request a Quote
+        </h1>
+        <p class="text-white/60 text-lg">
+          Complete the form and our commercial team will contact you within 24 hours.
+        </p>
+      </div>
+    </Section>
+
+    <Section background="dark" padY="lg">
+      <div class="container-max">
+        {sent && (
+          <div class="max-w-2xl mx-auto mb-12 p-8 rounded-2xl bg-cargo-emerald/15 border border-cargo-emerald/30 text-center" role="alert">
+            <svg class="w-16 h-16 text-cargo-emerald mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h2 class="text-3xl font-bold text-white mb-3">Request Received!</h2>
+            <p class="text-white/60 text-lg">
+              Our team will contact you within 24 business hours.
+            </p>
+            <a href="/en/" class="btn-primary mt-8 inline-flex">
+              Back to Home
+            </a>
+          </div>
+        )}
+
+        <div class="max-w-3xl mx-auto">
+          <div class="glass rounded-2xl p-8 border border-white/10">
+            <QuoteForm locale="en" variant="full" />
+          </div>
+        </div>
+      </div>
+    </Section>
+
+    <Section background="deep" padY="lg">
+      <div class="container-max text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl font-bold text-white mb-4">Prefer to contact us directly?</h2>
+        <p class="text-white/50 mb-6">
+          Email us at <a href="mailto:carlos.wood@jmchandling.com" class="text-cargo-emerald hover:underline">carlos.wood@jmchandling.com</a> or call <a href="tel:+582120000000" class="text-cargo-emerald hover:underline">+58 212 000 0000</a>.
+        </p>
+        <p class="text-white/30 text-sm">
+          Monday – Saturday · 05:00 – 22:00 (VET)
+        </p>
+      </div>
+    </Section>
+  </main>
+  <Footer locale="en" />
+</Layout>

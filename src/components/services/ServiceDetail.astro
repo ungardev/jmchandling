@@ -1,0 +1,64 @@
+---
+import type { Locale } from '../../i18n/utils';
+
+export interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  bullets: string[];
+  icon: string;
+  image: string;
+}
+
+const { locale, title, description, bullets, icon, image } = Astro.props;
+---
+
+<article class="card-service group cursor-pointer">
+  <div class="flex items-start gap-4 mb-4">
+    <div class="w-11 h-11 rounded-xl bg-cargo-emerald/15 flex items-center justify-center flex-shrink-0 group-hover:bg-cargo-emerald/25 transition-colors">
+      <svg class="w-5 h-5 text-cargo-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icon} />
+    </div>
+    <h3 class="text-white font-bold text-base leading-tight group-hover:text-cargo-emerald transition-colors">
+      {title}
+    </h3>
+  </div>
+
+  <p class="text-white/50 text-sm leading-relaxed mb-4 line-clamp-2">
+    {description}
+  </p>
+
+  <ul class="space-y-1.5 mb-5" aria-label={`${title} - ${locale === 'es' ? 'Características' : 'Features'}`}>
+    {bullets.slice(0, 4).map((bullet) => (
+      <li class="flex items-start gap-2 text-xs text-white/40">
+        <svg class="w-3 h-3 text-cargo-emerald mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>{bullet}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="relative h-32 -mx-6 -mb-6 overflow-hidden rounded-b-2xl">
+    <img
+      src={image}
+      alt=""
+      width="320"
+      height="128"
+      class="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
+      loading="lazy"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-cargo-deep via-cargo-deep/60 to-transparent" />
+  </div>
+
+  <a
+    href={locale === 'es' ? '/es/servicios' : '/en/services'}
+    class="absolute bottom-6 right-6 inline-flex items-center gap-1 text-xs font-semibold text-cargo-emerald opacity-0 group-hover:opacity-100 transition-opacity"
+    aria-label={`${locale === 'es' ? 'Más sobre' : 'More about'} ${title}`}
+  >
+    {locale === 'es' ? 'Más' : 'More'}
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </a>
+</article>

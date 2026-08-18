@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - JMC Handling</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Contacto.css">
+</head>
+<body class="contact-page">
+    <header>
+        <nav>
+            <a class="author" href="index.html">INICIO</a>
+            <a class="author active" href="Contacto.html">CONTACTO</a>
+        </nav>
+    </header>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>HABLEMOS DE<br><span>SOLUCIONES</span></h2>
+            <p>Estamos listos para atender las necesidades de su aerolínea con los más altos estándares de calidad y seguridad operacional (SMS).</p>
+            <p><em>We are ready to meet your airline's needs with the highest standards of quality and safety management (SMS).</em></p>
+            
+            <div class="info-details">
+                <p><strong>Ubicación / Location:</strong><br>Aeropuerto Internacional Simón Bolívar de Maiquetía, Nivel 1, Sector 8.2.</p>
+                <p><strong>Certificación:</strong><br>CESEA Nº 021 | INAC</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form action="https://formsubmit.co/carlos.wood@jmchandling.com" method="POST">
+                
+                <input type="hidden" name="_cc" value="jose.moncada@jmchandling.com">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Nueva Solicitud de Servicio - JMC Handling Web">
+
+                <div class="input-group">
+                    <label for="name">Nombre / Empresa (Name / Company)</label>
+                    <input type="text" id="name" name="Empresa_o_Nombre" required placeholder="Ej. Copa Airlines / Juan Pérez">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Correo Electrónico (Email)</label>
+                    <input type="email" id="email" name="Correo_Cliente" required placeholder="correo@empresa.com">
+                </div>
+
+                <div class="input-group">
+                    <label for="service">Servicio Requerido (Service Required)</label>
+                    <select id="service" name="Servicio_Requerido" required>
+                        <option value="" disabled selected>Seleccione un servicio / Select a service...</option>
+                        <option value="Handling en Plataforma / Ramp Handling">Handling en Plataforma / Ramp Handling</option>
+                        <option value="Tráfico de Pasajeros / Passenger Traffic">Tráfico de Pasajeros / Passenger Traffic</option>
+                        <option value="Limpieza de Aeronaves / Aircraft Cleaning">Limpieza de Aeronaves / Aircraft Cleaning</option>
+                        <option value="Despacho de Vuelos / Flight Dispatch">Despacho de Vuelos / Flight Dispatch</option>
+                        <option value="Soporte Técnico GSE / GSE Maintenance">Soporte Técnico GSE / GSE Maintenance</option>
+                        <option value="Servicios Especiales / Special Services">Asistencia a Pasajeros / Special Services</option>
+                        <option value="Otro / Other">Otro / Other</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="message">Detalles de la solicitud (Request Details)</label>
+                    <textarea id="message" name="Mensaje" rows="4" required placeholder="Describa sus necesidades operacionales aquí..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">GENERAR SOLICITUD / SEND REQUEST</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
