@@ -11,73 +11,17 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="fixed top-0 inset-x-0 z-50">
-  <div class="glass-dark">
-    <div class="container-max">
-      <div class="flex items-center justify-between h-12 text-xs">
-        <div class="flex items-center gap-4">
-          <span class="badge-cert">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-            INAC · CESEA-021 · RAV 111
-          </span>
-        </div>
-
-        <div class="hidden md:flex items-center gap-6 text-white/70">
-          <a
-            href={`tel:+582120000000`}
-            class="flex items-center gap-1.5 hover:text-cargo-emerald transition-colors"
-            aria-label="Teléfono"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            +58 212 000 0000
-          </a>
-
-          <a
-            href="mailto:carlos.wood@jmchandling.com"
-            class="flex items-center gap-1.5 hover:text-cargo-emerald transition-colors"
-            aria-label="Correo electrónico"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            carlos.wood@jmchandling.com
-          </a>
-
-          <span class="text-white/40" aria-hidden="true">|</span>
-
-          <span class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-cargo-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {locale === 'es' ? 'Lun–Sáb 05:00–22:00' : 'Mon–Sat 05:00–22:00'}
-          </span>
-        </div>
-
-        <div class="flex items-center">
-          <a
-            href={switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
-            class="flex items-center gap-1 px-3 py-1 rounded-md text-xs font-semibold transition-all hover:bg-white/10"
-            aria-label={locale === 'en' ? 'Cambiar a Español' : 'Switch to English'}
-          >
-            <span class={locale === 'es' ? 'text-white' : 'text-white/50'}>ES</span>
-            <span class="text-white/30" aria-hidden="true">|</span>
-            <span class={locale === 'en' ? 'text-white' : 'text-white/50'}>EN</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <nav
-    class="glass-dark border-t border-white/5"
+    class="glass-dark"
     aria-label="Navegación principal"
   >
     <div class="container-max">
       <div class="flex items-center justify-between h-16">
-        <a href={locale === 'es' ? '/es/' : '/en/'} class="flex items-center gap-3" aria-label="JMC Handling - Inicio">
+        <a
+          href={locale === 'es' ? '/es/' : '/en/'}
+          class="flex items-center gap-3"
+          aria-label="JMC Handling - Inicio"
+        >
           <img
             src="/assets/brand/isotipo-white-256.webp"
             alt="JMC Handling"
@@ -89,7 +33,7 @@ const currentPath = Astro.url.pathname;
           <div class="hidden sm:block">
             <div class="text-white font-bold text-sm tracking-wide leading-none">JMC</div>
             <div class="text-cargo-light text-[9px] tracking-widest uppercase mt-0.5">
-              {locale === 'es' ? 'Handling' : 'Handling'}
+              Handling
             </div>
           </div>
         </a>
@@ -125,6 +69,20 @@ const currentPath = Astro.url.pathname;
           >
             {locale === 'es' ? 'Cotización' : 'Quote'}
           </a>
+
+          <a
+            href={switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
+            class="flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold
+                   bg-white/10 border border-white/20 text-white/80 hover:bg-white/20
+                   hover:text-white transition-all duration-200"
+            aria-label={locale === 'en' ? 'Cambiar a Español' : 'Switch to English'}
+            rel="alternate"
+            lang={locale === 'en' ? 'es' : 'en'}
+          >
+            <span class:list={[{ 'text-white font-bold': locale === 'es' }]}>ES</span>
+            <span class="text-white/30" aria-hidden="true">|</span>
+            <span class:list={[{ 'text-white font-bold': locale === 'en' }]}>EN</span>
+          </a>
         </div>
 
         <button
@@ -159,6 +117,22 @@ const currentPath = Astro.url.pathname;
         <a href={locale === 'es' ? '/es/cotizacion' : '/en/quote'} class="btn-primary text-center mt-2">
           {locale === 'es' ? 'Cotización' : 'Quote'}
         </a>
+        <div class="flex items-center gap-2 px-4 py-2 border-t border-white/10 mt-2 pt-4">
+          <span class="text-xs text-white/50">Idioma:</span>
+          <a
+            href={switchLocalePath(currentPath, 'es')}
+            class:list={['text-xs font-semibold px-2 py-1 rounded', locale === 'es' ? 'text-white bg-white/20' : 'text-white/50 hover:text-white']}
+          >
+            ES
+          </a>
+          <span class="text-white/30">|</span>
+          <a
+            href={switchLocalePath(currentPath, 'en')}
+            class:list={['text-xs font-semibold px-2 py-1 rounded', locale === 'en' ? 'text-white bg-white/20' : 'text-white/50 hover:text-white']}
+          >
+            EN
+          </a>
+        </div>
       </div>
     </div>
   </nav>
