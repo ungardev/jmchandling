@@ -7,7 +7,7 @@ export default {
         cargo: {
           deep: '#0F3E51',
           light: '#A0DDF5',
-          emerald: '#10B981',
+          emerald: '#5BA8C7',
           ink: '#0A1F2B',
           mist: '#F5F8FA',
           white: '#FFFFFF',

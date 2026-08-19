@@ -31,6 +31,7 @@
     "@typescript-eslint/parser": "^8.26.0",
     "eslint": "^9.21.0",
     "eslint-plugin-astro": "^1.0.5",
+    "png-to-ico": "^3.0.2",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1"
   }

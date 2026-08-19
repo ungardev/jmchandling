@@ -1,7 +1,7 @@
 # AGENTS.md — JMC Handling Site Conventions
 
 This file documents conventions and constraints for any AI agent working on this codebase.
-Last updated: 2026-08-18
+Last updated: 2026-08-19
 
 ---
 
@@ -13,7 +13,7 @@ All design decisions MUST use these tokens. Never hardcode hex values.
 |---|---|---|
 | `cargo-deep` | `#0F3E51` | Primary brand, hero background, nav glass |
 | `cargo-light` | `#A0DDF5` | Light accent, mint-blue |
-| `cargo-emerald` | `#10B981` | CTAs, action color, badges |
+| `cargo-emerald` | `#5BA8C7` | CTAs, action color, badges (brandboard aqua, WCAG AA on deep) |
 | `cargo-ink` | `#0A1F2B` | Body text on light surfaces |
 | `cargo-mist` | `#F5F8FA` | Light surface backgrounds |
 | `cargo-white` | `#FFFFFF` | Inverse text |

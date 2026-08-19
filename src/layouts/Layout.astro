@@ -11,7 +11,7 @@ export interface Props {
   canonical?: string;
 }
 
-const { locale, title, description, ogImage = '/assets/brand/og-default.jpg', canonical } = Astro.props;
+const { locale, title, description, ogImage = '/assets/brand/logo-complete-white-1024.webp', canonical } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const alternates = getAlternateUrls(currentPath, locale);
@@ -23,7 +23,7 @@ const organizationSchema = {
   name: 'Servicios Especializados JMC, C.A.',
   alternateName: 'JMC Handling',
   url: siteUrl,
-  logo: `${siteUrl}/assets/brand/logo-white-512.webp`,
+  logo: `${siteUrl}/assets/brand/logo-complete-white-1024.webp`,
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+58-212-000-0000',
@@ -102,8 +102,10 @@ const localBusinessSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/webp" sizes="32x32" href="/assets/brand/favicon-32.webp" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
