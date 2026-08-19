@@ -18,14 +18,24 @@ const year = new Date().getFullYear();
       <div>
         <div class="flex items-center gap-3 mb-4">
           <img
-            src="/assets/brand/isotipo-white-256.webp"
+            src="/assets/brand/isotipo-logo.webp"
+            srcset="/assets/brand/isotipo-logo.webp 1x, /assets/brand/isotipo-logo-sm.webp 2x"
             alt="JMC Handling"
-            width="32"
-            height="32"
-            class="h-8 w-auto"
+            width="57"
+            height="48"
+            class="h-10 w-auto"
             loading="lazy"
           />
-          <span class="font-bold text-white">JMC Handling</span>
+          <img
+            src="/assets/brand/fuente-logo.webp"
+            srcset="/assets/brand/fuente-logo.webp 1x, /assets/brand/fuente-logo-sm.webp 2x"
+            alt=""
+            width="115"
+            height="40"
+            class="h-8 w-auto"
+            loading="lazy"
+            aria-hidden="true"
+          />
         </div>
         <p class="text-sm text-white/60 leading-relaxed mb-4">
           {locale === 'es'
