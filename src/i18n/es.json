@@ -17,9 +17,7 @@
     "subtitle": "Handling, limpieza y mantenimiento GSE certificado bajo estándares que pocas empresas cumplen. Sin excepciones.",
     "subtitleEn": "Certified ground handling, aircraft cleaning and GSE maintenance under standards few operators meet. No exceptions.",
     "ctaPrimary": "Solicitar cotización",
-    "ctaSecondary": "Ver servicios",
-    "awbTitle": "Consultar Guía Aérea",
-    "awbPlaceholder": "000-12345678"
+    "ctaSecondary": "Ver servicios"
   },
   "stats": {
     "founded": "Constituida",
@@ -68,19 +66,7 @@
     "smsLabel": "Safety Management System (SMS)",
     "smsText": "Cultura de seguridad operacional mediante capacitación constante del equipo humano."
   },
-  "awb": {
-    "title": "Consultar Guía Aérea",
-    "placeholder": "000-12345678",
-    "track": "Rastrear",
-    "tracking": "Rastreando...",
-    "simulatedNote": "Demostración — contacte a nuestro equipo para rastrear guías reales.",
-    "stageReceived": "Documento recibido",
-    "stageVerified": "Verificado",
-    "stageLoaded": "Cargado",
-    "stageInTransit": "En tránsito",
-    "stageArrived": "Llegó a destino",
-    "invalidFormat": "Formato AWB inválido. Use: 000-12345678"
-  },
+
   "quote": {
     "title": "Solicitar Cotización",
     "subtitle": "Complete el formulario y nuestro equipo se pondrá en contacto.",

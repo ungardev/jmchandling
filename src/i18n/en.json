@@ -17,9 +17,7 @@
     "subtitle": "Certified ground handling, aircraft cleaning and GSE maintenance under standards few operators meet. No exceptions.",
     "subtitleEn": "Certified ground handling, aircraft cleaning and GSE maintenance under standards few operators meet. No exceptions.",
     "ctaPrimary": "Request a quote",
-    "ctaSecondary": "View services",
-    "awbTitle": "Track Air Waybill",
-    "awbPlaceholder": "000-12345678"
+    "ctaSecondary": "View services"
   },
   "stats": {
     "founded": "Founded",
@@ -68,19 +66,7 @@
     "smsLabel": "Safety Management System (SMS)",
     "smsText": "Operational safety culture through continuous team training."
   },
-  "awb": {
-    "title": "Track Air Waybill",
-    "placeholder": "000-12345678",
-    "track": "Track",
-    "tracking": "Tracking...",
-    "simulatedNote": "Demo mode — contact our team to track live air waybills.",
-    "stageReceived": "Document received",
-    "stageVerified": "Verified",
-    "stageLoaded": "Loaded",
-    "stageInTransit": "In transit",
-    "stageArrived": "Arrived at destination",
-    "invalidFormat": "Invalid AWB format. Use: 000-12345678"
-  },
+
   "quote": {
     "title": "Request a Quote",
     "subtitle": "Complete the form and our team will be in touch.",
