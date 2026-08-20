@@ -1,0 +1,31 @@
+---
+import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+  locale: Locale;
+  variant?: 'success' | 'error';
+}
+
+const { locale, variant = 'success' } = Astro.props;
+const t = useTranslations(locale);
+const isSuccess = variant === 'success';
+---
+
+<div
+  class:list={[
+    'border px-6 py-6',
+    isSuccess ? 'border-cargo-emerald/50 bg-cargo-emerald/10' : 'border-cargo-light/60 bg-cargo-light/10',
+  ]}
+  role={isSuccess ? 'status' : 'alert'}
+>
+  <p class="font-mono text-xs uppercase tracking-[0.1em]" class:text-cargo-emerald={isSuccess} class:text-cargo-light={!isSuccess}>
+    {isSuccess ? t('quote.successCode') : t('quote.errorCode')}
+  </p>
+  <h2 class="mt-3 text-xl font-semibold text-cargo-white">
+    {isSuccess ? t('quote.successTitle') : t('quote.errorTitle')}
+  </h2>
+  <p class="mt-2 text-sm leading-relaxed text-cargo-white/70">
+    {isSuccess ? t('quote.successText') : t('quote.errorText')}
+  </p>
+</div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,7 +10,7 @@
   --color-cargo-emerald: #5BA8C7;
   --color-cargo-ink: #0A1F2B;
   --color-cargo-mist: #F5F8FA;
-  --gradient-hero: linear-gradient(135deg, #0F3E51 0%, #0A1F2B 100%);
+  --color-cargo-white: #FFFFFF;
 }
 
 @layer base {
@@ -27,90 +27,58 @@
   }
 
   body {
-    @apply bg-cargo-ink text-cargo-white antialiased;
+    @apply bg-cargo-mist text-cargo-ink antialiased;
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
   }
 
   ::selection {
     background-color: var(--color-cargo-emerald);
-    color: #fff;
+    color: var(--color-cargo-ink);
   }
 
   :focus-visible {
     outline: 2px solid var(--color-cargo-emerald);
     outline-offset: 3px;
   }
+
+  ::placeholder {
+    color: rgb(245 248 250 / 0.42);
+  }
 }
 
 @layer components {
-  .glass {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
-  .glass-dark {
-    backdrop-filter: blur(12px);
-    background: rgba(15, 62, 81, 0.75);
-    border: 1px solid rgba(160, 221, 245, 0.15);
-  }
-
-  .text-gradient-emerald {
-    background: linear-gradient(135deg, var(--color-cargo-emerald), var(--color-cargo-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg
-           bg-cargo-emerald text-white font-semibold transition-all duration-200
-           hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25
-           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-3 rounded-sm bg-cargo-emerald px-6 py-3 font-semibold text-cargo-ink transition-colors duration-200 hover:bg-cargo-light active:-translate-y-px disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg
-           border-2 border-cargo-emerald text-cargo-emerald font-semibold
-           transition-all duration-200 hover:bg-cargo-emerald hover:text-white
-           active:scale-95;
+    @apply inline-flex items-center justify-center gap-3 rounded-sm border border-cargo-deep px-6 py-3 font-semibold text-cargo-deep transition-colors duration-200 hover:bg-cargo-deep hover:text-cargo-white active:-translate-y-px;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg
-           text-cargo-white font-semibold transition-all duration-200
-           hover:bg-white/10 active:scale-95;
+    @apply inline-flex items-center justify-center gap-3 rounded-sm px-4 py-3 font-semibold text-cargo-deep transition-colors duration-200 hover:bg-cargo-deep/10 active:-translate-y-px;
   }
 
-  .card-service {
-    @apply relative overflow-hidden rounded-2xl p-6 transition-all duration-300
-           border border-white/10 hover:border-cargo-emerald/50 hover:shadow-glass;
-    background: rgba(15, 62, 81, 0.6);
-  }
-
-  .card-service:hover {
-    transform: translateY(-4px);
-    background: rgba(15, 62, 81, 0.85);
+  .badge-cert {
+    @apply inline-flex items-center gap-2 rounded-sm border border-cargo-emerald/50 px-2.5 py-1 font-mono text-xs font-medium uppercase tracking-[0.08em] text-cargo-emerald;
   }
 
   .section-pad {
-    @apply py-16 md:py-24 px-6;
+    @apply py-20 md:py-28;
   }
 
   .container-max {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
   }
 
   .nav-link {
-    @apply relative text-sm font-medium text-white/80 hover:text-white
-           transition-colors duration-200 py-2;
+    @apply relative py-2 text-sm font-medium text-cargo-white/75 transition-colors duration-200 hover:text-cargo-white;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute inset-x-0 bottom-0 h-0.5 bg-cargo-emerald scale-x-0
-           transition-transform duration-200 origin-left;
+    @apply absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-cargo-light transition-transform duration-200;
   }
 
   .nav-link:hover::after,
@@ -118,16 +86,18 @@
     @apply scale-x-100;
   }
 
-  .badge-cert {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold
-           bg-cargo-emerald/20 text-cargo-emerald border border-cargo-emerald/30;
+  .field-control {
+    @apply w-full rounded-sm border border-cargo-light/20 bg-cargo-deep/60 px-4 py-3 text-sm text-cargo-white transition-colors duration-200 focus:border-cargo-emerald focus:outline-none focus:ring-1 focus:ring-cargo-emerald;
+  }
+
+  .field-control:invalid:not(:placeholder-shown) {
+    @apply border-cargo-light/80;
   }
 }
 
 @layer utilities {
   .skip-to-content {
-    @apply absolute -top-full left-4 z-50 px-4 py-2 rounded-b-lg
-           bg-cargo-emerald text-white font-semibold transition-all duration-200;
+    @apply absolute -top-full left-4 z-[60] rounded-b-sm bg-cargo-emerald px-4 py-2 font-semibold text-cargo-ink transition-all duration-200;
   }
 
   .skip-to-content:focus {
@@ -139,7 +109,7 @@
   }
 
   .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-fade-in {
@@ -150,7 +120,7 @@
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;

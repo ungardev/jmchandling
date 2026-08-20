@@ -1,142 +1,109 @@
 ---
 import type { Locale } from '../../i18n/utils';
-import { switchLocalePath } from '../../i18n/utils';
+import { switchLocalePath, useTranslations } from '../../i18n/utils';
 
 export interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
+const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
+const homePath = locale === 'es' ? '/es/' : '/en/';
+const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
+const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
+const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
+const isHome = currentPath === `/${locale}/` || currentPath === `/${locale}`;
+const isServices = currentPath.includes('/servicios') || currentPath.includes('/services');
+const isContact = currentPath.includes('/contacto') || currentPath.includes('/contact');
 ---
 
-<header class="fixed top-0 inset-x-0 z-50">
-  <nav
-    class="glass-dark"
-    aria-label="Navegación principal"
-  >
+<header class="fixed inset-x-0 top-0 z-50">
+  <nav class="border-b border-cargo-light/15 bg-cargo-deep text-cargo-white" aria-label={t('nav.primaryNav')}>
     <div class="container-max">
-      <div class="flex items-center justify-between h-16">
-        <a
-          href={locale === 'es' ? '/es/' : '/en/'}
-          class="flex items-center gap-3"
-          aria-label="JMC Handling - Inicio"
-        >
+      <div class="flex min-h-[4.5rem] items-center justify-between gap-6">
+        <a href={homePath} class="flex shrink-0 items-center gap-3" aria-label="JMC Handling">
           <img
             src="/assets/brand/isotipo-logo.webp"
             srcset="/assets/brand/isotipo-logo.webp 1x, /assets/brand/isotipo-logo-sm.webp 2x"
             alt="JMC Handling"
-            width="57"
-            height="48"
-            class="h-9 md:h-12 w-auto"
+            width="114"
+            height="96"
+            class="h-10 w-auto"
             loading="eager"
           />
           <img
             src="/assets/brand/fuente-logo.webp"
             srcset="/assets/brand/fuente-logo.webp 1x, /assets/brand/fuente-logo-sm.webp 2x"
             alt=""
-            width="115"
-            height="40"
-            class="hidden md:block h-9 w-auto"
+            width="320"
+            height="111"
+            class="hidden h-8 w-auto sm:block"
             loading="eager"
             aria-hidden="true"
           />
         </a>
 
-        <div class="hidden md:flex items-center gap-8">
-          <a
-            href={locale === 'es' ? '/es/' : '/en/'}
-            class="nav-link"
-            class:list={[{ active: currentPath === `/${locale}/` || currentPath === `/${locale}` }]}
-            aria-current={currentPath === `/${locale}/` ? 'page' : undefined}
-          >
-            {locale === 'es' ? 'Inicio' : 'Home'}
+        <div class="hidden items-center gap-7 lg:flex">
+          <div class="mr-2 hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.08em] text-cargo-light/75 xl:flex" role="status">
+            <span class="h-1.5 w-1.5 rounded-full bg-cargo-emerald" aria-hidden="true"></span>
+            <span>{t('utilityBar.status')}</span>
+            <span class="text-cargo-light/40">·</span>
+            <span>{t('utilityBar.station')}</span>
+          </div>
+          <a href={homePath} class="nav-link" class:list={[{ active: isHome }]} aria-current={isHome ? 'page' : undefined}>
+            {t('nav.home')}
           </a>
-          <a
-            href={locale === 'es' ? '/es/servicios' : '/en/services'}
-            class="nav-link"
-            class:list={[{ active: currentPath.includes('/servicios') || currentPath.includes('/services') }]}
-            aria-current={currentPath.includes('/servicios') || currentPath.includes('/services') ? 'page' : undefined}
-          >
-            {locale === 'es' ? 'Servicios' : 'Services'}
+          <a href={servicesPath} class="nav-link" class:list={[{ active: isServices }]} aria-current={isServices ? 'page' : undefined}>
+            {t('nav.services')}
           </a>
-          <a
-            href={locale === 'es' ? '/es/contacto' : '/en/contact'}
-            class="nav-link"
-            class:list={[{ active: currentPath.includes('/contacto') || currentPath.includes('/contact') }]}
-            aria-current={currentPath.includes('/contacto') || currentPath.includes('/contact') ? 'page' : undefined}
-          >
-            {locale === 'es' ? 'Contacto' : 'Contact'}
+          <a href={contactPath} class="nav-link" class:list={[{ active: isContact }]} aria-current={isContact ? 'page' : undefined}>
+            {t('nav.contact')}
           </a>
-          <a
-            href={locale === 'es' ? '/es/cotizacion' : '/en/quote'}
-            class="btn-primary text-sm py-2"
-          >
-            {locale === 'es' ? 'Cotización' : 'Quote'}
+          <a href={quotePath} class="btn-primary px-4 py-2 text-xs" aria-label={t('nav.primary')}>
+            {t('nav.quote')}
           </a>
-
           <a
             href={switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
-            class="flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold
-                   bg-white/10 border border-white/20 text-white/80 hover:bg-white/20
-                   hover:text-white transition-all duration-200"
-            aria-label={locale === 'en' ? 'Cambiar a Español' : 'Switch to English'}
+            class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/70 transition-colors hover:text-cargo-white"
+            aria-label={locale === 'en' ? t('nav.switchToSpanish') : t('nav.switchToEnglish')}
             rel="alternate"
             lang={locale === 'en' ? 'es' : 'en'}
           >
-            <span class:list={[{ 'text-white font-bold': locale === 'es' }]}>ES</span>
-            <span class="text-white/30" aria-hidden="true">|</span>
-            <span class:list={[{ 'text-white font-bold': locale === 'en' }]}>EN</span>
+            <span class:list={[{ 'text-cargo-light': locale === 'es' }]}>ES</span>
+            <span class="px-1 text-cargo-white/35" aria-hidden="true">/</span>
+            <span class:list={[{ 'text-cargo-light': locale === 'en' }]}>EN</span>
           </a>
         </div>
 
         <button
           id="mobile-menu-btn"
-          class="md:hidden p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+          class="rounded-sm border border-cargo-light/25 p-2 text-cargo-white/80 transition-colors hover:border-cargo-light hover:text-cargo-white lg:hidden"
           aria-expanded="false"
           aria-controls="mobile-menu"
-          aria-label={locale === 'es' ? 'Abrir menú de navegación' : 'Open navigation menu'}
+          aria-label={t('nav.openMenu')}
+          data-open-label={t('nav.openMenu')}
+          data-close-label={t('nav.closeMenu')}
+          type="button"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
       </div>
     </div>
 
-    <div
-      id="mobile-menu"
-      class="md:hidden hidden glass-dark border-t border-white/5"
-      aria-hidden="true"
-    >
-      <div class="container-max py-4 flex flex-col gap-2">
-        <a href={locale === 'es' ? '/es/' : '/en/'} class="px-4 py-3 rounded-lg hover:bg-white/10 text-white/80 hover:text-white transition-colors">
-          {locale === 'es' ? 'Inicio' : 'Home'}
-        </a>
-        <a href={locale === 'es' ? '/es/servicios' : '/en/services'} class="px-4 py-3 rounded-lg hover:bg-white/10 text-white/80 hover:text-white transition-colors">
-          {locale === 'es' ? 'Servicios' : 'Services'}
-        </a>
-        <a href={locale === 'es' ? '/es/contacto' : '/en/contact'} class="px-4 py-3 rounded-lg hover:bg-white/10 text-white/80 hover:text-white transition-colors">
-          {locale === 'es' ? 'Contacto' : 'Contact'}
-        </a>
-        <a href={locale === 'es' ? '/es/cotizacion' : '/en/quote'} class="btn-primary text-center mt-2">
-          {locale === 'es' ? 'Cotización' : 'Quote'}
-        </a>
-        <div class="flex items-center gap-2 px-4 py-2 border-t border-white/10 mt-2 pt-4">
-          <span class="text-xs text-white/50">Idioma:</span>
-          <a
-            href={switchLocalePath(currentPath, 'es')}
-            class:list={['text-xs font-semibold px-2 py-1 rounded', locale === 'es' ? 'text-white bg-white/20' : 'text-white/50 hover:text-white']}
-          >
-            ES
-          </a>
-          <span class="text-white/30">|</span>
-          <a
-            href={switchLocalePath(currentPath, 'en')}
-            class:list={['text-xs font-semibold px-2 py-1 rounded', locale === 'en' ? 'text-white bg-white/20' : 'text-white/50 hover:text-white']}
-          >
-            EN
-          </a>
+    <div id="mobile-menu" class="hidden border-t border-cargo-light/15 bg-cargo-deep lg:hidden" aria-hidden="true">
+      <div class="container-max flex flex-col gap-1 py-4">
+        <a href={homePath} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white" aria-current={isHome ? 'page' : undefined}>{t('nav.home')}</a>
+        <a href={servicesPath} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white" aria-current={isServices ? 'page' : undefined}>{t('nav.services')}</a>
+        <a href={contactPath} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white" aria-current={isContact ? 'page' : undefined}>{t('nav.contact')}</a>
+        <a href={quotePath} class="btn-primary mt-4 text-center text-sm">{t('nav.quote')}</a>
+        <div class="mt-3 flex items-center gap-3 border-t border-cargo-light/15 pt-4 font-mono text-xs uppercase tracking-[0.08em]">
+          <span class="text-cargo-white/45">{t('nav.language')}</span>
+          <a href={switchLocalePath(currentPath, 'es')} lang="es" class:list={['px-1 py-1', locale === 'es' ? 'text-cargo-light' : 'text-cargo-white/55']}>ES</a>
+          <span class="text-cargo-white/30" aria-hidden="true">/</span>
+          <a href={switchLocalePath(currentPath, 'en')} lang="en" class:list={['px-1 py-1', locale === 'en' ? 'text-cargo-light' : 'text-cargo-white/55']}>EN</a>
         </div>
       </div>
     </div>
@@ -144,14 +111,36 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script is:inline>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      menu.classList.toggle('hidden', expanded);
-      menu.setAttribute('aria-hidden', String(expanded));
+  const menuButton = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = mobileMenu?.querySelectorAll('a') ?? [];
+
+  const closeMobileMenu = () => {
+    if (!menuButton || !mobileMenu) return;
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', menuButton.dataset.openLabel ?? '');
+    mobileMenu.classList.add('hidden');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  };
+
+  if (menuButton && mobileMenu) {
+    menuButton.dataset.openLabel = menuButton.dataset.openLabel ?? menuButton.getAttribute('aria-label') ?? '';
+    menuButton.dataset.closeLabel = menuButton.dataset.closeLabel ?? '';
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? menuButton.dataset.openLabel ?? '' : menuButton.dataset.closeLabel ?? '');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      mobileMenu.setAttribute('aria-hidden', String(isOpen));
+      if (!isOpen) mobileLinks[0]?.focus();
+    });
+
+    mobileLinks.forEach((link) => link.addEventListener('click', closeMobileMenu));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+        menuButton.focus();
+      }
     });
   }
 </script>

@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/utils';
 import Badge from '../ui/Badge.astro';
 import Section from '../ui/Section.astro';
 
@@ -8,90 +9,49 @@ export interface Props {
 }
 
 const { locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
-<Section id="seguridad" background="deep" padY="lg">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<Section id="seguridad" background="deep" padY="xl" ariaLabel={t('safety.sectionLabel')}>
+  <div class="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-20">
     <div>
-      <div class="flex flex-wrap gap-2 mb-6">
-        <Badge variant="cert" size="md">CESEA-021</Badge>
-        <Badge variant="inac" size="md">INAC</Badge>
-        <Badge variant="sms" size="md">RAV 111</Badge>
+      <div class="flex flex-wrap gap-2">
+        <Badge variant="cert" size="sm">{t('safety.ceseaBadge')}</Badge>
+        <Badge variant="inac" size="sm">{t('safety.inacBadge')}</Badge>
+        <Badge variant="sms" size="sm">{t('safety.rav111')}</Badge>
       </div>
+      <p class="mt-8 font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('safety.sectionLabel')}</p>
+      <h2 class="mt-5 max-w-xl text-balance text-4xl font-semibold leading-tight tracking-[-0.04em] text-cargo-white sm:text-5xl">{t('safety.title')}</h2>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-cargo-white/75">{t('safety.subtitle')}</p>
+      <p class="mt-8 max-w-xl border-l-4 border-cargo-emerald pl-5 text-sm leading-relaxed text-cargo-white/80">{t('safety.intro')}</p>
 
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-        {locale === 'es' ? 'Seguridad y Certificaciones' : 'Safety & Certifications'}
-      </h2>
-
-      <p class="text-white/60 text-lg mb-8 leading-relaxed">
-        {locale === 'es'
-          ? 'Operamos bajo los más estrictos estándares de seguridad operacional, respaldados por certificaciones nacionales e internacionales.'
-          : 'We operate under the strictest operational safety standards, backed by national and international certifications.'}
-      </p>
-
-      <div class="space-y-4">
-        <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-xl bg-cargo-emerald/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg class="w-5 h-5 text-cargo-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-white font-semibold mb-1">
-              {locale === 'es' ? 'Safety Management System (SMS)' : 'Safety Management System (SMS)'}
-            </h3>
-            <p class="text-white/50 text-sm leading-relaxed">
-              {locale === 'es'
-                ? 'Fomentamos una cultura positiva en Seguridad Operacional mediante la capacitación constante de nuestro equipo humano.'
-                : 'Promoting a positive Safety Management System culture through continuous team training and operational excellence.'}
-            </p>
-          </div>
+      <div class="mt-12 space-y-8">
+        <div class="border-t border-cargo-light/20 pt-5">
+          <h3 class="text-base font-semibold text-cargo-white">{t('safety.smsLabel')}</h3>
+          <p class="mt-2 max-w-lg text-sm leading-relaxed text-cargo-white/65">{t('safety.smsText')}</p>
         </div>
-
-        <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-xl bg-cargo-light/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg class="w-5 h-5 text-cargo-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-white font-semibold mb-1">
-              {locale === 'es' ? 'Explotador Certificado INAC' : 'INAC Certified Operator'}
-            </h3>
-            <p class="text-white/50 text-sm leading-relaxed">
-              {locale === 'es'
-                ? 'Certificado de Explotador de Servicios Especializados Aeroportuarios (CESEA-021) bajo la Regulación Aeronáutica Venezolana 111.'
-                : 'Certified Specialized Airport Services Operator (CESEA-021) under Venezuelan Aeronautical Regulation 111.'}
-            </p>
-          </div>
+        <div class="border-t border-cargo-light/20 pt-5">
+          <h3 class="text-base font-semibold text-cargo-white">{t('safety.operatorLabel')}</h3>
+          <p class="mt-2 max-w-lg text-sm leading-relaxed text-cargo-white/65">{t('safety.operatorText')}</p>
         </div>
       </div>
     </div>
 
-    <div class="relative">
-      <div class="relative rounded-2xl overflow-hidden border border-white/10">
+    <figure class="relative">
+      <div class="overflow-hidden border border-cargo-light/20 bg-cargo-mist">
         <img
-          src="/assets/images/sms-culture.webp"
-          alt={locale === 'es' ? 'Equipo de JMC en capacitación SMS' : 'JMC team in SMS training'}
-          width="640"
-          height="480"
-          class="w-full h-80 object-cover"
+          src="/assets/images/cesea-cert.webp"
+          alt={t('safety.mediaAlt')}
+          width="800"
+          height="600"
+          class="h-auto w-full object-cover"
           loading="lazy"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-cargo-deep/80 to-transparent" />
-        <div class="absolute bottom-6 left-6 right-6">
-          <div class="glass rounded-xl p-4">
-            <p class="text-white text-sm font-medium">
-              {locale === 'es'
-                ? 'Capacitación continua para garantizar la seguridad operacional de nuestros clientes.'
-                : 'Continuous training to guarantee operational safety for our clients.'}
-            </p>
-          </div>
-        </div>
       </div>
-
-      <div class="absolute -top-4 -right-4 w-24 h-24 bg-cargo-emerald/20 rounded-full blur-2xl" aria-hidden="true" />
-      <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-cargo-light/10 rounded-full blur-2xl" aria-hidden="true" />
-    </div>
+      <figcaption class="flex flex-col gap-3 border-b border-x border-cargo-light/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <span class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/65">{t('safety.mediaCaption')}</span>
+        <a href="/assets/images/cesea-cert.webp" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cargo-light transition-colors hover:text-cargo-white">{t('safety.mediaLink')} <span aria-hidden="true">↗</span></a>
+      </figcaption>
+    </figure>
   </div>
 </Section>

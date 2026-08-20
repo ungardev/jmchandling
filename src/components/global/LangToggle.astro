@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../../i18n/utils';
-import { switchLocalePath } from '../../i18n/utils';
+import { switchLocalePath, useTranslations } from '../../i18n/utils';
 
 export interface Props {
   currentLocale: Locale;
@@ -8,23 +8,19 @@ export interface Props {
 }
 
 const { currentLocale, currentPath } = Astro.props;
+const t = useTranslations(currentLocale);
 const targetLocale: Locale = currentLocale === 'en' ? 'es' : 'en';
 const targetPath = switchLocalePath(currentPath, targetLocale);
 ---
 
 <a
   href={targetPath}
-  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold
-         bg-white/10 border border-white/20 text-white/80 hover:bg-white/20
-         hover:text-white transition-all duration-200 focus-visible:ring-2
-         focus-visible:ring-cargo-emerald focus-visible:ring-offset-2 focus-visible:ring-offset-cargo-deep"
-  aria-label={currentLocale === 'en'
-    ? 'Cambiar a Español'
-    : 'Switch to English'}
+  class="inline-flex items-center gap-1 font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/70 transition-colors hover:text-cargo-white focus-visible:ring-2 focus-visible:ring-cargo-emerald"
+  aria-label={currentLocale === 'en' ? t('nav.switchToSpanish') : t('nav.switchToEnglish')}
   rel="alternate"
   lang={targetLocale}
 >
-  <span class:list={[{ 'text-white font-bold': currentLocale === 'en' }]}>ES</span>
-  <span class="text-white/30" aria-hidden="true">|</span>
-  <span class:list={[{ 'text-white font-bold': currentLocale === 'es' }]}>EN</span>
+  <span class:list={[{ 'text-cargo-light': currentLocale === 'es' }]}>ES</span>
+  <span class="text-cargo-white/30" aria-hidden="true">/</span>
+  <span class:list={[{ 'text-cargo-light': currentLocale === 'en' }]}>EN</span>
 </a>

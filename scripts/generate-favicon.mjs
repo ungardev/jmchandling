@@ -12,7 +12,7 @@
 
 import sharp from 'sharp';
 import pngToIco from 'png-to-ico';
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,10 +23,6 @@ const SRC = join(ROOT, 'public', 'assets', 'brand', 'isotipo-jmc-blanco.png');
 const OUT = ROOT;
 
 const SIZES = [16, 32, 48];
-
-async function ensureDir(path) {
-  if (!existsSync(path)) await mkdir(path, { recursive: true });
-}
 
 async function toPngBuffer(inputPath, size) {
   return sharp(inputPath)

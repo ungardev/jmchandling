@@ -5,34 +5,18 @@ export interface Props {
   hover?: boolean;
 }
 
-const {
-  href,
-  class: className = '',
-  hover = true,
-} = Astro.props;
-
+const { href, class: className = '', hover = true } = Astro.props;
 const baseClasses = [
-  'relative overflow-hidden rounded-2xl p-6',
-  'border border-white/10',
-  'bg-cargo-deep/60',
-  'backdrop-blur-sm',
-  hover ? 'card-service' : '',
+  'relative overflow-hidden border border-cargo-deep/15 bg-cargo-white p-6',
+  hover ? 'transition-colors duration-200 hover:border-cargo-emerald/60 hover:bg-cargo-emerald/5' : '',
   className,
 ].filter(Boolean).join(' ');
-
-const Inner = () => (
-  <div class={baseClasses}>
-    <slot />
-  </div>
-);
 ---
 
 {href ? (
-  <a href={href} class="block group">
-    <Inner />
+  <a href={href} class="group block">
+    <div class={baseClasses}><slot /></div>
   </a>
 ) : (
-  <div class={baseClasses}>
-    <slot />
-  </div>
+  <div class={baseClasses}><slot /></div>
 )}

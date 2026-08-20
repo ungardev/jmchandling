@@ -10,9 +10,10 @@
 
 - **Framework:** Astro 5 (static export, `output: 'static'`)
 - **Styling:** Tailwind CSS 3 + custom CSS design system
-- **Components:** Astro `.astro` + React islands (`AWBTracker.jsx`)
+- **Components:** Astro `.astro` components with static HTML-first interactions
+- **Content model:** Typed service families and proof points in `src/data/siteContent.ts`
 - **i18n:** Astro built-in routing with ES (default) + EN locales
-- **Fonts:** Inter (UI) + JetBrains Mono (AWB numbers)
+- **Fonts:** Inter (UI) + JetBrains Mono (operational codes and metadata)
 - **Forms:** FormSubmit.co (no backend required)
 - **Deployment:** Vercel (recommended) / HostGator FTP (static upload)
 
@@ -56,8 +57,10 @@ src/
 │   ├── global/       Header, Footer, LangToggle
 │   ├── home/         Hero, ServicesGrid, SafetySection, StatsStrip
 │   ├── services/     ServiceDetail
-│   ├── contact/      QuoteForm, ContactInfo
-│   └── ui/           Button, Badge, Card, Section, AWBTracker.jsx
+│   ├── contact/      QuoteForm, ContactInfo, FormStatus
+│   └── ui/           Button, Badge, Card, Section
+├── data/
+│   └── siteContent.ts  Typed capability families and services
 ├── i18n/
 │   ├── es.json       Spanish UI copy (primary)
 │   ├── en.json       English UI copy (secondary)
@@ -79,7 +82,7 @@ src/
 |---|---|---|
 | `cargo-deep` | `#0F3E51` | Primary brand, hero background |
 | `cargo-light` | `#A0DDF5` | Light accent, mint-blue |
-| `cargo-emerald` | `#10B981` | CTA / action color |
+| `cargo-emerald` | `#5BA8C7` | CTA / action color and operational accent |
 | `cargo-ink` | `#0A1F2B` | Body text on light |
 | `cargo-mist` | `#F5F8FA` | Surface light |
 | `cargo-white` | `#FFFFFF` | Inverse / dark text |
@@ -93,7 +96,8 @@ Tailwind classes: `bg-cargo-deep`, `text-cargo-emerald`, `border-cargo-light`, e
 - **Spanish (ES)** is the default locale — all new content starts in ES.
 - Page titles, headings, body copy, buttons, form labels — both locales.
 - Code, file names, class names, comments, config — English only.
-- Keys use dot notation: `services.gseTitle`, `awb.tracking`, `nav.home`.
+- Keys use dot notation: `services.gseTitle`, `services.families.rampTitle`, `nav.home`.
+- Arrays remain arrays; do not pass them through the string translation helper.
 - To add a new key: add it to **both** `es.json` and `en.json`.
 
 ---
@@ -138,18 +142,19 @@ No backend required. FormSubmit.co auto-responds and forwards.
 
 ---
 
-## AWB Tracking (Demo)
+## Content and claims
 
-The `AWBTracker.jsx` island validates 11-digit AWB format (`000-12345678`) and shows a simulated tracking response. To connect a live API, replace the `await new Promise(...)` timeout in `handleSubmit` with a real `fetch()` call. Integration point is documented inline in the component.
+The public catalog is generated from `src/data/siteContent.ts` and localized through `src/i18n/es.json` and `src/i18n/en.json`. Operational claims must be confirmed with JMC before publishing. In particular, keep the 2012 incorporation date separate from the 2015 Maiquetía operation date and do not publish unverified services, phone numbers, hours or response promises.
+
+The previous `jmcground/` implementation is historical reference material only. It is not part of the Astro build.
 
 ---
 
 ## TODO Before Production
 
-- [ ] Replace placeholder phone `+58 212 000 0000` with real numbers
-- [ ] Verify stats KPIs (years, daily flights, staff counts)
+- [ ] Confirm public phone, hours, station scope and response expectation with operations
+- [ ] Confirm 2012 incorporation vs. 2015 Maiquetía operation claims
+- [ ] Set up `jmchandling.com` DNS / canonical domain when approved
 - [ ] Add Vercel analytics / speed insights
-- [ ] Set up `jmchandling.com` DNS / Cloudflare
-- [ ] Connect live AWB tracking API (integration point documented in `AWBTracker.jsx`)
-- [ ] Add additional station pages as they open
-- [ ] Add Instagram/LinkedIn social meta tags
+- [ ] Add additional station pages only when operational content is validated
+- [ ] Confirm social profiles and add approved social metadata

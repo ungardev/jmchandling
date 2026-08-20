@@ -2,6 +2,7 @@
 export interface Props {
   id?: string;
   class?: string;
+  ariaLabel?: string;
   background?: 'dark' | 'deep' | 'mist' | 'transparent';
   padY?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
@@ -9,13 +10,14 @@ export interface Props {
 const {
   id,
   class: className = '',
+  ariaLabel,
   background = 'dark',
   padY = 'lg',
 } = Astro.props;
 
 const bgClasses = {
-  dark: 'bg-cargo-ink',
-  deep: 'bg-cargo-deep',
+  dark: 'bg-cargo-ink text-cargo-white',
+  deep: 'bg-cargo-deep text-cargo-white',
   mist: 'bg-cargo-mist text-cargo-ink',
   transparent: 'bg-transparent',
 };
@@ -23,19 +25,15 @@ const bgClasses = {
 const padClasses = {
   none: '',
   sm: 'py-8',
-  md: 'py-12',
-  lg: 'py-16 md:py-24',
-  xl: 'py-24 md:py-32',
+  md: 'py-12 md:py-16',
+  lg: 'py-20 md:py-28',
+  xl: 'py-28 md:py-40',
 };
 
-const classes = [
-  bgClasses[background],
-  padClasses[padY],
-  className,
-].filter(Boolean).join(' ');
+const classes = [bgClasses[background], padClasses[padY], className].filter(Boolean).join(' ');
 ---
 
-<section id={id} class={classes} aria-labelledby={Astro.props.id ? `${Astro.props.id}-heading` : undefined}>
+<section id={id} class={classes} aria-label={ariaLabel}>
   <div class="container-max">
     <slot />
   </div>

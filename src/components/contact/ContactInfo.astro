@@ -9,98 +9,42 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
 ---
 
-<div class="space-y-8">
-  <div>
-    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-      {locale === 'es' ? 'Hablemos de' : "Let's talk"}
-      <span class="text-gradient-emerald"> {locale === 'es' ? 'Soluciones' : 'Solutions'}</span>
-    </h2>
-    <p class="text-white/60 text-base leading-relaxed">
-      {locale === 'es'
-        ? 'Estamos listos para atender las necesidades de su aerolínea con los más altos estándares de calidad y seguridad operacional (SMS).'
-        : "We are ready to meet your airline's needs with the highest standards of quality and safety management (SMS)."}
-    </p>
-  </div>
+<div>
+  <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('contact.title')}</p>
+  <h2 class="mt-5 max-w-xl text-balance text-4xl font-semibold leading-tight tracking-[-0.04em] text-cargo-white sm:text-5xl">{t('contact.introTitle')}</h2>
+  <p class="mt-6 max-w-xl text-base leading-relaxed text-cargo-white/75">{t('contact.intro')}</p>
 
-  <div class="space-y-6">
-    <div class="flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-cargo-emerald/15 flex items-center justify-center flex-shrink-0">
-        <svg class="w-5 h-5 text-cargo-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      </div>
-      <div>
-        <p class="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.addressLabel')}</p>
-        <p class="text-white/70 text-sm leading-relaxed">
-          {locale === 'es'
-            ? 'Aeropuerto Internacional Simón Bolívar de Maiquetía, Nivel 1, Sector 8.2, Caracas, Venezuela.'
-            : 'Simón Bolívar de Maiquetía International Airport, Level 1, Sector 8.2, Maiquetía, La Guaira, Venezuela.'}
-        </p>
-      </div>
+  <dl class="mt-12 space-y-8">
+    <div class="border-t border-cargo-light/20 pt-5">
+      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">01 · {t('contact.addressLabel')}</dt>
+      <dd class="mt-3 max-w-lg text-sm leading-relaxed text-cargo-white/75">{t('contact.address')}</dd>
     </div>
-
-    <div class="flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-cargo-emerald/15 flex items-center justify-center flex-shrink-0">
-        <svg class="w-5 h-5 text-cargo-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      </div>
-      <div>
-        <p class="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.certLabel')}</p>
-        <div class="flex flex-wrap gap-2">
-          <Badge variant="cert">CESEA-021</Badge>
-          <Badge variant="inac">INAC</Badge>
-          <Badge variant="sms">RAV 111</Badge>
-        </div>
-      </div>
+    <div class="border-t border-cargo-light/20 pt-5">
+      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">02 · {t('contact.certLabel')}</dt>
+      <dd class="mt-3 flex flex-wrap gap-2">
+        <Badge variant="cert" size="sm">CESEA-021</Badge>
+        <Badge variant="inac" size="sm">INAC</Badge>
+        <Badge variant="sms" size="sm">RAV 111</Badge>
+      </dd>
     </div>
-
-    <div class="flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-cargo-emerald/15 flex items-center justify-center flex-shrink-0">
-        <svg class="w-5 h-5 text-cargo-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      </div>
-      <div>
-        <p class="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.emailLabel')}</p>
-        <a href="mailto:carlos.wood@jmchandling.com" class="text-white/70 text-sm hover:text-cargo-emerald transition-colors">
-          carlos.wood@jmchandling.com
-        </a>
-        <span class="text-white/30 mx-2">&middot;</span>
-        <a href="mailto:jose.moncada@jmchandling.com" class="text-white/70 text-sm hover:text-cargo-emerald transition-colors">
-          jose.moncada@jmchandling.com
-        </a>
-      </div>
+    <div class="border-t border-cargo-light/20 pt-5">
+      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">03 · {t('contact.emailLabel')}</dt>
+      <dd class="mt-3 space-y-2 text-sm text-cargo-white/75">
+        <a href={`mailto:${t('footer.emailPrimary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailPrimary')}</a>
+        <a href={`mailto:${t('footer.emailSecondary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailSecondary')}</a>
+      </dd>
     </div>
-
-    <div class="flex items-start gap-4">
-      <div class="w-11 h-11 rounded-xl bg-cargo-emerald/15 flex items-center justify-center flex-shrink-0">
-        <svg class="w-5 h-5 text-cargo-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </div>
-      <div>
-        <p class="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.hoursLabel')}</p>
-        <p class="text-white/70 text-sm">
-          {locale === 'es' ? 'Lunes – Sábado' : 'Monday – Saturday'}<br />
-          05:00 – 22:00 <span class="text-white/40">({locale === 'es' ? 'Hora de Venezuela' : 'VET'})</span>
-        </p>
-      </div>
+    <div class="border-t border-cargo-light/20 pt-5">
+      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">04 · {t('contact.hoursLabel')}</dt>
+      <dd class="mt-3 text-sm leading-relaxed text-cargo-white/75">{t('contact.hours')}</dd>
     </div>
-  </div>
+  </dl>
 
-  <div class="pt-4 border-t border-white/10">
-    <a
-      href={locale === 'es' ? '/es/cotizacion' : '/en/quote'}
-      class="btn-primary w-full justify-center py-4"
-    >
-      {locale === 'es' ? 'Solicitar Cotización' : 'Request a Quote'}
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
-  </div>
+  <a href={quotePath} class="btn-primary mt-12 w-full justify-between sm:max-w-md">
+    <span>{t('contact.primaryCta')}</span>
+    <span aria-hidden="true">↗</span>
+  </a>
 </div>

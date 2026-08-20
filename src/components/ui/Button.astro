@@ -19,13 +19,13 @@ const {
   ariaLabel,
 } = Astro.props;
 
-const baseClasses = 'inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cargo-emerald focus-visible:ring-offset-2 focus-visible:ring-offset-cargo-deep';
+const baseClasses = 'inline-flex items-center justify-center gap-3 font-semibold transition-colors duration-200 active:-translate-y-px disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cargo-emerald focus-visible:ring-offset-2 focus-visible:ring-offset-cargo-mist';
 
 const variantClasses = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
   ghost: 'btn-ghost',
-  dark: 'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-cargo-deep text-white font-semibold border border-white/20 hover:bg-cargo-ink transition-all duration-200 active:scale-95 disabled:opacity-50',
+  dark: 'inline-flex items-center justify-center gap-3 rounded-sm border border-cargo-light/30 bg-cargo-deep px-6 py-3 font-semibold text-cargo-white transition-colors duration-200 hover:bg-cargo-ink active:-translate-y-px',
 };
 
 const sizeClasses = {
@@ -37,27 +37,17 @@ const sizeClasses = {
 const classes = [
   baseClasses,
   variantClasses[variant],
-  variant === 'primary' || variant === 'secondary' || variant === 'dark' ? sizeClasses[size] : '',
+  sizeClasses[size],
   className,
 ].filter(Boolean).join(' ');
 ---
 
 {href ? (
-  <a
-    href={href}
-    class={classes}
-    aria-label={ariaLabel}
-    role={ariaLabel ? 'button' : undefined}
-  >
+  <a href={href} class={classes} aria-label={ariaLabel}>
     <slot />
   </a>
 ) : (
-  <button
-    type={type}
-    class={classes}
-    disabled={disabled}
-    aria-label={ariaLabel}
-  >
+  <button type={type} class={classes} disabled={disabled} aria-label={ariaLabel}>
     <slot />
   </button>
 )}

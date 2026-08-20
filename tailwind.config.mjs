@@ -17,12 +17,6 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
-      boxShadow: {
-        glass: '0 8px 32px rgba(15,62,81,.18)',
-      },
-      backdropBlur: {
-        xs: '2px',
-      },
     },
   },
   plugins: [],

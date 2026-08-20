@@ -7,36 +7,29 @@ import StatsStrip from '../../components/home/StatsStrip.astro';
 import ServicesGrid from '../../components/home/ServicesGrid.astro';
 import SafetySection from '../../components/home/SafetySection.astro';
 import Section from '../../components/ui/Section.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const locale = 'es';
+const t = useTranslations(locale);
 ---
 
-<Layout
-  locale="es"
-  title="Inicio — JMC Handling | Servicios Aeroportuarios Certificados INAC"
-  description="Servicios especializados aeroportuarios en el Aeropuerto Internacional Simón Bolívar de Maiquetía. Handling, limpieza, GSE, despacho de vuelos. Certificados CESEA-021."
-  canonical="/es/"
->
-  <Header locale="es" />
+<Layout locale={locale} title={t('meta.homeTitle')} description={t('meta.homeDesc')} canonical="/es/">
+  <Header locale={locale} />
   <main id="main-content">
-    <Hero locale="es" />
-    <StatsStrip locale="es" />
-    <ServicesGrid locale="es" />
-    <SafetySection locale="es" />
-    <Section background="deep" padY="lg">
-      <div class="text-center max-w-2xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">
-          ¿Listo para operar con nosotros?
-        </h2>
-        <p class="text-white/60 mb-8">
-          Solicite una cotización personalizada y nuestro equipo comercial se pondrá en contacto en menos de 24 horas.
-        </p>
-        <a href="/es/cotizacion" class="btn-primary px-8 py-4 text-base">
-          Solicitar Cotización
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
+    <Hero locale={locale} />
+    <StatsStrip locale={locale} />
+    <ServicesGrid locale={locale} />
+    <SafetySection locale={locale} />
+    <Section background="mist" padY="xl" ariaLabel={t('quote.title')}>
+      <div class="grid gap-8 border-t border-cargo-deep/15 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('quote.title')}</p>
+        <div>
+          <h2 class="max-w-3xl text-balance text-4xl font-semibold leading-tight tracking-[-0.04em] text-cargo-deep sm:text-5xl">{t('quote.title')}</h2>
+          <p class="mt-5 max-w-2xl text-base leading-relaxed text-cargo-ink/70">{t('quote.subtitle')}</p>
+          <a href="/es/cotizacion" class="btn-primary mt-8">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </Section>
   </main>
-  <Footer locale="es" />
+  <Footer locale={locale} />
 </Layout>

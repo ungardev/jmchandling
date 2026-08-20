@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../i18n/utils';
-import { getAlternateUrls } from '../i18n/utils';
+import { getAlternateUrls, useTranslations } from '../i18n/utils';
 import '../styles/global.css';
 
 export interface Props {
@@ -11,11 +11,19 @@ export interface Props {
   canonical?: string;
 }
 
-const { locale, title, description, ogImage = '/assets/brand/logo-complete-white-1024.webp', canonical } = Astro.props;
+const {
+  locale,
+  title,
+  description,
+  ogImage = '/assets/brand/logo-complete-white-1024.webp',
+  canonical,
+} = Astro.props;
 
+const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
 const alternates = getAlternateUrls(currentPath, locale);
-const siteUrl = 'https://jmchandling.vercel.app';
+const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://jmchandling.vercel.app';
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${currentPath}`;
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -24,53 +32,8 @@ const organizationSchema = {
   alternateName: 'JMC Handling',
   url: siteUrl,
   logo: `${siteUrl}/assets/brand/logo-complete-white-1024.webp`,
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+58-212-000-0000',
-    contactType: 'customer service',
-    availableLanguage: ['Spanish', 'English'],
-    areaServed: 'VE',
-  },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Aeropuerto Internacional Simón Bolívar, Nivel 1, Sector 8.2',
-    addressLocality: 'Maiquetía',
-    addressRegion: 'La Guaira',
-    postalCode: '1160',
-    addressCountry: 'VE',
-  },
+  description,
   sameAs: ['https://www.instagram.com/jmchandling/'],
-  areaServed: {
-    '@type': 'Country',
-    name: 'Venezuela',
-  },
-};
-
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'JMC Handling - Aeropuerto de Maiquetía',
-  image: `${siteUrl}${ogImage}`,
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Aeropuerto Internacional Simón Bolívar, Nivel 1, Sector 8.2',
-    addressLocality: 'Maiquetía',
-    addressRegion: 'La Guaira',
-    postalCode: '1160',
-    addressCountry: 'VE',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 10.5961,
-    longitude: -66.9906,
-  },
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    opens: '05:00',
-    closes: '22:00',
-  },
 };
 ---
 
@@ -83,14 +46,15 @@ const localBusinessSchema = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical ? `${siteUrl}${canonical}` : `${siteUrl}${currentPath}`} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <link rel="alternate" hreflang="es" href={`${siteUrl}${alternates.es}`} />
     <link rel="alternate" hreflang="en" href={`${siteUrl}${alternates.en}`} />
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}${alternates.xDefault}`} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`${siteUrl}${currentPath}`} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
@@ -110,21 +74,15 @@ const localBusinessSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
-    <script is:inline>
-      // Prevent flash of unstyled content
-      document.documentElement.classList.add('js');
-    </script>
-
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </head>
-  <body class="bg-cargo-ink text-cargo-white antialiased">
+  <body class="bg-cargo-mist text-cargo-ink antialiased">
     <a href="#main-content" class="skip-to-content">
-      {locale === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
+      {t('common.skipToContent')}
     </a>
 
     <slot />

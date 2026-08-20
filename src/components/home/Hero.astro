@@ -1,81 +1,68 @@
 ---
 import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/utils';
 
 export interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
+const t = useTranslations(locale);
+const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
+const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
 ---
 
-<section
-  class="relative min-h-screen flex items-center overflow-hidden"
-  aria-label={locale === 'es' ? 'Hero principal' : 'Main hero'}
->
-  <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-gradient-to-br from-cargo-deep via-cargo-ink to-cargo-ink/95" />
-    <div
-      class="absolute inset-0 opacity-10"
-      style="background-image: radial-gradient(circle at 20% 50%, #A0DDF5 0%, transparent 50%), radial-gradient(circle at 80% 20%, #10B981 0%, transparent 40%);"
-      aria-hidden="true"
-    />
-    <div class="absolute inset-0 z-10 bg-gradient-to-r from-cargo-ink/80 via-transparent to-transparent" />
-  </div>
+<section class="min-h-[100dvh] overflow-hidden bg-cargo-mist pt-[4.5rem] text-cargo-ink" aria-label={t('hero.breadcrumb')}>
+  <div class="container-max grid min-h-[calc(100dvh-4.5rem)] lg:grid-cols-[minmax(0,1.12fr)_minmax(20rem,0.88fr)]">
+    <div class="flex flex-col justify-center py-20 lg:pr-20 lg:py-28">
+      <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-deep/70">// {t('hero.breadcrumb')}</p>
+      <h1 class="mt-8 max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-deep sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+        <span class="block">{t('hero.titleLine1')}</span>
+        <span class="block">{t('hero.titleLine2')}</span>
+        <span class="block text-cargo-emerald">{t('hero.titleLine3')}</span>
+      </h1>
+      <p class="mt-8 max-w-xl text-base leading-relaxed text-cargo-ink/75 sm:text-lg">{t('hero.subtitle')}</p>
 
-  <div class="relative z-20 container-max w-full py-32 lg:py-24">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <div class="text-left">
-        <div class="mb-8">
-          <span class="badge-cert text-sm mb-6 inline-flex">
-            E.S.E.A. &middot; CESEA-021 &middot; INAC RAV 111
-          </span>
-        </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-          {locale === 'es'
-            ? <>12 años<br />moviendo<br />Maiquetía.</>
-            : <>12 years<br />moving<br />Maiquetía.</>}
-        </h1>
-
-        <p class="text-base sm:text-lg text-white/60 max-w-lg leading-relaxed mb-10">
-          {locale === 'es'
-            ? 'Handling, limpieza y mantenimiento GSE certificado bajo estándares que pocas empresas cumplen. Sin excepciones.'
-            : 'Certified ground handling, aircraft cleaning and GSE maintenance under standards few operators meet. No exceptions.'}
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-start gap-4">
-          <a
-            href={locale === 'es' ? '/es/cotizacion' : '/en/quote'}
-            class="btn-primary text-base px-8 py-4"
-          >
-            {locale === 'es' ? 'Solicitar cotización' : 'Request a quote'}
-          </a>
-          <a
-            href={locale === 'es' ? '/es/servicios' : '/en/services'}
-            class="btn-secondary text-base px-8 py-4"
-          >
-            {locale === 'es' ? 'Ver servicios' : 'View services'}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
+      <div class="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <a href={quotePath} class="btn-primary text-sm sm:text-base">
+          {t('hero.ctaPrimary')}
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href={servicesPath} class="btn-secondary text-sm sm:text-base">
+          {t('hero.ctaSecondary')}
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
 
-      <div class="hidden lg:block relative">
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
-          <img
-            src="/assets/images/gse-fleet.webp"
-            alt={locale === 'es' ? 'Equipo GSE en plataforma del Aeropuerto Internacional de Maiquetía' : 'GSE equipment on the Maiquetía International Airport ramp'}
-            width="1280"
-            height="720"
-            class="w-full h-auto object-cover"
-            loading="eager"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-cargo-ink/40 to-transparent" />
+      <dl class="mt-16 grid max-w-xl grid-cols-2 gap-x-8 gap-y-6 border-t border-cargo-deep/15 pt-6 sm:grid-cols-4">
+        <div>
+          <dt class="font-mono text-[10px] uppercase tracking-[0.12em] text-cargo-deep/55">{t('hero.stationLabel')}</dt>
+          <dd class="mt-2 text-sm font-semibold text-cargo-deep">{t('hero.stationValue')}</dd>
         </div>
-        <div class="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-cargo-emerald/10 blur-2xl" aria-hidden="true" />
-      </div>
+        <div>
+          <dt class="font-mono text-[10px] uppercase tracking-[0.12em] text-cargo-deep/55">{t('hero.statusLabel')}</dt>
+          <dd class="mt-2 flex items-center gap-2 text-sm font-semibold text-cargo-deep"><span class="h-1.5 w-1.5 rounded-full bg-cargo-emerald" aria-hidden="true"></span>{t('hero.statusValue')}</dd>
+        </div>
+        <div class="col-span-2 sm:col-span-2">
+          <dt class="font-mono text-[10px] uppercase tracking-[0.12em] text-cargo-deep/55">{t('utilityBar.inac')}</dt>
+          <dd class="mt-2 text-sm font-semibold text-cargo-deep">CESEA-021 · RAV 111</dd>
+        </div>
+      </dl>
     </div>
+
+    <figure class="relative min-h-[32rem] overflow-hidden bg-cargo-deep lg:min-h-0">
+      <img
+        src="/assets/images/gse-fleet.webp"
+        alt={t('hero.mediaAlt')}
+        width="1280"
+        height="720"
+        class="absolute inset-0 h-full w-full object-cover object-center grayscale-[12%]"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-cargo-ink/80 via-transparent to-cargo-deep/10" aria-hidden="true"></div>
+      <figcaption class="absolute bottom-0 left-0 right-0 border-t border-cargo-white/20 bg-cargo-ink/70 px-6 py-5 font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/80 backdrop-blur-sm sm:px-8">
+        {t('hero.mediaCaption')}
+      </figcaption>
+    </figure>
   </div>
 </section>

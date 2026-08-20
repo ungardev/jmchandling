@@ -1,7 +1,7 @@
 ---
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
-import ServiceDetail from '../services/ServiceDetail.astro';
+import { getService, serviceFamilies } from '../../data/siteContent';
 
 export interface Props {
   locale: Locale;
@@ -9,81 +9,91 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-
-const services = [
-  {
-    key: 'gse',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />`,
-    image: '/assets/images/gse-fleet.webp',
-  },
-  {
-    key: 'interior',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />`,
-    image: '/assets/images/equipment-cleaning.webp',
-  },
-  {
-    key: 'exterior',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />`,
-    image: '/assets/images/equipment-cleaning.webp',
-  },
-  {
-    key: 'disinfection',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
-    image: '/assets/images/sms-culture.webp',
-  },
-  {
-    key: 'obf',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />`,
-    image: '/assets/images/sms-training.webp',
-  },
-  {
-    key: 'passenger',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />`,
-    image: '/assets/images/continuous-training.webp',
-  },
-  {
-    key: 'special',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />`,
-    image: '/assets/images/sms-culture.webp',
-  },
-  {
-    key: 'maintenance',
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />`,
-    image: '/assets/images/gse-maintenance.webp',
-  },
-];
+const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
 ---
 
-<section class="section-pad bg-cargo-ink" id="servicios" aria-labelledby="services-heading">
+<section class="section-pad bg-cargo-mist text-cargo-ink" id="servicios" aria-labelledby="services-heading">
   <div class="container-max">
-    <div class="text-center mb-16">
-      <span class="badge-cert mb-4 inline-flex">
-        {locale === 'es' ? 'Catálogo de Servicios' : 'Service Catalog'}
-      </span>
-      <h2
-        id="services-heading"
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-4 mb-6"
-      >
-        {locale === 'es' ? 'Nuestros Servicios' : 'Our Services'}
-      </h2>
-      <p class="text-white/60 max-w-2xl mx-auto text-lg">
-        {locale === 'es'
-          ? 'Soluciones integrales de handling aeroportuario certificadas por INAC bajo RAV 111.'
-          : 'Comprehensive airport handling solutions certified by INAC under RAV 111.'}
-      </p>
+    <div class="grid gap-8 border-b border-cargo-deep/15 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+      <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-deep/65">{t('services.sectionLabel')}</p>
+      <div>
+        <h2 id="services-heading" class="max-w-3xl text-balance text-4xl font-semibold leading-tight tracking-[-0.04em] text-cargo-deep sm:text-5xl">{t('services.title')}</h2>
+        <p class="mt-5 max-w-2xl text-base leading-relaxed text-cargo-ink/70">{t('services.subtitle')}</p>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {services.map((service) => (
-        <ServiceDetail
-          locale={locale}
-          title={t(`services.${service.key}Title`)}
-          description={t(`services.${service.key}Desc`)}
-          bullets={t(`services.${service.key}Bullets`).split(',').map(b => b.trim())}
-          icon={service.icon}
-          image={service.image}
-        />
-      ))}
+    <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+      <figure class="self-start lg:sticky lg:top-28">
+        <div class="relative aspect-[4/5] overflow-hidden bg-cargo-deep">
+          {serviceFamilies.map((family, index) => (
+            <img
+              src={family.media}
+              data-family-media={family.key}
+              data-alt={t(family.mediaAltKey)}
+              alt={index === 0 ? t(family.mediaAltKey) : ''}
+              aria-hidden={index === 0 ? undefined : 'true'}
+              width="1280"
+              height="720"
+              class:list={['absolute inset-0 h-full w-full object-cover transition-opacity duration-500', index === 0 ? 'opacity-100' : 'opacity-0']}
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+          ))}
+          <div class="absolute inset-0 bg-gradient-to-t from-cargo-ink/85 via-transparent to-transparent" aria-hidden="true"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 border-t border-cargo-white/20 px-5 py-4 font-mono text-[10px] uppercase tracking-[0.1em] text-cargo-white/80 sm:px-6">
+            {t('services.mediaLabel')}
+          </figcaption>
+        </div>
+      </figure>
+
+      <div class="border-t border-cargo-deep/15">
+        {serviceFamilies.map((family, index) => (
+          <article
+            data-capability-row={family.key}
+            class="group border-b border-cargo-deep/15 py-7 transition-colors duration-200 hover:bg-cargo-emerald/10 focus-within:bg-cargo-emerald/10 sm:py-8"
+          >
+            <div class="grid gap-5 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:items-start">
+              <p class="font-mono text-sm text-cargo-deep/55">[{String(index + 1).padStart(2, '0')}]</p>
+              <div>
+                <p class="font-mono text-[10px] uppercase tracking-[0.1em] text-cargo-emerald">{t('services.familyLabel')}</p>
+                <h3 class="mt-2 text-2xl font-semibold tracking-[-0.03em] text-cargo-deep transition-colors group-hover:text-cargo-ink">{t(family.titleKey)}</h3>
+                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-cargo-ink/70">{t(family.descriptionKey)}</p>
+                <p class="mt-4 text-xs leading-relaxed text-cargo-ink/55">
+                  {family.serviceKeys.map((serviceKey) => {
+                    const service = getService(serviceKey);
+                    return service ? t(service.titleKey) : '';
+                  }).filter(Boolean).join(' · ')}
+                </p>
+              </div>
+              <a href={`${servicesPath}#${family.key}`} class="inline-flex items-center gap-2 justify-self-start text-sm font-semibold text-cargo-deep transition-colors hover:text-cargo-emerald sm:justify-self-end" aria-label={`${t('services.viewFamily')}: ${t(family.titleKey)}`}>
+                <span>{t('services.viewFamily')}</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  const capabilityRows = Array.from(document.querySelectorAll('[data-capability-row]'));
+  const capabilityMedia = Array.from(document.querySelectorAll('[data-family-media]'));
+
+  const setActiveFamily = (familyKey) => {
+    capabilityMedia.forEach((media) => {
+      const isActive = media.dataset.familyMedia === familyKey;
+      media.classList.toggle('opacity-100', isActive);
+      media.classList.toggle('opacity-0', !isActive);
+      media.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      media.setAttribute('alt', isActive ? media.dataset.alt ?? '' : '');
+    });
+  };
+
+  capabilityRows.forEach((row) => {
+    const familyKey = row.dataset.capabilityRow;
+    if (!familyKey) return;
+    row.addEventListener('mouseenter', () => setActiveFamily(familyKey));
+    row.addEventListener('focusin', () => setActiveFamily(familyKey));
+  });
+</script>

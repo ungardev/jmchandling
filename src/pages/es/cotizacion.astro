@@ -3,68 +3,51 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/global/Header.astro';
 import Footer from '../../components/global/Footer.astro';
 import QuoteForm from '../../components/contact/QuoteForm.astro';
+import FormStatus from '../../components/contact/FormStatus.astro';
 import Section from '../../components/ui/Section.astro';
+import { useTranslations } from '../../i18n/utils';
 
-const url = Astro.url;
-const sent = url.searchParams.get('sent') === 'true';
+const locale = 'es';
+const t = useTranslations(locale);
+const sent = Astro.url.searchParams.get('sent') === 'true';
+const selectedService = Astro.url.searchParams.get('service') ?? undefined;
 ---
 
-<Layout
-  locale="es"
-  title="Cotización — JMC Handling"
-  description="Solicite una cotización personalizada para servicios de handling. Respuesta en menos de 24 horas."
-  canonical="/es/cotizacion"
->
-  <Header locale="es" />
-  <main id="main-content" class="pt-28">
-    <Section background="deep" padY="md">
-      <div class="container-max text-center max-w-2xl mx-auto">
-        <span class="badge-cert mb-4 inline-flex">Cotización</span>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mt-4 mb-4">
-          Solicitar Cotización
-        </h1>
-        <p class="text-white/60 text-lg">
-          Complete el formulario y nuestro equipo comercial se pondrá en contacto en menos de 24 horas.
-        </p>
-      </div>
-    </Section>
-
-    <Section background="dark" padY="lg">
-      <div class="container-max">
-        {sent && (
-          <div class="max-w-2xl mx-auto mb-12 p-8 rounded-2xl bg-cargo-emerald/15 border border-cargo-emerald/30 text-center" role="alert">
-            <svg class="w-16 h-16 text-cargo-emerald mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h2 class="text-3xl font-bold text-white mb-3">¡Solicitud Recibida!</h2>
-            <p class="text-white/60 text-lg">
-              Nuestro equipo se pondrá en contacto con usted en las próximas 24 horas hábiles.
-            </p>
-            <a href="/es/" class="btn-primary mt-8 inline-flex">
-              Volver al Inicio
-            </a>
-          </div>
-        )}
-
-        <div class="max-w-3xl mx-auto">
-          <div class="glass rounded-2xl p-8 border border-white/10">
-            <QuoteForm locale="es" variant="full" />
-          </div>
+<Layout locale={locale} title={t('meta.quoteTitle')} description={t('meta.quoteDesc')} canonical="/es/cotizacion">
+  <Header locale={locale} />
+  <main id="main-content" class="pt-[4.5rem]">
+    <Section background="deep" padY="xl" ariaLabel={t('quote.title')}>
+      <div class="grid gap-8 border-b border-cargo-light/20 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('quote.title')}</p>
+        <div>
+          <h1 class="max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-white sm:text-6xl">{t('quote.title')}</h1>
+          <p class="mt-6 max-w-2xl text-base leading-relaxed text-cargo-white/75">{t('quote.subtitle')}</p>
         </div>
       </div>
     </Section>
 
-    <Section background="deep" padY="lg">
-      <div class="container-max text-center max-w-2xl mx-auto">
-        <h2 class="text-2xl font-bold text-white mb-4">¿Prefiere contactarnos directamente?</h2>
-        <p class="text-white/50 mb-6">
-          Escríbanos a <a href="mailto:carlos.wood@jmchandling.com" class="text-cargo-emerald hover:underline">carlos.wood@jmchandling.com</a> o llámenos al <a href="tel:+582120000000" class="text-cargo-emerald hover:underline">+58 212 000 0000</a>.
-        </p>
-        <p class="text-white/30 text-sm">
-          Lunes – Sábado · 05:00 – 22:00 (VET)
-        </p>
+    <Section background="dark" padY="xl" ariaLabel={t('quote.title')}>
+      <div class="mx-auto max-w-3xl">
+        {sent && <div class="mb-12"><FormStatus locale={locale} /></div>}
+        <div class="border border-cargo-light/20 bg-cargo-deep/35 p-6 sm:p-10">
+          <QuoteForm locale={locale} variant="full" selectedService={selectedService} successPath="/es/cotizacion?sent=true" />
+        </div>
+      </div>
+    </Section>
+
+    <Section background="deep" padY="lg" ariaLabel={t('quote.directTitle')}>
+      <div class="grid gap-8 border-t border-cargo-light/20 pt-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('quote.directTitle')}</p>
+        <div>
+          <h2 class="text-3xl font-semibold tracking-[-0.03em] text-cargo-white">{t('quote.directTitle')}</h2>
+          <p class="mt-4 max-w-2xl text-sm leading-relaxed text-cargo-white/70">{t('quote.directText')}</p>
+          <div class="mt-6 flex flex-col gap-2 text-sm text-cargo-light sm:flex-row sm:gap-6">
+            <a href={`mailto:${t('footer.emailPrimary')}`} class="transition-colors hover:text-cargo-white">{t('footer.emailPrimary')}</a>
+            <a href={`tel:${t('footer.phone').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-white">{t('footer.phone')}</a>
+          </div>
+        </div>
       </div>
     </Section>
   </main>
-  <Footer locale="es" />
+  <Footer locale={locale} />
 </Layout>

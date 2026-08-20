@@ -1,182 +1,147 @@
 ---
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
+import { serviceFamilies } from '../../data/siteContent';
 
 export interface Props {
   locale: Locale;
   variant?: 'full' | 'lite';
+  selectedService?: string;
+  successPath?: string;
 }
 
-const { locale, variant = 'full' } = Astro.props;
+const { locale, variant = 'full', selectedService, successPath } = Astro.props;
 const t = useTranslations(locale);
-
-const serviceOptions = [
-  locale === 'es' ? 'Handling en Plataforma / Ramp Handling' : 'Ramp Handling',
-  locale === 'es' ? 'Limpieza de Aeronaves / Aircraft Cleaning' : 'Aircraft Cleaning',
-  locale === 'es' ? 'Despacho de Vuelos / Flight Dispatch' : 'Flight Dispatch',
-  locale === 'es' ? 'Tráfico de Pasajeros / Passenger Traffic' : 'Passenger Traffic',
-  locale === 'es' ? 'Servicios Especiales / Special Services' : 'Special Services',
-  locale === 'es' ? 'Mantenimiento GSE / GSE Maintenance' : 'GSE Maintenance',
-  locale === 'es' ? 'Desinfección / Disinfection' : 'Disinfection & Disinsection',
-  locale === 'es' ? 'Otro / Other' : 'Other',
-];
+const serviceOptions = serviceFamilies.map((family) => ({
+  value: family.key,
+  label: t(family.titleKey),
+}));
+const selectedFamily = serviceFamilies.find((family) => family.key === selectedService || family.serviceKeys.includes(selectedService ?? ''))?.key;
+const nextPath = successPath ?? (locale === 'es' ? '/es/contacto?sent=true' : '/en/contact?sent=true');
+const formAction = 'https://formsubmit.co/carlos.wood@jmchandling.com';
 ---
 
 <form
-  action="https://formsubmit.co/carlos.wood@jmchandling.com"
+  action={formAction}
   method="POST"
-  class="space-y-5"
-  aria-label={locale === 'es' ? 'Formulario de cotización' : 'Quote request form'}
+  class="space-y-6"
+  aria-label={t('quote.title')}
+  data-quote-form
+  data-required-message={t('form.required')}
+  data-email-message={t('form.invalidEmail')}
+  novalidate
 >
   <input type="hidden" name="_cc" value="jose.moncada@jmchandling.com" />
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_subject" value={locale === 'es'
-    ? 'Nueva Solicitud de Servicio - JMC Handling Web'
-    : 'New Service Request - JMC Handling Web'} />
-  <input
-    type="hidden"
-    name="_next"
-    value={locale === 'es' ? `${Astro.url.origin}/es/contacto?sent=true` : `${Astro.url.origin}/en/contact?sent=true`}
-  />
+  <input type="hidden" name="_captcha" value="true" />
+  <input type="hidden" name="_subject" value={t('quote.subject')} />
+  <input type="hidden" name="_next" value={`${Astro.url.origin}${nextPath}`} />
+  <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-    <div class="space-y-1.5">
-      <label for="quote-name" class="block text-xs font-medium text-white/70">
-        {t('quote.name')} <span class="text-cargo-emerald" aria-label="obligatorio">*</span>
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="quote-name" class="mb-2 block text-xs font-medium text-cargo-white/80">
+        {t('quote.name')} <span class="text-cargo-emerald" aria-hidden="true">*</span>
       </label>
-      <input
-        type="text"
-        id="quote-name"
-        name="Empresa_o_Nombre"
-        required
-        autocomplete="organization"
-        placeholder={t('quote.namePlaceholder')}
-        class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30
-               focus:outline-none focus:border-cargo-emerald focus:ring-1 focus:ring-cargo-emerald
-               transition-colors text-sm"
-      />
+      <input type="text" id="quote-name" name="Empresa_o_Nombre" required autocomplete="organization" placeholder={t('quote.namePlaceholder')} class="field-control" aria-describedby="quote-name-error" />
+      <p id="quote-name-error" data-error-for="quote-name" class="mt-2 hidden text-xs text-cargo-light" aria-live="polite"></p>
     </div>
-
-    <div class="space-y-1.5">
-      <label for="quote-email" class="block text-xs font-medium text-white/70">
-        {t('quote.email')} <span class="text-cargo-emerald" aria-label="obligatorio">*</span>
+    <div>
+      <label for="quote-email" class="mb-2 block text-xs font-medium text-cargo-white/80">
+        {t('quote.email')} <span class="text-cargo-emerald" aria-hidden="true">*</span>
       </label>
-      <input
-        type="email"
-        id="quote-email"
-        name="Correo_Cliente"
-        required
-        autocomplete="email"
-        placeholder={t('quote.emailPlaceholder')}
-        class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30
-               focus:outline-none focus:border-cargo-emerald focus:ring-1 focus:ring-cargo-emerald
-               transition-colors text-sm"
-      />
+      <input type="email" id="quote-email" name="Correo_Cliente" required autocomplete="email" placeholder={t('quote.emailPlaceholder')} class="field-control" aria-describedby="quote-email-error" />
+      <p id="quote-email-error" data-error-for="quote-email" class="mt-2 hidden text-xs text-cargo-light" aria-live="polite"></p>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-    <div class="space-y-1.5">
-      <label for="quote-phone" class="block text-xs font-medium text-white/70">
-        {t('quote.phone')}
-      </label>
-      <input
-        type="tel"
-        id="quote-phone"
-        name="Telefono"
-        autocomplete="tel"
-        placeholder={t('quote.phonePlaceholder')}
-        class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30
-               focus:outline-none focus:border-cargo-emerald focus:ring-1 focus:ring-cargo-emerald
-               transition-colors text-sm"
-      />
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="quote-phone" class="mb-2 block text-xs font-medium text-cargo-white/80">{t('quote.phone')}</label>
+      <input type="tel" id="quote-phone" name="Telefono" autocomplete="tel" placeholder={t('quote.phonePlaceholder')} class="field-control" />
     </div>
-
-    <div class="space-y-1.5">
-      <label for="quote-service" class="block text-xs font-medium text-white/70">
-        {t('quote.service')} <span class="text-cargo-emerald" aria-label="obligatorio">*</span>
+    <div>
+      <label for="quote-service" class="mb-2 block text-xs font-medium text-cargo-white/80">
+        {t('quote.service')} <span class="text-cargo-emerald" aria-hidden="true">*</span>
       </label>
-      <select
-        id="quote-service"
-        name="Servicio_Requerido"
-        required
-        class="w-full px-4 py-3 rounded-xl bg-cargo-deep border border-white/10 text-white
-               focus:outline-none focus:border-cargo-emerald focus:ring-1 focus:ring-cargo-emerald
-               transition-colors text-sm appearance-none cursor-pointer"
-      >
-        <option value="" disabled selected class="bg-cargo-deep">{t('quote.servicePlaceholder')}</option>
-        {serviceOptions.map((opt) => (
-          <option value={opt} class="bg-cargo-deep">{opt}</option>
-        ))}
+      <select id="quote-service" name="Capacidad_Requerida" required class="field-control cursor-pointer" aria-describedby="quote-service-error">
+        <option value="" disabled selected={!selectedFamily}>{t('quote.servicePlaceholder')}</option>
+        {serviceOptions.map((option) => {
+          const family = serviceFamilies.find((entry) => entry.key === option.value);
+          return <option value={option.value} data-services={family?.serviceKeys.join(',')} selected={option.value === selectedFamily}>{option.label}</option>;
+        })}
       </select>
+      <p id="quote-service-error" data-error-for="quote-service" class="mt-2 hidden text-xs text-cargo-light" aria-live="polite"></p>
     </div>
   </div>
 
   {variant === 'full' && (
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div class="space-y-1.5">
-        <label for="quote-fleet" class="block text-xs font-medium text-white/70">
-          {t('quote.fleet')}
-        </label>
-        <input
-          type="text"
-          id="quote-fleet"
-          name="Tipo_Flota"
-          placeholder={t('quote.fleetPlaceholder')}
-          class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30
-                 focus:outline-none focus:border-cargo-emerald focus:ring-1 focus:ring-cargo-emerald
-                 transition-colors text-sm"
-        />
+    <div class="grid gap-5 sm:grid-cols-2">
+      <div>
+        <label for="quote-fleet" class="mb-2 block text-xs font-medium text-cargo-white/80">{t('quote.fleet')}</label>
+        <input type="text" id="quote-fleet" name="Tipo_Flota" placeholder={t('quote.fleetPlaceholder')} class="field-control" />
       </div>
-
-      <div class="space-y-1.5">
-        <label for="quote-stations" class="block text-xs font-medium text-white/70">
-          {t('quote.stations')}
-        </label>
-        <input
-          type="text"
-          id="quote-stations"
-          name="Estaciones"
-          placeholder={t('quote.stationsPlaceholder')}
-          class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30
-                 focus:outline-none focus:border-cargo-emerald focus:ring-1 focus:ring-cargo-emerald
-                 transition-colors text-sm"
-        />
+      <div>
+        <label for="quote-stations" class="mb-2 block text-xs font-medium text-cargo-white/80">{t('quote.stations')}</label>
+        <input type="text" id="quote-stations" name="Estaciones" placeholder={t('quote.stationsPlaceholder')} class="field-control" />
       </div>
     </div>
   )}
 
-  <div class="space-y-1.5">
-    <label for="quote-message" class="block text-xs font-medium text-white/70">
-      {t('quote.message')} <span class="text-cargo-emerald" aria-label="obligatorio">*</span>
+  <div>
+    <label for="quote-message" class="mb-2 block text-xs font-medium text-cargo-white/80">
+      {t('quote.message')} <span class="text-cargo-emerald" aria-hidden="true">*</span>
     </label>
-    <textarea
-      id="quote-message"
-      name="Mensaje"
-      rows={variant === 'full' ? 5 : 3}
-      required
-      placeholder={t('quote.messagePlaceholder')}
-      class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30
-             focus:outline-none focus:border-cargo-emerald focus:ring-1 focus:ring-cargo-emerald
-             transition-colors text-sm resize-none"
-    />
+    <textarea id="quote-message" name="Mensaje" rows={variant === 'full' ? 6 : 5} required placeholder={t('quote.messagePlaceholder')} class="field-control resize-y" aria-describedby="quote-message-error"></textarea>
+    <p id="quote-message-error" data-error-for="quote-message" class="mt-2 hidden text-xs text-cargo-light" aria-live="polite"></p>
   </div>
 
-  <button
-    type="submit"
-    class="btn-primary w-full py-4 text-base"
-  >
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-    </svg>
-    {t('quote.submit')}
+  <button type="submit" class="btn-primary w-full justify-between py-4 text-sm sm:text-base">
+    <span>{t('quote.submit')}</span>
+    <span aria-hidden="true">↗</span>
   </button>
-
-  <p class="text-center text-xs text-white/30">
-    {locale === 'es'
-      ? 'Sus datos están protegidos. Nunca compartimos información con terceros.'
-      : 'Your data is protected. We never share information with third parties.'}
-  </p>
+  <p class="text-xs leading-relaxed text-cargo-white/55">{t('quote.disclaimer')}</p>
 </form>
+
+<script is:inline>
+  document.querySelectorAll('[data-quote-form]').forEach((form) => {
+    const serviceField = form.querySelector('#quote-service');
+    const serviceFromQuery = new URLSearchParams(window.location.search).get('service');
+    const fields = Array.from(form.querySelectorAll('input:not([type="hidden"]):not([name="_gotcha"]), select, textarea'));
+    const requiredMessage = form.dataset.requiredMessage ?? '';
+    const emailMessage = form.dataset.emailMessage ?? '';
+
+    if (serviceField && serviceFromQuery) {
+      const matchedFamily = Array.from(serviceField.options).find((option) => option.value === serviceFromQuery || option.dataset.services?.split(',').includes(serviceFromQuery));
+      if (matchedFamily) serviceField.value = matchedFamily.value;
+    }
+
+    const validateField = (field) => {
+      const error = form.querySelector(`[data-error-for="${field.id}"]`);
+      if (!error || !field.required) return true;
+
+      const isValid = field.checkValidity();
+      field.setAttribute('aria-invalid', String(!isValid));
+      error.textContent = isValid ? '' : field.validity.typeMismatch ? emailMessage : requiredMessage;
+      error.classList.toggle('hidden', isValid);
+      return isValid;
+    };
+
+    fields.forEach((field) => {
+      field.addEventListener('blur', () => validateField(field));
+      field.addEventListener('input', () => {
+        if (field.getAttribute('aria-invalid') === 'true') validateField(field);
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      let firstInvalid = null;
+      fields.forEach((field) => {
+        if (!validateField(field) && !firstInvalid) firstInvalid = field;
+      });
+      if (firstInvalid) {
+        event.preventDefault();
+        firstInvalid.focus();
+      }
+    });
+  });
+</script>
