@@ -4,9 +4,12 @@ import Header from '../../components/global/Header.astro';
 import Footer from '../../components/global/Footer.astro';
 import Hero from '../../components/home/Hero.astro';
 import StatsStrip from '../../components/home/StatsStrip.astro';
+import About from '../../components/home/About.astro';
 import HandlingExplainer from '../../components/home/HandlingExplainer.astro';
 import ServicesGrid from '../../components/home/ServicesGrid.astro';
+import AircraftTypes from '../../components/home/AircraftTypes.astro';
 import WhyChoose from '../../components/home/WhyChoose.astro';
+import EquipmentGrid from '../../components/home/EquipmentGrid.astro';
 import AlliesStrip from '../../components/home/AlliesStrip.astro';
 import SafetySection from '../../components/home/SafetySection.astro';
 import Section from '../../components/ui/Section.astro';
@@ -21,9 +24,12 @@ const t = useTranslations(locale);
   <main id="main-content">
     <Hero locale={locale} />
     <StatsStrip locale={locale} />
+    <About locale={locale} />
     <HandlingExplainer locale={locale} />
     <ServicesGrid locale={locale} />
+    <AircraftTypes locale={locale} />
     <WhyChoose locale={locale} />
+    <EquipmentGrid locale={locale} />
     <AlliesStrip locale={locale} />
     <SafetySection locale={locale} />
     <Section background="mist" padY="xl" ariaLabel={t('quote.title')}>

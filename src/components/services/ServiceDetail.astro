@@ -8,12 +8,13 @@ export interface Props {
   title: string;
   description: string;
   bullets: string[];
+  bullethead?: string[];
   familyLabel: string;
   href: string;
   actionLabel: string;
 }
 
-const { id, index, title, description, bullets, familyLabel, href, actionLabel } = Astro.props;
+const { id, index, title, description, bullets, bullethead, familyLabel, href, actionLabel } = Astro.props;
 ---
 
 <article id={id} class="border-b border-cargo-deep/15 py-8 first:border-t sm:py-10">
@@ -28,6 +29,11 @@ const { id, index, title, description, bullets, familyLabel, href, actionLabel }
       <span>{actionLabel}</span>
       <span aria-hidden="true">↗</span>
     </a>
+    {bullethead && bullethead.length > 0 && (
+      <ul class="space-y-3 border-l-2 border-cargo-light/40 pl-4 text-sm leading-relaxed text-cargo-ink/70 lg:col-start-2 lg:col-span-2" aria-label={`${title} - principales servicios`}>
+        {bullethead.map((bullet) => <li>{bullet}</li>)}
+      </ul>
+    )}
     <ul class="space-y-3 border-l border-cargo-emerald/60 pl-4 text-sm leading-relaxed text-cargo-ink/70 lg:col-start-2 lg:col-span-2" aria-label={`${title} - ${familyLabel}`}>
       {bullets.map((bullet) => <li>{bullet}</li>)}
     </ul>

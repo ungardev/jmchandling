@@ -20,6 +20,8 @@ const t = useTranslations(locale);
         <Badge variant="inac" size="sm">{t('safety.inacBadge')}</Badge>
         <Badge variant="sms" size="sm">{t('safety.rav111')}</Badge>
       </div>
+      <p class="mt-6 max-w-xl text-sm leading-relaxed text-cargo-white/70">{t('safety.certificationParagraph')}</p>
+      <p class="mt-3 font-mono text-xs text-cargo-light/50">{t('safety.rifLabel')}: {t('safety.rif')}</p>
       <p class="mt-8 font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('safety.sectionLabel')}</p>
       <h2 class="mt-5 max-w-xl text-balance text-4xl font-semibold leading-tight tracking-[-0.04em] text-cargo-white sm:text-5xl">{t('safety.title')}</h2>
       <p class="mt-6 max-w-xl text-base leading-relaxed text-cargo-white/75">{t('safety.subtitle')}</p>
@@ -36,11 +38,6 @@ const t = useTranslations(locale);
           </div>
         </div>
 
-        <div class="mt-12 border-t border-cargo-light/20 pt-8">
-          <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light/60">{t('about.sectionLabel')}</p>
-          <h3 class="mt-3 text-lg font-semibold text-cargo-white">{t('about.title')}</h3>
-          <p class="mt-3 text-sm leading-relaxed text-cargo-white/65">{t('about.mission')}</p>
-        </div>
       </div>
 
     <figure class="relative">

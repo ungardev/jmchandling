@@ -27,12 +27,7 @@
     "subtitle": "Specialized airport services for air operators that need coordination, safety and precise ramp execution.",
     "ctaPrimary": "Coordinate an operation",
     "ctaSecondary": "Explore capabilities",
-    "mediaAlt": "JMC ground support equipment on the ramp at Maiquetía International Airport",
-    "mediaCaption": "GSE unit on ramp · CCS",
-    "stationLabel": "STATION",
-    "stationValue": "CCS / MAIQUETÍA",
-    "statusLabel": "STATUS",
-    "statusValue": "OPERATIONAL"
+    "mediaAlt": "JMC ground support equipment on the ramp at Maiquetía International Airport"
   },
   "proof": {
     "sectionLabel": "OPERATIONAL EVIDENCE",
@@ -86,7 +81,7 @@
     "exteriorBullets": ["Certified pressure washing", "Biodegradable products", "Anti-corrosion protection", "Post-wash visual inspection"],
     "disinfectionTitle": "Disinfection & Disinsection",
     "disinfectionDesc": "Cabin and cargo hold treatment. WHO/ICAO and INAC compliance.",
-    "disinfectionBullets": ["Certified antiviral disinfection", "WHO/ICAO disinsection", "Treated area certification", "Authority-approved products"],
+    "disinfectionBullets": ["Seats and carpet cleaning", "WHO/ICAO disinsection", "Treated area certification", "Authority-approved products"],
     "obfTitle": "Fixed Base Operator (FBO)",
     "obfDesc": "Dispatch and ground assistance for air operators. Sections 1, 4, 6 and 7.",
     "obfBullets": ["Aircraft dispatch and flight following (121/135)", "Aircraft parking guidance", "Ramp coordination", "ATS/AOC communication"],
@@ -95,10 +90,16 @@
     "passengerBullets": ["Check-in and ticketing", "Boarding and deplaning", "PRM passenger assistance", "Unaccompanied minors (UM)"],
     "specialTitle": "Special Services",
     "specialDesc": "Coordination of complementary services for air operations.",
+    "specialHeadlineBullets": ["Wheelchair and PRM assistance", "Unaccompanied minors (UM)", "Service animals", "VIP and fast track"],
     "specialBullets": ["Catering coordination", "VIP lounge access", "Landing and overflight permit requests", "Crew assistance (CREW) — transport and hotel", "Alternate airport assistance", "Fuel supply coordination", "GSE / ASU / ACU services", "Aircraft repositioning"],
     "maintenanceTitle": "GSE Maintenance",
     "maintenanceDesc": "Preventive and corrective support for the entire equipment fleet.",
-    "maintenanceBullets": ["Scheduled preventive maintenance", "Component repair and replacement", "Critical equipment certification", "Station service"]
+    "maintenanceBullets": ["Scheduled preventive maintenance", "Component repair and replacement", "Critical equipment certification", "Station service"],
+    "aircraftTypesTitle": "Aircraft types",
+    "aircraftTypesText": "Our handling packages are designed to meet different operational needs, offering service for narrow-body aircraft, wide-body aircraft and executive aviation, with trained personnel and the necessary resources for each service.",
+    "aircraftTypesNarrow": "Narrow body",
+    "aircraftTypesWide": "Wide body",
+    "aircraftTypesExec": "Executive aviation"
   },
   "handling": {
     "sectionLabel": "AIRPORT HANDLING",
@@ -144,15 +145,41 @@
   "about": {
     "sectionLabel": "ABOUT US",
     "title": "About us",
-    "subtitle": "JMC Handling — Servicios Especializados JMC, C.A.",
+    "subtitle": "JMC Servicios Especializados",
+    "intro": "We are a Venezuelan company specialized in handling, focused on assistance and platform operations for airlines. We accompany every stage of airport operations, attending to aircraft, passengers, baggage and cargo, with trained personnel and a fleet of ground support equipment (GSE).",
+    "intro2": "We have been present in Maiquetía since 2012 and have the authorization to provide our services since 2015. Our team brings together more than 30 years of experience in the sector, which allows us to understand the demands of each operation and respond in an organized and efficient manner.",
+    "foundedSinceLabel": "Established",
+    "authorizedSinceLabel": "Authorization in Maiquetía",
+    "experienceNoteLabel": "Team experience",
+    "missionLabel": "Mission",
+    "visionLabel": "Vision",
     "mission": "To be a reference in the Venezuelan airport market, recognized for offering tailored solutions and maintaining high standards of quality, safety and efficiency, evolving alongside the needs of the aeronautical industry.",
     "vision": "Continue evolving as a reference in airport handling services in Venezuela, maintaining the highest standards of quality, safety and operational efficiency."
+  },
+  "equipment": {
+    "sectionLabel": "EQUIPMENT FLEET",
+    "title": "Ramp equipment",
+    "subtitle": "Complete infrastructure to guarantee safe and efficient aircraft transit on the ramp.",
+    "carruchaTitle": "Baggage Cart",
+    "carruchaDesc": "Non-motorized equipment designed to contain and transport passenger baggage, mail or loose cargo. They are linked together forming a train that is pulled between the terminal and the aircraft.",
+    "tractorTitle": "Baggage Tractor",
+    "tractorDesc": "Low-profile motorized vehicle with high traction used to pull or tow carts and other small support equipment from airport facilities to the ramp where the aircraft is parked.",
+    "waterTitle": "Waste Water Truck",
+    "waterDesc": "Specialized vehicle responsible for the aircraft lavatory service. It drains and empties the waste tanks of the aircraft and recharges the system with clean water and disinfectant liquid.",
+    "beltTitle": "Belt Loader",
+    "beltDesc": "Vehicle equipped with an adjustable conveyor belt that elevates to the cargo hold door of the aircraft. It facilitates the manual loading and unloading of suitcases and bulk cargo, preventing injuries.",
+    "gpuTitle": "GPU",
+    "gpuDesc": "Ground Power Unit. Provides electrical power to the aircraft while it is parked with engines off. Keeps the aircraft's electrical systems running without consuming fuel.",
+    "asuTitle": "ASU",
+    "asuDesc": "Air Start Unit. Provides high-pressure compressed air to assist in starting the aircraft's main engines, indispensable when the APU is inoperative."
   },
   "safety": {
     "sectionLabel": "SAFETY DOSSIER",
     "title": "Safety is not declared. It is operated.",
     "subtitle": "Processes, training and authorization that support controlled ground operations.",
     "intro": "JMC operates under Venezuelan Aeronautical Regulation 111 and a safety culture built by its team.",
+    "certificationTitle": "Official Certification",
+    "certificationParagraph": "We are approved by INAC (Instituto Nacional de Aeronáutica Civil) as a Specialized Airport Services Operator (CESEA-021), meeting the requirements established for the development of our activities.",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
@@ -160,6 +187,8 @@
     "smsText": "Continuous training and process follow-up to strengthen operational safety.",
     "operatorLabel": "Certified operator",
     "operatorText": "Specialized Airport Services Operator certification under the applicable authorization.",
+    "rifLabel": "Tax ID",
+    "rif": "J401336558",
     "mediaAlt": "CESEA-021 certification document for Servicios Especializados JMC",
     "mediaCaption": "Documentary evidence · CESEA-021",
     "mediaLink": "Review the evidence"
@@ -263,6 +292,7 @@
     "contactTitle": "Operational contact | JMC Handling",
     "contactDesc": "Coordinate an operation with JMC Handling at Maiquetía International Airport.",
     "quoteTitle": "Coordinate an operation | JMC Handling",
-    "quoteDesc": "Share your operational details and the JMC Handling team will guide your request."
+    "quoteDesc": "Share your operational details and the JMC Handling team will guide your request.",
+    "twitterImageAlt": "JMC Handling - Handling, FBO and specialized services in Maiquetía"
   }
 }

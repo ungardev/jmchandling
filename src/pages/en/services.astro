@@ -46,6 +46,7 @@ const t = useTranslations(locale);
                       title={t(service.titleKey)}
                       description={t(service.descriptionKey)}
                       bullets={getLocalizedArray(locale, service.bulletsKey)}
+                      bullethead={service.key === 'special' ? getLocalizedArray(locale, 'services.specialHeadlineBullets') : undefined}
                       familyLabel={t(family.titleKey)}
                       href={`/en/quote?service=${service.key}`}
                       actionLabel={t('common.getQuote')}

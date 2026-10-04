@@ -27,12 +27,7 @@
     "subtitle": "Servicios especializados aeroportuarios para explotadores aéreos que necesitan coordinación, seguridad y ejecución precisa en plataforma.",
     "ctaPrimary": "Coordinar una operación",
     "ctaSecondary": "Explorar capacidades",
-    "mediaAlt": "Equipo de apoyo terrestre de JMC en la plataforma del Aeropuerto Internacional de Maiquetía",
-    "mediaCaption": "Unidad GSE en plataforma · CCS",
-    "stationLabel": "ESTACIÓN",
-    "stationValue": "CCS / MAIQUETÍA",
-    "statusLabel": "ESTADO",
-    "statusValue": "OPERATIVO"
+    "mediaAlt": "Equipo de apoyo terrestre de JMC en la plataforma del Aeropuerto Internacional de Maiquetía"
   },
   "proof": {
     "sectionLabel": "EVIDENCIA OPERATIVA",
@@ -86,7 +81,7 @@
     "exteriorBullets": ["Lavado a presión certificado", "Productos biodegradables", "Protección anticorrosiva", "Inspección visual post-lavado"],
     "disinfectionTitle": "Desinfección y Desinsectación",
     "disinfectionDesc": "Tratamiento de cabina y zona de carga. Cumplimiento OMS/OACI e INAC.",
-    "disinfectionBullets": ["Desinfección antiviral certificada", "Desinsectación OMS/OACI", "Certificación de zona tratada", "Productos aprobados por autoridades"],
+    "disinfectionBullets": ["Limpieza de asientos y moquetas", "Desinsectación OMS/OACI", "Certificación de zona tratada", "Productos aprobados por autoridades"],
     "obfTitle": "Operador de Base Fija (OBF)",
     "obfDesc": "Despacho y asistencia en tierra para explotadores aéreos. Secciones 1, 4, 6 y 7.",
     "obfBullets": ["Despacho y seguimiento de vuelo (121/135)", "Guía de estacionamiento", "Coordinación de rampa", "Comunicación ATS/AOC"],
@@ -95,10 +90,16 @@
     "passengerBullets": ["Check-in y facturación", "Embarque y desembarque", "Asistencia PRM", "Menores sin acompañantes (UM)"],
     "specialTitle": "Servicios Especiales",
     "specialDesc": "Coordinación de servicios complementarios para la operación aérea.",
+    "specialHeadlineBullets": ["Sillas de ruedas y asistencia PRM", "Menores sin acompañantes (UM)", "Animales de servicio", "VIP y fast track"],
     "specialBullets": ["Coordinación de catering", "Uso del salón VIP", "Solicitud de permisos de aterrizaje y sobrevuelos", "Asistencia a tripulaciones (CREW) — transporte y hotel", "Asistencia en aeropuertos alternos", "Abastecimiento de combustible", "Servicios GSE / ASU / ACU", "Traslado de aeronaves"],
     "maintenanceTitle": "Mantenimiento GSE",
     "maintenanceDesc": "Soporte preventivo y correctivo para toda la flota de equipos.",
-    "maintenanceBullets": ["Mantenimiento preventivo", "Reparación de componentes", "Certificación de equipos críticos", "Servicio en estación"]
+    "maintenanceBullets": ["Mantenimiento preventivo", "Reparación de componentes", "Certificación de equipos críticos", "Servicio en estación"],
+    "aircraftTypesTitle": "Tipos de aeronave",
+    "aircraftTypesText": "Nuestros paquetes de handling están diseñados para responder a diferentes necesidades operativas, ofreciendo atención a aeronaves de fuselaje estrecho, fuselaje ancho y aviación ejecutiva, con personal capacitado y los recursos necesarios para cada servicio.",
+    "aircraftTypesNarrow": "Fuselaje estrecho",
+    "aircraftTypesWide": "Fuselaje ancho",
+    "aircraftTypesExec": "Aviación ejecutiva"
   },
   "handling": {
     "sectionLabel": "MANEJO AEROPORTUARIO",
@@ -142,17 +143,43 @@
     "subtitle": "Operamos con las principales aerolíneas que confían en nuestra operación en Maiquetía."
   },
   "about": {
-    "sectionLabel": "SOBRE NOSOTROS",
+    "sectionLabel": "QUIÉNES SOMOS",
     "title": "Conócenos",
-    "subtitle": "JMC Handling — Servicios Especializados JMC, C.A.",
+    "subtitle": "JMC Servicios Especializados",
+    "intro": "Somos una empresa venezolana especializada en handling, enfocada en la asistencia y las operaciones en plataforma para aerolíneas. Acompañamos las distintas etapas de la operación aeroportuaria, atendiendo aeronaves, pasajeros, equipaje y carga, con personal capacitado y una flota de equipos de apoyo terrestre (GSE).",
+    "intro2": "Estamos presentes en Maiquetía desde 2012 y contamos con la habilitación para prestar nuestros servicios desde 2015. Nuestro equipo reúne más de 30 años de experiencia en el sector, conocimiento que nos permite entender las exigencias de cada operación y responder de manera organizada y eficiente.",
+    "foundedSinceLabel": "Constituida",
+    "authorizedSinceLabel": "Habilitación en Maiquetía",
+    "experienceNoteLabel": "Experiencia del equipo",
+    "missionLabel": "Misión",
+    "visionLabel": "Visión",
     "mission": "Ser una referencia en el mercado aeroportuario venezolano, reconocidos por ofrecer soluciones a la medida y mantener altos estándares de calidad, seguridad y eficiencia, evolucionando junto a las necesidades de la industria aeronáutica.",
     "vision": "Continuar evolucionando como referente en servicios de handling aeroportuario en Venezuela, manteniendo los más altos estándares de calidad, seguridad y eficiencia operacional."
+  },
+  "equipment": {
+    "sectionLabel": "FLOTA DE EQUIPOS",
+    "title": "Equipos de plataforma",
+    "subtitle": "Infraestructura completa para garantizar un tránsito seguro y eficiente de aeronaves en la rampa.",
+    "carruchaTitle": "Carrucha",
+    "carruchaDesc": "Equipo sin motor diseñado para contener y transportar equipaje de pasajeros, correo o carga suelta. Se enganchan entre sí formando un tren que es arrastrado entre la terminal y la aeronave.",
+    "tractorTitle": "Tractor Remolcador",
+    "tractorDesc": "Vehículo motorizado de perfil bajo y gran tracción utilizado para arrastrar o remolcar las carruchas u otros equipos pequeños de apoyo desde las instalaciones del aeropuerto hasta la plataforma.",
+    "waterTitle": "Carro de Aguas Residuales",
+    "waterDesc": "Vehículo especializado encargado del servicio de sanitarios de la aeronave. Vacía y drena los residuos de los tanques del avión y recarga el sistema con agua limpia y líquido desinfectante.",
+    "beltTitle": "Cinta Transportadora",
+    "beltDesc": "Vehículo equipado con una banda rodante que se eleva de manera ajustable hasta la puerta de la bodega de carga del avión. Facilita la subida y bajada manual de maletas y carga a granel, previniendo lesiones.",
+    "gpuTitle": "GPU",
+    "gpuDesc": "Ground Power Unit. Proporciona energía eléctrica a la aeronave mientras está estacionada con los motores apagados. Mantiene en funcionamiento los sistemas eléctricos del avión sin consumir combustible.",
+    "asuTitle": "ASU",
+    "asuDesc": "Air Start Unit. Proporciona flujo de aire comprimido a alta presión para asistir en el encendido de los motores principales del avión, algo indispensable cuando el APU está inoperativo."
   },
   "safety": {
     "sectionLabel": "DOSSIER DE SEGURIDAD",
     "title": "La seguridad no se declara. Se opera.",
     "subtitle": "Procesos, capacitación y habilitación para sostener una operación controlada en tierra.",
     "intro": "JMC desarrolla su operación bajo la Regulación Aeronáutica Venezolana 111 y la cultura de seguridad operacional del equipo.",
+    "certificationTitle": "Certificación Oficial",
+    "certificationParagraph": "Estamos aprobados por el INAC (Instituto Nacional de Aeronáutica Civil) como Explotador de Servicios Especializados Aeroportuarios (CESEA-021), cumpliendo con los requisitos establecidos para el desarrollo de nuestras actividades.",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
@@ -160,6 +187,8 @@
     "smsText": "Capacitación constante y seguimiento de procesos para fortalecer la seguridad operacional.",
     "operatorLabel": "Explotador certificado",
     "operatorText": "Certificado de Explotador de Servicios Especializados Aeroportuarios bajo la habilitación aplicable.",
+    "rifLabel": "RIF",
+    "rif": "J401336558",
     "mediaAlt": "Documento de certificación CESEA-021 de Servicios Especializados JMC",
     "mediaCaption": "Evidencia documental · CESEA-021",
     "mediaLink": "Revisar la evidencia"
@@ -263,6 +292,7 @@
     "contactTitle": "Contacto operativo | JMC Handling",
     "contactDesc": "Coordine una operación con JMC Handling en el Aeropuerto Internacional de Maiquetía.",
     "quoteTitle": "Coordinar una operación | JMC Handling",
-    "quoteDesc": "Comparta los detalles de su operación y el equipo de JMC Handling le orientará."
+    "quoteDesc": "Comparta los detalles de su operación y el equipo de JMC Handling le orientará.",
+    "twitterImageAlt": "JMC Handling - Handling, FBO y servicios especializados en Maiquetía"
   }
 }
