@@ -45,12 +45,6 @@ const isContact = currentPath.includes('/contacto') || currentPath.includes('/co
         </a>
 
         <div class="hidden items-center gap-7 lg:flex">
-          <div class="mr-2 hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.08em] text-cargo-light/75 xl:flex" role="status">
-            <span class="h-1.5 w-1.5 rounded-full bg-cargo-emerald" aria-hidden="true"></span>
-            <span>{t('utilityBar.status')}</span>
-            <span class="text-cargo-light/40">·</span>
-            <span>{t('utilityBar.station')}</span>
-          </div>
           <a href={homePath} class="nav-link" class:list={[{ active: isHome }]} aria-current={isHome ? 'page' : undefined}>
             {t('nav.home')}
           </a>
