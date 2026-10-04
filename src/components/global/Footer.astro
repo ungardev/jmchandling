@@ -45,9 +45,12 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
 
         <h3 class="mt-10 font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.contact')}</h3>
         <div class="mt-5 space-y-2 text-sm text-cargo-white/70">
+          <p class="font-mono text-xs text-cargo-light/50 uppercase tracking-wider">{t('footer.emailLabel')}</p>
           <a href={`mailto:${t('footer.emailPrimary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailPrimary')}</a>
-          <a href={`mailto:${t('footer.emailSecondary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailSecondary')}</a>
-          <a href={`tel:${t('footer.phone').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phone')}</a>
+          <p class="mt-4 font-mono text-xs text-cargo-light/50 uppercase tracking-wider">{t('footer.phoneLabelVzla')}</p>
+          <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneVzla')}</a>
+          <p class="mt-4 font-mono text-xs text-cargo-light/50 uppercase tracking-wider">{t('footer.phoneLabelUsa')}</p>
+          <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneUsa')}</a>
         </div>
       </div>
 
@@ -64,7 +67,7 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
 
     <div class="flex flex-col gap-3 pt-6 text-xs text-cargo-white/45 sm:flex-row sm:items-center sm:justify-between">
       <p>{t('footer.legal').replace('2026', String(year))} {t('footer.allRights')}</p>
-      <p class="font-mono uppercase tracking-[0.08em]">{t('footer.legalCert')}</p>
+      <p class="font-mono uppercase tracking-[0.08em]">{t('footer.legalCert')} · {t('footer.rifLabel')}: {t('footer.rif')}</p>
     </div>
   </div>
 </footer>

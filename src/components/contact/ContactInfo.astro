@@ -34,11 +34,22 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
       <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">03 · {t('contact.emailLabel')}</dt>
       <dd class="mt-3 space-y-2 text-sm text-cargo-white/75">
         <a href={`mailto:${t('footer.emailPrimary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailPrimary')}</a>
-        <a href={`mailto:${t('footer.emailSecondary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailSecondary')}</a>
       </dd>
     </div>
     <div class="border-t border-cargo-light/20 pt-5">
-      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">04 · {t('contact.hoursLabel')}</dt>
+      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">04 · {t('contact.phoneLabelVzla')}</dt>
+      <dd class="mt-3 text-sm text-cargo-white/75">
+        <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneVzla')}</a>
+      </dd>
+    </div>
+    <div class="border-t border-cargo-light/20 pt-5">
+      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">05 · {t('contact.phoneLabelUsa')}</dt>
+      <dd class="mt-3 text-sm text-cargo-white/75">
+        <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneUsa')}</a>
+      </dd>
+    </div>
+    <div class="border-t border-cargo-light/20 pt-5">
+      <dt class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">06 · {t('contact.hoursLabel')}</dt>
       <dd class="mt-3 text-sm leading-relaxed text-cargo-white/75">{t('contact.hours')}</dd>
     </div>
   </dl>

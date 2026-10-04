@@ -70,6 +70,16 @@ export function getLocalizedArray(locale: Locale, key: string): string[] {
   return value;
 }
 
+export function getLocalizedObject<T extends Record<string, unknown>>(locale: Locale, key: string): T {
+  const value = getValue(locale, key);
+
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+    throw new Error(`[i18n] Expected object translation for "${key}" in ${locale}.`);
+  }
+
+  return value as T;
+}
+
 export function getLocaleFromUrl(url: URL): Locale {
   const segments = url.pathname.split('/').filter(Boolean);
   const lang = segments[0];

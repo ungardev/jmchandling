@@ -1,0 +1,28 @@
+---
+import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/utils';
+import Section from '../ui/Section.astro';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<Section background="white" padY="xl" ariaLabel={t('handling.sectionLabel')}>
+  <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('handling.sectionLabel')}</p>
+      <h2 class="mt-5 max-w-xl text-balance text-4xl font-semibold leading-tight tracking-[-0.04em] text-cargo-deep sm:text-5xl">{t('handling.title')}</h2>
+    </div>
+
+    <div class="relative">
+      <div class="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-cargo-emerald via-cargo-light to-transparent" aria-hidden="true"></div>
+      <p class="pl-8 text-base leading-relaxed text-cargo-ink/80 sm:text-lg">
+        {t('handling.definition')}
+      </p>
+    </div>
+  </div>
+</Section>

@@ -23,6 +23,7 @@
     "titleLine1": "Ground operations",
     "titleLine2": "start with",
     "titleLine3": "JMC.",
+    "tagline": "The success of every flight depends, essentially, on excellence on the ground.",
     "subtitle": "Specialized airport services for air operators that need coordination, safety and precise ramp execution.",
     "ctaPrimary": "Coordinate an operation",
     "ctaSecondary": "Explore capabilities",
@@ -50,7 +51,7 @@
     "sectionLabel": "CAPABILITIES",
     "title": "Capabilities that keep operations moving.",
     "subtitle": "An organized catalog that helps each air operation quickly find the support it needs.",
-    "indexTitle": "Airport capabilities",
+    "indexTitle": "Handling, FBO and specialized services",
     "indexSubtitle": "Ramp, aircraft care, operations, passenger and maintenance services within the applicable authorization framework.",
     "viewFamily": "View complete family",
     "familyLabel": "OPERATIONAL FAMILY",
@@ -93,11 +94,59 @@
     "passengerDesc": "Comprehensive passenger handling for 121 and 135 operations.",
     "passengerBullets": ["Check-in and ticketing", "Boarding and deplaning", "PRM passenger assistance", "Unaccompanied minors (UM)"],
     "specialTitle": "Special Services",
-    "specialDesc": "Personalized assistance for passengers with special needs.",
-    "specialBullets": ["Wheelchair and PRM assistance", "Unaccompanied minors (UM)", "Service animals", "VIP and fast track"],
+    "specialDesc": "Coordination of complementary services for air operations.",
+    "specialBullets": ["Catering coordination", "VIP lounge access", "Landing and overflight permit requests", "Crew assistance (CREW) — transport and hotel", "Alternate airport assistance", "Fuel supply coordination", "GSE / ASU / ACU services", "Aircraft repositioning"],
     "maintenanceTitle": "GSE Maintenance",
     "maintenanceDesc": "Preventive and corrective support for the entire equipment fleet.",
     "maintenanceBullets": ["Scheduled preventive maintenance", "Component repair and replacement", "Critical equipment certification", "Station service"]
+  },
+  "handling": {
+    "sectionLabel": "AIRPORT HANDLING",
+    "title": "What is airport handling?",
+    "definition": "In the aeronautical field, the term handling refers to the set of assistance services carried out at the airport to facilitate aircraft operations. These services cover different activities related to the aircraft, passengers, baggage and cargo, from their arrival at the airport until their departure. Handling makes it possible to coordinate the necessary processes for the movement of passengers, baggage and goods between air and ground transport, as well as connections between aircraft on transit flights. In short, it is the entire set of activities that make it possible for an airport operation to develop in a coordinated, safe and efficient manner."
+  },
+  "whyChoose": {
+    "sectionLabel": "WHY CHOOSE US",
+    "title": "Why choose JMC as your strategic partner?",
+    "subtitle": "Reasons that set our ramp operations apart.",
+    "reasons": {
+      "fleet": {
+        "title": "Modern equipment fleet",
+        "text": "We have state-of-the-art ground support equipment (GSE), ensuring fast and seamless operations."
+      },
+      "maintenance": {
+        "title": "Rigorous maintenance",
+        "text": "We have our own technical support workshop, which guarantees that equipment is always available and in optimal conditions."
+      },
+      "certs": {
+        "title": "Official certifications",
+        "text": "We operate under strict INAC regulations, complying with all legal and airport safety standards."
+      },
+      "team": {
+        "title": "Highly qualified personnel",
+        "text": "Our technical and ramp team receives constant training to handle aircraft with the greatest precision and care."
+      },
+      "tailorMade": {
+        "title": "Tailor-made service",
+        "text": "We adapt logistics and ground handling processes to the specific operational needs of each airline."
+      },
+      "reliability": {
+        "title": "Reliability",
+        "text": "We focus on building long-term relationships based on transparency, punctuality and safety of ramp operations."
+      }
+    }
+  },
+  "allies": {
+    "sectionLabel": "COMMERCIAL ALLIES",
+    "title": "Meet some of our commercial allies",
+    "subtitle": "We operate with the main airlines that trust our operations in Maiquetía."
+  },
+  "about": {
+    "sectionLabel": "ABOUT US",
+    "title": "About us",
+    "subtitle": "JMC Handling — Servicios Especializados JMC, C.A.",
+    "mission": "To be a reference in the Venezuelan airport market, recognized for offering tailored solutions and maintaining high standards of quality, safety and efficiency, evolving alongside the needs of the aeronautical industry.",
+    "vision": "Continue evolving as a reference in airport handling services in Venezuela, maintaining the highest standards of quality, safety and operational efficiency."
   },
   "safety": {
     "sectionLabel": "SAFETY DOSSIER",
@@ -139,7 +188,7 @@
     "errorCode": "STATUS / ERROR",
     "successTitle": "Request received",
     "successText": "Our team will review the information and contact you.",
-    "errorTitle": "We could not send the request",
+    "errorTitle": "We could not send your request",
     "errorText": "Review the fields and try again, or use one of our direct channels.",
     "disclaimer": "Your information will only be used to respond to your request.",
     "directTitle": "Prefer a direct channel?",
@@ -156,6 +205,8 @@
     "certLabel": "Authorization",
     "certValue": "CESEA-021 · INAC · RAV 111",
     "emailLabel": "Email",
+    "phoneLabelVzla": "Venezuela",
+    "phoneLabelUsa": "USA",
     "hoursLabel": "Service hours",
     "hours": "Monday – Saturday · 05:00 – 22:00 (VET)",
     "formTitle": "Send us a message",
@@ -175,9 +226,16 @@
     "officeLine1": "Simón Bolívar International Airport",
     "officeLine2": "Level 1, Sector 8.2",
     "officeLine3": "Maiquetía, Venezuela",
-    "emailPrimary": "carlos.wood@jmchandling.com",
-    "emailSecondary": "jose.moncada@jmchandling.com",
-    "phone": "+58 212 000 0000",
+    "emailPrimary": "customer.service@jmchandling.com",
+    "emailSecondary": "carlos.wood@jmchandling.com",
+    "emailLabel": "Commercial email",
+    "phone": "+58 414 118 0806",
+    "phoneVzla": "+58 414 118 0806",
+    "phoneUsa": "+1 954 470 4217",
+    "phoneLabelVzla": "Venezuela",
+    "phoneLabelUsa": "USA",
+    "rifLabel": "Tax ID",
+    "rif": "J401336558",
     "instagramLabel": "JMC Handling Instagram",
     "legal": "© 2026 Servicios Especializados JMC, C.A.",
     "allRights": "All rights reserved.",
@@ -198,8 +256,8 @@
     "serviceIndex": "Capability index"
   },
   "meta": {
-    "homeTitle": "JMC Handling | Specialized airport operations in Maiquetía",
-    "homeDesc": "Specialized airport services, GSE, FBO, aircraft care and passenger handling in Maiquetía.",
+    "homeTitle": "JMC Handling | Handling, FBO and specialized services in Maiquetía",
+    "homeDesc": "Specialized airport services in Maiquetía since 2015. GSE, FBO, aircraft care, passenger handling and maintenance under CESEA-021 / INAC RAV 111.",
     "servicesTitle": "Capabilities | JMC Handling",
     "servicesDesc": "Ramp, aircraft care, FBO, passenger and GSE maintenance capabilities from JMC Handling.",
     "contactTitle": "Operational contact | JMC Handling",

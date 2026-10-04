@@ -3,7 +3,7 @@ export interface Props {
   id?: string;
   class?: string;
   ariaLabel?: string;
-  background?: 'dark' | 'deep' | 'mist' | 'transparent';
+  background?: 'dark' | 'deep' | 'mist' | 'transparent' | 'white';
   padY?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
@@ -20,6 +20,7 @@ const bgClasses = {
   deep: 'bg-cargo-deep text-cargo-white',
   mist: 'bg-cargo-mist text-cargo-ink',
   transparent: 'bg-transparent',
+  white: 'bg-white text-cargo-ink',
 };
 
 const padClasses = {

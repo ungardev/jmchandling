@@ -18,7 +18,7 @@ const serviceOptions = serviceFamilies.map((family) => ({
 }));
 const selectedFamily = serviceFamilies.find((family) => family.key === selectedService || family.serviceKeys.includes(selectedService ?? ''))?.key;
 const nextPath = successPath ?? (locale === 'es' ? '/es/contacto?sent=true' : '/en/contact?sent=true');
-const formAction = 'https://formsubmit.co/carlos.wood@jmchandling.com';
+const formAction = 'https://formsubmit.co/customer.service@jmchandling.com';
 ---
 
 <form
@@ -31,7 +31,7 @@ const formAction = 'https://formsubmit.co/carlos.wood@jmchandling.com';
   data-email-message={t('form.invalidEmail')}
   novalidate
 >
-  <input type="hidden" name="_cc" value="jose.moncada@jmchandling.com" />
+  <input type="hidden" name="_cc" value="carlos.wood@jmchandling.com" />
   <input type="hidden" name="_captcha" value="true" />
   <input type="hidden" name="_subject" value={t('quote.subject')} />
   <input type="hidden" name="_next" value={`${Astro.url.origin}${nextPath}`} />
