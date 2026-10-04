@@ -12,15 +12,15 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
 const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
 ---
 
-<section class="min-h-[100dvh] overflow-hidden bg-cargo-mist pt-[4.5rem] text-cargo-ink" aria-label={t('hero.breadcrumb')}>
-  <div class="container-max grid min-h-[calc(100dvh-4.5rem)] lg:grid-cols-[minmax(0,1.12fr)_minmax(20rem,0.88fr)]">
-    <div class="flex flex-col justify-center py-20 lg:pr-20 lg:py-28">
-      <h1 class="max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-deep sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+<section class="overflow-hidden bg-cargo-mist pt-[4.5rem] text-cargo-ink" aria-label={t('hero.breadcrumb')}>
+  <div class="container-max grid min-h-[calc(85vh-4.5rem)] items-center lg:grid-cols-2">
+    <div class="flex flex-col justify-center py-16 lg:pr-12 lg:py-20">
+      <h1 class="max-w-xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-deep sm:text-6xl lg:text-6xl xl:text-7xl">
         <span class="block">{t('hero.titleLine1')}</span>
         <span class="block">{t('hero.titleLine2')}</span>
         <span class="block text-cargo-emerald">{t('hero.titleLine3')}</span>
       </h1>
-      <p class="mt-8 max-w-xl text-base leading-relaxed text-cargo-ink/75 sm:text-lg">{t('hero.subtitle')}</p>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-cargo-ink/75 sm:text-lg">{t('hero.subtitle')}</p>
       <p class="mt-4 max-w-xl font-mono text-xs italic text-cargo-deep/60 sm:text-sm">{t('hero.tagline')}</p>
 
       <div class="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
@@ -33,36 +33,17 @@ const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
           <span aria-hidden="true">→</span>
         </a>
       </div>
-
-      <dl class="mt-16 grid max-w-xl grid-cols-2 gap-x-8 gap-y-6 border-t border-cargo-deep/15 pt-6 sm:grid-cols-4">
-        <div>
-          <dt class="font-mono text-[10px] uppercase tracking-[0.12em] text-cargo-deep/55">{t('hero.stationLabel')}</dt>
-          <dd class="mt-2 text-sm font-semibold text-cargo-deep">{t('hero.stationValue')}</dd>
-        </div>
-        <div>
-          <dt class="font-mono text-[10px] uppercase tracking-[0.12em] text-cargo-deep/55">{t('hero.statusLabel')}</dt>
-          <dd class="mt-2 flex items-center gap-2 text-sm font-semibold text-cargo-deep"><span class="h-1.5 w-1.5 rounded-full bg-cargo-emerald" aria-hidden="true"></span>{t('hero.statusValue')}</dd>
-        </div>
-        <div class="col-span-2 sm:col-span-2">
-          <dt class="font-mono text-[10px] uppercase tracking-[0.12em] text-cargo-deep/55">{t('utilityBar.inac')}</dt>
-          <dd class="mt-2 text-sm font-semibold text-cargo-deep">CESEA-021 · RAV 111</dd>
-        </div>
-      </dl>
     </div>
 
-    <figure class="relative min-h-[32rem] overflow-hidden bg-cargo-deep lg:min-h-0">
+    <figure class="relative aspect-[16/9] overflow-hidden bg-cargo-deep lg:aspect-auto lg:h-full">
       <img
         src="/assets/images/gse-fleet.webp"
         alt={t('hero.mediaAlt')}
         width="1280"
         height="720"
-        class="absolute inset-0 h-full w-full object-cover object-center grayscale-[12%]"
+        class="absolute inset-0 h-full w-full object-cover"
         loading="eager"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-cargo-ink/80 via-transparent to-cargo-deep/10" aria-hidden="true"></div>
-      <figcaption class="absolute bottom-0 left-0 right-0 border-t border-cargo-white/20 bg-cargo-ink/70 px-6 py-5 font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/80 backdrop-blur-sm sm:px-8">
-        {t('hero.mediaCaption')}
-      </figcaption>
     </figure>
   </div>
 </section>
