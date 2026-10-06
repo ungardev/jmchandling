@@ -8,34 +8,41 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
 const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
 ---
 
-<section class="overflow-hidden bg-cargo-mist pt-[4.5rem] text-cargo-ink" aria-label={t('hero.breadcrumb')}>
-  <div class="container-max grid min-h-[calc(85vh-4.5rem)] items-center lg:grid-cols-2">
-    <div class="flex flex-col justify-center py-16 lg:pr-12 lg:py-20">
-      <h1 class="max-w-xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-deep sm:text-6xl lg:text-6xl xl:text-7xl">
-        <span class="block">{t('hero.titleLine1')}</span>
-        <span class="block">{t('hero.titleLine2')}</span>
-        <span class="block text-cargo-emerald">{t('hero.titleLine3')}</span>
+<section class="bg-cargo-deep pt-[4.5rem] text-cargo-white">
+  <div class="container-max grid items-center gap-10 pb-12 pt-14 md:grid-cols-[0.92fr_1.08fr] md:gap-12 md:py-16">
+    <div class="max-w-2xl">
+      <p class="mb-6 font-mono text-xs uppercase tracking-[0.16em] text-cargo-light">
+        {t('home.heroCompanyName')}
+      </p>
+      <h1 class="max-w-2xl text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-6xl xl:text-7xl">
+        {t('home.heroTitle')}
       </h1>
-      <p class="mt-6 max-w-xl text-base leading-relaxed text-cargo-ink/75 sm:text-lg">{t('hero.subtitle')}</p>
-      <p class="mt-4 max-w-xl font-mono text-xs italic text-cargo-deep/60 sm:text-sm">{t('hero.tagline')}</p>
-
-      <div class="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <a href={quotePath} class="btn-primary text-sm sm:text-base">
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-cargo-white/80">
+        {t('home.heroSubtitle')}
+      </p>
+      <p class="mt-4 max-w-xl text-sm italic leading-relaxed text-cargo-white/65">
+        “{t('hero.tagline')}”
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        <a href="#capacidades" class="btn-primary">
           {t('hero.ctaPrimary')}
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a href={servicesPath} class="inline-flex items-center gap-2 text-sm font-semibold text-cargo-white underline decoration-cargo-white/35 underline-offset-4 transition-colors hover:text-cargo-light">
+          {t('hero.ctaSecondary')}
           <span aria-hidden="true">↗</span>
         </a>
-        <a href={servicesPath} class="btn-secondary text-sm sm:text-base">
-          {t('hero.ctaSecondary')}
-          <span aria-hidden="true">→</span>
-        </a>
       </div>
+      <p class="mt-9 flex items-center gap-3 border-t border-cargo-white/15 pt-5 text-sm text-cargo-white/75">
+        <span class="h-2 w-2 shrink-0 rounded-full bg-cargo-emerald" aria-hidden="true"></span>
+        {t('home.heroLocation')}
+      </p>
     </div>
 
-    <figure class="relative aspect-[16/9] overflow-hidden bg-cargo-deep lg:aspect-auto lg:h-full">
+    <figure class="relative aspect-[4/3] overflow-hidden bg-cargo-ink md:aspect-[1.35/1] md:min-h-[28rem]">
       <img
         src="/assets/images/gse-fleet.webp"
         alt={t('hero.mediaAlt')}
@@ -43,7 +50,13 @@ const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
         height="720"
         class="absolute inset-0 h-full w-full object-cover"
         loading="eager"
+        fetchpriority="high"
       />
+      <div class="absolute inset-0 bg-gradient-to-t from-cargo-ink/70 via-transparent to-transparent" aria-hidden="true"></div>
+      <figcaption class="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 border-t border-cargo-white/20 px-5 py-4 text-xs text-cargo-white/90 sm:px-7">
+        <span>{t('home.heroMediaCaption')}</span>
+        <span class="font-mono uppercase tracking-[0.1em] text-cargo-light">{t('home.heroMediaContext')}</span>
+      </figcaption>
     </figure>
   </div>
 </section>

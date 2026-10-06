@@ -1,0 +1,33 @@
+---
+import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
+const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
+---
+
+<section class="bg-cargo-light py-12 sm:py-14" aria-label={t('home.requestTitle')}>
+  <div class="container-max flex flex-col justify-between gap-7 md:flex-row md:items-center">
+    <div>
+      <h2 class="max-w-xl text-2xl font-semibold tracking-[-0.035em] text-cargo-deep sm:text-3xl">
+        {t('home.requestTitle')}
+      </h2>
+      <p class="mt-3 max-w-2xl text-sm text-cargo-deep/80">{t('home.requestDescription')}</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href={quotePath} class="inline-flex items-center gap-3 bg-cargo-deep px-5 py-3.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-ink">
+        {t('quote.submit')}
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a href={contactPath} class="inline-flex items-center border border-cargo-deep/40 px-5 py-3.5 text-sm font-semibold text-cargo-deep transition-colors hover:bg-cargo-white/50">
+        {t('nav.contact')}
+      </a>
+    </div>
+  </div>
+</section>

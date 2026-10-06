@@ -16,6 +16,18 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
 const isHome = currentPath === `/${locale}/` || currentPath === `/${locale}`;
 const isServices = currentPath.includes('/servicios') || currentPath.includes('/services');
 const isContact = currentPath.includes('/contacto') || currentPath.includes('/contact');
+const homeLinks = [
+  { href: '#capacidades', label: t('nav.services') },
+  { href: '#empresa', label: t('home.navCompany') },
+  { href: '#equipos', label: t('home.navEquipment') },
+  { href: contactPath, label: t('nav.contact') },
+];
+const pageLinks = [
+  { href: homePath, label: t('nav.home'), isCurrent: isHome },
+  { href: servicesPath, label: t('nav.services'), isCurrent: isServices },
+  { href: contactPath, label: t('nav.contact'), isCurrent: isContact },
+];
+const navLinks = isHome ? homeLinks : pageLinks;
 ---
 
 <header class="fixed inset-x-0 top-0 z-50">
@@ -38,27 +50,28 @@ const isContact = currentPath.includes('/contacto') || currentPath.includes('/co
             alt=""
             width="320"
             height="111"
-            class="hidden h-8 w-auto sm:block"
+            class="h-6 w-auto sm:h-8"
             loading="eager"
             aria-hidden="true"
           />
         </a>
 
         <div class="hidden items-center gap-7 lg:flex">
-          <a href={homePath} class="nav-link" class:list={[{ active: isHome }]} aria-current={isHome ? 'page' : undefined}>
-            {t('nav.home')}
-          </a>
-          <a href={servicesPath} class="nav-link" class:list={[{ active: isServices }]} aria-current={isServices ? 'page' : undefined}>
-            {t('nav.services')}
-          </a>
-          <a href={contactPath} class="nav-link" class:list={[{ active: isContact }]} aria-current={isContact ? 'page' : undefined}>
-            {t('nav.contact')}
-          </a>
-          <a href={quotePath} class="btn-primary px-4 py-2 text-xs" aria-label={t('nav.primary')}>
-            {t('nav.quote')}
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="nav-link"
+              aria-current={'isCurrent' in link && link.isCurrent ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a href={quotePath} class="border border-cargo-light/60 px-4 py-2.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-white/10">
+            {t('quote.submit')}
+            <span aria-hidden="true" class="ml-3 text-cargo-light">↗</span>
           </a>
           <a
-            href={switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
+            href={isHome ? (locale === 'en' ? '/es/' : '/en/') : switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
             class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/70 transition-colors hover:text-cargo-white"
             aria-label={locale === 'en' ? t('nav.switchToSpanish') : t('nav.switchToEnglish')}
             rel="alternate"
@@ -89,15 +102,17 @@ const isContact = currentPath.includes('/contacto') || currentPath.includes('/co
 
     <div id="mobile-menu" class="hidden border-t border-cargo-light/15 bg-cargo-deep lg:hidden" aria-hidden="true">
       <div class="container-max flex flex-col gap-1 py-4">
-        <a href={homePath} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white" aria-current={isHome ? 'page' : undefined}>{t('nav.home')}</a>
-        <a href={servicesPath} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white" aria-current={isServices ? 'page' : undefined}>{t('nav.services')}</a>
-        <a href={contactPath} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white" aria-current={isContact ? 'page' : undefined}>{t('nav.contact')}</a>
-        <a href={quotePath} class="btn-primary mt-4 text-center text-sm">{t('nav.quote')}</a>
+        {navLinks.map((link) => (
+          <a href={link.href} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white">
+            {link.label}
+          </a>
+        ))}
+        <a href={quotePath} class="btn-primary mt-4 text-center text-sm">{t('quote.submit')}</a>
         <div class="mt-3 flex items-center gap-3 border-t border-cargo-light/15 pt-4 font-mono text-xs uppercase tracking-[0.08em]">
           <span class="text-cargo-white/45">{t('nav.language')}</span>
-          <a href={switchLocalePath(currentPath, 'es')} lang="es" class:list={['px-1 py-1', locale === 'es' ? 'text-cargo-light' : 'text-cargo-white/55']}>ES</a>
+          <a href={isHome ? '/es/' : switchLocalePath(currentPath, 'es')} lang="es" class:list={['px-1 py-1', locale === 'es' ? 'text-cargo-light' : 'text-cargo-white/55']}>ES</a>
           <span class="text-cargo-white/30" aria-hidden="true">/</span>
-          <a href={switchLocalePath(currentPath, 'en')} lang="en" class:list={['px-1 py-1', locale === 'en' ? 'text-cargo-light' : 'text-cargo-white/55']}>EN</a>
+          <a href={isHome ? '/en/' : switchLocalePath(currentPath, 'en')} lang="en" class:list={['px-1 py-1', locale === 'en' ? 'text-cargo-light' : 'text-cargo-white/55']}>EN</a>
         </div>
       </div>
     </div>
@@ -118,8 +133,6 @@ const isContact = currentPath.includes('/contacto') || currentPath.includes('/co
   };
 
   if (menuButton && mobileMenu) {
-    menuButton.dataset.openLabel = menuButton.dataset.openLabel ?? menuButton.getAttribute('aria-label') ?? '';
-    menuButton.dataset.closeLabel = menuButton.dataset.closeLabel ?? '';
     menuButton.addEventListener('click', () => {
       const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
       menuButton.setAttribute('aria-expanded', String(!isOpen));

@@ -5,69 +5,100 @@ import { serviceFamilies } from '../../data/siteContent';
 
 export interface Props {
   locale: Locale;
+  variant?: 'default' | 'compact';
 }
 
-const { locale } = Astro.props;
+const { locale, variant = 'default' } = Astro.props;
 const t = useTranslations(locale);
 const year = new Date().getFullYear();
+const homePath = locale === 'es' ? '/es/' : '/en/';
 const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
+const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
 const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
 ---
 
-<footer class="bg-cargo-deep text-cargo-white" aria-labelledby="footer-heading">
-  <h2 id="footer-heading" class="sr-only">{t('footer.company')}</h2>
-  <div class="container-max section-pad">
-    <div class="grid gap-12 border-b border-cargo-light/15 pb-16 md:grid-cols-2 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1fr]">
+{variant === 'compact' ? (
+  <footer class="bg-cargo-ink text-cargo-white" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="sr-only">{t('footer.company')}</h2>
+    <div class="container-max grid gap-8 py-8 sm:grid-cols-[1fr_auto] sm:items-end">
       <div>
-        <a href={locale === 'es' ? '/es/' : '/en/'} class="inline-flex items-center gap-3" aria-label="JMC Handling">
-          <img src="/assets/brand/isotipo-logo.webp" alt="JMC Handling" width="114" height="96" class="h-10 w-auto" loading="lazy" />
-          <img src="/assets/brand/fuente-logo.webp" alt="" width="320" height="111" class="h-8 w-auto" loading="lazy" aria-hidden="true" />
-        </a>
-        <p class="mt-6 max-w-xs text-sm leading-relaxed text-cargo-white/70">{t('footer.description')}</p>
-        <a href="https://www.instagram.com/jmchandling/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 border-b border-cargo-light/30 pb-1 font-mono text-xs uppercase tracking-[0.08em] text-cargo-light transition-colors hover:border-cargo-light hover:text-cargo-white" aria-label={t('footer.instagramLabel')}>
-          Instagram <span aria-hidden="true">↗</span>
-        </a>
+        <a href={homePath} class="text-sm font-semibold text-cargo-white">{t('footer.company')}</a>
+        <p class="mt-2 max-w-lg text-sm leading-relaxed text-cargo-white/70">{t('home.footerDescription')}</p>
+        <div class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-cargo-white/80">
+          <a href={`mailto:${t('footer.emailPrimary')}`} class="transition-colors hover:text-cargo-light">{t('footer.emailPrimary')}</a>
+          <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-light">{t('footer.phoneVzla')}</a>
+          <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-light">{t('footer.phoneUsa')}</a>
+        </div>
       </div>
-
-      <div>
-        <h3 class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.services')}</h3>
-        <ul class="mt-5 space-y-3">
-          {serviceFamilies.map((family) => (
-            <li><a href={`${servicesPath}#${family.key}`} class="text-sm text-cargo-white/70 transition-colors hover:text-cargo-white">{t(family.titleKey)}</a></li>
-          ))}
-        </ul>
+      <nav class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm" aria-label={t('home.footerNavLabel')}>
+        <a href={servicesPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('footer.services')}</a>
+        <a href={contactPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('nav.contact')}</a>
+        <a href={locale === 'en' ? '/es/' : '/en/'} lang={locale === 'en' ? 'es' : 'en'} class="text-cargo-light underline decoration-cargo-light/40 underline-offset-4">{locale === 'en' ? t('nav.switchToSpanish') : t('home.footerEnglish')}</a>
+      </nav>
+    </div>
+    <div class="border-t border-cargo-white/10">
+      <div class="container-max flex flex-col gap-2 py-4 text-xs text-cargo-white/55 sm:flex-row sm:justify-between">
+        <p>{t('footer.legal').replace('2026', String(year))}</p>
+        <p>{t('home.footerLocation')}</p>
       </div>
+    </div>
+  </footer>
+) : (
+  <footer class="bg-cargo-deep text-cargo-white" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="sr-only">{t('footer.company')}</h2>
+    <div class="container-max section-pad">
+      <div class="grid gap-12 border-b border-cargo-light/15 pb-16 md:grid-cols-2 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1fr]">
+        <div>
+          <a href={homePath} class="inline-flex items-center gap-3" aria-label="JMC Handling">
+            <img src="/assets/brand/isotipo-logo.webp" alt="JMC Handling" width="114" height="96" class="h-10 w-auto" loading="lazy" />
+            <img src="/assets/brand/fuente-logo.webp" alt="" width="320" height="111" class="h-8 w-auto" loading="lazy" aria-hidden="true" />
+          </a>
+          <p class="mt-6 max-w-xs text-sm leading-relaxed text-cargo-white/70">{t('footer.description')}</p>
+          <a href="https://www.instagram.com/jmchandling/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 border-b border-cargo-light/30 pb-1 font-mono text-xs uppercase tracking-[0.08em] text-cargo-light transition-colors hover:border-cargo-light hover:text-cargo-white" aria-label={t('footer.instagramLabel')}>
+            Instagram <span aria-hidden="true">↗</span>
+          </a>
+        </div>
 
-      <div>
-        <h3 class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.stations')}</h3>
-        <p class="mt-5 text-sm text-cargo-white/80">{t('footer.stationValue')}</p>
-        <p class="mt-2 text-sm text-cargo-white/50">{t('footer.moreStations')}</p>
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.services')}</h3>
+          <ul class="mt-5 space-y-3">
+            {serviceFamilies.map((family) => (
+              <li><a href={`${servicesPath}#${family.key}`} class="text-sm text-cargo-white/70 transition-colors hover:text-cargo-white">{t(family.titleKey)}</a></li>
+            ))}
+          </ul>
+        </div>
 
-        <h3 class="mt-10 font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.contact')}</h3>
-        <div class="mt-5 space-y-2 text-sm text-cargo-white/70">
-          <p class="font-mono text-xs text-cargo-light/50 uppercase tracking-wider">{t('footer.emailLabel')}</p>
-          <a href={`mailto:${t('footer.emailPrimary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailPrimary')}</a>
-          <p class="mt-4 font-mono text-xs text-cargo-light/50 uppercase tracking-wider">{t('footer.phoneLabelVzla')}</p>
-          <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneVzla')}</a>
-          <p class="mt-4 font-mono text-xs text-cargo-light/50 uppercase tracking-wider">{t('footer.phoneLabelUsa')}</p>
-          <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneUsa')}</a>
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.stations')}</h3>
+          <p class="mt-5 text-sm text-cargo-white/80">{t('footer.stationValue')}</p>
+          <p class="mt-2 text-sm text-cargo-white/50">{t('footer.moreStations')}</p>
+
+          <h3 class="mt-10 font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.contact')}</h3>
+          <div class="mt-5 space-y-2 text-sm text-cargo-white/70">
+            <p class="font-mono text-xs uppercase tracking-wider text-cargo-light/70">{t('footer.emailLabel')}</p>
+            <a href={`mailto:${t('footer.emailPrimary')}`} class="block transition-colors hover:text-cargo-white">{t('footer.emailPrimary')}</a>
+            <p class="mt-4 font-mono text-xs uppercase tracking-wider text-cargo-light/70">{t('footer.phoneLabelVzla')}</p>
+            <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneVzla')}</a>
+            <p class="mt-4 font-mono text-xs uppercase tracking-wider text-cargo-light/70">{t('footer.phoneLabelUsa')}</p>
+            <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="block transition-colors hover:text-cargo-white">{t('footer.phoneUsa')}</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.office')}</h3>
+          <address class="mt-5 not-italic text-sm leading-relaxed text-cargo-white/70">
+            <p>{t('footer.officeLine1')}</p>
+            <p>{t('footer.officeLine2')}</p>
+            <p>{t('footer.officeLine3')}</p>
+          </address>
+          <a href={quotePath} class="mt-8 inline-flex items-center gap-2 border-b border-cargo-light/30 pb-1 text-sm font-semibold text-cargo-white transition-colors hover:border-cargo-light hover:text-cargo-light">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
         </div>
       </div>
 
-      <div>
-        <h3 class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.office')}</h3>
-        <address class="mt-5 not-italic text-sm leading-relaxed text-cargo-white/70">
-          <p>{t('footer.officeLine1')}</p>
-          <p>{t('footer.officeLine2')}</p>
-          <p>{t('footer.officeLine3')}</p>
-        </address>
-        <a href={quotePath} class="mt-8 inline-flex items-center gap-2 border-b border-cargo-light/30 pb-1 text-sm font-semibold text-cargo-white transition-colors hover:border-cargo-light hover:text-cargo-light">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
+      <div class="flex flex-col gap-3 pt-6 text-xs text-cargo-white/55 sm:flex-row sm:items-center sm:justify-between">
+        <p>{t('footer.legal').replace('2026', String(year))} {t('footer.allRights')}</p>
+        <p class="font-mono uppercase tracking-[0.08em]">{t('footer.legalCert')} · {t('footer.rifLabel')}: {t('footer.rif')}</p>
       </div>
     </div>
-
-    <div class="flex flex-col gap-3 pt-6 text-xs text-cargo-white/45 sm:flex-row sm:items-center sm:justify-between">
-      <p>{t('footer.legal').replace('2026', String(year))} {t('footer.allRights')}</p>
-      <p class="font-mono uppercase tracking-[0.08em]">{t('footer.legalCert')} · {t('footer.rifLabel')}: {t('footer.rif')}</p>
-    </div>
-  </div>
-</footer>
+  </footer>
+)}

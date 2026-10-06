@@ -1,7 +1,7 @@
 ---
 import type { Locale } from '../../i18n/utils';
-import { useTranslations } from '../../i18n/utils';
-import { getService, serviceFamilies } from '../../data/siteContent';
+import { getLocalizedArray, useTranslations } from '../../i18n/utils';
+import { getService, serviceFamilies, type ServiceFamilyKey } from '../../data/siteContent';
 
 export interface Props {
   locale: Locale;
@@ -10,90 +10,79 @@ export interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
+const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
+const familyActionKeys: Record<ServiceFamilyKey, string> = {
+  'ramp-gse': 'home.actionGse',
+  'aircraft-care': 'home.actionAircraftCare',
+  'fbo-operations': 'home.actionObf',
+  'passenger-services': 'home.actionPassengers',
+  'gse-maintenance': 'home.actionMaintenance',
+};
+const specialServices = [
+  ...getLocalizedArray(locale, 'services.specialHeadlineBullets'),
+  ...getLocalizedArray(locale, 'services.specialBullets'),
+];
 ---
 
-<section class="section-pad bg-cargo-mist text-cargo-ink" id="servicios" aria-labelledby="services-heading">
+<section id="capacidades" class="scroll-mt-24 bg-cargo-mist py-16 text-cargo-ink md:py-20" aria-labelledby="task-heading">
   <div class="container-max">
-    <div class="grid gap-8 border-b border-cargo-deep/15 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-      <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-deep/65">{t('services.sectionLabel')}</p>
-      <div>
-        <h2 id="services-heading" class="max-w-3xl text-balance text-4xl font-semibold leading-tight tracking-[-0.04em] text-cargo-deep sm:text-5xl">{t('services.title')}</h2>
-        <p class="mt-5 max-w-2xl text-base leading-relaxed text-cargo-ink/70">{t('services.subtitle')}</p>
+    <div class="mb-8 flex flex-col justify-between gap-5 border-b border-cargo-deep/20 pb-6 md:flex-row md:items-end">
+      <div class="max-w-2xl">
+        <h2 id="task-heading" class="text-balance text-3xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-4xl">
+          {t('home.taskHeading')}
+        </h2>
+        <p class="mt-3 max-w-xl text-base leading-relaxed text-cargo-ink/75">
+          {t('home.taskIntro')}
+        </p>
       </div>
+      <a href={servicesPath} class="inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald/70 underline-offset-4 transition-colors hover:text-cargo-emerald">
+        {t('home.openCatalog')}
+        <span aria-hidden="true">↗</span>
+      </a>
     </div>
 
-    <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
-      <figure class="self-start lg:sticky lg:top-28">
-        <div class="relative aspect-[4/5] overflow-hidden bg-cargo-deep">
-          {serviceFamilies.map((family, index) => (
-            <img
-              src={family.media}
-              data-family-media={family.key}
-              data-alt={t(family.mediaAltKey)}
-              alt={index === 0 ? t(family.mediaAltKey) : ''}
-              aria-hidden={index === 0 ? undefined : 'true'}
-              width="1280"
-              height="720"
-              class:list={['absolute inset-0 h-full w-full object-cover transition-opacity duration-500', index === 0 ? 'opacity-100' : 'opacity-0']}
-              loading={index === 0 ? 'eager' : 'lazy'}
-            />
-          ))}
-          <div class="absolute inset-0 bg-gradient-to-t from-cargo-ink/85 via-transparent to-transparent" aria-hidden="true"></div>
-          <figcaption class="absolute bottom-0 left-0 right-0 border-t border-cargo-white/20 px-5 py-4 font-mono text-[10px] uppercase tracking-[0.1em] text-cargo-white/80 sm:px-6">
-            {t('services.mediaLabel')}
-          </figcaption>
-        </div>
-      </figure>
-
-      <div class="border-t border-cargo-deep/15">
-        {serviceFamilies.map((family, index) => (
-          <article
-            data-capability-row={family.key}
-            class="group border-b border-cargo-deep/15 py-7 transition-colors duration-200 hover:bg-cargo-emerald/10 focus-within:bg-cargo-emerald/10 sm:py-8"
-          >
-            <div class="grid gap-5 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:items-start">
-              <p class="font-mono text-sm text-cargo-deep/55">[{String(index + 1).padStart(2, '0')}]</p>
+    <div class="grid items-start gap-9 lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,0.88fr)] lg:gap-14">
+      <div class="divide-y divide-cargo-deep/15 border-y border-cargo-deep/15">
+        {serviceFamilies.map((family) => (
+          <article class="py-6 sm:py-7">
+            <div class="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
               <div>
-                <p class="font-mono text-[10px] uppercase tracking-[0.1em] text-cargo-emerald">{t('services.familyLabel')}</p>
-                <h3 class="mt-2 text-2xl font-semibold tracking-[-0.03em] text-cargo-deep transition-colors group-hover:text-cargo-ink">{t(family.titleKey)}</h3>
-                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-cargo-ink/70">{t(family.descriptionKey)}</p>
-                <p class="mt-4 text-xs leading-relaxed text-cargo-ink/55">
-                  {family.serviceKeys.map((serviceKey) => {
-                    const service = getService(serviceKey);
-                    return service ? t(service.titleKey) : '';
-                  }).filter(Boolean).join(' · ')}
-                </p>
+                <h3 class="text-xl font-semibold tracking-[-0.025em] text-cargo-deep">{t(family.titleKey)}</h3>
+                <p class="mt-2 max-w-2xl text-sm leading-relaxed text-cargo-ink/75">{t(family.descriptionKey)}</p>
+                {family.serviceKeys.length > 0 && (
+                  <p class="mt-3 text-xs leading-relaxed text-cargo-ink/65">
+                    {family.serviceKeys.map((serviceKey) => {
+                      const service = getService(serviceKey);
+                      return service ? t(service.titleKey) : '';
+                    }).filter(Boolean).join(' · ')}
+                  </p>
+                )}
               </div>
-              <a href={`${servicesPath}#${family.key}`} class="inline-flex items-center gap-2 justify-self-start text-sm font-semibold text-cargo-deep transition-colors hover:text-cargo-emerald sm:justify-self-end" aria-label={`${t('services.viewFamily')}: ${t(family.titleKey)}`}>
-                <span>{t('services.viewFamily')}</span>
+              <a
+                href={`${quotePath}?service=${encodeURIComponent(family.key)}`}
+                class="inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald"
+                aria-label={`${t(familyActionKeys[family.key])}: ${t(family.titleKey)}`}
+              >
+                {t(familyActionKeys[family.key])}
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
         ))}
       </div>
+
+      <aside class="border-l-2 border-cargo-emerald pl-6 sm:pl-8">
+        <h3 class="max-w-md text-xl font-semibold leading-snug tracking-[-0.025em] text-cargo-deep">
+          {t('home.specialAsideTitle')}
+        </h3>
+        <p class="mt-4 text-sm leading-relaxed text-cargo-ink/75">
+          {t('home.specialAsideLead')} {specialServices.join('; ')}.
+        </p>
+        <a href={`${servicesPath}#passenger-services`} class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald">
+          {t('home.viewSpecialScope')}
+          <span aria-hidden="true">↗</span>
+        </a>
+      </aside>
     </div>
   </div>
 </section>
-
-<script is:inline>
-  const capabilityRows = Array.from(document.querySelectorAll('[data-capability-row]'));
-  const capabilityMedia = Array.from(document.querySelectorAll('[data-family-media]'));
-
-  const setActiveFamily = (familyKey) => {
-    capabilityMedia.forEach((media) => {
-      const isActive = media.dataset.familyMedia === familyKey;
-      media.classList.toggle('opacity-100', isActive);
-      media.classList.toggle('opacity-0', !isActive);
-      media.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-      media.setAttribute('alt', isActive ? media.dataset.alt ?? '' : '');
-    });
-  };
-
-  capabilityRows.forEach((row) => {
-    const familyKey = row.dataset.capabilityRow;
-    if (!familyKey) return;
-    row.addEventListener('mouseenter', () => setActiveFamily(familyKey));
-    row.addEventListener('focusin', () => setActiveFamily(familyKey));
-  });
-</script>
