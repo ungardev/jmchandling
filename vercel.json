@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/es/servicios", "destination": "/es/capacidades", "statusCode": 301 },
+    { "source": "/es/cotizacion", "destination": "/es/contacto", "statusCode": 301 },
+    { "source": "/en/services", "destination": "/en/capabilities", "statusCode": 301 },
+    { "source": "/en/quote", "destination": "/en/contact", "statusCode": 301 },
+    { "source": "/en/servicios", "destination": "/en/capabilities", "statusCode": 301 },
+    { "source": "/en/cotizacion", "destination": "/en/contact", "statusCode": 301 }
+  ]
+}

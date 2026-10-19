@@ -10,7 +10,11 @@
     "openMenu": "Open navigation menu",
     "closeMenu": "Close navigation menu",
     "switchToEnglish": "Switch to English",
-    "switchToSpanish": "Switch to Spanish"
+    "switchToSpanish": "Switch to Spanish",
+    "capabilities": "Capabilities",
+    "equipment": "GSE Equipment",
+    "allies": "Allies",
+    "about": "About JMC"
   },
   "utilityBar": {
     "status": "OPERATIONAL",
@@ -146,12 +150,27 @@
   "allies": {
     "sectionLabel": "COMMERCIAL ALLIES",
     "title": "Meet some of our commercial allies",
-    "subtitle": "We operate with the main airlines that trust our operations in Maiquetía."
+    "subtitle": "We operate with the main airlines that trust our operations in Maiquetía.",
+    "metaTitle": "Commercial Allies | JMC Handling",
+    "metaDesc": "Airlines and commercial partners that trust JMC Handling for operations in Maiquetía.",
+    "alliesLabel": "OUR ALLIES",
+    "statsLabel": "STATISTICS",
+    "airlinesCount": "Airlines served",
+    "yearsOperating": "Years operating in Maiquetía",
+    "yearsTeam": "Years of team experience",
+    "ctaLabel": "JOIN US",
+    "ctaTitle": "Want to operate with us?",
+    "ctaText": "Coordinate an operation and discover why the main airlines trust JMC."
   },
   "about": {
     "sectionLabel": "ABOUT US",
     "title": "About us",
     "subtitle": "JMC Servicios Especializados",
+    "metaTitle": "About JMC | Servicios Especializados JMC, C.A.",
+    "metaDesc": "Learn about the history, mission, vision and authorizations of Servicios Especializados JMC in Maiquetía.",
+    "introLabel": "WHO WE ARE",
+    "whoLabel": "OUR COMPANY",
+    "whoTitle": "A Venezuelan company specialized in handling",
     "intro": "We are a Venezuelan company specialized in handling, focused on assistance and platform operations for airlines. We accompany every stage of airport operations, attending to aircraft, passengers, baggage and cargo, with trained personnel and a fleet of ground support equipment (GSE).",
     "intro2": "We have been present in Maiquetía since 2012 and have the authorization to provide our services since 2015. Our team brings together more than 30 years of experience in the sector, which allows us to understand the demands of each operation and respond in an organized and efficient manner.",
     "foundedSinceLabel": "Established",
@@ -160,12 +179,33 @@
     "missionLabel": "Mission",
     "visionLabel": "Vision",
     "mission": "To be a reference in the Venezuelan airport market, recognized for offering tailored solutions and maintaining high standards of quality, safety and efficiency, evolving alongside the needs of the aeronautical industry.",
-    "vision": "Continue evolving as a reference in airport handling services in Venezuela, maintaining the highest standards of quality, safety and operational efficiency."
+    "vision": "Continue evolving as a reference in airport handling services in Venezuela, maintaining the highest standards of quality, safety and operational efficiency.",
+    "timelineLabel": "OUR HISTORY",
+    "timelineTitle": "Over a decade supporting operations in Maiquetía",
+    "milestone2012Title": "JMC Incorporation",
+    "milestone2012Text": "Servicios Especializados JMC, C.A. is formally incorporated in Venezuela.",
+    "milestone2015Title": "Operations begin",
+    "milestone2015Text": "Airport services begin at Simón Bolívar de Maiquetía International Airport.",
+    "milestoneTeamTitle": "Accumulated experience",
+    "milestoneTeamText": "Professionals with more than 30 years of experience in the Venezuelan aviation sector.",
+    "missionVisionLabel": "MISSION AND VISION",
+    "valuesLabel": "VALUES",
+    "valuesTitle": "Principles that guide our operations",
+    "authorizationLabel": "AUTHORIZATION",
+    "authorizationTitle": "We operate under official authorization",
+    "authorizationText": "We are approved by INAC as a Specialized Airport Services Operator (CESEA-021), meeting the requirements established for the development of our activities.",
+    "rifLabel": "Tax ID",
+    "ctaLabel": "COORDINATE",
+    "ctaTitle": "Ready to operate with us?",
+    "ctaText": "Coordinate an operation or explore our capabilities to learn everything we can offer."
   },
   "equipment": {
     "sectionLabel": "EQUIPMENT FLEET",
     "title": "Ramp equipment",
     "subtitle": "Complete infrastructure to guarantee safe and efficient aircraft transit on the ramp.",
+    "metaTitle": "GSE Equipment | JMC Handling",
+    "metaDesc": "Learn about JMC's ground support equipment fleet: baggage carts, tractors, water trucks, belt loaders, GPUs and ASUs.",
+    "gridLabel": "OUR FLEET",
     "carruchaTitle": "Baggage Cart",
     "carruchaDesc": "Non-motorized equipment designed to contain and transport passenger baggage, mail or loose cargo. They are linked together forming a train that is pulled between the terminal and the aircraft.",
     "tractorTitle": "Baggage Tractor",
@@ -177,7 +217,10 @@
     "gpuTitle": "GPU",
     "gpuDesc": "Ground Power Unit. Provides electrical power to the aircraft while it is parked with engines off. Keeps the aircraft's electrical systems running without consuming fuel.",
     "asuTitle": "ASU",
-    "asuDesc": "Air Start Unit. Provides high-pressure compressed air to assist in starting the aircraft's main engines, indispensable when the APU is inoperative."
+    "asuDesc": "Air Start Unit. Provides high-pressure compressed air to assist in starting the aircraft's main engines, indispensable when the APU is inoperative.",
+    "ctaLabel": "COORDINATE",
+    "ctaTitle": "Need GSE equipment for your operation?",
+    "ctaText": "Request a quote or coordinate directly with our commercial team."
   },
   "safety": {
     "sectionLabel": "SAFETY DOSSIER",
@@ -233,6 +276,7 @@
   "contact": {
     "title": "Operational contact",
     "subtitle": "Let us discuss your next operation in Maiquetía.",
+    "quoteTitle": "Coordinate an operation",
     "introTitle": "Coordinate your next operation",
     "intro": "We are ready to understand your airline's context and guide you to the specialized service you need.",
     "addressLabel": "Location",
@@ -289,6 +333,17 @@
     "backHome": "Back to home",
     "skipToContent": "Skip to main content",
     "serviceIndex": "Capability index"
+  },
+  "capabilities": {
+    "metaTitle": "Capabilities | JMC Handling",
+    "metaDesc": "Complete catalog of handling services: ramp and GSE, aircraft care, FBO, passenger services and GSE maintenance.",
+    "indexTitle": "Handling, FBO and specialized services",
+    "indexSubtitle": "Ramp, aircraft care, operations, passenger and maintenance services within the applicable authorization framework.",
+    "catalogLabel": "SERVICE CATALOG",
+    "servicesLabel": "Included services",
+    "ctaLabel": "COORDINATE",
+    "ctaTitle": "Need a specific service?",
+    "ctaText": "Share your operation's context and our commercial team will guide you to the best solution."
   },
   "meta": {
     "homeTitle": "JMC Handling | Handling, FBO and specialized services in Maiquetía",

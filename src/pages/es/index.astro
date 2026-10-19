@@ -2,12 +2,18 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/global/Header.astro';
 import Footer from '../../components/global/Footer.astro';
-import About from '../../components/home/About.astro';
-import EquipmentGrid from '../../components/home/EquipmentGrid.astro';
 import Hero from '../../components/home/Hero.astro';
+import StatsStrip from '../../components/home/StatsStrip.astro';
 import HistoryStrip from '../../components/home/HistoryStrip.astro';
-import RequestPrompt from '../../components/home/RequestPrompt.astro';
+import HandlingExplainer from '../../components/home/HandlingExplainer.astro';
 import ServicesGrid from '../../components/home/ServicesGrid.astro';
+import AircraftTypes from '../../components/home/AircraftTypes.astro';
+import EquipmentGrid from '../../components/home/EquipmentGrid.astro';
+import WhyChoose from '../../components/home/WhyChoose.astro';
+import AlliesStrip from '../../components/home/AlliesStrip.astro';
+import About from '../../components/home/About.astro';
+import SafetySection from '../../components/home/SafetySection.astro';
+import RequestPrompt from '../../components/home/RequestPrompt.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const locale = 'es';
@@ -18,10 +24,16 @@ const t = useTranslations(locale);
   <Header locale={locale} />
   <main id="main-content">
     <Hero locale={locale} />
+    <StatsStrip locale={locale} />
     <HistoryStrip locale={locale} />
+    <HandlingExplainer locale={locale} />
     <ServicesGrid locale={locale} />
+    <AircraftTypes locale={locale} />
     <EquipmentGrid locale={locale} />
+    <WhyChoose locale={locale} />
+    <AlliesStrip locale={locale} />
     <About locale={locale} />
+    <SafetySection locale={locale} />
     <RequestPrompt locale={locale} />
   </main>
   <Footer locale={locale} variant="compact" />

@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/global/Header.astro';
+import Footer from '../../components/global/Footer.astro';
+import Section from '../../components/ui/Section.astro';
+import { allies } from '../../data/allies';
+import { useTranslations } from '../../i18n/utils';
+
+const locale = 'es';
+const t = useTranslations(locale);
+---
+
+<Layout locale={locale} title={t('allies.metaTitle')} description={t('allies.metaDesc')} canonical="/es/aliados">
+  <Header locale={locale} />
+  <main id="main-content" class="pt-[4.5rem]">
+    <Section background="deep" padY="xl" ariaLabel={t('allies.sectionLabel')}>
+      <div class="grid gap-8 border-b border-cargo-light/20 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('allies.sectionLabel')}</p>
+        <div>
+          <h1 class="max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-white sm:text-6xl">{t('allies.title')}</h1>
+          <p class="mt-6 max-w-2xl text-base leading-relaxed text-cargo-white/75">{t('allies.subtitle')}</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section background="mist" padY="xl" ariaLabel={t('allies.alliesLabel')}>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {allies.map((ally) => (
+          <article class="group flex flex-col items-center border border-cargo-deep/15 bg-cargo-white p-8 text-center transition-all duration-300 hover:border-cargo-emerald/50 hover:shadow-lg">
+            <div class="flex h-20 w-auto items-center justify-center">
+              <img
+                src={ally.logo}
+                alt={ally.name}
+                width="160"
+                height="80"
+                class="h-full w-auto object-contain opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+                loading="lazy"
+              />
+            </div>
+            <h2 class="mt-6 text-lg font-semibold text-cargo-deep">{ally.name}</h2>
+          </article>
+        ))}
+      </div>
+    </Section>
+
+    <Section background="white" padY="xl" ariaLabel={t('allies.statsLabel')}>
+      <div class="grid gap-8 sm:grid-cols-3">
+        <div class="text-center">
+          <p class="font-mono text-4xl font-semibold tracking-[-0.05em] text-cargo-deep">{allies.length}+</p>
+          <p class="mt-2 text-sm text-cargo-ink/70">{t('allies.airlinesCount')}</p>
+        </div>
+        <div class="text-center">
+          <p class="font-mono text-4xl font-semibold tracking-[-0.05em] text-cargo-deep">2015</p>
+          <p class="mt-2 text-sm text-cargo-ink/70">{t('allies.yearsOperating')}</p>
+        </div>
+        <div class="text-center">
+          <p class="font-mono text-4xl font-semibold tracking-[-0.05em] text-cargo-deep">+30</p>
+          <p class="mt-2 text-sm text-cargo-ink/70">{t('allies.yearsTeam')}</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section background="cargo-light" padY="lg" ariaLabel={t('allies.ctaLabel')}>
+      <div class="flex flex-col justify-between gap-7 md:flex-row md:items-center">
+        <div>
+          <h2 class="max-w-xl text-2xl font-semibold tracking-[-0.035em] text-cargo-deep sm:text-3xl">{t('allies.ctaTitle')}</h2>
+          <p class="mt-3 max-w-2xl text-sm text-cargo-deep/80">{t('allies.ctaText')}</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="/es/contacto" class="inline-flex items-center gap-3 bg-cargo-deep px-5 py-3.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-ink">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer locale={locale} />
+</Layout>

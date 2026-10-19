@@ -11,10 +11,12 @@ export interface Props {
 const { locale, variant = 'default' } = Astro.props;
 const t = useTranslations(locale);
 const year = new Date().getFullYear();
-const homePath = locale === 'es' ? '/es/' : '/en/';
-const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
-const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
-const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
+const localePath = locale === 'es' ? '/es' : '/en';
+const homePath = `${localePath}/`;
+const capabilitiesPath = `${localePath}/capacidades`;
+const equipmentPath = `${localePath}/equipos`;
+const aboutPath = `${localePath}/sobre-jmc`;
+const contactPath = `${localePath}/contacto`;
 ---
 
 {variant === 'compact' ? (
@@ -31,7 +33,9 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
         </div>
       </div>
       <nav class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm" aria-label={t('home.footerNavLabel')}>
-        <a href={servicesPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('footer.services')}</a>
+        <a href={capabilitiesPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('footer.services')}</a>
+        <a href={equipmentPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('nav.equipment')}</a>
+        <a href={aboutPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('nav.about')}</a>
         <a href={contactPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('nav.contact')}</a>
         <a href={locale === 'en' ? '/es/' : '/en/'} lang={locale === 'en' ? 'es' : 'en'} class="text-cargo-light underline decoration-cargo-light/40 underline-offset-4">{locale === 'en' ? t('nav.switchToSpanish') : t('home.footerEnglish')}</a>
       </nav>
@@ -63,7 +67,7 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
           <h3 class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('footer.services')}</h3>
           <ul class="mt-5 space-y-3">
             {serviceFamilies.map((family) => (
-              <li><a href={`${servicesPath}#${family.key}`} class="text-sm text-cargo-white/70 transition-colors hover:text-cargo-white">{t(family.titleKey)}</a></li>
+              <li><a href={`${capabilitiesPath}#${family.key}`} class="text-sm text-cargo-white/70 transition-colors hover:text-cargo-white">{t(family.titleKey)}</a></li>
             ))}
           </ul>
         </div>
@@ -91,7 +95,7 @@ const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
             <p>{t('footer.officeLine2')}</p>
             <p>{t('footer.officeLine3')}</p>
           </address>
-          <a href={quotePath} class="mt-8 inline-flex items-center gap-2 border-b border-cargo-light/30 pb-1 text-sm font-semibold text-cargo-white transition-colors hover:border-cargo-light hover:text-cargo-light">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
+          <a href={contactPath} class="mt-8 inline-flex items-center gap-2 border-b border-cargo-light/30 pb-1 text-sm font-semibold text-cargo-white transition-colors hover:border-cargo-light hover:text-cargo-light">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
         </div>
       </div>
 

@@ -1,0 +1,81 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/global/Header.astro';
+import Footer from '../../../components/global/Footer.astro';
+import Section from '../../../components/ui/Section.astro';
+import { useTranslations, getLocalizedArray } from '../../../i18n/utils';
+import { serviceFamilies, services } from '../../../data/siteContent';
+
+export async function getStaticPaths() {
+  return serviceFamilies.map((family) => ({
+    params: { slug: family.key },
+    props: { family },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const locale = 'es';
+const t = useTranslations(locale);
+
+const familyServices = services.filter((s) => s.family === slug);
+const familyData = serviceFamilies.find((f) => f.key === slug);
+---
+
+<Layout locale={locale} title={t(familyData?.titleKey ?? 'services.gseTitle')} description={t(familyData?.descriptionKey ?? '')} canonical={`/es/capacidades/${slug}`}>
+  <Header locale={locale} />
+  <main id="main-content" class="pt-[4.5rem]">
+    <Section background="deep" padY="xl" ariaLabel={t('services.sectionLabel')}>
+      <div class="grid gap-8 border-b border-cargo-light/20 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('services.sectionLabel')}</p>
+        <div>
+          <h1 class="max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-white sm:text-6xl">{t(familyData?.titleKey ?? '')}</h1>
+          <p class="mt-6 max-w-2xl text-base leading-relaxed text-cargo-white/75">{t(familyData?.descriptionKey ?? '')}</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section background="mist" padY="xl" ariaLabel={t('capabilities.servicesLabel')}>
+      <div>
+        {familyServices.map((service, serviceIndex) => (
+          <article class="border-b border-cargo-deep/15 py-12 first:pt-0 last:border-b-0 lg:py-16">
+            <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+              <div>
+                <p class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-emerald">[{String(serviceIndex + 1).padStart(2, '0')}] {t(familyData?.titleKey ?? '')}</p>
+                <h2 class="mt-4 max-w-md text-2xl font-semibold tracking-[-0.03em] text-cargo-deep sm:text-3xl">{t(service.titleKey)}</h2>
+                <p class="mt-4 max-w-md text-sm leading-relaxed text-cargo-ink/70">{t(service.descriptionKey)}</p>
+                <a
+                  href={`/es/contacto?service=${service.key}`}
+                  class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cargo-emerald transition-colors hover:text-cargo-deep"
+                >
+                  {t('common.getQuote')} <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+              <div>
+                <ul class="space-y-3 border-l-2 border-cargo-emerald/40 pl-5">
+                  {getLocalizedArray(locale, service.bulletsKey).map((bullet: string) => (
+                    <li class="text-sm leading-relaxed text-cargo-ink/70">{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Section>
+
+    <Section background="cargo-light" padY="lg" ariaLabel={t('capabilities.ctaLabel')}>
+      <div class="flex flex-col justify-between gap-7 md:flex-row md:items-center">
+        <div>
+          <h2 class="max-w-xl text-2xl font-semibold tracking-[-0.035em] text-cargo-deep sm:text-3xl">{t('capabilities.ctaTitle')}</h2>
+          <p class="mt-3 max-w-2xl text-sm text-cargo-deep/80">{t('capabilities.ctaText')}</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="/es/contacto" class="inline-flex items-center gap-3 bg-cargo-deep px-5 py-3.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-ink">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
+          <a href="/es/capacidades" class="inline-flex items-center border border-cargo-deep/40 px-5 py-3.5 text-sm font-semibold text-cargo-deep transition-colors hover:bg-cargo-white/50">{t('common.backHome')}</a>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer locale={locale} />
+</Layout>

@@ -9,25 +9,30 @@ export interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
-const homePath = locale === 'es' ? '/es/' : '/en/';
-const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
-const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
-const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
-const isHome = currentPath === `/${locale}/` || currentPath === `/${locale}`;
-const isServices = currentPath.includes('/servicios') || currentPath.includes('/services');
-const isContact = currentPath.includes('/contacto') || currentPath.includes('/contact');
-const homeLinks = [
-  { href: '#capacidades', label: t('nav.services') },
-  { href: '#empresa', label: t('home.navCompany') },
-  { href: '#equipos', label: t('home.navEquipment') },
+
+const localePath = locale === 'es' ? '/es' : '/en';
+const homePath = `${localePath}/`;
+const capabilitiesPath = `${localePath}/capacidades`;
+const equipmentPath = `${localePath}/equipos`;
+const alliesPath = `${localePath}/aliados`;
+const aboutPath = `${localePath}/sobre-jmc`;
+const contactPath = `${localePath}/contacto`;
+
+function isCurrent(href: string): boolean {
+  if (href === homePath) {
+    return currentPath === homePath || currentPath === `/${locale}`;
+  }
+  return currentPath.startsWith(href);
+}
+
+const navLinks = [
+  { href: homePath, label: t('nav.home') },
+  { href: capabilitiesPath, label: t('nav.capabilities') },
+  { href: equipmentPath, label: t('nav.equipment') },
+  { href: alliesPath, label: t('nav.allies') },
+  { href: aboutPath, label: t('nav.about') },
   { href: contactPath, label: t('nav.contact') },
 ];
-const pageLinks = [
-  { href: homePath, label: t('nav.home'), isCurrent: isHome },
-  { href: servicesPath, label: t('nav.services'), isCurrent: isServices },
-  { href: contactPath, label: t('nav.contact'), isCurrent: isContact },
-];
-const navLinks = isHome ? homeLinks : pageLinks;
 ---
 
 <header class="fixed inset-x-0 top-0 z-50">
@@ -61,17 +66,17 @@ const navLinks = isHome ? homeLinks : pageLinks;
             <a
               href={link.href}
               class="nav-link"
-              aria-current={'isCurrent' in link && link.isCurrent ? 'page' : undefined}
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
             >
               {link.label}
             </a>
           ))}
-          <a href={quotePath} class="border border-cargo-light/60 px-4 py-2.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-white/10">
+          <a href={contactPath} class="border border-cargo-light/60 px-4 py-2.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-white/10">
             {t('quote.submit')}
             <span aria-hidden="true" class="ml-3 text-cargo-light">↗</span>
           </a>
           <a
-            href={isHome ? (locale === 'en' ? '/es/' : '/en/') : switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
+            href={switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
             class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/70 transition-colors hover:text-cargo-white"
             aria-label={locale === 'en' ? t('nav.switchToSpanish') : t('nav.switchToEnglish')}
             rel="alternate"
@@ -107,12 +112,12 @@ const navLinks = isHome ? homeLinks : pageLinks;
             {link.label}
           </a>
         ))}
-        <a href={quotePath} class="btn-primary mt-4 text-center text-sm">{t('quote.submit')}</a>
+        <a href={contactPath} class="btn-primary mt-4 text-center text-sm">{t('quote.submit')}</a>
         <div class="mt-3 flex items-center gap-3 border-t border-cargo-light/15 pt-4 font-mono text-xs uppercase tracking-[0.08em]">
           <span class="text-cargo-white/45">{t('nav.language')}</span>
-          <a href={isHome ? '/es/' : switchLocalePath(currentPath, 'es')} lang="es" class:list={['px-1 py-1', locale === 'es' ? 'text-cargo-light' : 'text-cargo-white/55']}>ES</a>
+          <a href={switchLocalePath(currentPath, 'es')} lang="es" class:list={['px-1 py-1', locale === 'es' ? 'text-cargo-light' : 'text-cargo-white/55']}>ES</a>
           <span class="text-cargo-white/30" aria-hidden="true">/</span>
-          <a href={isHome ? '/en/' : switchLocalePath(currentPath, 'en')} lang="en" class:list={['px-1 py-1', locale === 'en' ? 'text-cargo-light' : 'text-cargo-white/55']}>EN</a>
+          <a href={switchLocalePath(currentPath, 'en')} lang="en" class:list={['px-1 py-1', locale === 'en' ? 'text-cargo-light' : 'text-cargo-white/55']}>EN</a>
         </div>
       </div>
     </div>
