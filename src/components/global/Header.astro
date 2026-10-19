@@ -12,9 +12,6 @@ const currentPath = Astro.url.pathname;
 
 const localePath = locale === 'es' ? '/es' : '/en';
 const homePath = `${localePath}/`;
-const capabilitiesPath = `${localePath}/capacidades`;
-const equipmentPath = `${localePath}/equipos`;
-const alliesPath = `${localePath}/aliados`;
 const aboutPath = `${localePath}/sobre-jmc`;
 const contactPath = `${localePath}/contacto`;
 
@@ -27,9 +24,6 @@ function isCurrent(href: string): boolean {
 
 const navLinks = [
   { href: homePath, label: t('nav.home') },
-  { href: capabilitiesPath, label: t('nav.capabilities') },
-  { href: equipmentPath, label: t('nav.equipment') },
-  { href: alliesPath, label: t('nav.allies') },
   { href: aboutPath, label: t('nav.about') },
   { href: contactPath, label: t('nav.contact') },
 ];
