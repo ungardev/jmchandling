@@ -14,16 +14,22 @@ const localePath = locale === 'es' ? '/es' : '/en';
 const homePath = `${localePath}/`;
 const aboutPath = switchLocalePath('/es/sobre-jmc', locale);
 const contactPath = switchLocalePath('/es/contacto', locale);
+const servicesPath = `${homePath}#services`;
 
 function isCurrent(href: string): boolean {
   if (href === homePath) {
     return currentPath === homePath || currentPath === `/${locale}`;
   }
-  return currentPath.startsWith(href);
+  if (href.includes('#')) {
+    // Los enlaces a un ancla de la home solo estan "activos" en la home.
+    return currentPath === homePath || currentPath === `/${locale}`;
+  }
+  return currentPath === href || currentPath.startsWith(`${href}/`);
 }
 
 const navLinks = [
   { href: homePath, label: t('nav.home') },
+  { href: servicesPath, label: t('nav.services') },
   { href: aboutPath, label: t('nav.about') },
   { href: contactPath, label: t('nav.contact') },
 ];
@@ -59,7 +65,7 @@ const navLinks = [
           {navLinks.map((link) => (
             <a
               href={link.href}
-              class="nav-link"
+              class:list={['nav-link', { active: isCurrent(link.href) }]}
               aria-current={isCurrent(link.href) ? 'page' : undefined}
             >
               {link.label}
@@ -102,7 +108,11 @@ const navLinks = [
     <div id="mobile-menu" class="hidden border-t border-cargo-light/15 bg-cargo-deep lg:hidden" aria-hidden="true">
       <div class="container-max flex flex-col gap-1 py-4">
         {navLinks.map((link) => (
-          <a href={link.href} class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white">
+          <a
+            href={link.href}
+            class="border-b border-cargo-light/10 px-1 py-3 text-sm text-cargo-white/80 hover:text-cargo-white"
+            aria-current={isCurrent(link.href) ? 'page' : undefined}
+          >
             {link.label}
           </a>
         ))}
@@ -123,17 +133,20 @@ const navLinks = [
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = mobileMenu?.querySelectorAll('a') ?? [];
 
-  const closeMobileMenu = () => {
+  const isMenuOpen = () => menuButton?.getAttribute('aria-expanded') === 'true';
+
+  const closeMobileMenu = ({ restoreFocus = false } = {}) => {
     if (!menuButton || !mobileMenu) return;
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', menuButton.dataset.openLabel ?? '');
     mobileMenu.classList.add('hidden');
     mobileMenu.setAttribute('aria-hidden', 'true');
+    if (restoreFocus) menuButton.focus();
   };
 
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', () => {
-      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      const isOpen = isMenuOpen();
       menuButton.setAttribute('aria-expanded', String(!isOpen));
       menuButton.setAttribute('aria-label', isOpen ? menuButton.dataset.openLabel ?? '' : menuButton.dataset.closeLabel ?? '');
       mobileMenu.classList.toggle('hidden', isOpen);
@@ -141,11 +154,12 @@ const navLinks = [
       if (!isOpen) mobileLinks[0]?.focus();
     });
 
-    mobileLinks.forEach((link) => link.addEventListener('click', closeMobileMenu));
+    mobileLinks.forEach((link) => link.addEventListener('click', () => closeMobileMenu()));
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeMobileMenu();
-        menuButton.focus();
+      // Escape solo debe actuar si el menu esta abierto: de lo contrario
+      // robaria el foco al boton del menu en cualquier pagina.
+      if (event.key === 'Escape' && isMenuOpen()) {
+        closeMobileMenu({ restoreFocus: true });
       }
     });
   }

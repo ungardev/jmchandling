@@ -17,12 +17,45 @@ export interface MediaAsset {
   srcset: string;
 }
 
+/** Variante de un activo con recortes art-dirigidos (un set por breakpoint). */
+export interface MediaVariant {
+  src: string;
+  width: number;
+  height: number;
+  srcset: string;
+}
+
+export interface ArtDirectedAsset {
+  id: string;
+  altKey: string;
+  sets: Record<string, MediaVariant>;
+}
+
 export const heroRampNight: MediaAsset = {
   src: "/assets/photos/hero/hero-ramp-night-1920.webp",
   width: 1920,
   height: 1440,
   altKey: "media.alt.heroRampNight",
   srcset: "/assets/photos/hero/hero-ramp-night-1280.webp 1280w, /assets/photos/hero/hero-ramp-night-1920.webp 1920w",
+};
+
+export const heroGseRamp: ArtDirectedAsset = {
+  id: "hero-gse-ramp",
+  altKey: "media.alt.heroGseRamp",
+  sets: {
+  "wide": {
+    src: "/assets/photos/hero/hero-gse-ramp-wide-2400.webp",
+    width: 2400,
+    height: 1350,
+    srcset: "/assets/photos/hero/hero-gse-ramp-wide-1280.webp 1280w, /assets/photos/hero/hero-gse-ramp-wide-1920.webp 1920w, /assets/photos/hero/hero-gse-ramp-wide-2400.webp 2400w",
+  },
+  "tall": {
+    src: "/assets/photos/hero/hero-gse-ramp-tall-1080.webp",
+    width: 1080,
+    height: 1350,
+    srcset: "/assets/photos/hero/hero-gse-ramp-tall-720.webp 720w, /assets/photos/hero/hero-gse-ramp-tall-1080.webp 1080w",
+  },
+  },
 };
 
 export const equipmentCarrucha: MediaAsset = {
@@ -33,20 +66,20 @@ export const equipmentCarrucha: MediaAsset = {
   srcset: "/assets/photos/equipment/equipment-carrucha-640.webp 640w, /assets/photos/equipment/equipment-carrucha-1280.webp 1280w",
 };
 
-export const equipmentCarruchaUld: MediaAsset = {
-  src: "/assets/photos/equipment/equipment-carrucha-uld-1280.webp",
-  width: 1280,
-  height: 1919,
-  altKey: "media.alt.equipmentCarruchaUld",
-  srcset: "/assets/photos/equipment/equipment-carrucha-uld-640.webp 640w, /assets/photos/equipment/equipment-carrucha-uld-1280.webp 1280w",
-};
-
 export const equipmentTractor: MediaAsset = {
   src: "/assets/photos/equipment/equipment-tractor-1280.webp",
   width: 1280,
   height: 1919,
   altKey: "media.alt.equipmentTractor",
   srcset: "/assets/photos/equipment/equipment-tractor-640.webp 640w, /assets/photos/equipment/equipment-tractor-1280.webp 1280w",
+};
+
+export const equipmentTractorService: MediaAsset = {
+  src: "/assets/photos/equipment/equipment-tractor-service-1280.webp",
+  width: 1280,
+  height: 1919,
+  altKey: "media.alt.equipmentTractorService",
+  srcset: "/assets/photos/equipment/equipment-tractor-service-640.webp 640w, /assets/photos/equipment/equipment-tractor-service-1280.webp 1280w",
 };
 
 export const equipmentWaterCart: MediaAsset = {
@@ -71,14 +104,6 @@ export const equipmentGpu: MediaAsset = {
   height: 1919,
   altKey: "media.alt.equipmentGpu",
   srcset: "/assets/photos/equipment/equipment-gpu-640.webp 640w, /assets/photos/equipment/equipment-gpu-1280.webp 1280w",
-};
-
-export const equipmentAsu: MediaAsset = {
-  src: "/assets/photos/equipment/equipment-asu-1280.webp",
-  width: 1280,
-  height: 1919,
-  altKey: "media.alt.equipmentAsu",
-  srcset: "/assets/photos/equipment/equipment-asu-640.webp 640w, /assets/photos/equipment/equipment-asu-1280.webp 1280w",
 };
 
 export const familyRampGse: MediaAsset = {
@@ -244,12 +269,11 @@ export const galleryAircraftRamp: MediaAsset = {
 export const media = {
   "hero-ramp-night": heroRampNight,
   "equipment-carrucha": equipmentCarrucha,
-  "equipment-carrucha-uld": equipmentCarruchaUld,
   "equipment-tractor": equipmentTractor,
+  "equipment-tractor-service": equipmentTractorService,
   "equipment-water-cart": equipmentWaterCart,
   "equipment-belt-loader": equipmentBeltLoader,
   "equipment-gpu": equipmentGpu,
-  "equipment-asu": equipmentAsu,
   "family-ramp-gse": familyRampGse,
   "family-aircraft-care": familyAircraftCare,
   "family-fbo-operations": familyFboOperations,
@@ -271,6 +295,11 @@ export const media = {
   "gallery-aircraft-day": galleryAircraftDay,
   "gallery-aircraft-ramp": galleryAircraftRamp,
 } as const satisfies Record<string, MediaAsset>;
+
+/** Slides del hero en orden de rotacion. */
+export const heroSlides: ArtDirectedAsset[] = [
+  heroGseRamp,
+];
 
 export type MediaId = keyof typeof media;
 

@@ -4,7 +4,7 @@ import Header from '../../components/global/Header.astro';
 import Footer from '../../components/global/Footer.astro';
 import Section from '../../components/ui/Section.astro';
 import Badge from '../../components/ui/Badge.astro';
-import { useTranslations } from '../../i18n/utils';
+import { getLocalizedArray, useTranslations } from '../../i18n/utils';
 
 const locale = 'es';
 const t = useTranslations(locale);
@@ -80,7 +80,7 @@ const t = useTranslations(locale);
         <h2 class="mt-5 max-w-3xl mx-auto text-balance text-4xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-5xl">{t('about.valuesTitle')}</h2>
       </div>
       <div class="mt-12 flex flex-wrap justify-center gap-3">
-        {['Respeto', 'Tolerancia', 'Cortesía', 'Compromiso', 'Justicia', 'Responsabilidad', 'Honestidad', 'Innovación', 'Superación', 'Calidad', 'Trabajo en equipo', 'Excelencia'].map((value) => (
+        {getLocalizedArray(locale, 'about.valuesList').map((value) => (
           <span class="badge-cert">{value}</span>
         ))}
       </div>

@@ -1,4 +1,7 @@
 ---
-// Redirect to /es/contacto
-return Astro.redirect('/es/contacto?intent=quote', 301);
+// Redirige /es/cotizacion a la pagina de contacto conservando la query string
+// (?service=... y ?intent=...) para que la preseleccion del formulario sobreviva.
+const search = Astro.url.search;
+const destination = `/es/contacto?intent=quote${search ? `&${search.slice(1)}` : ''}`;
+return Astro.redirect(destination, 301);
 ---

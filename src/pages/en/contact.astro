@@ -12,6 +12,7 @@ const locale = 'en';
 const t = useTranslations(locale);
 const sent = Astro.url.searchParams.get('sent') === 'true';
 const intent = Astro.url.searchParams.get('intent');
+const service = Astro.url.searchParams.get('service') ?? undefined;
 ---
 
 <Layout locale={locale} title={t('meta.contactTitle')} description={t('meta.contactDesc')} canonical="/en/contact">
@@ -35,7 +36,7 @@ const intent = Astro.url.searchParams.get('intent');
           <h2 class="mt-5 text-3xl font-semibold tracking-[-0.03em] text-cargo-white">{t('contact.introTitle')}</h2>
           <p class="mt-4 max-w-lg text-sm leading-relaxed text-cargo-white/70">{t('contact.intro')}</p>
           <div class="mt-10 border-t border-cargo-light/20 pt-8">
-            <QuoteForm locale={locale} variant="lite" />
+            <QuoteForm locale={locale} variant="full" selectedService={service} />
           </div>
         </div>
       </div>

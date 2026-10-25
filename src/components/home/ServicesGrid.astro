@@ -9,8 +9,7 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
-const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
+const quotePath = locale === 'es' ? '/es/contacto?intent=quote' : '/en/contact?intent=quote';
 const familyActionKeys: Record<ServiceFamilyKey, string> = {
   'ramp-gse': 'home.actionGse',
   'aircraft-care': 'home.actionAircraftCare',
@@ -36,7 +35,7 @@ const specialServices = [
           {t('home.taskIntro')}
         </p>
       </div>
-      <a href={servicesPath} class="inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald/70 underline-offset-4 transition-colors hover:text-cargo-emerald">
+      <a href={quotePath} class="inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald/70 underline-offset-4 transition-colors hover:text-cargo-emerald">
         {t('home.openCatalog')}
         <span aria-hidden="true">↗</span>
       </a>
@@ -45,7 +44,7 @@ const specialServices = [
     <div class="grid items-start gap-9 lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,0.88fr)] lg:gap-14">
       <div class="divide-y divide-cargo-deep/15 border-y border-cargo-deep/15">
         {serviceFamilies.map((family) => (
-          <article class="py-6 sm:py-7">
+          <article id={family.key} class="scroll-mt-24 py-6 sm:py-7">
             <div class="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
               <div>
                 <h3 class="text-xl font-semibold tracking-[-0.025em] text-cargo-deep">{t(family.titleKey)}</h3>
@@ -60,7 +59,7 @@ const specialServices = [
                 )}
               </div>
               <a
-                href={`${quotePath}?service=${encodeURIComponent(family.key)}`}
+                href={`${quotePath}&service=${encodeURIComponent(family.key)}`}
                 class="inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald"
                 aria-label={`${t(familyActionKeys[family.key])}: ${t(family.titleKey)}`}
               >
@@ -79,7 +78,7 @@ const specialServices = [
         <p class="mt-4 text-sm leading-relaxed text-cargo-ink/75">
           {t('home.specialAsideLead')} {specialServices.join('; ')}.
         </p>
-        <a href={`${servicesPath}#passenger-services`} class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald">
+        <a href="#passenger-services" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald">
           {t('home.viewSpecialScope')}
           <span aria-hidden="true">↗</span>
         </a>

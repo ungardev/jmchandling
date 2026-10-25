@@ -79,6 +79,17 @@ Section IDs are **English and stable in both locales**: `#services`, `#equipment
 hidden span (`<span id="capacidades" class="sr-only" aria-hidden="true"></span>`).
 **Never delete the aliases** — external links use them.
 
+Legacy aliases in use: `capacidades` (services), `equipos` (equipment),
+`empresa` (about), `seguridad` (safety).
+
+Deep-link targets that must keep resolving:
+- Service families on the home page: `#ramp-gse`, `#aircraft-care`,
+  `#fbo-operations`, `#passenger-services`, `#gse-maintenance`
+  (each `<article>` in `ServicesGrid.astro` carries `id={family.key}`).
+- Equipment cards: `#equipment-carrucha`, `#equipment-tractor`,
+  `#equipment-tractorService`, `#equipment-water`, `#equipment-belt`,
+  `#equipment-gpu`.
+
 ---
 
 ## Component Conventions
@@ -186,7 +197,8 @@ public/assets/
 scripts/
 ├── media-map.json        semantic media map (MASTER — edit this)
 ├── optimize-assets.mjs   WebP pipeline, video transcode, OG raster
-└── check-i18n.mjs        i18n integrity checker
+├── check-i18n.mjs        i18n integrity checker
+└── check-links.py        internal link + fragment validator
 ```
 
 ---
@@ -197,6 +209,10 @@ scripts/
   `npm run optimize:assets`. Never edit `src/data/media.generated.ts` by hand.
 - Every image has an `altKey` in `media.alt.*` (es + en) describing **what is
   actually visible**.
+- **Alt text must match the photo, not the label.** The 2026 audit found 5 of 7
+  GSE photos mis-labelled (a GPU photo captioned as a water cart, etc). Before
+  assigning an image to a slot, open the master and look at it. Never caption a
+  photo as equipment it does not show.
 - The photo library covers **ramp, cargo and GSE**. There are no photos of
   aircraft interior cleaning, passenger service or the workshop — those families
   use the legacy photos assigned to them (`family-aircraft-care`,
@@ -204,6 +220,31 @@ scripts/
   photo to depict another activity.**
 - Never use AI-generated images (`media-raw/_quarantine/`). Never use placeholders.
 - Photo masters are never committed. Only the WebP derivatives are.
+
+### Art-directed crops (`sets`)
+
+An item in `media-map.json` may declare `sets` instead of `widths` to get
+art-directed variants (one per breakpoint):
+
+```json
+{ "name": "wide", "aspect": "16:9", "position": "attention", "widths": [1280, 1920] }
+```
+
+- `position`: `"attention"` (sharp picks the most informative region — use this
+  for hero shots), `"entropy"`, a gravity (`"top" | "centre" | "bottom" | …`)
+  or `{ top, left }` pixel offsets.
+- Files are emitted as `<id>-<set>-<width>.webp`; `media.generated.ts` exports
+  them as `ArtDirectedAsset` with `sets: { wide, tall }`.
+- Consume them with `<picture>` + `<source media="...">` (see `Hero.astro`).
+- Always read back the generated WebP to confirm the crop still shows the
+  subject — `attention` can pick an unexpected region.
+
+### Hero
+
+- **Single photo, no carousel.** The hero uses `hero-gse-ramp` (art-directed:
+  `wide` 16:9 for desktop, `tall` 4:5 for mobile).
+- Text sits over the **left** third; the overlay is a horizontal
+  `cargo-ink` gradient. Verify contrast stays ≥ 4.5:1 (measured ~18:1).
 
 ---
 
@@ -218,8 +259,17 @@ npm run preview      # Preview dist/
 npm run format       # Prettier format
 npm run lint         # ESLint
 npm run i18n:check   # ES/EN tree parity + referenced keys + altKeys
+npm run check:links  # internal links + #fragment targets
 npm run optimize:assets  # media-raw/ → public/assets/photos/ (WebP + video + OG)
-npm run verify       # i18n:check + check + build  ← gate before every commit
+npm run verify       # i18n:check + check + build + check:links  ← gate before every commit
+```
+
+### sharp on Linux/WSL
+
+If `sharp` fails to load libvips:
+
+```bash
+export LD_LIBRARY_PATH="$PWD/node_modules/@img/sharp-linux-x64/node_modules/@img/sharp-libvips-linux-x64/lib"
 ```
 
 ---

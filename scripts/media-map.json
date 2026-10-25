@@ -20,38 +20,60 @@
       "curated": true,
       "widths": [1280, 1920]
     },
+    {
+      "id": "hero-gse-ramp",
+      "root": "raw",
+      "src": "services/IMG_6604.jpg",
+      "group": "hero",
+      "altKey": "media.alt.heroGseRamp",
+      "curated": true,
+      "sets": [
+        {
+          "name": "wide",
+          "aspect": "16:9",
+          "position": "attention",
+          "widths": [1280, 1920, 2400]
+        },
+        {
+          "name": "tall",
+          "aspect": "4:5",
+          "position": "bottom",
+          "widths": [720, 1080]
+        }
+      ]
+    },
 
     {
       "id": "equipment-carrucha",
       "root": "raw",
-      "src": "equipment/NG__1345-Editar.jpg",
+      "src": "equipment/NG__1380-Editar.jpg",
       "group": "equipment",
       "altKey": "media.alt.equipmentCarrucha",
       "curated": true,
       "widths": [640, 1280]
     },
     {
-      "id": "equipment-carrucha-uld",
-      "root": "raw",
-      "src": "equipment/NG__1373-Editar.jpg",
-      "group": "equipment",
-      "altKey": "media.alt.equipmentCarruchaUld",
-      "curated": true,
-      "widths": [640, 1280]
-    },
-    {
       "id": "equipment-tractor",
       "root": "raw",
-      "src": "equipment/NG__1306-Editar.jpg",
+      "src": "equipment/NG__1293-Editar.jpg",
       "group": "equipment",
       "altKey": "media.alt.equipmentTractor",
       "curated": true,
       "widths": [640, 1280]
     },
     {
-      "id": "equipment-water-cart",
+      "id": "equipment-tractor-service",
       "root": "raw",
       "src": "equipment/NG__1299-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTractorService",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-water-cart",
+      "root": "raw",
+      "src": "equipment/NG__1373-Editar.jpg",
       "group": "equipment",
       "altKey": "media.alt.equipmentWaterCart",
       "curated": true,
@@ -60,7 +82,7 @@
     {
       "id": "equipment-belt-loader",
       "root": "raw",
-      "src": "equipment/NG__1380-Editar.jpg",
+      "src": "equipment/NG__1289-Editar.jpg",
       "group": "equipment",
       "altKey": "media.alt.equipmentBeltLoader",
       "curated": true,
@@ -69,19 +91,46 @@
     {
       "id": "equipment-gpu",
       "root": "raw",
-      "src": "equipment/NG__1293-Editar.jpg",
+      "src": "equipment/NG__1311-Editar.jpg",
       "group": "equipment",
       "altKey": "media.alt.equipmentGpu",
       "curated": true,
       "widths": [640, 1280]
     },
     {
-      "id": "equipment-asu",
+      "id": "equipment-gpu-alt",
       "root": "raw",
-      "src": "equipment/NG__1289-Editar.jpg",
+      "src": "equipment/NG__1270-Editar.jpg",
       "group": "equipment",
-      "altKey": "media.alt.equipmentAsu",
-      "curated": true,
+      "altKey": "media.alt.equipmentGpuAlt",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-tractor-tug",
+      "root": "raw",
+      "src": "equipment/NG__1345-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTractorTug",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-tractor-cab",
+      "root": "raw",
+      "src": "equipment/NG__1268-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTractorCab",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-platform-truck",
+      "root": "raw",
+      "src": "equipment/NG__1262-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentPlatformTruck",
+      "curated": false,
       "widths": [640, 1280]
     },
 
@@ -239,6 +288,7 @@
       "curated": true,
       "widths": [640, 1280]
     },
+
     {
       "id": "gallery-uld-ramp",
       "root": "raw",
@@ -485,42 +535,32 @@
     },
 
     {
-      "id": "equipment-carrucha-abierta",
-      "root": "raw",
-      "src": "equipment/NG__1268-Editar.jpg",
-      "group": "equipment",
-      "altKey": "media.alt.equipmentCartOpen",
-      "curated": false,
-      "widths": [640, 1280]
-    },
-    {
       "id": "equipment-carrucha-cargada",
       "root": "raw",
-      "src": "equipment/NG__1270-Editar.jpg",
+      "src": "services/IMG_6577.jpg",
       "group": "equipment",
       "altKey": "media.alt.equipmentCartLoaded",
       "curated": false,
       "widths": [640, 1280]
     },
     {
-      "id": "equipment-carrucha-cerrada",
+      "id": "equipment-carrucha-rampa",
       "root": "raw",
-      "src": "equipment/NG__1311-Editar.jpg",
+      "src": "services/IMG_6583.jpg",
       "group": "equipment",
-      "altKey": "media.alt.equipmentCartClosed",
+      "altKey": "media.alt.equipmentCartRamp",
       "curated": false,
       "widths": [640, 1280]
     },
     {
-      "id": "equipment-tow-plate",
+      "id": "equipment-tractor-remolque",
       "root": "raw",
-      "src": "equipment/NG__1262-Editar.jpg",
+      "src": "services/IMG_6604.jpg",
       "group": "equipment",
-      "altKey": "media.alt.equipmentTowPlate",
+      "altKey": "media.alt.equipmentTractorRemolque",
       "curated": false,
       "widths": [640, 1280]
     },
-
     {
       "id": "cert-cesea",
       "root": "legacy",

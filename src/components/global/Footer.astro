@@ -14,6 +14,12 @@ const localePath = locale === 'es' ? '/es' : '/en';
 const homePath = `${localePath}/`;
 const aboutPath = switchLocalePath('/es/sobre-jmc', locale);
 const contactPath = switchLocalePath('/es/contacto', locale);
+const currentPath = Astro.url.pathname;
+const alternatePath = switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en');
+// Reemplaza el anyo de referencia solo si el copy lo incluye.
+const legalYear = t('footer.legal').includes('2026')
+  ? t('footer.legal').replace('2026', String(year))
+  : t('footer.legal');
 ---
 
 {variant === 'compact' ? (
@@ -32,12 +38,12 @@ const contactPath = switchLocalePath('/es/contacto', locale);
       <nav class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm" aria-label={t('home.footerNavLabel')}>
         <a href={aboutPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('nav.about')}</a>
         <a href={contactPath} class="text-cargo-white/80 underline decoration-cargo-white/25 underline-offset-4 transition-colors hover:text-cargo-white">{t('nav.contact')}</a>
-        <a href={locale === 'en' ? '/es/' : '/en/'} lang={locale === 'en' ? 'es' : 'en'} class="text-cargo-light underline decoration-cargo-light/40 underline-offset-4">{locale === 'en' ? t('nav.switchToSpanish') : t('home.footerEnglish')}</a>
+        <a href={alternatePath} lang={locale === 'en' ? 'es' : 'en'} class="text-cargo-light underline decoration-cargo-light/40 underline-offset-4">{locale === 'en' ? t('nav.switchToSpanish') : t('home.footerEnglish')}</a>
       </nav>
     </div>
     <div class="border-t border-cargo-white/10">
       <div class="container-max flex flex-col gap-2 py-4 text-xs text-cargo-white/55 sm:flex-row sm:justify-between">
-        <p>{t('footer.legal').replace('2026', String(year))}</p>
+        <p>{legalYear}</p>
         <p>{t('home.footerLocation')}</p>
       </div>
     </div>
@@ -95,7 +101,7 @@ const contactPath = switchLocalePath('/es/contacto', locale);
       </div>
 
       <div class="flex flex-col gap-3 pt-6 text-xs text-cargo-white/55 sm:flex-row sm:items-center sm:justify-between">
-        <p>{t('footer.legal').replace('2026', String(year))} {t('footer.allRights')}</p>
+        <p>{legalYear} {t('footer.allRights')}</p>
         <p class="font-mono uppercase tracking-[0.08em]">{t('footer.legalCert')} · {t('footer.rifLabel')}: {t('footer.rif')}</p>
       </div>
     </div>

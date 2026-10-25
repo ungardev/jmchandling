@@ -24,6 +24,55 @@
       ]
     },
     {
+      "id": "hero-gse-ramp",
+      "group": "hero",
+      "altKey": "media.alt.heroGseRamp",
+      "curated": true,
+      "sets": {
+        "wide": {
+          "src": "/assets/photos/hero/hero-gse-ramp-wide-2400.webp",
+          "width": 2400,
+          "height": 1350,
+          "srcset": "/assets/photos/hero/hero-gse-ramp-wide-1280.webp 1280w, /assets/photos/hero/hero-gse-ramp-wide-1920.webp 1920w, /assets/photos/hero/hero-gse-ramp-wide-2400.webp 2400w",
+          "variants": [
+            {
+              "width": 1280,
+              "height": 720,
+              "src": "/assets/photos/hero/hero-gse-ramp-wide-1280.webp"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "src": "/assets/photos/hero/hero-gse-ramp-wide-1920.webp"
+            },
+            {
+              "width": 2400,
+              "height": 1350,
+              "src": "/assets/photos/hero/hero-gse-ramp-wide-2400.webp"
+            }
+          ]
+        },
+        "tall": {
+          "src": "/assets/photos/hero/hero-gse-ramp-tall-1080.webp",
+          "width": 1080,
+          "height": 1350,
+          "srcset": "/assets/photos/hero/hero-gse-ramp-tall-720.webp 720w, /assets/photos/hero/hero-gse-ramp-tall-1080.webp 1080w",
+          "variants": [
+            {
+              "width": 720,
+              "height": 900,
+              "src": "/assets/photos/hero/hero-gse-ramp-tall-720.webp"
+            },
+            {
+              "width": 1080,
+              "height": 1350,
+              "src": "/assets/photos/hero/hero-gse-ramp-tall-1080.webp"
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "equipment-carrucha",
       "group": "equipment",
       "altKey": "media.alt.equipmentCarrucha",
@@ -46,28 +95,6 @@
       ]
     },
     {
-      "id": "equipment-carrucha-uld",
-      "group": "equipment",
-      "altKey": "media.alt.equipmentCarruchaUld",
-      "curated": true,
-      "src": "/assets/photos/equipment/equipment-carrucha-uld-1280.webp",
-      "width": 1280,
-      "height": 1919,
-      "srcset": "/assets/photos/equipment/equipment-carrucha-uld-640.webp 640w, /assets/photos/equipment/equipment-carrucha-uld-1280.webp 1280w",
-      "variants": [
-        {
-          "width": 640,
-          "height": 960,
-          "src": "/assets/photos/equipment/equipment-carrucha-uld-640.webp"
-        },
-        {
-          "width": 1280,
-          "height": 1919,
-          "src": "/assets/photos/equipment/equipment-carrucha-uld-1280.webp"
-        }
-      ]
-    },
-    {
       "id": "equipment-tractor",
       "group": "equipment",
       "altKey": "media.alt.equipmentTractor",
@@ -86,6 +113,28 @@
           "width": 1280,
           "height": 1919,
           "src": "/assets/photos/equipment/equipment-tractor-1280.webp"
+        }
+      ]
+    },
+    {
+      "id": "equipment-tractor-service",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTractorService",
+      "curated": true,
+      "src": "/assets/photos/equipment/equipment-tractor-service-1280.webp",
+      "width": 1280,
+      "height": 1919,
+      "srcset": "/assets/photos/equipment/equipment-tractor-service-640.webp 640w, /assets/photos/equipment/equipment-tractor-service-1280.webp 1280w",
+      "variants": [
+        {
+          "width": 640,
+          "height": 960,
+          "src": "/assets/photos/equipment/equipment-tractor-service-640.webp"
+        },
+        {
+          "width": 1280,
+          "height": 1919,
+          "src": "/assets/photos/equipment/equipment-tractor-service-1280.webp"
         }
       ]
     },
@@ -156,24 +205,90 @@
       ]
     },
     {
-      "id": "equipment-asu",
+      "id": "equipment-gpu-alt",
       "group": "equipment",
-      "altKey": "media.alt.equipmentAsu",
-      "curated": true,
-      "src": "/assets/photos/equipment/equipment-asu-1280.webp",
+      "altKey": "media.alt.equipmentGpuAlt",
+      "curated": false,
+      "src": "/assets/photos/equipment/equipment-gpu-alt-1280.webp",
       "width": 1280,
       "height": 1919,
-      "srcset": "/assets/photos/equipment/equipment-asu-640.webp 640w, /assets/photos/equipment/equipment-asu-1280.webp 1280w",
+      "srcset": "/assets/photos/equipment/equipment-gpu-alt-640.webp 640w, /assets/photos/equipment/equipment-gpu-alt-1280.webp 1280w",
       "variants": [
         {
           "width": 640,
           "height": 960,
-          "src": "/assets/photos/equipment/equipment-asu-640.webp"
+          "src": "/assets/photos/equipment/equipment-gpu-alt-640.webp"
         },
         {
           "width": 1280,
           "height": 1919,
-          "src": "/assets/photos/equipment/equipment-asu-1280.webp"
+          "src": "/assets/photos/equipment/equipment-gpu-alt-1280.webp"
+        }
+      ]
+    },
+    {
+      "id": "equipment-tractor-tug",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTractorTug",
+      "curated": false,
+      "src": "/assets/photos/equipment/equipment-tractor-tug-1280.webp",
+      "width": 1280,
+      "height": 1919,
+      "srcset": "/assets/photos/equipment/equipment-tractor-tug-640.webp 640w, /assets/photos/equipment/equipment-tractor-tug-1280.webp 1280w",
+      "variants": [
+        {
+          "width": 640,
+          "height": 960,
+          "src": "/assets/photos/equipment/equipment-tractor-tug-640.webp"
+        },
+        {
+          "width": 1280,
+          "height": 1919,
+          "src": "/assets/photos/equipment/equipment-tractor-tug-1280.webp"
+        }
+      ]
+    },
+    {
+      "id": "equipment-tractor-cab",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTractorCab",
+      "curated": false,
+      "src": "/assets/photos/equipment/equipment-tractor-cab-1280.webp",
+      "width": 1280,
+      "height": 1919,
+      "srcset": "/assets/photos/equipment/equipment-tractor-cab-640.webp 640w, /assets/photos/equipment/equipment-tractor-cab-1280.webp 1280w",
+      "variants": [
+        {
+          "width": 640,
+          "height": 959,
+          "src": "/assets/photos/equipment/equipment-tractor-cab-640.webp"
+        },
+        {
+          "width": 1280,
+          "height": 1919,
+          "src": "/assets/photos/equipment/equipment-tractor-cab-1280.webp"
+        }
+      ]
+    },
+    {
+      "id": "equipment-platform-truck",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentPlatformTruck",
+      "curated": false,
+      "src": "/assets/photos/equipment/equipment-platform-truck-1280.webp",
+      "width": 1280,
+      "height": 1919,
+      "srcset": "/assets/photos/equipment/equipment-platform-truck-640.webp 640w, /assets/photos/equipment/equipment-platform-truck-1280.webp 1280w",
+      "variants": [
+        {
+          "width": 640,
+          "height": 960,
+          "src": "/assets/photos/equipment/equipment-platform-truck-640.webp"
+        },
+        {
+          "width": 1280,
+          "height": 1919,
+          "src": "/assets/photos/equipment/equipment-platform-truck-1280.webp"
         }
       ]
     },
@@ -1146,90 +1261,68 @@
       ]
     },
     {
-      "id": "equipment-carrucha-abierta",
-      "group": "equipment",
-      "altKey": "media.alt.equipmentCartOpen",
-      "curated": false,
-      "src": "/assets/photos/equipment/equipment-carrucha-abierta-1280.webp",
-      "width": 1280,
-      "height": 1919,
-      "srcset": "/assets/photos/equipment/equipment-carrucha-abierta-640.webp 640w, /assets/photos/equipment/equipment-carrucha-abierta-1280.webp 1280w",
-      "variants": [
-        {
-          "width": 640,
-          "height": 959,
-          "src": "/assets/photos/equipment/equipment-carrucha-abierta-640.webp"
-        },
-        {
-          "width": 1280,
-          "height": 1919,
-          "src": "/assets/photos/equipment/equipment-carrucha-abierta-1280.webp"
-        }
-      ]
-    },
-    {
       "id": "equipment-carrucha-cargada",
       "group": "equipment",
       "altKey": "media.alt.equipmentCartLoaded",
       "curated": false,
       "src": "/assets/photos/equipment/equipment-carrucha-cargada-1280.webp",
       "width": 1280,
-      "height": 1919,
+      "height": 2276,
       "srcset": "/assets/photos/equipment/equipment-carrucha-cargada-640.webp 640w, /assets/photos/equipment/equipment-carrucha-cargada-1280.webp 1280w",
       "variants": [
         {
           "width": 640,
-          "height": 960,
+          "height": 1138,
           "src": "/assets/photos/equipment/equipment-carrucha-cargada-640.webp"
         },
         {
           "width": 1280,
-          "height": 1919,
+          "height": 2276,
           "src": "/assets/photos/equipment/equipment-carrucha-cargada-1280.webp"
         }
       ]
     },
     {
-      "id": "equipment-carrucha-cerrada",
+      "id": "equipment-carrucha-rampa",
       "group": "equipment",
-      "altKey": "media.alt.equipmentCartClosed",
+      "altKey": "media.alt.equipmentCartRamp",
       "curated": false,
-      "src": "/assets/photos/equipment/equipment-carrucha-cerrada-1280.webp",
+      "src": "/assets/photos/equipment/equipment-carrucha-rampa-1280.webp",
       "width": 1280,
-      "height": 1919,
-      "srcset": "/assets/photos/equipment/equipment-carrucha-cerrada-640.webp 640w, /assets/photos/equipment/equipment-carrucha-cerrada-1280.webp 1280w",
+      "height": 1707,
+      "srcset": "/assets/photos/equipment/equipment-carrucha-rampa-640.webp 640w, /assets/photos/equipment/equipment-carrucha-rampa-1280.webp 1280w",
       "variants": [
         {
           "width": 640,
-          "height": 960,
-          "src": "/assets/photos/equipment/equipment-carrucha-cerrada-640.webp"
+          "height": 853,
+          "src": "/assets/photos/equipment/equipment-carrucha-rampa-640.webp"
         },
         {
           "width": 1280,
-          "height": 1919,
-          "src": "/assets/photos/equipment/equipment-carrucha-cerrada-1280.webp"
+          "height": 1707,
+          "src": "/assets/photos/equipment/equipment-carrucha-rampa-1280.webp"
         }
       ]
     },
     {
-      "id": "equipment-tow-plate",
+      "id": "equipment-tractor-remolque",
       "group": "equipment",
-      "altKey": "media.alt.equipmentTowPlate",
+      "altKey": "media.alt.equipmentTractorRemolque",
       "curated": false,
-      "src": "/assets/photos/equipment/equipment-tow-plate-1280.webp",
+      "src": "/assets/photos/equipment/equipment-tractor-remolque-1280.webp",
       "width": 1280,
-      "height": 1919,
-      "srcset": "/assets/photos/equipment/equipment-tow-plate-640.webp 640w, /assets/photos/equipment/equipment-tow-plate-1280.webp 1280w",
+      "height": 1707,
+      "srcset": "/assets/photos/equipment/equipment-tractor-remolque-640.webp 640w, /assets/photos/equipment/equipment-tractor-remolque-1280.webp 1280w",
       "variants": [
         {
           "width": 640,
-          "height": 960,
-          "src": "/assets/photos/equipment/equipment-tow-plate-640.webp"
+          "height": 853,
+          "src": "/assets/photos/equipment/equipment-tractor-remolque-640.webp"
         },
         {
           "width": 1280,
-          "height": 1919,
-          "src": "/assets/photos/equipment/equipment-tow-plate-1280.webp"
+          "height": 1707,
+          "src": "/assets/photos/equipment/equipment-tractor-remolque-1280.webp"
         }
       ]
     },

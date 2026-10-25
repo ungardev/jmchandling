@@ -2,11 +2,11 @@
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
 import {
-  equipmentAsu,
   equipmentBeltLoader,
   equipmentCarrucha,
   equipmentGpu,
   equipmentTractor,
+  equipmentTractorService,
   equipmentWaterCart,
 } from '../../data/media.generated';
 
@@ -16,15 +16,15 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
+const quotePath = locale === 'es' ? '/es/contacto?intent=quote' : '/en/contact?intent=quote';
 
 const equipment = [
   { key: 'carrucha', media: equipmentCarrucha },
   { key: 'tractor', media: equipmentTractor },
+  { key: 'tractorService', media: equipmentTractorService },
   { key: 'water', media: equipmentWaterCart },
   { key: 'belt', media: equipmentBeltLoader },
   { key: 'gpu', media: equipmentGpu },
-  { key: 'asu', media: equipmentAsu },
 ] as const;
 ---
 
@@ -38,14 +38,14 @@ const equipment = [
       <p class="max-w-2xl text-base leading-relaxed text-cargo-ink/75">{t('home.equipmentIntro')}</p>
     </div>
 
-    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {equipment.map(({ key, media }) => (
-        <li class="group flex flex-col overflow-hidden border border-cargo-deep/15 bg-cargo-white">
+        <li id={`equipment-${key}`} class="group flex scroll-mt-24 flex-col overflow-hidden border border-cargo-deep/15 bg-cargo-white">
           <div class="relative aspect-[4/5] overflow-hidden bg-cargo-mist">
             <img
               src={media.src}
               srcset={media.srcset}
-              sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              sizes="(min-width: 1280px) 280px, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
               alt={t(media.altKey)}
               width={media.width}
               height={media.height}
@@ -60,9 +60,27 @@ const equipment = [
           </div>
         </li>
       ))}
+
+      <li class="flex flex-col justify-between border border-cargo-emerald/50 bg-cargo-mist p-5">
+        <div>
+          <span class="badge-cert">{t('equipment.ctaLabel')}</span>
+          <h3 class="mt-4 font-semibold tracking-[-0.02em] text-cargo-deep">{t('equipment.asuCtaTitle')}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-cargo-ink/75">{t('equipment.asuCtaText')}</p>
+        </div>
+        <a
+          href={quotePath}
+          class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald"
+        >
+          {t('equipment.ctaTitle')}
+          <span aria-hidden="true">↗</span>
+        </a>
+      </li>
     </ul>
 
-    <a href={`${servicesPath}#ramp-gse`} class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald">
+    <a
+      href="#services"
+      class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald"
+    >
       {t('home.equipmentCatalogLink')}
       <span aria-hidden="true">↗</span>
     </a>

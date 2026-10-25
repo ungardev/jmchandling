@@ -124,10 +124,24 @@ export function switchLocalePath(currentPath: string, target: Locale): string {
   return newPath || `/${target}`;
 }
 
+/**
+ * Alternates for hreflang. The trailing slash is preserved so that
+ * `/es/` and `/en/` do not resolve to `/es` and `/en`, which would be a
+ * different URL than the canonical one emitted for the home page.
+ */
 export function getAlternateUrls(currentPath: string, locale: Locale) {
+  // Solo la home lleva barra final; el resto de rutas se dejan intactas.
+  const isHome = currentPath === `/${locale}` || currentPath === `/${locale}/`;
+
+  const alternate = (target: Locale) => {
+    const path = switchLocalePath(currentPath, target);
+    if (!isHome) return path;
+    return path.endsWith('/') ? path : `${path}/`;
+  };
+
   return {
-    en: switchLocalePath(currentPath, 'en'),
-    es: switchLocalePath(currentPath, 'es'),
-    xDefault: switchLocalePath(currentPath, locale === 'en' ? 'en' : 'es'),
+    en: alternate('en'),
+    es: alternate('es'),
+    xDefault: alternate(locale === 'en' ? 'en' : 'es'),
   };
 }

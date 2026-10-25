@@ -5,6 +5,8 @@
  *
  * 1. Lee scripts/media-map.json (mapa semantico maestro).
  * 2. Convierte cada fuente a WebP responsive (varios anchos, sin upscale, sin recorte).
+ * 2b. Aplica recortes art-dirigidos opcionales por item (`aspect` + `position`),
+ *     y genera una variante vertical adicional (`portrait`) para movil.
  * 3. Emite public/assets/photos/manifest.json  -> biblioteca completa (publico, 0 kB de JS).
  * 4. Emite src/data/media.generated.ts        -> subconjunto curado y tipado.
  * 5. Convierte PNG de aliados a WebP.
@@ -102,6 +104,28 @@ function human(bytes) {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
   return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
+}
+
+/**
+ * Resuelve la posicion de recorte de sharp a partir del mapa semantico.
+ * - "attention" / "entropy": sharp elige la region mas informada de la foto.
+ * - "top" | "centre" | "bottom" | "left" | "right": gravedad explicita.
+ * - { top, left }: desplazamiento en pixeles sobre el recorte por defecto.
+ */
+function resolvePosition(position, sharp) {
+  if (position === undefined || position === null) return undefined;
+  if (typeof position === 'object') return position;
+  if (position === 'attention') return sharp.strategy.attention;
+  if (position === 'entropy') return sharp.strategy.entropy;
+  return position;
+}
+
+/** "16:9" -> 1.777… */
+function aspectRatio(aspect) {
+  if (!aspect) return null;
+  const [w, h] = String(aspect).split(':').map(Number);
+  if (!w || !h) return null;
+  return w / h;
 }
 
 /** "Copa Airlines" -> "copa-airlines" */
@@ -202,6 +226,66 @@ async function main() {
     const outDir = groups[item.group];
     await ensureDir(outDir);
 
+    /* --- modo A: recortes art-dirigidos (conjuntos nombrados) --------- */
+    if (Array.isArray(item.sets) && item.sets.length > 0) {
+      const sets = {};
+
+      for (const set of item.sets) {
+        const ratio = aspectRatio(set.aspect);
+        const position = resolvePosition(set.position, sharp);
+        const variants = [];
+
+        for (const width of set.widths) {
+          const height = ratio ? Math.round(width / ratio) : null;
+          const outPath = join(outDir, `${item.id}-${set.name}-${width}.webp`);
+
+          let pipeline = sharp(src, { failOn: 'none' }).rotate();
+          if (height) {
+            pipeline = pipeline.resize({
+              width,
+              height,
+              fit: 'cover',
+              position,
+              withoutEnlargement: false,
+            });
+          } else {
+            pipeline = pipeline.resize({ width, fit: 'inside', withoutEnlargement: true });
+          }
+
+          await pipeline
+            .webp({ quality: set.quality ?? WEBP_QUALITY, effort: WEBP_EFFORT })
+            .toFile(outPath);
+
+          const outMeta = await sharp(outPath).metadata();
+          variants.push({
+            width: outMeta.width,
+            height: outMeta.height,
+            src: `/assets/photos/${item.group}/${item.id}-${set.name}-${width}.webp`,
+          });
+        }
+
+        const largest = variants[variants.length - 1];
+        sets[set.name] = {
+          src: largest.src,
+          width: largest.width,
+          height: largest.height,
+          srcset: variants.map((v) => `${v.src} ${v.width}w`).join(', '),
+          variants,
+        };
+      }
+
+      manifest.push({
+        id: item.id,
+        group: item.group,
+        altKey: item.altKey,
+        curated: item.curated === true,
+        sets,
+      });
+      processed += 1;
+      continue;
+    }
+
+    /* --- modo B: derivacion estandar (conserva la proporcion) --------- */
     const variants = [];
     for (const width of item.widths) {
       const outPath = join(outDir, `${item.id}-${width}.webp`);
@@ -249,15 +333,36 @@ async function main() {
   const camel = (id) => id.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase());
 
   const entries = curated
-    .map(
-      (m) => `export const ${camel(m.id)}: MediaAsset = {
+    .map((m) => {
+      // Activos con recortes art-dirigidos: una variante por breakpoint.
+      if (m.sets) {
+        const sets = Object.entries(m.sets)
+          .map(
+            ([name, set]) => `  ${JSON.stringify(name)}: {
+    src: ${JSON.stringify(set.src)},
+    width: ${set.width},
+    height: ${set.height},
+    srcset: ${JSON.stringify(set.srcset)},
+  },`
+          )
+          .join('\n');
+        return `export const ${camel(m.id)}: ArtDirectedAsset = {
+  id: ${JSON.stringify(m.id)},
+  altKey: ${JSON.stringify(m.altKey)},
+  sets: {
+${sets}
+  },
+};`;
+      }
+
+      return `export const ${camel(m.id)}: MediaAsset = {
   src: ${JSON.stringify(m.src)},
   width: ${m.width},
   height: ${m.height},
   altKey: ${JSON.stringify(m.altKey)},
   srcset: ${JSON.stringify(m.srcset)},
-};`
-    )
+};`;
+    })
     .join('\n\n');
 
   const ts = `/**
@@ -279,11 +384,33 @@ export interface MediaAsset {
   srcset: string;
 }
 
+/** Variante de un activo con recortes art-dirigidos (un set por breakpoint). */
+export interface MediaVariant {
+  src: string;
+  width: number;
+  height: number;
+  srcset: string;
+}
+
+export interface ArtDirectedAsset {
+  id: string;
+  altKey: string;
+  sets: Record<string, MediaVariant>;
+}
+
 ${entries}
 
 export const media = {
-${curated.map((m) => `  ${JSON.stringify(m.id)}: ${camel(m.id)},`).join('\n')}
+${curated.filter((m) => !m.sets).map((m) => `  ${JSON.stringify(m.id)}: ${camel(m.id)},`).join('\n')}
 } as const satisfies Record<string, MediaAsset>;
+
+/** Slides del hero en orden de rotacion. */
+export const heroSlides: ArtDirectedAsset[] = [
+${curated
+  .filter((m) => m.sets)
+  .map((m) => `  ${camel(m.id)},`)
+  .join('\n')}
+];
 
 export type MediaId = keyof typeof media;
 

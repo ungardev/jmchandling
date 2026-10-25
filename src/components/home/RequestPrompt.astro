@@ -8,7 +8,7 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-const quotePath = locale === 'es' ? '/es/cotizacion' : '/en/quote';
+const quotePath = locale === 'es' ? '/es/contacto?intent=quote' : '/en/contact?intent=quote';
 const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
 ---
 
