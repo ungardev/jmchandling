@@ -129,6 +129,21 @@ El bloque corporativo (misión, visión, valores, habilitación) vive en
     `/es/contacto` o `/en/contact` (nunca a través de un stub de redirect, que
     perdería la query).
 
+### Jerarquía visual
+30b. **Escala tipográfica por rol.** Cada texto pertenece a un rol y cada rol
+     tiene un único tamaño: `.type-h2` (titular de sección), `.type-h3` (titular
+     de tarjeta), `.type-lead` (lead), `.type-body` (cuerpo), `.type-meta`
+     (apoyo), `.type-figure` (cifra), `.eyebrow` (etiqueta). No inventes
+     tamaños sueltos.
+30c. **Ningún `<h3>` puede renderizar más pequeño que el párrafo que lo
+     acompaña.** Si el titular queda por debajo del cuerpo, sube el titular.
+30d. **Orden canónico de sección:** `eyebrow → H2 → lead → contenido → apoyo`.
+     El eyebrow abre siempre; nunca aparece después del bloque que introduce.
+30e. **Las credenciales se declaran, el documento se consulta.** El certificado
+     CESEA-021 no se muestra en la home: credenciales en
+     `src/components/ui/Credential.astro`, evidencia a un clic en pestaña
+     nueva. Un documento grayscale con sello baja la percepción de marca.
+
 ### Gate
 31. Antes de entregar, debe pasar:
     `npm run verify && npm run lint`
@@ -357,6 +372,46 @@ resuelve. Si no puedes verificar un punto en consola, dilo explícitamente.
 3. Para cada clave i18n nueva: nombre, valor ES, valor EN.
 4. Avisos de lo que **no** se puede corregir sin datos del cliente.
 5. Salida de `npm run verify && npm run lint`.
+
+---
+
+# COMANDO 5 — `/elite-design`
+
+**Objetivo:** elevar la percepción de autoridad y la escala tipografica del
+sitio sin tocar arquitectura, navegacion ni copy. Cada seccion debe leerse
+como una declaracion, no como un bloque de texto.
+
+**Precondicion:** lee `rules/design-tokens.md` y `DESIGN.md`. El detalle
+operativo esta en `.kombai/commands/elite-design.md`.
+
+## Lo que gobierna este comando
+
+1. **Escala por rol, no tamaños sueltos.** Cada texto pertenece a un rol
+   (`.type-h2`, `.type-h3`, `.type-lead`, `.type-body`, `.type-meta`,
+   `.type-figure`, `.eyebrow`) y cada rol tiene un unico tamaño.
+2. **Ningun `<h3>` puede renderizar mas pequeno que su parrafo.** Si el titular
+   queda por debajo del cuerpo, sube el titular.
+3. **Orden canonico:** `eyebrow -> H2 -> lead -> contenido -> apoyo`. El
+   eyebrow abre siempre.
+4. **Las credenciales se declaran, el documento se consulta.** El certificado
+   CESEA-021 no se muestra en la home: se declara la credencial y el link
+   abre el original en pestana nueva. Formato unico:
+   `src/components/ui/Credential.astro`, datos en `src/data/credentials.ts`.
+5. **Los hechos vienen de la fuente primaria** (el certificado, el brochure).
+   No inventes vigencias, codigos ni autoridades. Si falta un dato, reportalo
+   como pendiente de negocio; no lo escribas.
+
+## Alcance
+
+`src/components/home/*.astro`, `src/components/contact/*.astro`,
+`src/components/ui/*.astro`, `src/pages/{es,en}/*.astro` y
+`src/styles/global.css`. Nada de `src/layouts/`, `astro.config.mjs`,
+`scripts/` o `vercel.json` sin pedirlo.
+
+## Gate
+
+`npm run verify && npm run lint`, 0 kB de JS, y revision manual del orden de
+seccion, del contraste real y del tamano relativo de cada titular.
 
 ---
 

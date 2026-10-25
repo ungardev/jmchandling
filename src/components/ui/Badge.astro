@@ -1,11 +1,11 @@
 ---
 export interface Props {
-  variant?: 'cert' | 'inac' | 'sms' | 'esea';
-  size?: 'sm' | 'md';
+  variant?: 'cert' | 'inac' | 'sms';
+  size?: 'sm';
   class?: string;
 }
 
-const { variant = 'cert', size = 'md', class: className = '' } = Astro.props;
+const { variant = 'cert', size = 'sm', class: className = '' } = Astro.props;
 
 const variantStyles = {
   // El badge se usa sobre superficies oscuras (deep / ink): cargo-emerald
@@ -13,12 +13,10 @@ const variantStyles = {
   cert: 'border-cargo-emerald/60 text-cargo-light',
   inac: 'border-cargo-light/60 text-cargo-light',
   sms: 'border-cargo-white/40 text-cargo-white',
-  esea: 'border-cargo-deep/50 text-cargo-deep',
 };
 
 const sizeClasses = {
   sm: 'px-2 py-1 text-xs',
-  md: 'px-2.5 py-1.5 text-xs',
 };
 
 const classes = [

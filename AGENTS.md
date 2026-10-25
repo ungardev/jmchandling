@@ -146,6 +146,7 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 - `.section-pad` — section vertical padding
 - `.container-max` — page container (`max-w-7xl`)
 - `.eyebrow`, `.eyebrow-on-light`, `.eyebrow-on-dark` — etiqueta superior de seccion
+- `.type-h2`, `.type-h3`, `.type-lead`, `.type-body`, `.type-meta`, `.type-figure` — escala tipografica por rol
 - `.animate-fade-up`, `.animate-fade-in` — entrance animations
 
 > `.glass`, `.glass-dark`, `.text-gradient-emerald` and `.card-service` are **not
@@ -156,6 +157,27 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 - Use `@apply` in component-scoped styles (use utility classes)
 - Use `!important` except for accessibility overrides
 - Use arbitrary values like `bg-[#0F3E51]` (use the token)
+
+---
+
+## Visual Hierarchy
+
+- **Type scale by role.** Every text belongs to exactly one role, and every
+  role has exactly one size: `.type-h2` (section heading), `.type-h3` (card
+  heading), `.type-lead` (intro paragraph), `.type-body` (reading copy),
+  `.type-meta` (supporting text), `.type-figure` (metric), `.eyebrow`
+  (section label). Never invent loose sizes.
+- **No `<h3>` may render smaller than the paragraph it accompanies.** If the
+  heading sits below the body copy, raise the heading.
+- **Canonical section order:** `eyebrow → H2 → lead → content → support`.
+  The eyebrow always opens; it never follows the block it introduces.
+- **Credentials are declared, documents are consulted.** The CESEA-021
+  certificate scan must not be displayed on the home page. Credentials render
+  through `src/components/ui/Credential.astro` (data in
+  `src/data/credentials.ts`); the original opens on demand in a new tab.
+- **Facts come from the primary source** (the INAC certificate, the brand
+  brochure). Never invent validity dates, codes or issuing authorities —
+  report them as pending business validation instead.
 
 ---
 
@@ -198,8 +220,10 @@ src/
 │   ├── home/       Hero, AlliesStrip, ServicesGrid, EquipmentGrid,
 │   │               SafetySection, RequestPrompt
 │   ├── contact/    QuoteForm.astro, ContactInfo.astro, FormStatus.astro
-│   └── ui/         Button.astro, Badge.astro, Card.astro, Section.astro
-├── data/           siteContent.ts, allies.ts, media.generated.ts (GENERATED)
+│   └── ui/         Button.astro, Badge.astro, Card.astro, Section.astro,
+│                   Credential.astro
+├── data/           siteContent.ts, allies.ts, credentials.ts,
+│                   media.generated.ts (GENERATED)
 ├── i18n/           es.json, en.json, utils.ts
 ├── layouts/        Layout.astro
 ├── pages/

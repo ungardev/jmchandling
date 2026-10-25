@@ -28,10 +28,10 @@ const specialServices = [
   <div class="container-max">
     <div class="mb-8 flex flex-col justify-between gap-5 border-b border-cargo-deep/20 pb-6 md:flex-row md:items-end">
       <div class="max-w-2xl">
-        <h2 id="task-heading" class="text-balance text-3xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-4xl">
+        <h2 id="task-heading" class="type-h2 max-w-2xl text-balance text-cargo-deep">
           {t('home.taskHeading')}
         </h2>
-        <p class="mt-3 max-w-xl text-base leading-relaxed text-cargo-ink/75">
+        <p class="type-lead mt-4 max-w-xl text-cargo-ink/80">
           {t('home.taskIntro')}
         </p>
       </div>
@@ -47,10 +47,10 @@ const specialServices = [
           <article id={family.key} class="scroll-mt-24 py-6 sm:py-7">
             <div class="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start">
               <div>
-                <h3 class="text-xl font-semibold tracking-[-0.025em] text-cargo-deep">{t(family.titleKey)}</h3>
-                <p class="mt-2 max-w-2xl text-sm leading-relaxed text-cargo-ink/75">{t(family.descriptionKey)}</p>
+                <h3 class="type-h3 text-cargo-deep">{t(family.titleKey)}</h3>
+                <p class="type-body mt-3 max-w-2xl text-cargo-ink/80">{t(family.descriptionKey)}</p>
                 {family.serviceKeys.length > 0 && (
-                  <p class="mt-3 text-sm leading-relaxed text-cargo-ink/75">
+                  <p class="type-meta mt-3 text-cargo-ink/75">
                     {family.serviceKeys.map((serviceKey) => {
                       const service = getService(serviceKey);
                       return service ? t(service.titleKey) : '';
@@ -72,10 +72,10 @@ const specialServices = [
       </div>
 
       <aside class="border-l-2 border-cargo-emerald pl-6 sm:pl-8">
-        <h3 class="max-w-md text-xl font-semibold leading-snug tracking-[-0.025em] text-cargo-deep">
+        <h3 class="type-h3 max-w-md text-cargo-deep">
           {t('home.specialAsideTitle')}
         </h3>
-        <p class="mt-4 text-sm leading-relaxed text-cargo-ink/75">
+        <p class="type-body mt-4 text-cargo-ink/80">
           {t('home.specialAsideLead')} {specialServices.join('; ')}.
         </p>
         <a href="#passenger-services" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-ink">

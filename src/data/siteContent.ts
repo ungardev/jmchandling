@@ -1,16 +1,9 @@
-export type ContentStatus = 'verified' | 'needs-business-validation' | 'deprecated';
-
 export type ServiceFamilyKey =
   | 'ramp-gse'
   | 'aircraft-care'
   | 'fbo-operations'
   | 'passenger-services'
   | 'gse-maintenance';
-
-export interface LocalizedText {
-  es: string;
-  en: string;
-}
 
 export interface ServiceFamily {
   key: ServiceFamilyKey;
@@ -27,14 +20,6 @@ export interface ServiceDefinition {
   titleKey: string;
   descriptionKey: string;
   bulletsKey: string;
-}
-
-export interface ProofPoint {
-  type: 'certification' | 'station' | 'experience' | 'training' | 'equipment';
-  value: string;
-  labelKey: string;
-  source?: string;
-  status: ContentStatus;
 }
 
 export const serviceFamilies: ServiceFamily[] = [
@@ -91,10 +76,10 @@ export const services: ServiceDefinition[] = [
   { key: 'maintenance', family: 'gse-maintenance', titleKey: 'services.maintenanceTitle', descriptionKey: 'services.maintenanceDesc', bulletsKey: 'services.maintenanceBullets' },
 ];
 
-export function getService(key: string) {
+export function getService(key: string): ServiceDefinition | undefined {
   return services.find((service) => service.key === key);
 }
 
-export function getServiceFamily(key: ServiceFamilyKey) {
+export function getServiceFamily(key: ServiceFamilyKey): ServiceFamily | undefined {
   return serviceFamilies.find((family) => family.key === key);
 }

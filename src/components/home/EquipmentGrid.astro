@@ -32,10 +32,10 @@ const equipment = [
   <span id="equipos" class="sr-only" aria-hidden="true"></span>
   <div class="container-max">
     <div class="grid gap-6 border-b border-cargo-deep/20 pb-7 md:grid-cols-[0.75fr_1.25fr] md:items-end">
-      <h2 id="equipment-heading" class="max-w-md text-3xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-4xl">
+      <h2 id="equipment-heading" class="type-h2 max-w-md text-cargo-deep">
         {t('home.equipmentHeading')}
       </h2>
-      <p class="max-w-2xl text-base leading-relaxed text-cargo-ink/75">{t('home.equipmentIntro')}</p>
+      <p class="type-lead max-w-2xl text-cargo-ink/80">{t('home.equipmentIntro')}</p>
     </div>
 
     <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -55,8 +55,8 @@ const equipment = [
             />
           </div>
           <div class="flex flex-1 flex-col border-t border-cargo-deep/15 p-5">
-            <h3 class="font-semibold tracking-[-0.02em] text-cargo-deep">{t(`equipment.${key}Title`)}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-cargo-ink/75">{t(`equipment.${key}Desc`)}</p>
+            <h3 class="type-h3 text-cargo-deep">{t(`equipment.${key}Title`)}</h3>
+            <p class="type-body mt-3 text-cargo-ink/80">{t(`equipment.${key}Desc`)}</p>
           </div>
         </li>
       ))}
@@ -64,8 +64,8 @@ const equipment = [
       <li class="flex flex-col justify-between border border-cargo-emerald/50 bg-cargo-mist p-5">
         <div>
           <span class="badge-cert">{t('equipment.ctaLabel')}</span>
-          <h3 class="mt-4 font-semibold tracking-[-0.02em] text-cargo-deep">{t('equipment.asuCtaTitle')}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-cargo-ink/75">{t('equipment.asuCtaText')}</p>
+          <h3 class="type-h3 mt-4 text-cargo-deep">{t('equipment.asuCtaTitle')}</h3>
+          <p class="type-body mt-3 text-cargo-ink/80">{t('equipment.asuCtaText')}</p>
         </div>
         <a
           href={quotePath}

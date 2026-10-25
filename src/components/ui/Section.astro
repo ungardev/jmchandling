@@ -3,7 +3,7 @@ export interface Props {
   id?: string;
   class?: string;
   ariaLabel?: string;
-  background?: 'dark' | 'deep' | 'mist' | 'transparent' | 'white' | 'cargo-light' | 'cargo-ink';
+  background?: 'deep' | 'mist' | 'transparent' | 'white' | 'cargo-light' | 'cargo-ink';
   padY?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
@@ -11,12 +11,11 @@ const {
   id,
   class: className = '',
   ariaLabel,
-  background = 'dark',
+  background = 'deep',
   padY = 'lg',
 } = Astro.props;
 
 const bgClasses = {
-  dark: 'bg-cargo-ink text-cargo-white',
   deep: 'bg-cargo-deep text-cargo-white',
   mist: 'bg-cargo-mist text-cargo-ink',
   transparent: 'bg-transparent',

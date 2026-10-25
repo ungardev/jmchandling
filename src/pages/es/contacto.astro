@@ -33,8 +33,8 @@ const service = Astro.url.searchParams.get('service') ?? undefined;
         <ContactInfo locale={locale} />
         <div>
           <p class="eyebrow eyebrow-on-light">{t('contact.formTitle')}</p>
-          <h2 class="mt-5 text-3xl font-semibold tracking-[-0.03em] text-cargo-white">{t('contact.introTitle')}</h2>
-          <p class="mt-4 max-w-lg text-sm leading-relaxed text-cargo-white/85">{t('contact.intro')}</p>
+          <h2 class="type-h2 mt-5 max-w-lg text-cargo-white">{t('contact.introTitle')}</h2>
+          <p class="type-body mt-4 max-w-lg text-cargo-white/85">{t('contact.intro')}</p>
           <div class="mt-10 border-t border-cargo-light/20 pt-8">
             <QuoteForm locale={locale} variant="full" selectedService={service} />
           </div>

@@ -19,13 +19,13 @@ const isSuccess = variant === 'success';
   ]}
   role={isSuccess ? 'status' : 'alert'}
 >
-  <p class="font-mono text-xs uppercase tracking-[0.1em]" class:text-cargo-light={isSuccess} class:text-cargo-light={!isSuccess}>
+  <p class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-light">
     {isSuccess ? t('quote.successCode') : t('quote.errorCode')}
   </p>
-  <h2 class="mt-3 text-xl font-semibold text-cargo-white">
+  <h2 class="type-h3 mt-3 text-cargo-white">
     {isSuccess ? t('quote.successTitle') : t('quote.errorTitle')}
   </h2>
-  <p class="mt-2 text-sm leading-relaxed text-cargo-white/85">
+  <p class="type-body mt-3 text-cargo-white/85">
     {isSuccess ? t('quote.successText') : t('quote.errorText')}
   </p>
 </div>

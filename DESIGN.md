@@ -46,13 +46,25 @@ español (`#capacidades`, `#equipos`, `#empresa`, `#seguridad`) existen como
 
 - **Nunca** `bg-[#0F3E51]`, `#fff`, `rgb(...)` ni colores fuera de la tabla.
 - Opacidad sí se permite sobre tokens: `text-cargo-white/80`, `border-cargo-deep/15`.
-- Contraste mínimo AA verificado:
-  - `cargo-emerald` sobre `cargo-deep` → 4.7:1 ✓
-  - `cargo-white` sobre `cargo-deep` → 13.6:1 ✓
-  - `cargo-ink` sobre `cargo-mist` → 15.2:1 ✓
-  - `cargo-emerald` sobre `cargo-white` → **3.1:1 ✗** → nunca texto pequeño;
-    solo bordes, iconos grandes, badge con `cargo-ink` encima.
-- El azul medio (`cargo-emerald`) **no** es un color de texto sobre blanco.
+- Contraste mínimo AA verificado sobre el token real:
+
+  | fg | bg | ratio |
+  |---|---|---|
+  | `cargo-white` | `cargo-deep` | 11.49:1 ✓ |
+  | `cargo-white` | `cargo-ink` | 16.88:1 ✓ |
+  | `cargo-light` | `cargo-deep` | 7.74:1 ✓ |
+  | `cargo-light` | `cargo-ink` | 11.38:1 ✓ |
+  | `cargo-deep` | `cargo-white` | 11.49:1 ✓ |
+  | `cargo-deep` | `cargo-mist` | 10.77:1 ✓ |
+  | `cargo-emerald` | `cargo-deep` | **4.31:1 ✗ para texto pequeño** |
+  | `cargo-emerald` | `cargo-white` | **2.67:1 ✗** |
+
+- `cargo-emerald` **no** es color de texto. Queda para bordes, subrayados,
+  indicadores y decoración. Para texto: `cargo-deep` sobre claros,
+  `cargo-light` sobre oscuros. Para etiquetas: `.eyebrow` + `.eyebrow-on-light`
+  / `.eyebrow-on-dark`.
+- Sobre fotografía, el contraste se mide contra el **píxel más brillante** de
+  la zona del texto, no contra un color medio.
 
 ### Ritmo de superficies
 
@@ -77,27 +89,53 @@ subsección dentro de la anterior.
   equipos (AWB, ULD, GPU, RAV 111).
 - **Prohibido** Poppins, Roboto, Open Sans, Lato, Montserrat o cualquier otra.
 
-### Escala
+### Escala por rol
 
-| Uso | Clase | Tamaño |
-|---|---|---|
-| Display hero | `text-5xl`–`text-7xl` | 48–72 px |
-| H2 de sección | `text-3xl`–`text-4xl` | 30–36 px |
-| H3 de tarjeta | `text-xl`–`text-2xl` | 20–24 px |
-| Cuerpo grande | `text-lg` | 18 px |
-| Cuerpo | `text-base` | 16 px |
-| Cuerpo secundario / lead | `text-sm` | 14 px |
-| Etiqueta / caption | `text-xs` | 12 px |
-| Cifra destacada | `font-mono text-3xl`–`text-4xl` | 30–36 px |
+Cada texto de la interfaz pertenece a **un** rol, y cada rol tiene **un**
+tamaño y **un** ritmo. Las clases viven en `src/styles/global.css`; no
+inventar tamaños sueltos.
+
+| Rol | Clase | Tamaño | Aplicar en |
+|---|---|---|---|
+| Display hero | (fuera del sistema) | 36–72 px · `leading-[1.02]` | solo `Hero.astro` |
+| H2 de sección | `.type-h2` | 30–36 px · `tracking-[-0.04em]` | H2 de cada sección |
+| H3 de tarjeta | `.type-h3` | 18–20 px · `tracking-[-0.025em]` | H3 de tarjetas y columnas |
+| Lead / párrafo introductorio | `.type-lead` | 16–18 px | lead de sección |
+| Cuerpo de lectura | `.type-body` | 16 px | descripciones y párrafos |
+| Texto de apoyo | `.type-meta` | 14 px | captions, pies, notas |
+| Etiqueta | `.eyebrow` + `.eyebrow-on-light` / `.eyebrow-on-dark` | 12 px mono | etiqueta superior de sección |
+| Cifra destacada | `.type-figure` | 30–36 px mono | años, métricas |
 
 ### Reglas
 
+- **Ningún `<h3>` puede renderizar más pequeño que el párrafo que lo acompaña.**
+  Si el titular queda por debajo del cuerpo, sube el titular; nunca bajes el
+  texto de lectura.
+- **Orden canónico de sección:** `eyebrow → H2 → lead → contenido → apoyo`.
+  El eyebrow abre siempre; nunca aparece después del bloque que introduce.
 - Tracking negativo en títulos: `tracking-[-0.04em]` (H2) a `tracking-[-0.045em]` (H1).
-- `leading-[1.02]` en H1, `leading-[1.05]`–`leading-[1.1]` en H2, `leading-relaxed` en cuerpo.
+- `leading-[1.02]` en H1, `leading-[1.08]` en H2, `leading-relaxed` en cuerpo.
 - `text-balance` en titulares de más de 2 líneas.
 - Etiquetas en mono: `font-mono text-xs uppercase tracking-[0.12em]`.
 - Ancho de línea: 60–72 caracteres. `max-w-xl` (titular) / `max-w-2xl` (párrafo largo).
 - Nunca justificar. Nunca `font-light` para texto de interfaz pequeño.
+
+### Credenciales
+
+Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
+
+- Componente único: `src/components/ui/Credential.astro`.
+  Formato: código mono en `cargo-light` (con punto `cargo-emerald`) → título →
+  separador `border-cargo-white/15` → emisor → vigencia (mono 12 px) → link de
+  evidencia.
+- Datos en `src/data/credentials.ts`. Los hechos vienen de la fuente primaria
+  (el certificado CESEA-021 del INAC): código, emisor y vigencia.
+- **El escaneo del certificado no se muestra en la home.** Un documento
+  grayscale con sello ocupa más espacio que la propia declaración de
+  autoridad y baja la percepción de marca. El link abre el original en
+  pestaña nueva con `rel="noopener noreferrer"`.
+- Grid `sm:grid-cols-2`, borde `border-cargo-white/15`, fondo
+  `bg-cargo-white/[0.04]`, hover `border-cargo-emerald/50`.
 
 ---
 
@@ -144,22 +182,27 @@ subsección dentro de la anterior.
 | Componente | Ruta | Notas |
 |---|---|---|
 | `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, 4 enlaces, selector ES/EN |
-| `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink` |
-| `Hero` | `src/components/home/Hero.astro` | Grid 0.92/1.08, foto vertical a la derecha |
-| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, logos a color |
-| `ServicesGrid` | `src/components/home/ServicesGrid.astro` | `id="services"` |
-| `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 tarjetas 4:5 |
-| `About` | `src/components/home/About.astro` | `id="about"`, fondo `cargo-deep` |
-| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"` |
+| `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink` (compact) / `cargo-deep` (default) |
+| `Hero` | `src/components/home/Hero.astro` | Foto única a pantalla completa, scrim de dos gradientes, texto en el tercio izquierdo |
+| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, 6 logos con tamaño por peso óptico |
+| `ServicesGrid` | `src/components/home/ServicesGrid.astro` | `id="services"`, 5 familias + aside |
+| `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 tarjetas 4:5 + CTA ASU |
+| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, credenciales + foto de equipo |
 | `RequestPrompt` | `src/components/home/RequestPrompt.astro` | CTA sobre `cargo-light` |
+| `Credential` | `src/components/ui/Credential.astro` | Formato único de credencial |
 | `Button` / `Badge` / `Card` / `Section` | `src/components/ui/` | Primitivas |
 | `QuoteForm` | `src/components/contact/QuoteForm.astro` | FormSubmit.co |
 
 ### Primitivas disponibles en `src/styles/global.css`
 
-`.btn-primary` · `.btn-secondary` · `.btn-ghost` · `.badge-cert` · `.card-service` ·
-`.nav-link` · `.field-control` · `.section-pad` · `.container-max` · `.skip-to-content` ·
-`.glass` · `.glass-dark` · `.text-gradient-emerald`
+`.btn-primary` · `.btn-secondary` · `.btn-ghost` · `.badge-cert` ·
+`.nav-link` · `.field-control` · `.section-pad` · `.container-max` ·
+`.skip-to-content` · `.eyebrow` · `.eyebrow-on-light` · `.eyebrow-on-dark` ·
+`.type-h2` · `.type-h3` · `.type-lead` · `.type-body` · `.type-meta` ·
+`.type-figure`
+
+> `.glass`, `.glass-dark`, `.text-gradient-emerald` y `.card-service` **no**
+> están definidas. No las referencies: créalas si hacen falta o evita usarlas.
 
 > `.card-service` y las utilidades `.glass*` / `.text-gradient-emerald` **no existen
 > todavía en `global.css`**: créalas como parte del trabajo si las vas a usar, o

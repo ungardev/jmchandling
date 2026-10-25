@@ -165,12 +165,6 @@
     ]
   },
   "equipment": {
-    "sectionLabel": "EQUIPMENT FLEET",
-    "title": "Ramp equipment",
-    "subtitle": "Complete infrastructure to guarantee safe and efficient aircraft transit on the ramp.",
-    "metaTitle": "GSE Equipment | JMC Handling",
-    "metaDesc": "Learn about JMC's ground support equipment fleet: baggage carts, tractors, water trucks, belt loaders, GPUs and ASUs.",
-    "gridLabel": "OUR FLEET",
     "carruchaTitle": "Baggage Cart",
     "carruchaDesc": "Non-motorized equipment designed to contain and transport passenger baggage, mail or loose cargo. They are linked together forming a train that is pulled between the terminal and the aircraft.",
     "tractorTitle": "Baggage Tractor",
@@ -209,7 +203,8 @@
     "rif": "J401336558",
     "mediaAlt": "CESEA-021 certification document for Servicios Especializados JMC",
     "mediaCaption": "Documentary evidence · CESEA-021",
-    "mediaLink": "Review the evidence"
+    "mediaLink": "Review the evidence",
+    "teamCaption": "Ramp team · operational safety protocol"
   },
   "quote": {
     "title": "Coordinate an operation",
@@ -383,5 +378,23 @@
       "opsStandDetail": "Detail of the parking stand",
       "opsUldInHold": "ULD container loaded inside the aircraft hold"
     }
+  },
+  "credentials": {
+    "ceseaCode": "CESEA-021",
+    "ceseaTitle": "Certified Airport Ground Services Operator",
+    "ceseaIssuer": "National Institute of Civil Aeronautics",
+    "ceseaValidity": "Valid until August 16, 2027",
+    "ravCode": "RAV 111",
+    "ravTitle": "Venezuelan Aeronautical Regulation 111",
+    "ravIssuer": "Civil Aviation Authority",
+    "ravValidity": "Permanent authorisation",
+    "inacCode": "INAC",
+    "inacTitle": "Certified apron services operator",
+    "inacIssuer": "General Directorate of Aeronautical Safety",
+    "smsCode": "SMS",
+    "smsTitle": "Safety Management System",
+    "smsIssuer": "Continuous training and process oversight",
+    "sectionLabel": "AUTHORISATIONS AND REGULATION",
+    "heading": "We operate under official INAC authorisation, meeting the technical and safety conditions required by Venezuelan civil aviation regulation."
   }
 }

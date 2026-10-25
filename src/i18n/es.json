@@ -165,12 +165,6 @@
     ]
   },
   "equipment": {
-    "sectionLabel": "FLOTA DE EQUIPOS",
-    "title": "Equipos de plataforma",
-    "subtitle": "Infraestructura completa para garantizar un tránsito seguro y eficiente de aeronaves en la rampa.",
-    "metaTitle": "Equipos GSE | JMC Handling",
-    "metaDesc": "Conoce la flota de equipos de apoyo terrestre de JMC: carruchas, tractores, carros de aguas, cintas transportadoras, GPU y ASU.",
-    "gridLabel": "NUESTRA FLOTA",
     "carruchaTitle": "Carrucha",
     "carruchaDesc": "Equipo sin motor diseñado para contener y transportar equipaje de pasajeros, correo o carga suelta. Se enganchan entre sí formando un tren que es arrastrado entre la terminal y la aeronave.",
     "tractorTitle": "Tractor Remolcador",
@@ -187,7 +181,7 @@
     "ctaTitle": "¿Necesita equipos GSE para su operación?",
     "ctaText": "Solicite una cotización o coordine directamente con nuestro equipo comercial.",
     "tractorServiceTitle": "Tractor de Plataforma",
-    "tractorServiceDesc": "Unidad de arrastre de plataforma con asiento de conductor, volante y plataforma trasera para mover carruchas y equipment de apoyo con autonomía y visibilidad total.",
+    "tractorServiceDesc": "Unidad de arrastre de plataforma con asiento de conductor, volante y plataforma trasera para mover carruchas y equipos de apoyo con autonomía y visibilidad total.",
     "asuCtaTitle": "¿Necesita ASU?",
     "asuCtaText": "La unidad de arranque neumático se coordina bajo requerimiento del operador. Solicítela con el resto de su operación.",
     "equipmentAltNote": "Fotografía de la flota de JMC en la plataforma del aeropuerto de Maiquetía."
@@ -209,7 +203,8 @@
     "rif": "J401336558",
     "mediaAlt": "Documento de certificación CESEA-021 de Servicios Especializados JMC",
     "mediaCaption": "Evidencia documental · CESEA-021",
-    "mediaLink": "Revisar la evidencia"
+    "mediaLink": "Revisar la evidencia",
+    "teamCaption": "Equipo de rampa · protocolo de seguridad operacional"
   },
   "quote": {
     "title": "Coordinar una operación",
@@ -383,5 +378,23 @@
       "opsStandDetail": "Detalle de la plataforma de estacionamiento",
       "opsUldInHold": "Contenedor ULD cargado dentro de la bodega"
     }
+  },
+  "credentials": {
+    "ceseaCode": "CESEA-021",
+    "ceseaTitle": "Explotador de Servicios Especializados Aeroportuarios",
+    "ceseaIssuer": "Instituto Nacional de Aeronáutica Civil",
+    "ceseaValidity": "Vigente hasta el 16 de agosto de 2027",
+    "ravCode": "RAV 111",
+    "ravTitle": "Regulación Aeronáutica Venezolana 111",
+    "ravIssuer": "Autoridad Aeronáutica Civil",
+    "ravValidity": "Habilitación permanente",
+    "inacCode": "INAC",
+    "inacTitle": "Explotador certificado de servicios en plataforma",
+    "inacIssuer": "Gerencia General de Seguridad Aeronáutica",
+    "smsCode": "SMS",
+    "smsTitle": "Safety Management System",
+    "smsIssuer": "Capacitación y seguimiento de procesos",
+    "sectionLabel": "HABILITACIONES Y NORMATIVA",
+    "heading": "Operamos bajo habilitación oficial del INAC, con las condiciones técnicas y de seguridad que la normativa aeronáutica venezolana exige."
   }
 }
