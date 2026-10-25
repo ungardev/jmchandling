@@ -23,7 +23,9 @@ rol tiene **un** tamaño. Las clases viven en `src/styles/global.css`:
 | Parrafo introductorio | `.type-lead` | 16→18px `leading-relaxed` | lead de seccion, subtexto de hero |
 | Cuerpo de lectura | `.type-body` | 16px `leading-relaxed` | descripciones de tarjeta y parrafos |
 | Texto de apoyo | `.type-meta` | 14px `leading-relaxed` | captions, pies, notas, listas secundarias |
-| Etiqueta | `.eyebrow` + `.eyebrow-on-light` / `.eyebrow-on-dark` | 12px mono uppercase | etiqueta superior de seccion |
+| Etiqueta | `.eyebrow` + `.eyebrow-on-light` / `.eyebrow-on-dark` | 12px mono uppercase | etiqueta **informativa** de seccion |
+| Indice de bloque | `IndexLabel.astro` | 12px mono | numero `01`-`05` en el margen |
+| Rotulo de dato | `Label.astro` | 12px mono | rotulo de campo o de fila |
 | Cifra | `.type-figure` | 30→36px mono | anios, metricas, codigos destacados |
 
 ### Regla dura del sistema
@@ -36,12 +38,36 @@ cuerpo. Sube el titular; nunca bajes el texto de lectura.
 ### Orden canonico de cada seccion
 
 ```
-eyebrow  ->  H2  ->  lead  ->  [contenido]  ->  apoyo
+H2  ->  lead  ->  [contenido]  ->  apoyo
 ```
 
-El eyebrow **abre** la seccion. Nunca aparece despues del contenido que
-introduce. Si en una seccion el eyebrow esta debajo del bloque de badges o
-del parrafo introductorio, es un bug de orden: reordena.
+La etiqueta `.eyebrow` **no es obligatoria**: usala solo cuando aporte
+informacion (tipo de contenido, estandar, estacion). Repetirla en todas las
+secciones es ruido de plantilla y por eso esta prohibida.
+
+### Numeracion
+
+Un solo sistema de bloque (`01`, `02`...) en el margen, con el mismo ritmo en
+servicios, equipos, seguridad y contacto. Nunca numeres ad hoc ("01 .", "1.").
+
+---
+
+## 1b. Anti-slop (direccion suiza / editorial tecnico)
+
+Retícula de 12 columnas asimetrica, reglas horizontales, aire, tipografia
+fuerte, metadatos en mono. Prohibido:
+
+- Etiqueta decorativa repetida en cada seccion.
+- Chips, piloras y muros de valores (`+30 anos . CESEA . 24/7`).
+- Flecha universal `↗` en todo enlace: una sola, solo en CTA primarios, SVG inline.
+- CTA escritos a mano: todo pasa por `Button.astro` / `ActionLink.astro`.
+- Frases de efecto ("La seguridad no se declara. Se opera.").
+- Imperativos de plantilla ("Explore nuestras capacidades").
+- Tarjetas con sombra + radio + fondo propio.
+- `text-center` en secciones de contenido.
+- Muros de texto unidos por `;`.
+- El mismo CTA repetido tres veces en una pagina.
+- Icono + etiqueta redundantes.
 
 ---
 
@@ -65,7 +91,7 @@ titulo de la credencial (16px, cargo-white)
 ------------------------------------------------------------------------
 emisor (14px, cargo-white/75)
 vigencia (12px mono, cargo-light/90)   [opcional]
-Ver documento original ↗               [solo si hay evidencia]
+Ver documento original (icono SVG)   [solo si hay evidencia]
 ```
 
 ### Datos
@@ -93,12 +119,16 @@ aparecer en la home.
 
 ## 3. Reglas de superficie
 
-- Alterna fondos: `deep -> white -> mist -> cargo-light -> cargo-ink`.
-  **Nunca dos secciones seguidas con el mismo fondo.**
+- Alterna fondos: `ink (hero) -> mist (indice) -> white (aliados) -> mist
+  (servicios) -> white (equipos) -> mist (operacion) -> deep (seguridad) ->
+  white (cierre)`. **Nunca dos secciones seguidas con el mismo fondo.**
 - Bordes, no sombras. La profundidad se construye con `border-cargo-white/15`
   en oscuro y `border-cargo-deep/15` en claro.
 - `rounded-sm` es la norma. `rounded-full` solo para indicadores.
 - Sin gradientes decorativos salvo el scrim del hero.
+- La retícula base es `.grid-12` (4/8/12 columnas). Compón con `col-span-*` y
+  `col-start-*`: contenido declarativo a la izquierda, foto o dato técnico a
+  la derecha.
 
 ---
 
@@ -107,6 +137,7 @@ aparecer en la home.
 Por defecto, solo:
 
 - `src/components/home/*.astro`
+- `src/components/pages/*.astro`
 - `src/components/contact/*.astro`
 - `src/components/ui/*.astro`
 - `src/pages/{es,en}/*.astro`
@@ -153,8 +184,9 @@ Ademas, antes de entregar:
 2. Recorre el sitio a 360 px: sin scroll horizontal, sin texto cortado.
 3. Verifica el contraste del texto nuevo sobre su fondo real (no sobre el
    color de la seccion).
-4. Revisa el orden de las secciones: el eyebrow abre siempre.
+4. Revisa el orden de las secciones: `H2 -> lead -> contenido -> apoyo`.
 5. Confirma que ningun `<h3>` quedo mas pequeno que su parrafo.
+6. Repasa la lista anti-slop del punto 1b sobre el resultado.
 
 ---
 

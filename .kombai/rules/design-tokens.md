@@ -36,8 +36,9 @@ decoración. Para texto: `cargo-deep` sobre fondos claros, `cargo-light` sobre
 fondos oscuros. Para etiquetas de sección, usar siempre `.eyebrow` +
 `.eyebrow-on-light` / `.eyebrow-on-dark`.
 
-**Ritmo de superficies:** alterna `deep → white → mist → light → ink`. Nunca dos
-secciones seguidas con el mismo fondo.
+**Ritmo de superficies:** la home alterna `ink (hero) → mist (índice) → white
+(aliados) → mist (servicios) → white (equipos) → mist (operación) → deep
+(seguridad) → white (cierre)`. Nunca dos secciones seguidas con el mismo fondo.
 
 ## Tipografía
 
@@ -58,14 +59,22 @@ están en `src/styles/global.css`. No inventes tamaños sueltos.
 | Párrafo introductorio | `.type-lead` | 16→18px · `leading-relaxed` | lead de sección |
 | Cuerpo de lectura | `.type-body` | 16px · `leading-relaxed` | descripciones de tarjeta y párrafos |
 | Texto de apoyo | `.type-meta` | 14px · `leading-relaxed` | captions, pies, notas |
-| Etiqueta | `.eyebrow` + variante | 12px mono uppercase `tracking-[0.12em]` | etiqueta superior de sección |
+| Etiqueta | `.eyebrow` + variante | 12px mono uppercase `tracking-[0.12em]` | etiqueta **informativa** de sección |
+| Índice de bloque | `IndexLabel.astro` | 12px mono | número `01`–`05` en el margen |
+| Rótulo de dato | `Label.astro` | 12px mono | rótulo de campo o de fila |
 | Cifra | `.type-figure` | 30→36px mono · `tracking-[-0.05em]` | años, métricas |
 
 **Regla dura:** ningún `<h3>` puede renderizar más pequeño que el párrafo que
 lo acompaña. Si el titular queda por debajo del cuerpo, sube el titular.
 
-**Orden canónico de sección:** `eyebrow → H2 → lead → contenido → apoyo`.
-El eyebrow abre siempre; nunca va después del bloque que introduce.
+**Orden canónico de sección:** `H2 → lead → contenido → apoyo`.
+La etiqueta `.eyebrow` **no es obligatoria** y no siempre abre: úsala solo donde
+aporte información (tipo de contenido, estándar, estación). Repetirla en todas
+las secciones es ruido de plantilla.
+
+**Numeración:** un solo sistema de bloque (`01`, `02`…) en el margen, con el
+mismo ritmo en servicios, equipos, seguridad y contacto. Nunca numerar ad hoc
+("01 ·", "1.").
 
 - `text-balance` en titulares de 2+ líneas.
 - Ancho de línea 60–72 caracteres: `max-w-xl` en titulares, `max-w-2xl` en párrafos.
@@ -88,6 +97,11 @@ El eyebrow abre siempre; nunca va después del bloque que introduce.
 
 - Contenedor: `.container-max` (`max-w-7xl`). En canvas, `max-w-[1320px] px-8 xl:px-12`.
 - Sección: `.section-pad` (`py-20 md:py-28`); `py-28 md:py-40` solo para el CTA final.
+- Retícula base: `.grid-12` (4 columnas móvil · 8 en `md` · 12 en `lg`). Compón con
+  `col-span-*` y `col-start-*`; el contenido declarativo va a la izquierda
+  (columnas 1–8) y la foto o la nota técnica a la derecha (4–6 columnas).
+- **Estructura por reglas, no por cajas.** El separador `border-t` separa mejor
+  que una tarjeta con sombra, radio y fondo propio.
 - Saltos internos: escala Tailwind de 2 (8 px) a 12 (48 px).
 - Radio: **`rounded-sm` es la norma** (marca industrial). `rounded-full` solo para
   indicadores y píldoras.
@@ -106,3 +120,19 @@ El eyebrow abre siempre; nunca va después del bloque que introduce.
 Toda animación debe quedar anulada bajo `prefers-reduced-motion` (el bloque global en
 `src/styles/global.css` ya lo hace; añade `motion-reduce:transform-none` si creas una).
 Nada de `animate-pulse`, `animate-bounce` ni parallax agresivo.
+
+## Anti-slop (dirección suiza / editorial técnico)
+
+Prohibido en este sitio:
+
+- Etiqueta decorativa repetida en cada sección.
+- Chips, píldoras y muros de valores (`+30 años · CESEA · 24/7`).
+- Flecha universal `↗` en todo enlace: una sola, solo en CTA primarios, SVG inline.
+- CTA escritos a mano: todo pasa por `Button.astro` / `ActionLink.astro`.
+- Frases de efecto ("La seguridad no se declara. Se opera.").
+- Imperativos de plantilla ("Explore nuestras capacidades").
+- Tarjetas con sombra + radio + fondo propio.
+- `text-center` en secciones de contenido.
+- Muros de texto unidos por `;`.
+- El mismo CTA repetido tres veces en una página.
+- Icono + etiqueta redundantes.

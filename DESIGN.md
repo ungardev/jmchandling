@@ -68,14 +68,16 @@ español (`#capacidades`, `#equipos`, `#empresa`, `#seguridad`) existen como
 
 ### Ritmo de superficies
 
-Las secciones alternan para marcar avance narrativo:
+Las secciones alternan para marcar avance narrativo. La home actual:
 
 ```
-bg-cargo-deep  →  bg-cargo-white  →  bg-cargo-mist  →  bg-cargo-light  →  bg-cargo-ink
+hero cargo-ink → índice cargo-mist → aliados cargo-white → servicios cargo-mist
+→ equipos cargo-white → operación cargo-mist → seguridad cargo-deep → cierre cargo-white
 ```
 
 Nunca dos secciones consecutivas del mismo fondo, salvo que una sea una
-subsección dentro de la anterior.
+subsección dentro de la anterior. El fondo profundo marca los tres momentos de
+peso: apertura, seguridad y cierre.
 
 ---
 
@@ -103,7 +105,9 @@ inventar tamaños sueltos.
 | Lead / párrafo introductorio | `.type-lead` | 16–18 px | lead de sección |
 | Cuerpo de lectura | `.type-body` | 16 px | descripciones y párrafos |
 | Texto de apoyo | `.type-meta` | 14 px | captions, pies, notas |
-| Etiqueta | `.eyebrow` + `.eyebrow-on-light` / `.eyebrow-on-dark` | 12 px mono | etiqueta superior de sección |
+| Etiqueta | `.eyebrow` + `.eyebrow-on-light` / `.eyebrow-on-dark` | 12 px mono | etiqueta **informativa** de sección |
+| Índice de sección | `IndexLabel.astro` | 12 px mono | número de bloque (`01`–`05`) en el margen |
+| Etiqueta de dato | `Label.astro` | 12 px mono | rótulo de campo o de fila |
 | Cifra destacada | `.type-figure` | 30–36 px mono | años, métricas |
 
 ### Reglas
@@ -111,8 +115,13 @@ inventar tamaños sueltos.
 - **Ningún `<h3>` puede renderizar más pequeño que el párrafo que lo acompaña.**
   Si el titular queda por debajo del cuerpo, sube el titular; nunca bajes el
   texto de lectura.
-- **Orden canónico de sección:** `eyebrow → H2 → lead → contenido → apoyo`.
-  El eyebrow abre siempre; nunca aparece después del bloque que introduce.
+- **Orden canónico de sección:** `H2 → lead → contenido → apoyo`.
+  La etiqueta `.eyebrow` **no es obligatoria** y no siempre abre: úsala solo
+  cuando aporte información (el tipo de contenido, el estándar, la estación).
+  Repetirla en todas las secciones es ruido de plantilla.
+- La numeración de bloque (`01`, `02`…) es un **sistema de una sola vez por
+  bloque**, no un adorno por elemento: los equipos, los servicios, la
+  seguridad y el contacto usan el mismo patrón y el mismo ritmo.
 - Tracking negativo en títulos: `tracking-[-0.04em]` (H2) a `tracking-[-0.045em]` (H1).
 - `leading-[1.02]` en H1, `leading-[1.08]` en H2, `leading-relaxed` en cuerpo.
 - `text-balance` en titulares de más de 2 líneas.
@@ -146,6 +155,16 @@ Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
 - **Padding vertical de sección:** `.section-pad` (`py-20 md:py-28`).
   Alternativa `xl` (`py-28 md:py-40`) solo para CTA de cierre.
 - **Ritmo interno:** escala Tailwind. Saltos de 2 (8 px) a 12 (48 px).
+- **Retícula:** `.grid-12` (definida en `global.css`) es la retícula base del
+  sitio: 4 columnas en móvil, 8 en `md`, 12 en `lg`. Las secciones de la home
+  se construyen sobre ella con `col-span-*` y `col-start-*`. El contenido
+  declarativo se alinea a la izquierda en columnas 1–8; la foto, la cifra o la
+  nota técnica ocupan 4–6 columnas a la derecha. No uses `grid-cols-3` suelto
+  como si fuera la retícula del sistema.
+- **Estructura por reglas, no por cajas.** El separador horizontal
+  (`border-t border-cargo-deep/15`) separa mejor que una tarjeta con sombra.
+  Una tarjeta con borde, radio y fondo propio es el patrón que este sistema
+  evita: cada elemento flota sin estructura.
 - **Radio:** `rounded-sm` (2–4 px) es la norma del sistema — la marca es industrial,
   no redondeada. `rounded-full` solo para indicadores de estado y píldoras.
 - **Bordes:** `border border-cargo-deep/15` sobre superficies claras;
@@ -181,16 +200,24 @@ Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
 
 | Componente | Ruta | Notas |
 |---|---|---|
-| `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, 4 enlaces, selector ES/EN |
-| `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink` (compact) / `cargo-deep` (default) |
-| `Hero` | `src/components/home/Hero.astro` | Foto única a pantalla completa, scrim de dos gradientes, texto en el tercio izquierdo |
+| `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, enlaces + `Button` + link de idioma |
+| `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink`, retícula de 4 bloques con reglas, link ES/EN |
+| `Hero` | `src/components/home/Hero.astro` | Foto única + scrim de dos gradientes, texto en el tercio izquierdo, 2 CTA |
+| `SectionIndex` | `src/components/home/SectionIndex.astro` | Índice de bloques de la home con sus anclas |
 | `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, 6 logos con tamaño por peso óptico |
-| `ServicesGrid` | `src/components/home/ServicesGrid.astro` | `id="services"`, 5 familias + aside |
-| `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 tarjetas 4:5 + CTA ASU |
-| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, credenciales + foto de equipo |
-| `RequestPrompt` | `src/components/home/RequestPrompt.astro` | CTA sobre `cargo-light` |
-| `Credential` | `src/components/ui/Credential.astro` | Formato único de credencial |
-| `Button` / `Badge` / `Card` / `Section` | `src/components/ui/` | Primitivas |
+| `ServicesGrid` | `src/components/home/ServicesGrid.astro` | `id="services"`, 5 familias numeradas + índice lateral de 12 servicios |
+| `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
+| `OperationsBand` | `src/components/home/OperationsBand.astro` | Vídeo de pushback + tira de 6 fotos de la operación |
+| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, credenciales en filas + foto de equipo |
+| `RequestPrompt` | `src/components/home/RequestPrompt.astro` | Cierre con los tres canales de contacto directo |
+| `AboutPage` / `ContactPage` | `src/components/pages/` | Contenido compartido por ES/EN, sin duplicar entre idiomas |
+| `Credential` | `src/components/ui/Credential.astro` | Fila de credencial (código mono → título → emisor → vigencia → evidencia) |
+| `Button` | `src/components/ui/Button.astro` | Única primitiva de acción: `primary` / `secondary` / `quiet` |
+| `ActionLink` | `src/components/ui/ActionLink.astro` | Enlace de acción con flecha SVG inline |
+| `IndexLabel` / `Label` | `src/components/ui/` | Número de bloque y rótulo de dato, ambos en mono |
+| `Figure` / `SpecTable` | `src/components/ui/` | Figura con pie y tabla de especificaciones |
+| `icons/*.astro` | `src/components/ui/icons/` | Set SVG inline (0 kB) — sustituye a las flechas de texto |
+| `Section` / `Badge` | `src/components/ui/` | Primitivas de superficie y píldora |
 | `QuoteForm` | `src/components/contact/QuoteForm.astro` | FormSubmit.co |
 
 ### Primitivas disponibles en `src/styles/global.css`
@@ -322,7 +349,30 @@ heredada que sí corresponde (`family-aircraft-care`, `family-passenger-services
 
 ---
 
-## 10. Qué no hacer
+## 10. Lista anti-slop
+
+Dirección visual: **suiza / editorial técnico**. Retícula de 12 columnas
+asimétrica, reglas horizontales, aire, tipografía fuerte, metadatos en mono.
+Lo que sigue es exactamente lo que hace que un sitio parezca generado por
+plantilla y está prohibido:
+
+| No | Por qué |
+|---|---|
+| Etiqueta decorativa repetida en cada sección | `.eyebrow` abre solo donde aporta dato; repetirlo en 6 secciones es ruido |
+| Chips, píldoras y muros de valores (`+30 años · CESEA · 24/7`) | Parecen métricas de plantilla y no se pueden verificar de un vistazo |
+| Flecha universal `↗` en todo enlace | Una sola flecha, solo en CTA primarios, como SVG inline |
+| CTA escritos a mano en cada sitio | Todo pasa por `Button.astro` / `ActionLink.astro` |
+| Frases de efecto ("La seguridad no se declara. Se opera.") | Suenan a eslogan; se sustituye por una afirmación verificable |
+| Imperativos de plantilla ("Explore nuestras capacidades") | El titular dice qué hay, no que hay que hacer clic |
+| Tarjetas con sombra, radio y fondo propio | La estructura la dan las reglas horizontales, no las cajas |
+| `text-center` en secciones de contenido | El contenido operativo se alinea a la izquierda |
+| Muro de texto con `;` | Un hecho por frase, con punto |
+| Repetir la misma CTA en tres sitios | Un CTA principal y uno secundario por página |
+| Icono + etiqueta redundantes | El icono acompaña a la acción, no la sustituye ni la duplica |
+
+---
+
+## 11. Qué no hacer
 
 | No | Por qué |
 |---|---|
@@ -336,3 +386,6 @@ heredada que sí corresponde (`family-aircraft-care`, `family-passenger-services
 | No borrar los alias de anclas legacy | Rompe enlaces externos |
 | No eliminar `prefers-reduced-motion` | Accesibilidad |
 | No usar Poppins/Roboto/Montserrat | No está en el sistema tipográfico |
+| No reintroducir el patrón de plantilla (chips, eyebrow por sección, cajas, flecha universal) | Ver §10, es la lista anti-slop |
+| No alinear a la derecha ni centrar el contenido declarativo | Rompe la retícula editorial |
+| No inventar cifras, fechas, códigos ni autoridades | Los hechos vienen de la fuente primaria |

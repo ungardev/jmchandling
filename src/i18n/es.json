@@ -231,7 +231,9 @@
     "certLabel": "Habilitación",
     "hoursLabel": "Horario de atención",
     "hours": "Lunes – Sábado · 05:00 – 22:00 (VET)",
-    "formTitle": "Envíenos un mensaje"
+    "formTitle": "Envíenos un mensaje",
+    "fichaTitle": "Para cotizar con precisión",
+    "fichaLead": "Con estos datos respondemos con una propuesta concreta de operación, no con un catálogo de servicios."
   },
   "footer": {
     "company": "Servicios Especializados JMC, C.A.",
@@ -294,8 +296,10 @@
     "requestTitle": "Indique el servicio, la aeronave y el contexto operativo.",
     "requestDescription": "Respondemos en horario de atención: lunes a sábado, 05:00–22:00 (VET).",
     "indexLabel": "Índice",
+    "indexAllies": "Aerolíneas",
     "indexServices": "Capacidades",
     "indexEquipment": "Equipos",
+    "indexOperations": "Operación",
     "indexSafety": "Seguridad",
     "indexContact": "Contacto"
   },

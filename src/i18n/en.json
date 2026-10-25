@@ -231,7 +231,9 @@
     "certLabel": "Authorization",
     "hoursLabel": "Service hours",
     "hours": "Monday – Saturday · 05:00 – 22:00 (VET)",
-    "formTitle": "Send us a message"
+    "formTitle": "Send us a message",
+    "fichaTitle": "To quote accurately",
+    "fichaLead": "With these details we answer with a concrete operating proposal, not a catalogue of services."
   },
   "footer": {
     "company": "Servicios Especializados JMC, C.A.",
@@ -294,8 +296,10 @@
     "requestTitle": "Tell us the service, aircraft and operational context.",
     "requestDescription": "We reply during service hours: Monday to Saturday, 05:00–22:00 (VET).",
     "indexLabel": "Index",
+    "indexAllies": "Airlines",
     "indexServices": "Capabilities",
     "indexEquipment": "Equipment",
+    "indexOperations": "Operations",
     "indexSafety": "Safety",
     "indexContact": "Contact"
   },

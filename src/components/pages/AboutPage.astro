@@ -6,6 +6,7 @@ import Section from '../ui/Section.astro';
 import Credential from '../ui/Credential.astro';
 import Button from '../ui/Button.astro';
 import ActionLink from '../ui/ActionLink.astro';
+import { heroRampNight } from '../../data/media.generated';
 
 export interface Props {
   locale: Locale;
@@ -25,13 +26,27 @@ const milestones = [
 
 <Section background="deep" padY="xl" ariaLabel={t('about.sectionLabel')}>
   <div class="grid-12 items-end border-b border-cargo-light/20 pb-10">
-    <p class="eyebrow eyebrow-on-dark col-span-12 lg:col-span-3">{t('about.sectionLabel')}</p>
-    <div class="col-span-12 lg:col-span-8 lg:col-start-5">
-      <h1 class="max-w-3xl text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl">
+    <div class="col-span-12 lg:col-span-6">
+      <p class="eyebrow eyebrow-on-dark">{t('about.sectionLabel')}</p>
+      <h1 class="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl">
         {t('about.title')}
       </h1>
-      <p class="type-lead mt-6 max-w-2xl text-cargo-white/85">{t('about.subtitle')}</p>
+      <p class="type-lead mt-6 max-w-xl text-cargo-white/85">{t('about.subtitle')}</p>
     </div>
+    <figure class="col-span-12 mt-10 lg:col-span-5 lg:col-start-8 lg:mt-0">
+      <img
+        src={heroRampNight.src}
+        srcset={heroRampNight.srcset}
+        sizes="(min-width: 1024px) 40vw, 100vw"
+        alt={t(heroRampNight.altKey)}
+        width={heroRampNight.width}
+        height={heroRampNight.height}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="aspect-[4/3] w-full object-cover"
+      />
+    </figure>
   </div>
 </Section>
 

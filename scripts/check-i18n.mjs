@@ -58,6 +58,7 @@ for (const key of enKeys) {
 const files = await walk(SRC);
 const referenced = new Set();
 const literalKeys = new Set();
+const dottedLiterals = new Set();
 const dynamicPrefixes = new Set();
 
 for (const file of files) {
@@ -69,15 +70,28 @@ for (const file of files) {
   // Plantillas: t(`ns.${var}Key`) -> se verifica solo el prefijo del namespace.
   for (const match of content.matchAll(/\bt\(\s*`([^`$]+)\$\{/g)) dynamicPrefixes.add(match[1]);
 
-  // Claves referenciadas de forma indirecta: titleKey: 'services.families.rampTitle'
-  for (const match of content.matchAll(/'([a-zA-Z][\w]*(?:\.[\w]+)+)'/g)) {
-    literalKeys.add(match[1]);
+  // Claves referenciadas de forma indirecta:
+  //   titleKey: 'services.families.rampTitle'
+  //   'ramp-gse': 'home.actionGse'
+  //   getLocalizedArray(locale, 'about.valuesList')
+  // Se recoge todo literal con puntos y se filtra contra el diccionario, de
+  // modo que 'es.json' o 'index.astro' no se confundan con claves i18n.
+  for (const match of content.matchAll(/'([A-Za-z][\w]*(?:\.[\w]+)+)'/g)) {
+    dottedLiterals.add(match[1]);
+  }
+  for (const match of content.matchAll(/"([A-Za-z][\w]*(?:\.[\w]+)+)"/g)) {
+    dottedLiterals.add(match[1]);
   }
 }
 
 for (const key of referenced) {
-  if (!esKeys.has(key)) errors.push(`clave referenciada inexistente: ${key}  (${[...files].find((f) => f) ?? ''})`);
+  if (!esKeys.has(key)) errors.push(`clave referenciada inexistente: ${key}`);
   if (!enKeys.has(key)) errors.push(`clave referenced ausente en en.json: ${key}`);
+}
+
+// Un literal con puntos solo cuenta como referencia si es una clave real.
+for (const key of dottedLiterals) {
+  if (esKeys.has(key) || enKeys.has(key)) literalKeys.add(key);
 }
 
 for (const prefix of dynamicPrefixes) {
