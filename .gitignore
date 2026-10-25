@@ -28,6 +28,14 @@ Thumbs.db
 screenshots/
 verify-dist/
 
+# Working material from email/Slack threads — not site assets
+emails/
+
+# Raw photo masters (504 MB) — NOT tracked. Processed WebP derivatives live in
+# public/assets/photos/ and ARE tracked. Regenerate with: npm run optimize:assets
+media-raw/*
+!media-raw/README.md
+
 # Legacy source (keep in repo as reference, not part of build)
 # jmcground/
 # BRANDBOARD/

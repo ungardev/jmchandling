@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
+import { heroRampNight } from '../../data/media.generated';
 
 export interface Props {
   locale: Locale;
@@ -27,7 +28,7 @@ const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
         “{t('hero.tagline')}”
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-5">
-        <a href="#capacidades" class="btn-primary">
+        <a href="#services" class="btn-primary">
           {t('hero.ctaPrimary')}
           <span aria-hidden="true">↓</span>
         </a>
@@ -44,12 +45,15 @@ const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
 
     <figure class="relative aspect-[4/3] overflow-hidden bg-cargo-ink md:aspect-[1.35/1] md:min-h-[28rem]">
       <img
-        src="/assets/images/gse-fleet.webp"
-        alt={t('hero.mediaAlt')}
-        width="1280"
-        height="720"
+        src={heroRampNight.src}
+        srcset={heroRampNight.srcset}
+        sizes="(min-width: 1280px) 660px, (min-width: 768px) 52vw, 100vw"
+        alt={t(heroRampNight.altKey)}
+        width={heroRampNight.width}
+        height={heroRampNight.height}
         class="absolute inset-0 h-full w-full object-cover"
         loading="eager"
+        decoding="async"
         fetchpriority="high"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-cargo-ink/70 via-transparent to-transparent" aria-hidden="true"></div>

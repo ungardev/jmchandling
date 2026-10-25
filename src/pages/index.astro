@@ -2,11 +2,17 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, follow" />
     <meta http-equiv="refresh" content="0;url=/es/" />
     <title>JMC Handling</title>
     <link rel="canonical" href="/es/" />
     <script is:inline>
-      window.location.replace('/es/');
+      // Redireccion raiz. En Vercel la resuelve el edge (vercel.json, 302).
+      // Este script cubre el resto de hosting estatico y afina por idioma.
+      (function () {
+        var lang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+        window.location.replace(/^en\b/i.test(lang) ? '/en/' : '/es/');
+      })();
     </script>
   </head>
   <body>

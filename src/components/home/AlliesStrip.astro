@@ -12,7 +12,7 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<Section background="white" padY="lg" ariaLabel={t('allies.sectionLabel')}>
+<Section id="allies" class="scroll-mt-24" background="white" padY="lg" ariaLabel={t('allies.sectionLabel')}>
   <div class="text-center">
     <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('allies.sectionLabel')}</p>
     <h2 class="mt-4 text-balance text-2xl font-semibold tracking-[-0.02em] text-cargo-deep sm:text-3xl">{t('allies.title')}</h2>

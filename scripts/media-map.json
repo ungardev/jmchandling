@@ -1,0 +1,543 @@
+{
+  "$comment": "Mapa semantico maestro de medios. Fuente unica de verdad para scripts/optimize-assets.mjs. Las claves altKey deben existir en src/i18n/es.json Y src/i18n/en.json.",
+  "roots": {
+    "raw": "media-raw",
+    "legacy": "jmcground/image"
+  },
+  "groups": {
+    "hero": "public/assets/photos/hero",
+    "equipment": "public/assets/photos/equipment",
+    "services": "public/assets/photos/services",
+    "families": "public/assets/photos/families"
+  },
+  "items": [
+    {
+      "id": "hero-ramp-night",
+      "root": "raw",
+      "src": "services/IMG_6463.jpg",
+      "group": "hero",
+      "altKey": "media.alt.heroRampNight",
+      "curated": true,
+      "widths": [1280, 1920]
+    },
+
+    {
+      "id": "equipment-carrucha",
+      "root": "raw",
+      "src": "equipment/NG__1345-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentCarrucha",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-carrucha-uld",
+      "root": "raw",
+      "src": "equipment/NG__1373-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentCarruchaUld",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-tractor",
+      "root": "raw",
+      "src": "equipment/NG__1306-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTractor",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-water-cart",
+      "root": "raw",
+      "src": "equipment/NG__1299-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentWaterCart",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-belt-loader",
+      "root": "raw",
+      "src": "equipment/NG__1380-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentBeltLoader",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-gpu",
+      "root": "raw",
+      "src": "equipment/NG__1293-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentGpu",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-asu",
+      "root": "raw",
+      "src": "equipment/NG__1289-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentAsu",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+
+    {
+      "id": "family-ramp-gse",
+      "root": "legacy",
+      "src": "EQUIPOS.jpeg",
+      "group": "families",
+      "altKey": "services.media.rampAlt",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "family-aircraft-care",
+      "root": "legacy",
+      "src": "LIMPIENZA A LOS EQUIPOS.jpeg",
+      "group": "families",
+      "altKey": "services.media.aircraftCareAlt",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "family-fbo-operations",
+      "root": "legacy",
+      "src": "Capacitacion para garantizar la seguridad operacional de nuestros clientes.jpeg",
+      "group": "families",
+      "altKey": "services.media.operationsAlt",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "family-passenger-services",
+      "root": "legacy",
+      "src": "Entrenamiento continuo.jpeg",
+      "group": "families",
+      "altKey": "services.media.passengerAlt",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "family-gse-maintenance",
+      "root": "legacy",
+      "src": "CAMBIO DE ACEITE.jpeg",
+      "group": "families",
+      "altKey": "services.media.maintenanceAlt",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+
+    {
+      "id": "gallery-cargo-hold",
+      "root": "raw",
+      "src": "services/FullSizeRender(1).jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryCargoHold",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-cargo-hold-container",
+      "root": "raw",
+      "src": "services/FullSizeRender(2).jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryCargoHoldContainer",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-consolidation",
+      "root": "raw",
+      "src": "services/FullSizeRender(3).jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryConsolidation",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-uld-store",
+      "root": "raw",
+      "src": "services/FullSizeRender(4).jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryUldStore",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-baggage-sorting",
+      "root": "raw",
+      "src": "services/FullSizeRender.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryBaggageSorting",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-night-ops",
+      "root": "raw",
+      "src": "services/IMG_3200.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryNightOps",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-night-aircraft",
+      "root": "raw",
+      "src": "services/IMG_3203.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryNightAircraft",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-belt-loading",
+      "root": "raw",
+      "src": "services/IMG_6551.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryBeltLoading",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-cargo-container",
+      "root": "raw",
+      "src": "services/IMG_6561.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryCargoContainer",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-loaded-cart",
+      "root": "raw",
+      "src": "services/IMG_6577.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryLoadedCart",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-ramp-team",
+      "root": "raw",
+      "src": "services/IMG_6583.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryRampTeam",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-belt-loader-ops",
+      "root": "raw",
+      "src": "services/IMG_6587.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryBeltLoaderOps",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-uld-ramp",
+      "root": "raw",
+      "src": "services/IMG_6604.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryUldRamp",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-aircraft-day",
+      "root": "raw",
+      "src": "services/IMG_6623.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryAircraftDay",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "gallery-aircraft-ramp",
+      "root": "raw",
+      "src": "services/IMG_6622.jpg",
+      "group": "services",
+      "altKey": "media.alt.galleryAircraftRamp",
+      "curated": true,
+      "widths": [640, 1280]
+    },
+
+    {
+      "id": "ops-carga-cinta-bodega",
+      "root": "raw",
+      "src": "services/IMG_6552.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsBeltToHold",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-carrucha-cargada",
+      "root": "raw",
+      "src": "services/IMG_6553.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsLoadedCart",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-atardecer",
+      "root": "raw",
+      "src": "services/IMG_6560.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsDuskTurnaround",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-carga-puerta",
+      "root": "raw",
+      "src": "services/IMG_6563.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsCargoDoor",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-carrucha-terminal",
+      "root": "raw",
+      "src": "services/IMG_6580.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsCartTerminal",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-gse-rampa",
+      "root": "raw",
+      "src": "services/IMG_6582.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsGseStandby",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-carga-manual",
+      "root": "raw",
+      "src": "services/IMG_6591.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsManualLoading",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-aerolinea",
+      "root": "raw",
+      "src": "services/IMG_6593.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsDispatchRamp",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-equipaje",
+      "root": "raw",
+      "src": "services/IMG_6595.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsBaggageConsolidated",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-01",
+      "root": "raw",
+      "src": "services/IMG_6608.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsRampAircraft",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-carga-atardecer",
+      "root": "raw",
+      "src": "services/IMG_6609.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsDuskLoading",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-bodega-uld",
+      "root": "raw",
+      "src": "services/IMG_6619.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsUldInHold",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-02",
+      "root": "raw",
+      "src": "services/IMG_6412.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsRampTurnaround",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-03",
+      "root": "raw",
+      "src": "services/IMG_6414.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsCargoDoorService",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-04",
+      "root": "raw",
+      "src": "services/IMG_6417.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsCartOnRamp",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-05",
+      "root": "raw",
+      "src": "services/IMG_6419.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsParkedAircraft",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-06",
+      "root": "raw",
+      "src": "services/IMG_6435.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsGseTurnaround",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-07",
+      "root": "raw",
+      "src": "services/IMG_6453.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsStandDetail",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-08",
+      "root": "raw",
+      "src": "services/IMG_6455.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsAircraftOnStand",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-09",
+      "root": "raw",
+      "src": "services/IMG_6459.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsRampCoordination",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-10",
+      "root": "raw",
+      "src": "services/IMG_6462.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsDuskStand",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-11",
+      "root": "raw",
+      "src": "services/IMG_6467.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsGseAircraftSide",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-12",
+      "root": "raw",
+      "src": "services/IMG_6469.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsLoadingService",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "ops-rampa-13",
+      "root": "raw",
+      "src": "services/IMG_6550.jpg",
+      "group": "services",
+      "altKey": "media.alt.opsAircraftWithGse",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+
+    {
+      "id": "equipment-carrucha-abierta",
+      "root": "raw",
+      "src": "equipment/NG__1268-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentCartOpen",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-carrucha-cargada",
+      "root": "raw",
+      "src": "equipment/NG__1270-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentCartLoaded",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-carrucha-cerrada",
+      "root": "raw",
+      "src": "equipment/NG__1311-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentCartClosed",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "equipment-tow-plate",
+      "root": "raw",
+      "src": "equipment/NG__1262-Editar.jpg",
+      "group": "equipment",
+      "altKey": "media.alt.equipmentTowPlate",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+
+    {
+      "id": "cert-cesea",
+      "root": "legacy",
+      "src": "CESEA.jpg",
+      "group": "families",
+      "altKey": "media.alt.certCesea",
+      "curated": false,
+      "widths": [640, 1280]
+    },
+    {
+      "id": "safety-sms",
+      "root": "legacy",
+      "src": "sms.jpg",
+      "group": "families",
+      "altKey": "media.alt.safetySms",
+      "curated": false,
+      "widths": [640, 1280]
+    }
+  ]
+}

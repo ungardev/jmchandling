@@ -1,7 +1,7 @@
 # AGENTS.md — JMC Handling Site Conventions
 
 This file documents conventions and constraints for any AI agent working on this codebase.
-Last updated: 2026-08-19
+Last updated: 2026-10-25
 
 ---
 
@@ -41,7 +41,10 @@ Tailwind classes: `bg-cargo-deep`, `text-cargo-emerald`, `border-cargo-light`, e
 ### Key naming
 Dot-notation, lowercase: `services.gseTitle`, `awb.track`, `nav.home`
 
-Top-level namespaces: `nav`, `utilityBar`, `hero`, `stats`, `services`, `safety`, `awb`, `quote`, `contact`, `footer`, `form`, `common`, `meta`
+Top-level namespaces: `nav`, `hero`, `services`, `allies`, `about`, `equipment`, `safety`, `quote`, `contact`, `footer`, `form`, `common`, `meta`, `home`, `media`
+
+- `home.*` — copy de las secciones de la portada
+- `media.alt.*` — texto alternativo de cada imagen (obligatorio: una clave por medio)
 
 ### Translation function
 ```ts
@@ -58,8 +61,23 @@ t('services.gseTitle'); // returns string
 ### Locale routing
 - Default route prefix: `/es/` (Spanish)
 - Secondary: `/en/`
-- Root `/` redirects to `/es/` via Accept-Language detection
+- Root `/` → `/es/` (302 en `vercel.json`); `src/pages/index.astro` es el fallback
+  para otros hostings y detecta `Accept-Language`
 - `switchLocalePath(path, target)` in `utils.ts` swaps the locale prefix
+
+### Validation
+`npm run i18n:check` verifica: árboles ES/EN idénticos, que cada `t('...')`
+resuelva en ambos diccionarios, que cada `altKey` del mapa de medios exista, y
+reporta claves huérfanas. **Falla el build.**
+
+---
+
+## Section Anchors
+
+Section IDs are **English and stable in both locales**: `#services`, `#equipment`,
+`#allies`, `#about`, `#safety`. Each section keeps a legacy Spanish alias as a
+hidden span (`<span id="capacidades" class="sr-only" aria-hidden="true"></span>`).
+**Never delete the aliases** — external links use them.
 
 ---
 
@@ -67,8 +85,12 @@ t('services.gseTitle'); // returns string
 
 ### File naming
 - Astro components: `PascalCase.astro` (e.g. `ServiceDetail.astro`)
-- React islands: `PascalCase.jsx` (e.g. `AWBTracker.jsx`)
 - UI primitives: `PascalCase.astro` (e.g. `Button.astro`)
+
+### No framework JS
+React was removed on purpose. There are **no `client:*` islands** and no framework
+integrations in `astro.config.mjs`. Budget: **≤10 kB gzip of JS per page** — the
+site currently ships **0 kB**. Use CSS-first or small vanilla `<script>` blocks.
 
 ### Props typing
 Every Astro component MUST export an `interface Props` and destructure from `Astro.props`:
@@ -95,15 +117,17 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 ## CSS / Tailwind Conventions
 
 ### Custom utility classes (defined in `src/styles/global.css`)
-- `.glass` — glassmorphism panel (blur + translucent white border)
-- `.glass-dark` — dark glass variant for nav
-- `.text-gradient-emerald` — emerald→light gradient text
 - `.btn-primary`, `.btn-secondary`, `.btn-ghost` — button variants
-- `.card-service` — hover-lift service card
 - `.badge-cert` — certification badge pill
 - `.nav-link` — nav link with underline hover animation
+- `.field-control` — form input control
 - `.skip-to-content` — accessibility skip link
 - `.section-pad` — section vertical padding
+- `.container-max` — page container (`max-w-7xl`)
+- `.animate-fade-up`, `.animate-fade-in` — entrance animations
+
+> `.glass`, `.glass-dark`, `.text-gradient-emerald` and `.card-service` are **not
+> defined** in `global.css`. Create them if you use them, or avoid referencing them.
 
 ### DO NOT
 - Hardcode hex colors in components (use Tailwind `text-cargo-*`, `bg-cargo-*`)
@@ -131,18 +155,55 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 src/
 ├── components/
 │   ├── global/     Header.astro, Footer.astro, LangToggle.astro
-│   ├── home/       Hero.astro, ServicesGrid.astro, SafetySection.astro, StatsStrip.astro
-│   ├── services/    ServiceDetail.astro
-│   ├── contact/     QuoteForm.astro, ContactInfo.astro
-│   └── ui/          Button.astro, Badge.astro, Card.astro, Section.astro, AWBTracker.jsx
+│   ├── home/       Hero, AlliesStrip, ServicesGrid, EquipmentGrid,
+│   │               About, SafetySection, RequestPrompt
+│   ├── services/   ServiceDetail.astro
+│   ├── contact/    QuoteForm.astro, ContactInfo.astro
+│   └── ui/         Button.astro, Badge.astro, Card.astro, Section.astro
+├── data/           siteContent.ts, allies.ts, media.generated.ts (GENERATED)
 ├── i18n/           es.json, en.json, utils.ts
 ├── layouts/        Layout.astro
 ├── pages/
-│   ├── index.astro         (redirect)
-│   ├── es/  {index,servicios,contacto,cotizacion}.astro
-│   └── en/  {index,services,contact,quote}.astro
+│   ├── index.astro         (root redirect)
+│   ├── es/  {index,servicios,contacto,cotizacion,sobre-jmc}.astro
+│   └── en/  {index,services,contact,quote,about-jmc}.astro
 └── styles/       global.css
+
+media-raw/                 photo masters, NOT tracked by git (504 MB)
+├── equipment/  11 Canon R5 photos of GSE
+├── services/   40 iPhone photos of ramp and cargo operations
+├── allies/     raster logos (sources for the SVG/WebP outputs)
+└── _quarantine/ AI-generated images — DO NOT USE
+
+public/assets/
+├── photos/{hero,equipment,services,families}/   WebP derivatives (tracked)
+├── photos/manifest.json                          full library, 0 kB of JS
+├── photos/video/                                 pushback.webm/.mp4 + poster
+├── allies/                                       SVG/WebP, kebab-case
+├── brand/                                        isotipo and wordmark
+└── og/                                           jmc-og-{es,en}.png
+
+scripts/
+├── media-map.json        semantic media map (MASTER — edit this)
+├── optimize-assets.mjs   WebP pipeline, video transcode, OG raster
+└── check-i18n.mjs        i18n integrity checker
 ```
+
+---
+
+## Media & Assets
+
+- The **master** media map is `scripts/media-map.json`. Edit it, then run
+  `npm run optimize:assets`. Never edit `src/data/media.generated.ts` by hand.
+- Every image has an `altKey` in `media.alt.*` (es + en) describing **what is
+  actually visible**.
+- The photo library covers **ramp, cargo and GSE**. There are no photos of
+  aircraft interior cleaning, passenger service or the workshop — those families
+  use the legacy photos assigned to them (`family-aircraft-care`,
+  `family-passenger-services`, `family-gse-maintenance`). **Never reuse a ramp
+  photo to depict another activity.**
+- Never use AI-generated images (`media-raw/_quarantine/`). Never use placeholders.
+- Photo masters are never committed. Only the WebP derivatives are.
 
 ---
 
@@ -156,7 +217,9 @@ npm run build        # Static build → dist/
 npm run preview      # Preview dist/
 npm run format       # Prettier format
 npm run lint         # ESLint
-npm run optimize:assets  # Convert LOGOS/ + jmcground/image/ → WebP
+npm run i18n:check   # ES/EN tree parity + referenced keys + altKeys
+npm run optimize:assets  # media-raw/ → public/assets/photos/ (WebP + video + OG)
+npm run verify       # i18n:check + check + build  ← gate before every commit
 ```
 
 ---
@@ -170,9 +233,6 @@ Key constraint: `output: 'static'` in `astro.config.mjs`. Never switch to `serve
 ---
 
 ## Known Integration Points
-
-### AWB Tracking
-`src/components/ui/AWBTracker.jsx` — simulated tracking. Replace `await new Promise(...)` with a real `fetch()` to a cargo tracking API. Integration point documented inline.
 
 ### Contact Form
 `src/components/contact/QuoteForm.astro` — FormSubmit.co. No backend. To change recipients: update `action`, `_cc`, and `_subject` hidden inputs.
@@ -188,6 +248,9 @@ Key constraint: `output: 'static'` in `astro.config.mjs`. Never switch to `serve
 - Use `aria-label` on icon-only buttons
 - Use `loading="lazy"` on non-hero images
 - Test keyboard navigation after adding interactive components
+- Add `width`/`height` to every `<img>` (no layout shift)
+- Run `npm run verify` before committing
+- Use real photography; never placeholders, never AI-generated imagery
 
 ### DON'T
 - Hardcode hex colors in HTML/Tailwind
@@ -196,3 +259,8 @@ Key constraint: `output: 'static'` in `astro.config.mjs`. Never switch to `serve
 - Create new pages without adding them to the sitemap
 - Use `<script>` tags without `is:inline` unless the script needs bundling
 - Remove `prefers-reduced-motion` from `global.css`
+- Reintroduce React/Vue/Svelte or any `client:*` island
+- Commit the photo masters in `media-raw/`
+- Invent copy in a single dictionary only
+- Delete the legacy section anchors (`capacidades`, `equipos`, `empresa`, `seguridad`)
+- Use Poppins, Roboto, Montserrat or any font outside Inter + JetBrains Mono

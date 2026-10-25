@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../../i18n/utils';
-import { useTranslations } from '../../i18n/utils';
+import { switchLocalePath, useTranslations } from '../../i18n/utils';
 
 export interface Props {
   locale: Locale;
@@ -12,8 +12,8 @@ const t = useTranslations(locale);
 const year = new Date().getFullYear();
 const localePath = locale === 'es' ? '/es' : '/en';
 const homePath = `${localePath}/`;
-const aboutPath = `${localePath}/sobre-jmc`;
-const contactPath = `${localePath}/contacto`;
+const aboutPath = switchLocalePath('/es/sobre-jmc', locale);
+const contactPath = switchLocalePath('/es/contacto', locale);
 ---
 
 {variant === 'compact' ? (

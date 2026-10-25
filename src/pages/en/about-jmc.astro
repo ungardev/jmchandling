@@ -101,7 +101,9 @@ const t = useTranslations(locale);
         <figure class="relative">
           <div class="overflow-hidden border border-cargo-light/20 bg-cargo-mist">
             <img
-              src="/assets/images/cesea-cert.webp"
+              src="/assets/photos/families/cert-cesea-640.webp"
+          srcset="/assets/photos/families/cert-cesea-640.webp 640w, /assets/photos/families/cert-cesea-1280.webp 1113w"
+          sizes="(min-width: 640px) 176px, 128px"
               alt={t('safety.mediaAlt')}
               width="800"
               height="600"
@@ -111,7 +113,7 @@ const t = useTranslations(locale);
           </div>
           <figcaption class="flex flex-col gap-3 border-b border-x border-cargo-light/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
             <span class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/65">{t('safety.mediaCaption')}</span>
-            <a href="/assets/images/cesea-cert.webp" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cargo-light transition-colors hover:text-cargo-white">{t('safety.mediaLink')} <span aria-hidden="true">↗</span></a>
+            <a href="/assets/photos/families/cert-cesea-1280.webp" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cargo-light transition-colors hover:text-cargo-white">{t('safety.mediaLink')} <span aria-hidden="true">↗</span></a>
           </figcaption>
         </figure>
       </div>
@@ -125,7 +127,7 @@ const t = useTranslations(locale);
         </div>
         <div class="flex flex-wrap gap-3">
           <a href="/en/contact" class="inline-flex items-center gap-3 bg-cargo-deep px-5 py-3.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-ink">{t('common.getQuote')} <span aria-hidden="true">↗</span></a>
-          <a href="/en/capabilities" class="inline-flex items-center border border-cargo-deep/40 px-5 py-3.5 text-sm font-semibold text-cargo-deep transition-colors hover:bg-cargo-white/50">{t('common.viewServices')}</a>
+          <a href="/en/#services" class="inline-flex items-center border border-cargo-deep/40 px-5 py-3.5 text-sm font-semibold text-cargo-deep transition-colors hover:bg-cargo-white/50">{t('common.viewServices')}</a>
         </div>
       </div>
     </Section>

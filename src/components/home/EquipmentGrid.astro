@@ -1,6 +1,14 @@
 ---
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
+import {
+  equipmentAsu,
+  equipmentBeltLoader,
+  equipmentCarrucha,
+  equipmentGpu,
+  equipmentTractor,
+  equipmentWaterCart,
+} from '../../data/media.generated';
 
 export interface Props {
   locale: Locale;
@@ -9,10 +17,19 @@ export interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const servicesPath = locale === 'es' ? '/es/servicios' : '/en/services';
-const equipmentKeys = ['carrucha', 'tractor', 'water', 'belt', 'gpu', 'asu'] as const;
+
+const equipment = [
+  { key: 'carrucha', media: equipmentCarrucha },
+  { key: 'tractor', media: equipmentTractor },
+  { key: 'water', media: equipmentWaterCart },
+  { key: 'belt', media: equipmentBeltLoader },
+  { key: 'gpu', media: equipmentGpu },
+  { key: 'asu', media: equipmentAsu },
+] as const;
 ---
 
-<section id="equipos" class="scroll-mt-24 bg-cargo-white py-16 md:py-20" aria-labelledby="equipment-heading">
+<section id="equipment" class="scroll-mt-24 bg-cargo-white py-16 md:py-20" aria-labelledby="equipment-heading">
+  <span id="equipos" class="sr-only" aria-hidden="true"></span>
   <div class="container-max">
     <div class="grid gap-6 border-b border-cargo-deep/20 pb-7 md:grid-cols-[0.75fr_1.25fr] md:items-end">
       <h2 id="equipment-heading" class="max-w-md text-3xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-4xl">
@@ -21,16 +38,31 @@ const equipmentKeys = ['carrucha', 'tractor', 'water', 'belt', 'gpu', 'asu'] as 
       <p class="max-w-2xl text-base leading-relaxed text-cargo-ink/75">{t('home.equipmentIntro')}</p>
     </div>
 
-    <dl class="mt-2 divide-y divide-cargo-deep/15">
-      {equipmentKeys.map((key) => (
-        <div class="grid gap-2 py-5 sm:grid-cols-[minmax(220px,0.44fr)_1fr] sm:gap-8">
-          <dt class="font-semibold text-cargo-deep">{t(`equipment.${key}Title`)}</dt>
-          <dd class="text-sm leading-relaxed text-cargo-ink/75">{t(`equipment.${key}Desc`)}</dd>
-        </div>
+    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {equipment.map(({ key, media }) => (
+        <li class="group flex flex-col overflow-hidden border border-cargo-deep/15 bg-cargo-white">
+          <div class="relative aspect-[4/5] overflow-hidden bg-cargo-mist">
+            <img
+              src={media.src}
+              srcset={media.srcset}
+              sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              alt={t(media.altKey)}
+              width={media.width}
+              height={media.height}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+            />
+          </div>
+          <div class="flex flex-1 flex-col border-t border-cargo-deep/15 p-5">
+            <h3 class="font-semibold tracking-[-0.02em] text-cargo-deep">{t(`equipment.${key}Title`)}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-cargo-ink/75">{t(`equipment.${key}Desc`)}</p>
+          </div>
+        </li>
       ))}
-    </dl>
+    </ul>
 
-    <a href={`${servicesPath}#ramp-gse`} class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald">
+    <a href={`${servicesPath}#ramp-gse`} class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald">
       {t('home.equipmentCatalogLink')}
       <span aria-hidden="true">↗</span>
     </a>

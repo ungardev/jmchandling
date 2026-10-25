@@ -1,10 +1,23 @@
 {
   "redirects": [
-    { "source": "/es/servicios", "destination": "/es/capacidades", "statusCode": 301 },
-    { "source": "/es/cotizacion", "destination": "/es/contacto", "statusCode": 301 },
-    { "source": "/en/services", "destination": "/en/capabilities", "statusCode": 301 },
-    { "source": "/en/quote", "destination": "/en/contact", "statusCode": 301 },
-    { "source": "/en/servicios", "destination": "/en/capabilities", "statusCode": 301 },
-    { "source": "/en/cotizacion", "destination": "/en/contact", "statusCode": 301 }
+    { "source": "/", "destination": "/es/", "statusCode": 302 },
+    { "source": "/es/servicios", "destination": "/es/#services", "statusCode": 301 },
+    { "source": "/es/cotizacion", "destination": "/es/contacto?intent=quote", "statusCode": 301 },
+    { "source": "/en/services", "destination": "/en/#services", "statusCode": 301 },
+    { "source": "/en/quote", "destination": "/en/contact?intent=quote", "statusCode": 301 },
+    { "source": "/en/servicios", "destination": "/en/#services", "statusCode": 301 },
+    { "source": "/en/cotizacion", "destination": "/en/contact?intent=quote", "statusCode": 301 },
+    { "source": "/es/capacidades", "destination": "/es/#services", "statusCode": 301 },
+    { "source": "/es/equipos", "destination": "/es/#equipment", "statusCode": 301 },
+    { "source": "/es/aliados", "destination": "/es/#allies", "statusCode": 301 },
+    { "source": "/en/capabilities", "destination": "/en/#services", "statusCode": 301 },
+    { "source": "/en/equipment", "destination": "/en/#equipment", "statusCode": 301 },
+    { "source": "/en/allies", "destination": "/en/#allies", "statusCode": 301 },
+    { "source": "/en/contacto", "destination": "/en/contact", "statusCode": 301 },
+    { "source": "/en/sobre-jmc", "destination": "/en/about-jmc", "statusCode": 301 },
+    { "source": "/es/services", "destination": "/es/#services", "statusCode": 301 },
+    { "source": "/es/contact", "destination": "/es/contacto", "statusCode": 301 },
+    { "source": "/es/quote", "destination": "/es/contacto?intent=quote", "statusCode": 301 },
+    { "source": "/es/about-jmc", "destination": "/es/sobre-jmc", "statusCode": 301 }
   ]
 }

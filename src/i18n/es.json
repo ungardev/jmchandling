@@ -3,64 +3,20 @@
     "home": "Inicio",
     "services": "Capacidades",
     "contact": "Contacto",
-    "quote": "Cotizar",
     "language": "Idioma",
     "primaryNav": "Navegación principal",
-    "primary": "Acción comercial principal",
     "openMenu": "Abrir menú de navegación",
     "closeMenu": "Cerrar menú de navegación",
     "switchToEnglish": "Cambiar a inglés",
     "switchToSpanish": "Cambiar a español",
-    "capabilities": "Capacidades",
-    "equipment": "Equipos GSE",
-    "allies": "Aliados",
     "about": "Sobre JMC"
   },
-  "utilityBar": {
-    "status": "OPERATIVO",
-    "station": "CCS · Maiquetía",
-    "inac": "CESEA-021 · INAC RAV 111",
-    "call": "Contactar"
-  },
   "hero": {
-    "breadcrumb": "JMC / CCS / GROUND OPS",
-    "titleLine1": "La operación en tierra",
-    "titleLine2": "empieza con",
-    "titleLine3": "JMC.",
     "tagline": "El éxito de todo vuelo depende, esencialmente, de la excelencia en tierra.",
-    "subtitle": "Servicios especializados aeroportuarios para explotadores aéreos que necesitan coordinación, seguridad y ejecución precisa en plataforma.",
-    "companyName": "Servicios Especializados JMC, C.A.",
-    "title": "Apoyo en tierra para operar en Maiquetía.",
-    "subtitle": "Servicios aeroportuarios para aeronaves, pasajeros, equipaje y carga. Explore el tipo de asistencia que necesita su operación.",
     "ctaPrimary": "Encontrar asistencia",
-    "ctaSecondary": "Ver el catálogo completo",
-    "location": "Aeropuerto Internacional Simón Bolívar · Maiquetía, CCS",
-    "mediaAlt": "Equipos de apoyo terrestre JMC estacionados en la plataforma del Aeropuerto Internacional Simón Bolívar de Maiquetía",
-    "mediaCaption": "Equipos de apoyo terrestre en estación",
-    "mediaContext": "Operación en plataforma · CCS"
-  },
-  "proof": {
-    "sectionLabel": "EVIDENCIA OPERATIVA",
-    "title": "Una operación respaldada por habilitación, estación y experiencia.",
-    "subtitle": "La confianza en tierra se construye con alcance claro, procesos controlados y presencia donde ocurre la operación.",
-    "certificationLabel": "Habilitación",
-    "certificationValue": "CESEA-021",
-    "stationLabel": "En Maiquetía",
-    "stationValue": "Desde 2015",
-    "foundedLabel": "Constituida",
-    "foundedValue": "2012",
-    "experienceLabel": "Experiencia del equipo",
-    "experienceValue": "+30 años"
+    "ctaSecondary": "Ver el catálogo completo"
   },
   "services": {
-    "sectionLabel": "CAPACIDADES",
-    "title": "Capacidades que sostienen la operación.",
-    "subtitle": "Un catálogo organizado por familias para encontrar rápidamente el soporte que necesita cada operación aérea.",
-    "indexTitle": "Handling, FBO y servicios especializados",
-    "indexSubtitle": "Servicios de plataforma, cuidado de aeronaves, operación, pasajeros y mantenimiento bajo el marco de habilitación aplicable.",
-    "viewFamily": "Ver familia completa",
-    "familyLabel": "FAMILIA OPERATIVA",
-    "mediaLabel": "ARCHIVO VISUAL DE OPERACIONES",
     "media": {
       "rampAlt": "Equipo GSE de JMC preparado para una operación en plataforma",
       "aircraftCareAlt": "Equipo de JMC realizando labores de limpieza y cuidado de equipos aeroportuarios",
@@ -82,85 +38,83 @@
     },
     "gseTitle": "Equipos de Apoyo Terrestre (GSE)",
     "gseDesc": "Flota de equipos para operaciones en plataforma. Secciones 1–8 habilitadas por INAC.",
-    "gseBullets": ["Pushback y towbarless", "GPU y ASU", "Contenedores y pallets ULD", "Banda transportadora de equipaje"],
+    "gseBullets": [
+      "Pushback y towbarless",
+      "GPU y ASU",
+      "Contenedores y pallets ULD",
+      "Banda transportadora de equipaje"
+    ],
     "interiorTitle": "Limpieza Interior de Aeronaves",
     "interiorDesc": "Limpieza de cabina, asientos, moquetas, baños y cocina. Control de residuos conforme a normativa.",
-    "interiorBullets": ["Limpieza de asientos y moquetas", "Vaciado de basura y reciclaje", "Limpieza de baños y cocina", "Control de residuos conforme a norma"],
+    "interiorBullets": [
+      "Limpieza de asientos y moquetas",
+      "Vaciado de basura y reciclaje",
+      "Limpieza de baños y cocina",
+      "Control de residuos conforme a norma"
+    ],
     "exteriorTitle": "Limpieza Exterior de Aeronaves",
     "exteriorDesc": "Lavado certificado de fuselaje, alas y tren de aterrizaje con productos biodegradables.",
-    "exteriorBullets": ["Lavado a presión certificado", "Productos biodegradables", "Protección anticorrosiva", "Inspección visual post-lavado"],
+    "exteriorBullets": [
+      "Lavado a presión certificado",
+      "Productos biodegradables",
+      "Protección anticorrosiva",
+      "Inspección visual post-lavado"
+    ],
     "disinfectionTitle": "Desinfección y Desinsectación",
     "disinfectionDesc": "Tratamiento de cabina y zona de carga. Cumplimiento OMS/OACI e INAC.",
-    "disinfectionBullets": ["Limpieza de asientos y moquetas", "Desinsectación OMS/OACI", "Certificación de zona tratada", "Productos aprobados por autoridades"],
+    "disinfectionBullets": [
+      "Limpieza de asientos y moquetas",
+      "Desinsectación OMS/OACI",
+      "Certificación de zona tratada",
+      "Productos aprobados por autoridades"
+    ],
     "obfTitle": "Operador de Base Fija (OBF)",
     "obfDesc": "Despacho y asistencia en tierra para explotadores aéreos. Secciones 1, 4, 6 y 7.",
-    "obfBullets": ["Despacho y seguimiento de vuelo (121/135)", "Guía de estacionamiento", "Coordinación de rampa", "Comunicación ATS/AOC"],
+    "obfBullets": [
+      "Despacho y seguimiento de vuelo (121/135)",
+      "Guía de estacionamiento",
+      "Coordinación de rampa",
+      "Comunicación ATS/AOC"
+    ],
     "passengerTitle": "Tráfico de Pasajeros",
     "passengerDesc": "Atención integral al pasajero en operaciones 121 y 135.",
-    "passengerBullets": ["Check-in y facturación", "Embarque y desembarque", "Asistencia PRM", "Menores sin acompañantes (UM)"],
+    "passengerBullets": [
+      "Check-in y facturación",
+      "Embarque y desembarque",
+      "Asistencia PRM",
+      "Menores sin acompañantes (UM)"
+    ],
     "specialTitle": "Servicios Especiales",
     "specialDesc": "Coordinación de servicios complementarios para la operación aérea.",
-    "specialHeadlineBullets": ["Sillas de ruedas y asistencia PRM", "Menores sin acompañantes (UM)", "Animales de servicio", "VIP y fast track"],
-    "specialBullets": ["Coordinación de catering", "Uso del salón VIP", "Solicitud de permisos de aterrizaje y sobrevuelos", "Asistencia a tripulaciones (CREW) — transporte y hotel", "Asistencia en aeropuertos alternos", "Abastecimiento de combustible", "Servicios GSE / ASU / ACU", "Traslado de aeronaves"],
+    "specialHeadlineBullets": [
+      "Sillas de ruedas y asistencia PRM",
+      "Menores sin acompañantes (UM)",
+      "Animales de servicio",
+      "VIP y fast track"
+    ],
+    "specialBullets": [
+      "Coordinación de catering",
+      "Uso del salón VIP",
+      "Solicitud de permisos de aterrizaje y sobrevuelos",
+      "Asistencia a tripulaciones (CREW) — transporte y hotel",
+      "Asistencia en aeropuertos alternos",
+      "Abastecimiento de combustible",
+      "Servicios GSE / ASU / ACU",
+      "Traslado de aeronaves"
+    ],
     "maintenanceTitle": "Mantenimiento GSE",
     "maintenanceDesc": "Soporte preventivo y correctivo para toda la flota de equipos.",
-    "maintenanceBullets": ["Mantenimiento preventivo", "Reparación de componentes", "Certificación de equipos críticos", "Servicio en estación"],
-    "aircraftTypesTitle": "Tipos de aeronave",
-    "aircraftTypesText": "Nuestros paquetes de handling están diseñados para responder a diferentes necesidades operativas, ofreciendo atención a aeronaves de fuselaje estrecho, fuselaje ancho y aviación ejecutiva, con personal capacitado y los recursos necesarios para cada servicio.",
-    "aircraftTypesNarrow": "Fuselaje estrecho",
-    "aircraftTypesWide": "Fuselaje ancho",
-    "aircraftTypesExec": "Aviación ejecutiva"
-  },
-  "handling": {
-    "sectionLabel": "MANEJO AEROPORTUARIO",
-    "title": "¿Qué es el handling aeroportuario?",
-    "definition": "En el ámbito aeronáutico, el término handling hace referencia al conjunto de servicios de asistencia que se realizan en el aeropuerto para facilitar la operación de una aeronave. Estos servicios abarcan diferentes actividades relacionadas con la aeronave, los pasajeros, el equipaje y la carga, desde su llegada al aeropuerto hasta su salida. El handling permite coordinar los procesos necesarios para el movimiento de pasajeros, equipaje y mercancías entre el transporte aéreo y terrestre, así como las conexiones entre aeronaves en vuelos de tránsito. En pocas palabras, es todo el conjunto de actividades que hacen posible que una operación aeroportuaria se desarrolle de manera coordinada, segura y eficiente."
-  },
-  "whyChoose": {
-    "sectionLabel": "POR QUÉ ELEGIRNOS",
-    "title": "¿Por qué elegir a JMC como tu socio estratégico?",
-    "subtitle": "Razones que distinguen nuestra operación en plataforma.",
-    "reasons": {
-      "fleet": {
-        "title": "Flota de equipos moderna",
-        "text": "Contamos con equipos de apoyo en tierra (GSE) de última generación, asegurando operaciones rápidas y sin contratiempos."
-      },
-      "maintenance": {
-        "title": "Mantenimiento riguroso",
-        "text": "Tenemos nuestro propio taller de soporte técnico, que garantiza que los equipos estén siempre disponibles y en óptimas condiciones."
-      },
-      "certs": {
-        "title": "Certificaciones oficiales",
-        "text": "Operamos bajo las estrictas regulaciones del INAC, cumpliendo con todas las normativas legales y de seguridad aeroportuaria."
-      },
-      "team": {
-        "title": "Personal altamente calificado",
-        "text": "Nuestro equipo técnico y de rampa recibe capacitación constante para manejar aeronaves con la mayor precisión y cuidado."
-      },
-      "tailorMade": {
-        "title": "Servicio a la medida (Tailor-Made)",
-        "text": "Adaptamos los procesos logísticos y de atención en tierra a las necesidades operativas específicas de cada aerolínea."
-      },
-      "reliability": {
-        "title": "Confiabilidad",
-        "text": "Nos enfocamos en construir relaciones a largo plazo basadas en la transparencia, la puntualidad y la seguridad de las operaciones en plataforma."
-      }
-    }
+    "maintenanceBullets": [
+      "Mantenimiento preventivo",
+      "Reparación de componentes",
+      "Certificación de equipos críticos",
+      "Servicio en estación"
+    ]
   },
   "allies": {
     "sectionLabel": "ALIADOS COMERCIALES",
     "title": "Conoce parte de nuestros aliados comerciales",
-    "subtitle": "Operamos con las principales aerolíneas que confían en nuestra operación en Maiquetía.",
-    "metaTitle": "Aliados Comerciales | JMC Handling",
-    "metaDesc": "Aerolíneas y socios comerciales que confían en JMC Handling para operaciones en Maiquetía.",
-    "alliesLabel": "NUESTROS ALIADOS",
-    "statsLabel": "ESTADÍSTICAS",
-    "airlinesCount": "Aerolíneas atendidas",
-    "yearsOperating": "Años operando en Maiquetía",
-    "yearsTeam": "Años de experiencia del equipo",
-    "ctaLabel": "ÚNETE",
-    "ctaTitle": "¿Quieres operar con nosotros?",
-    "ctaText": "Coordina una operación y descubre por qué las principales aerolíneas confían en JMC."
+    "subtitle": "Operamos con las principales aerolíneas que confían en nuestra operación en Maiquetía."
   },
   "about": {
     "sectionLabel": "QUIÉNES SOMOS",
@@ -173,9 +127,6 @@
     "whoTitle": "Una empresa venezolana especializada en handling",
     "intro": "Somos una empresa venezolana especializada en handling, enfocada en la asistencia y las operaciones en plataforma para aerolíneas. Acompañamos las distintas etapas de la operación aeroportuaria, atendiendo aeronaves, pasajeros, equipaje y carga, con personal capacitado y una flota de equipos de apoyo terrestre (GSE).",
     "intro2": "Estamos presentes en Maiquetía desde 2012 y contamos con la habilitación para prestar nuestros servicios desde 2015. Nuestro equipo reúne más de 30 años de experiencia en el sector, conocimiento que nos permite entender las exigencias de cada operación y responder de manera organizada y eficiente.",
-    "foundedSinceLabel": "Constituida",
-    "authorizedSinceLabel": "Habilitación en Maiquetía",
-    "experienceNoteLabel": "Experiencia del equipo",
     "missionLabel": "Misión",
     "visionLabel": "Visión",
     "mission": "Ser una referencia en el mercado aeroportuario venezolano, reconocidos por ofrecer soluciones a la medida y mantener altos estándares de calidad, seguridad y eficiencia, evolucionando junto a las necesidades de la industria aeronáutica.",
@@ -227,7 +178,6 @@
     "title": "La seguridad no se declara. Se opera.",
     "subtitle": "Procesos, capacitación y habilitación para sostener una operación controlada en tierra.",
     "intro": "JMC desarrolla su operación bajo la Regulación Aeronáutica Venezolana 111 y la cultura de seguridad operacional del equipo.",
-    "certificationTitle": "Certificación Oficial",
     "certificationParagraph": "Estamos aprobados por el INAC (Instituto Nacional de Aeronáutica Civil) como Explotador de Servicios Especializados Aeroportuarios (CESEA-021), cumpliendo con los requisitos establecidos para el desarrollo de nuestras actividades.",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
@@ -244,7 +194,6 @@
   },
   "quote": {
     "title": "Coordinar una operación",
-    "subtitle": "Comparta el contexto necesario y nuestro equipo comercial podrá orientar la solicitud.",
     "name": "Empresa / contacto",
     "namePlaceholder": "Ej. Copa Airlines / Juan Pérez",
     "email": "Correo electrónico",
@@ -260,7 +209,6 @@
     "message": "Contexto de la operación",
     "messagePlaceholder": "Indique frecuencia, temporada, aeronave y servicios requeridos...",
     "submit": "Enviar solicitud",
-    "sending": "Enviando solicitud...",
     "subject": "Nueva solicitud operativa - JMC Handling",
     "successCode": "ESTADO / RECIBIDA",
     "errorCode": "ESTADO / ERROR",
@@ -268,10 +216,7 @@
     "successText": "Nuestro equipo revisará la información y se pondrá en contacto con usted.",
     "errorTitle": "No pudimos enviar la solicitud",
     "errorText": "Revise los campos e intente nuevamente o utilice uno de nuestros canales directos.",
-    "disclaimer": "La información se utilizará únicamente para responder a su solicitud.",
-    "directTitle": "¿Prefiere un canal directo?",
-    "directText": "También puede escribirnos o llamar a la oficina de JMC Handling.",
-    "required": "Campo requerido"
+    "disclaimer": "La información se utilizará únicamente para responder a su solicitud."
   },
   "contact": {
     "title": "Contacto operativo",
@@ -282,15 +227,12 @@
     "addressLabel": "Ubicación",
     "address": "Aeropuerto Internacional Simón Bolívar de Maiquetía, Nivel 1, Sector 8.2, Venezuela.",
     "certLabel": "Habilitación",
-    "certValue": "CESEA-021 · INAC · RAV 111",
     "emailLabel": "Correo",
     "phoneLabelVzla": "Venezuela",
     "phoneLabelUsa": "USA",
     "hoursLabel": "Horario de atención",
     "hours": "Lunes – Sábado · 05:00 – 22:00 (VET)",
     "formTitle": "Envíenos un mensaje",
-    "successTitle": "Solicitud recibida",
-    "successText": "Nuestro equipo se pondrá en contacto con usted.",
     "primaryCta": "Coordinar una operación"
   },
   "footer": {
@@ -306,9 +248,7 @@
     "officeLine2": "Nivel 1, Sector 8.2",
     "officeLine3": "Maiquetía, Venezuela",
     "emailPrimary": "customer.service@jmchandling.com",
-    "emailSecondary": "carlos.wood@jmchandling.com",
     "emailLabel": "Correo comercial",
-    "phone": "+58 414 118 0806",
     "phoneVzla": "+58 414 118 0806",
     "phoneUsa": "+1 954 470 4217",
     "phoneLabelVzla": "Venezuela",
@@ -325,50 +265,24 @@
     "invalidEmail": "Correo electrónico inválido"
   },
   "common": {
-    "learnMore": "Más información",
     "getQuote": "Coordinar una operación",
     "viewServices": "Explorar capacidades",
-    "loading": "Cargando...",
-    "error": "Ocurrió un error. Intente de nuevo.",
-    "backHome": "Volver al inicio",
-    "skipToContent": "Saltar al contenido principal",
-    "serviceIndex": "Índice de capacidades"
-  },
-  "capabilities": {
-    "metaTitle": "Capacidades | JMC Handling",
-    "metaDesc": "Catálogo completo de servicios de handling: plataforma y GSE, cuidado de aeronaves, OBF, pasajeros y mantenimiento GSE.",
-    "indexTitle": "Handling, FBO y servicios especializados",
-    "indexSubtitle": "Servicios de plataforma, cuidado de aeronaves, operación, pasajeros y mantenimiento bajo el marco de habilitación aplicable.",
-    "catalogLabel": "CATÁLOGO DE SERVICIOS",
-    "servicesLabel": "Servicios incluidos",
-    "ctaLabel": "COORDINEMOS",
-    "ctaTitle": "¿Necesita un servicio específico?",
-    "ctaText": "Comparta el contexto de su operación y nuestro equipo comercial le orientará sobre la mejor solución."
+    "skipToContent": "Saltar al contenido principal"
   },
   "meta": {
     "homeTitle": "JMC Handling | Handling, FBO y servicios especializados en Maiquetía",
     "homeDesc": "Servicios especializados aeroportuarios en Maiquetía desde 2015. GSE, OBF, cuidado de aeronaves, tráfico de pasajeros y mantenimiento bajo CESEA-021 / INAC RAV 111.",
-    "servicesTitle": "Capacidades | JMC Handling",
-    "servicesDesc": "Capacidades de plataforma, cuidado de aeronaves, OBF, pasajeros y mantenimiento GSE de JMC Handling.",
     "contactTitle": "Contacto operativo | JMC Handling",
     "contactDesc": "Coordine una operación con JMC Handling en el Aeropuerto Internacional de Maiquetía.",
-    "quoteTitle": "Coordinar una operación | JMC Handling",
-    "quoteDesc": "Comparta los detalles de su operación y el equipo de JMC Handling le orientará.",
     "twitterImageAlt": "JMC Handling - Handling, FBO y servicios especializados en Maiquetía"
   },
   "home": {
-    "historyLabel": "Hitos de Servicios Especializados JMC",
-    "navCompany": "La empresa",
-    "navEquipment": "Equipos GSE",
     "heroCompanyName": "Servicios Especializados JMC, C.A.",
     "heroTitle": "Apoyo en tierra para operar en Maiquetía.",
     "heroSubtitle": "Servicios aeroportuarios para aeronaves, pasajeros, equipaje y carga. Explore el tipo de asistencia que necesita su operación.",
     "heroLocation": "Aeropuerto Internacional Simón Bolívar · Maiquetía, CCS",
     "heroMediaCaption": "Equipos de apoyo terrestre en estación",
     "heroMediaContext": "Operación en plataforma · CCS",
-    "foundedEvent": "Constitución de Servicios Especializados JMC",
-    "stationYear": "2015",
-    "stationEvent": "Inicio de prestación de servicios aeroportuarios en Maiquetía",
     "taskHeading": "¿Qué apoyo requiere su operación?",
     "taskIntro": "Seleccione una necesidad para consultar el alcance, las tareas incluidas y los datos que conviene especificar al solicitar el servicio.",
     "openCatalog": "Abrir catálogo completo",
@@ -403,5 +317,62 @@
     "footerNavLabel": "Navegación del pie de página",
     "footerEnglish": "English",
     "footerLocation": "Maiquetía, Venezuela"
+  },
+  "media": {
+    "alt": {
+      "certCesea": "Certificación CESEA-021 de JMC Handling",
+      "equipmentAsu": "Unidad de arranque neumático (ASU) para el encendido de motores",
+      "equipmentBeltLoader": "Cinta transportadora de equipaje elevada hacia la bodega del avión",
+      "equipmentCarrucha": "Carrucha de equipaje de JMC con carga visible en la plataforma",
+      "equipmentCarruchaUld": "Carrucha cargada con contenedores ULD en la rampa",
+      "equipmentCartClosed": "Carrucha de equipaje con laterales cerrados",
+      "equipmentCartLoaded": "Carrucha de equipaje cargada en la rampa",
+      "equipmentCartOpen": "Carrucha de equipaje con plataforma abierta",
+      "equipmentGpu": "Unidad de energía en tierra (GPU) conectada a la aeronave",
+      "equipmentTowPlate": "Plancha de arrastre con plataforma para el traslado de equipajes",
+      "equipmentTractor": "Tractor remolcador de equipaje de JMC en plataforma",
+      "equipmentWaterCart": "Carro de aguas residuales para el servicio de sanitarios de la aeronave",
+      "galleryAircraftDay": "Aeronave estacionada en la plataforma durante la operación diurna",
+      "galleryAircraftRamp": "Aeronave posicionada en la rampa del aeropuerto de Maiquetía",
+      "galleryBaggageSorting": "Clasificación de equipaje en la banda transportadora del terminal",
+      "galleryBeltLoaderOps": "Cinta transportadora de equipaje en operación sobre la rampa",
+      "galleryBeltLoading": "Cinta transportadora elevando equipaje hacia la puerta de la bodega",
+      "galleryCargoContainer": "Contenedor de carga instalado en el interior de la bodega",
+      "galleryCargoHold": "Operario de rampa cargando un contenedor en la bodega de la aeronave",
+      "galleryCargoHoldContainer": "Preparación de un contenedor de carga dentro de la bodega",
+      "galleryConsolidation": "Consolidación de carga sobre plataforma en el terminal",
+      "galleryLoadedCart": "Carrucha cargada con equipaje sobre la rampa",
+      "galleryNightAircraft": "Aeronave iluminada en la plataforma durante la operación nocturna",
+      "galleryNightOps": "Operario con chaleco reflectante durante la operación nocturna en rampa",
+      "galleryRampTeam": "Personal de rampa coordinando la preparación de salida de la aeronave",
+      "galleryUldRamp": "Contenedor ULD sobre carrucha en la rampa",
+      "galleryUldStore": "Contenedores ULD almacenados en el terminal de carga",
+      "heroRampNight": "Vista general del aeropuerto de Maiquetía al anochecer, con aeronaves y equipos de plataforma",
+      "opsAircraftOnStand": "Aeronave en su posición de estacionamiento",
+      "opsAircraftWithGse": "Aeronave en la plataforma con equipos de apoyo en tierra",
+      "opsBaggageConsolidated": "Equipaje consolidado y listo para su embarque",
+      "opsBeltToHold": "Carga de equipaje mediante cinta transportadora hacia la bodega",
+      "opsCargoDoor": "Apertura de la puerta de carga de la aeronave",
+      "opsCargoDoorService": "Servicio en la puerta de carga de la aeronave",
+      "opsCartOnRamp": "Carrucha de equipaje posicionada en la rampa",
+      "opsCartTerminal": "Carrucha de equipaje en el terminal",
+      "opsDispatchRamp": "Aeronave en plataforma durante la preparación del despacho",
+      "opsDuskLoading": "Carga de la aeronave al atardecer",
+      "opsDuskStand": "Aeronave en la plataforma al atardecer",
+      "opsDuskTurnaround": "Turnaround de aeronave al atardecer",
+      "opsGseAircraftSide": "Equipos de apoyo junto al fuselaje de la aeronave",
+      "opsGseStandby": "Equipos de apoyo en tierra listos para el despacho",
+      "opsGseTurnaround": "Equipos de apoyo en tierra durante el turnaround",
+      "opsLoadedCart": "Carrucha cargada durante la operación en plataforma",
+      "opsLoadingService": "Servicio de carga en la rampa",
+      "opsManualLoading": "Carga manual de equipaje en la bodega de la aeronave",
+      "opsParkedAircraft": "Aeronave estacionada en la plataforma",
+      "opsRampAircraft": "Aeronave en la plataforma durante la operación de rampa",
+      "opsRampCoordination": "Personal de rampa coordinando la operación en plataforma",
+      "opsRampTurnaround": "Operación de turnaround sobre la plataforma",
+      "opsStandDetail": "Detalle de la plataforma de estacionamiento",
+      "opsUldInHold": "Contenedor ULD cargado dentro de la bodega",
+      "safetySms": "Personal de rampa con equipo de seguridad operacional"
+    }
   }
 }

@@ -12,8 +12,8 @@ const currentPath = Astro.url.pathname;
 
 const localePath = locale === 'es' ? '/es' : '/en';
 const homePath = `${localePath}/`;
-const aboutPath = `${localePath}/sobre-jmc`;
-const contactPath = `${localePath}/contacto`;
+const aboutPath = switchLocalePath('/es/sobre-jmc', locale);
+const contactPath = switchLocalePath('/es/contacto', locale);
 
 function isCurrent(href: string): boolean {
   if (href === homePath) {

@@ -87,13 +87,39 @@ export function getLocaleFromUrl(url: URL): Locale {
   return DEFAULT_LOCALE;
 }
 
+/**
+ * Slug translation between locales. The two locales do not share slug names,
+ * so `/es/contacto` must become `/en/contact` — not `/en/contacto`.
+ * Add a row here whenever a page is created in both locales.
+ */
+export const ROUTE_SLUGS: Record<string, Record<Locale, string>> = {
+  servicios: { es: 'servicios', en: 'services' },
+  contacto: { es: 'contacto', en: 'contact' },
+  cotizacion: { es: 'cotizacion', en: 'quote' },
+  'sobre-jmc': { es: 'sobre-jmc', en: 'about-jmc' },
+};
+
+function translateSlug(slug: string, from: Locale, to: Locale): string {
+  const entry = Object.values(ROUTE_SLUGS).find((row) => row[from] === slug);
+  if (!entry) return slug;
+  return entry[to] ?? slug;
+}
+
 export function switchLocalePath(currentPath: string, target: Locale): string {
   const segments = currentPath.split('/').filter(Boolean);
+  let current: Locale = DEFAULT_LOCALE;
+
   if (segments[0] === 'es' || segments[0] === 'en') {
+    current = segments[0] as Locale;
     segments[0] = target;
   } else {
     segments.unshift(target);
   }
+
+  if (segments[1]) {
+    segments[1] = translateSlug(segments[1], current, target);
+  }
+
   const newPath = '/' + segments.join('/');
   return newPath || `/${target}`;
 }
