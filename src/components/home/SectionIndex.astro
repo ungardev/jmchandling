@@ -1,0 +1,40 @@
+---
+import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const quotePath = locale === 'es' ? '/es/contacto?intent=quote' : '/en/contact?intent=quote';
+
+const items = [
+  { href: '#services', index: '01', label: t('home.indexServices') },
+  { href: '#equipment', index: '02', label: t('home.indexEquipment') },
+  { href: '#safety', index: '03', label: t('home.indexSafety') },
+  { href: quotePath, index: '04', label: t('home.indexContact') },
+];
+---
+
+<section class="border-b border-cargo-deep/15 bg-cargo-mist" aria-label={t('home.indexLabel')}>
+  <div class="container-max">
+    <div class="flex flex-wrap items-center gap-x-10 gap-y-3 py-5">
+      <p class="eyebrow eyebrow-on-light">{t('home.indexLabel')}</p>
+      <ul class="flex flex-wrap items-center gap-x-8 gap-y-2">
+        {items.map((item) => (
+          <li class="flex items-baseline gap-2">
+            <span class="font-mono text-xs text-cargo-deep/70">{item.index}</span>
+            <a
+              href={item.href}
+              class="text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-ink"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

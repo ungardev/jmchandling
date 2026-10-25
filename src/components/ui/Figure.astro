@@ -1,0 +1,62 @@
+---
+export interface Props {
+  src: string;
+  srcset?: string;
+  sizes?: string;
+  alt: string;
+  width: number;
+  height: number;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  /** Recorte: 'aspect-[4/3]' | 'aspect-[4/5]' | 'aspect-[16/9]' ... */
+  ratio?: string;
+  objectPosition?: string;
+  caption?: string;
+  /** light = caption sobre superficie clara · dark = sobre superficie profunda */
+  tone?: 'light' | 'dark';
+  class?: string;
+  figureClass?: string;
+}
+
+const {
+  src,
+  srcset,
+  sizes,
+  alt,
+  width,
+  height,
+  loading = 'lazy',
+  fetchpriority,
+  ratio,
+  objectPosition = 'object-center',
+  caption,
+  tone = 'light',
+  class: className = '',
+  figureClass = '',
+} = Astro.props;
+
+const captionClasses = {
+  light: 'text-cargo-ink/80',
+  dark: 'text-cargo-white/85',
+};
+---
+
+<figure class={figureClass}>
+  <img
+    src={src}
+    srcset={srcset}
+    sizes={sizes}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    fetchpriority={fetchpriority}
+    class={['w-full object-cover', ratio, objectPosition, className].filter(Boolean).join(' ')}
+  />
+  {caption && (
+    <figcaption class={['mt-3 font-mono text-xs uppercase tracking-[0.1em]', captionClasses[tone]].join(' ')}>
+      {caption}
+    </figcaption>
+  )}
+</figure>

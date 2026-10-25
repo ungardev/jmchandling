@@ -3,9 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/global/Header.astro';
 import Footer from '../../components/global/Footer.astro';
 import Hero from '../../components/home/Hero.astro';
+import SectionIndex from '../../components/home/SectionIndex.astro';
 import AlliesStrip from '../../components/home/AlliesStrip.astro';
 import ServicesGrid from '../../components/home/ServicesGrid.astro';
 import EquipmentGrid from '../../components/home/EquipmentGrid.astro';
+import OperationsBand from '../../components/home/OperationsBand.astro';
 import SafetySection from '../../components/home/SafetySection.astro';
 import RequestPrompt from '../../components/home/RequestPrompt.astro';
 import { useTranslations } from '../../i18n/utils';
@@ -20,11 +22,13 @@ const t = useTranslations(locale);
     <span id="about" class="sr-only" aria-hidden="true"></span>
     <span id="empresa" class="sr-only" aria-hidden="true"></span>
     <Hero locale={locale} />
+    <SectionIndex locale={locale} />
     <AlliesStrip locale={locale} />
     <ServicesGrid locale={locale} />
     <EquipmentGrid locale={locale} />
+    <OperationsBand locale={locale} />
     <SafetySection locale={locale} />
     <RequestPrompt locale={locale} />
   </main>
-  <Footer locale={locale} variant="compact" />
+  <Footer locale={locale} />
 </Layout>

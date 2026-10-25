@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../../i18n/utils';
 import { switchLocalePath, useTranslations } from '../../i18n/utils';
+import Button from '../ui/Button.astro';
 
 export interface Props {
   locale: Locale;
@@ -71,10 +72,9 @@ const navLinks = [
               {link.label}
             </a>
           ))}
-          <a href={contactPath} class="border border-cargo-light/60 px-4 py-2.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-white/10">
+          <Button href={contactPath} variant="secondary" tone="dark" size="sm">
             {t('quote.submit')}
-            <span aria-hidden="true" class="ml-3 text-cargo-light">↗</span>
-          </a>
+          </Button>
           <a
             href={switchLocalePath(currentPath, locale === 'en' ? 'es' : 'en')}
             class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/70 transition-colors hover:text-cargo-white"
@@ -116,7 +116,9 @@ const navLinks = [
             {link.label}
           </a>
         ))}
-        <a href={contactPath} class="btn-primary mt-4 text-center text-sm">{t('quote.submit')}</a>
+        <Button href={contactPath} variant="primary" tone="dark" size="sm" class="mt-4 w-full">
+          {t('quote.submit')}
+        </Button>
         <div class="mt-3 flex items-center gap-3 border-t border-cargo-light/15 pt-4 font-mono text-xs uppercase tracking-[0.08em]">
           <span class="text-cargo-white/85">{t('nav.language')}</span>
           <a href={switchLocalePath(currentPath, 'es')} lang="es" class:list={['px-1 py-1', locale === 'es' ? 'text-cargo-light' : 'text-cargo-white/85']}>ES</a>

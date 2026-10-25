@@ -1,0 +1,55 @@
+---
+import ArrowUpRight from './icons/ArrowUpRight.astro';
+
+export interface Props {
+  href: string;
+  /** light = sobre superficie clara · dark = sobre superficie profunda */
+  tone?: 'light' | 'dark';
+  size?: 'sm' | 'base';
+  /** Muestra el icono de salida. Solo en enlaces que cambian de contexto. */
+  arrow?: boolean;
+  external?: boolean;
+  class?: string;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  tone = 'light',
+  size = 'sm',
+  arrow = false,
+  external = false,
+  class: className = '',
+  ariaLabel,
+} = Astro.props;
+
+const toneClasses = {
+  light: 'text-cargo-deep decoration-cargo-emerald hover:text-cargo-ink',
+  dark: 'text-cargo-light decoration-cargo-light hover:text-cargo-white',
+};
+
+const sizeClasses = {
+  sm: 'text-sm',
+  base: 'text-base',
+};
+
+const classes = [
+  'inline-flex items-center gap-2 font-semibold underline underline-offset-4 transition-colors',
+  toneClasses[tone],
+  sizeClasses[size],
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<a
+  href={href}
+  class={classes}
+  aria-label={ariaLabel}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <slot />
+  {arrow && <ArrowUpRight class="h-3.5 w-3.5" />}
+</a>

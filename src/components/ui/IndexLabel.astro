@@ -1,0 +1,31 @@
+---
+export interface Props {
+  /** Numero de la serie: 01, 02, 03... */
+  index: string;
+  /** Etiqueta corta que acompaña al numero. Opcional. */
+  label?: string;
+  /** light = sobre superficie clara · dark = sobre superficie profunda */
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { index, label, tone = 'light', class: className = '' } = Astro.props;
+
+const toneClasses = {
+  light: 'text-cargo-deep',
+  dark: 'text-cargo-light',
+};
+
+const classes = [
+  'font-mono text-xs font-medium uppercase tracking-[0.14em]',
+  toneClasses[tone],
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<p class={classes}>
+  {index}
+  {label && <span class="ml-2">{label}</span>}
+</p>

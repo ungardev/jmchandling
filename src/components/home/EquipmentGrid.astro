@@ -9,6 +9,8 @@ import {
   equipmentTractorService,
   equipmentWaterCart,
 } from '../../data/media.generated';
+import ActionLink from '../ui/ActionLink.astro';
+import Button from '../ui/Button.astro';
 
 export interface Props {
   locale: Locale;
@@ -28,61 +30,56 @@ const equipment = [
 ] as const;
 ---
 
-<section id="equipment" class="scroll-mt-24 bg-cargo-white py-16 md:py-20" aria-labelledby="equipment-heading">
+<section id="equipment" class="scroll-mt-24 bg-cargo-white py-16 text-cargo-ink md:py-20" aria-labelledby="equipment-heading">
   <span id="equipos" class="sr-only" aria-hidden="true"></span>
   <div class="container-max">
-    <div class="grid gap-6 border-b border-cargo-deep/20 pb-7 md:grid-cols-[0.75fr_1.25fr] md:items-end">
-      <h2 id="equipment-heading" class="type-h2 max-w-md text-cargo-deep">
+    <div class="grid-12 items-end border-b border-cargo-deep/20 pb-8">
+      <h2 id="equipment-heading" class="type-h2 col-span-12 max-w-md text-cargo-deep lg:col-span-5">
         {t('home.equipmentHeading')}
       </h2>
-      <p class="type-lead max-w-2xl text-cargo-ink/80">{t('home.equipmentIntro')}</p>
+      <p class="type-lead col-span-12 max-w-2xl text-cargo-ink/80 lg:col-span-6 lg:col-start-7">
+        {t('home.equipmentIntro')}
+      </p>
     </div>
 
-    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <ul class="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
       {equipment.map(({ key, media }) => (
-        <li id={`equipment-${key}`} class="group flex scroll-mt-24 flex-col overflow-hidden border border-cargo-deep/15 bg-cargo-white">
-          <div class="relative aspect-[4/5] overflow-hidden bg-cargo-mist">
+        <li id={`equipment-${key}`} class="group flex scroll-mt-24 flex-col border-t border-cargo-deep/20 pt-5">
+          <div class="overflow-hidden bg-cargo-mist">
             <img
               src={media.src}
               srcset={media.srcset}
-              sizes="(min-width: 1280px) 280px, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
               alt={t(media.altKey)}
               width={media.width}
               height={media.height}
               loading="lazy"
               decoding="async"
-              class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+              class="aspect-[4/5] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
             />
           </div>
-          <div class="flex flex-1 flex-col border-t border-cargo-deep/15 p-5">
-            <h3 class="type-h3 text-cargo-deep">{t(`equipment.${key}Title`)}</h3>
-            <p class="type-body mt-3 text-cargo-ink/80">{t(`equipment.${key}Desc`)}</p>
-          </div>
+          <h3 class="type-h3 mt-5 text-cargo-deep">{t(`equipment.${key}Title`)}</h3>
+          <p class="type-body mt-3 max-w-md text-cargo-ink/80">{t(`equipment.${key}Desc`)}</p>
         </li>
       ))}
-
-      <li class="flex flex-col justify-between border border-cargo-emerald/50 bg-cargo-mist p-5">
-        <div>
-          <span class="badge-cert">{t('equipment.ctaLabel')}</span>
-          <h3 class="type-h3 mt-4 text-cargo-deep">{t('equipment.asuCtaTitle')}</h3>
-          <p class="type-body mt-3 text-cargo-ink/80">{t('equipment.asuCtaText')}</p>
-        </div>
-        <a
-          href={quotePath}
-          class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-ink"
-        >
-          {t('equipment.ctaTitle')}
-          <span aria-hidden="true">↗</span>
-        </a>
-      </li>
     </ul>
 
-    <a
-      href="#services"
-      class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-ink"
-    >
+    <div class="mt-14 grid-12 items-start border-t border-cargo-deep/20 pt-8">
+      <div class="col-span-12 lg:col-span-5">
+        <h3 class="type-h3 text-cargo-deep">{t('equipment.asuCtaTitle')}</h3>
+        <p class="type-body mt-3 max-w-md text-cargo-ink/80">{t('equipment.asuCtaText')}</p>
+      </div>
+      <div class="col-span-12 lg:col-span-5 lg:col-start-8">
+        <h3 class="type-h3 text-cargo-deep">{t('equipment.ctaTitle')}</h3>
+        <p class="type-body mt-3 max-w-md text-cargo-ink/80">{t('equipment.ctaText')}</p>
+        <Button href={quotePath} size="sm" class="mt-6" arrow>
+          {t('quote.submit')}
+        </Button>
+      </div>
+    </div>
+
+    <ActionLink href="#services" class="mt-10">
       {t('home.equipmentCatalogLink')}
-      <span aria-hidden="true">↗</span>
-    </a>
+    </ActionLink>
   </div>
 </section>

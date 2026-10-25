@@ -11,19 +11,17 @@
     "switchToSpanish": "Cambiar a español",
     "about": "Sobre JMC"
   },
+  "operations": {
+    "sectionLabel": "OPERACIÓN EN PLATAFORMA",
+    "title": "La operación de rampa, en secuencia",
+    "subtitle": "Imágenes y video propios de la operación en Maiquetía: equipos, carga y equipaje.",
+    "videoCaption": "Pushback en plataforma · CCS"
+  },
   "hero": {
-    "tagline": "El éxito de todo vuelo depende, esencialmente, de la excelencia en tierra.",
-    "ctaPrimary": "Encontrar asistencia",
-    "ctaSecondary": "Ver el catálogo completo"
+    "ctaPrimary": "Coordinar una operación",
+    "ctaSecondary": "Ver capacidades"
   },
   "services": {
-    "media": {
-      "rampAlt": "Equipo GSE de JMC preparado para una operación en plataforma",
-      "aircraftCareAlt": "Equipo de JMC realizando labores de limpieza y cuidado de equipos aeroportuarios",
-      "operationsAlt": "Equipo de JMC en capacitación operacional",
-      "passengerAlt": "Equipo de JMC en formación para atención operacional",
-      "maintenanceAlt": "Mantenimiento preventivo de un equipo de apoyo terrestre de JMC"
-    },
     "families": {
       "rampTitle": "Plataforma y GSE",
       "rampDesc": "Equipos de apoyo terrestre para atender aeronaves de pasajeros y carga en plataforma.",
@@ -113,20 +111,18 @@
   },
   "allies": {
     "sectionLabel": "ALIADOS COMERCIALES",
-    "title": "Conoce parte de nuestros aliados comerciales",
-    "subtitle": "Operamos con las principales aerolíneas que confían en nuestra operación en Maiquetía."
+    "title": "Aerolíneas con las que operamos en Maiquetía",
+    "subtitle": "Operamos en plataforma para las principales aerolíneas en Maiquetía."
   },
   "about": {
     "sectionLabel": "QUIÉNES SOMOS",
-    "title": "Conócenos",
-    "subtitle": "JMC Servicios Especializados",
+    "title": "Servicios Especializados JMC, C.A.",
+    "subtitle": "Operación en plataforma, cuidado de aeronaves y servicio a pasajeros en Maiquetía.",
     "metaTitle": "Sobre JMC | Servicios Especializados JMC, C.A.",
     "metaDesc": "Conoce la historia, misión, visión y habilitaciones de Servicios Especializados JMC en Maiquetía.",
-    "introLabel": "QUIÉNES SOMOS",
-    "whoLabel": "NUESTRA EMPRESA",
-    "whoTitle": "Una empresa venezolana especializada en handling",
-    "intro": "Somos una empresa venezolana especializada en handling, enfocada en la asistencia y las operaciones en plataforma para aerolíneas. Acompañamos las distintas etapas de la operación aeroportuaria, atendiendo aeronaves, pasajeros, equipaje y carga, con personal capacitado y una flota de equipos de apoyo terrestre (GSE).",
-    "intro2": "Estamos presentes en Maiquetía desde 2012 y contamos con la habilitación para prestar nuestros servicios desde 2015. Nuestro equipo reúne más de 30 años de experiencia en el sector, conocimiento que nos permite entender las exigencias de cada operación y responder de manera organizada y eficiente.",
+    "whoTitle": "Nuestra empresa",
+    "intro": "Empresa venezolana de handling, especializada en asistencia y operaciones en plataforma para aerolíneas. Acompañamos la operación aeroportuaria completa: aeronaves, pasajeros, equipaje y carga, con personal capacitado y flota propia de equipos de apoyo terrestre (GSE).",
+    "intro2": "Constituida en 2012, iniciamos operaciones en Maiquetía en 2015. El equipo reúne más de 30 años de experiencia en el sector aeronáutico venezolano: conocemos las exigencias de cada operación y respondemos de forma organizada y predecible.",
     "missionLabel": "Misión",
     "visionLabel": "Visión",
     "mission": "Ser una referencia en el mercado aeroportuario venezolano, reconocidos por ofrecer soluciones a la medida y mantener altos estándares de calidad, seguridad y eficiencia, evolucionando junto a las necesidades de la industria aeronáutica.",
@@ -140,15 +136,12 @@
     "milestoneTeamTitle": "Experiencia acumulada",
     "milestoneTeamText": "Profesionales con más de 30 años de experiencia en el sector aeronáutico venezolano.",
     "missionVisionLabel": "MISIÓN Y VISIÓN",
-    "valuesLabel": "VALORES",
     "valuesTitle": "Principios que guían nuestra operación",
     "authorizationLabel": "HABILITACIÓN",
-    "authorizationTitle": "Operamos bajo autorización oficial",
+    "authorizationTitle": "Habilitación oficial INAC",
     "authorizationText": "Estamos aprobados por INAC como Explotador de Servicios Especializados Aeroportuarios (CESEA-021), cumpliendo con los requisitos establecidos para el desarrollo de nuestras actividades.",
-    "rifLabel": "RIF",
-    "ctaLabel": "COordinemos",
-    "ctaTitle": "¿Listo para operar con nosotros?",
-    "ctaText": "Coordine una operación o explore nuestras capacidades para conocer todo lo que podemos ofrecer.",
+    "ctaTitle": "Programe una operación en Maiquetía",
+    "ctaText": "Coordinemos una operación o consulte las capacidades por familia de servicio.",
     "valuesList": [
       "Respeto",
       "Tolerancia",
@@ -175,36 +168,31 @@
     "beltDesc": "Vehículo equipado con una banda rodante que se eleva de manera ajustable hasta la puerta de la bodega de carga del avión. Facilita la subida y bajada manual de maletas y carga a granel, previniendo lesiones.",
     "gpuTitle": "GPU",
     "gpuDesc": "Ground Power Unit. Proporciona energía eléctrica a la aeronave mientras está estacionada con los motores apagados. Mantiene en funcionamiento los sistemas eléctricos del avión sin consumir combustible.",
-    "asuTitle": "ASU",
-    "asuDesc": "Air Start Unit. Proporciona flujo de aire comprimido a alta presión para asistir en el encendido de los motores principales del avión, algo indispensable cuando el APU está inoperativo.",
-    "ctaLabel": "COORDINEMOS",
-    "ctaTitle": "¿Necesita equipos GSE para su operación?",
-    "ctaText": "Solicite una cotización o coordine directamente con nuestro equipo comercial.",
+    "ctaTitle": "Equipos GSE para su operación",
+    "ctaText": "Solicite cotización o coordine directamente con el equipo comercial.",
     "tractorServiceTitle": "Tractor de Plataforma",
     "tractorServiceDesc": "Unidad de arrastre de plataforma con asiento de conductor, volante y plataforma trasera para mover carruchas y equipos de apoyo con autonomía y visibilidad total.",
-    "asuCtaTitle": "¿Necesita ASU?",
-    "asuCtaText": "La unidad de arranque neumático se coordina bajo requerimiento del operador. Solicítela con el resto de su operación.",
-    "equipmentAltNote": "Fotografía de la flota de JMC en la plataforma del aeropuerto de Maiquetía."
+    "asuCtaTitle": "Unidad de arranque neumático (ASU)",
+    "asuCtaText": "La ASU se coordina bajo requerimiento del operador y se solicita junto al resto de la operación."
   },
   "safety": {
-    "sectionLabel": "DOSSIER DE SEGURIDAD",
-    "title": "La seguridad no se declara. Se opera.",
-    "subtitle": "Procesos, capacitación y habilitación para sostener una operación controlada en tierra.",
-    "intro": "JMC desarrolla su operación bajo la Regulación Aeronáutica Venezolana 111 y la cultura de seguridad operacional del equipo.",
-    "certificationParagraph": "Estamos aprobados por el INAC (Instituto Nacional de Aeronáutica Civil) como Explotador de Servicios Especializados Aeroportuarios (CESEA-021), cumpliendo con los requisitos establecidos para el desarrollo de nuestras actividades.",
+    "sectionLabel": "SEGURIDAD OPERACIONAL",
+    "title": "Seguridad operacional",
+    "subtitle": "Procesos, capacitación y habilitación formal para sostener una operación controlada en tierra.",
+    "intro": "Operamos bajo la Regulación Aeronáutica Venezolana 111, con seguimiento de procesos y capacitación continua del personal.",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
     "smsLabel": "Safety Management System (SMS)",
     "smsText": "Capacitación constante y seguimiento de procesos para fortalecer la seguridad operacional.",
     "operatorLabel": "Explotador certificado",
-    "operatorText": "Certificado de Explotador de Servicios Especializados Aeroportuarios bajo la habilitación aplicable.",
+    "operatorText": "Certificado como Explotador de Servicios Especializados Aeroportuarios (CESEA-021).",
     "rifLabel": "RIF",
     "rif": "J401336558",
     "mediaAlt": "Documento de certificación CESEA-021 de Servicios Especializados JMC",
     "mediaCaption": "Evidencia documental · CESEA-021",
     "mediaLink": "Revisar la evidencia",
-    "teamCaption": "Equipo de rampa · protocolo de seguridad operacional"
+    "teamCaption": "Equipo de rampa en plataforma"
   },
   "quote": {
     "title": "Coordinar una operación",
@@ -234,30 +222,23 @@
   },
   "contact": {
     "title": "Contacto operativo",
-    "subtitle": "Conversemos sobre la próxima operación en Maiquetía.",
+    "subtitle": "Indique la aeronave, la frecuencia y los servicios requeridos.",
     "quoteTitle": "Coordinar una operación",
     "introTitle": "Coordinemos la próxima operación",
-    "intro": "Estamos listos para entender el contexto de su aerolínea y orientar el servicio especializado que necesita.",
+    "intro": "Entendemos el contexto de su aerolínea y orientamos el servicio especializado que requiere.",
     "addressLabel": "Ubicación",
     "address": "Aeropuerto Internacional Simón Bolívar de Maiquetía, Nivel 1, Sector 8.2, Venezuela.",
     "certLabel": "Habilitación",
-    "emailLabel": "Correo",
-    "phoneLabelVzla": "Venezuela",
-    "phoneLabelUsa": "USA",
     "hoursLabel": "Horario de atención",
     "hours": "Lunes – Sábado · 05:00 – 22:00 (VET)",
-    "formTitle": "Envíenos un mensaje",
-    "primaryCta": "Coordinar una operación"
+    "formTitle": "Envíenos un mensaje"
   },
   "footer": {
     "company": "Servicios Especializados JMC, C.A.",
     "description": "Servicios especializados aeroportuarios para operaciones en tierra. CESEA-021 · INAC · RAV 111.",
-    "services": "Capacidades",
-    "stations": "Estaciones",
+    "stations": "Estación",
     "stationValue": "CCS · Maiquetía",
-    "moreStations": "Más estaciones próximamente",
     "contact": "Contacto",
-    "office": "Oficina principal",
     "officeLine1": "Aeropuerto Internacional Simón Bolívar",
     "officeLine2": "Nivel 1, Sector 8.2",
     "officeLine3": "Maiquetía, Venezuela",
@@ -272,7 +253,9 @@
     "instagramLabel": "Instagram de JMC Handling",
     "legal": "© 2026 Servicios Especializados JMC, C.A.",
     "allRights": "Todos los derechos reservados.",
-    "legalCert": "CESEA-021 · INAC RAV 111"
+    "legalCert": "CESEA-021 · INAC RAV 111",
+    "navLabel": "Navegación del pie de página",
+    "navTitle": "Navegación"
   },
   "form": {
     "required": "Este campo es obligatorio",
@@ -292,32 +275,29 @@
     "twitterImageAlt": "JMC Handling - Handling, FBO y servicios especializados en Maiquetía"
   },
   "home": {
-    "heroCompanyName": "Servicios Especializados JMC, C.A.",
     "heroTitle": "Apoyo en tierra para operar en Maiquetía.",
-    "heroSubtitle": "Servicios aeroportuarios para aeronaves, pasajeros, equipaje y carga. Explore el tipo de asistencia que necesita su operación.",
-    "heroLocation": "Aeropuerto Internacional Simón Bolívar · Maiquetía, CCS",
-    "heroMediaCaption": "Tractor remolcador y tren de carruchas de JMC en plataforma",
-    "heroMediaContext": "Operación de rampa · CCS",
-    "taskHeading": "¿Qué apoyo requiere su operación?",
-    "taskIntro": "Seleccione una necesidad para consultar el alcance, las tareas incluidas y los datos que conviene especificar al solicitar el servicio.",
+    "heroSubtitle": "Servicios aeroportuarios para aeronaves, pasajeros, equipaje y carga. Cuéntenos qué requiere su operación.",
+    "taskHeading": "¿Qué requiere su operación?",
+    "taskIntro": "Cinco familias de servicio. Consulte el alcance y las tareas incluidas de cada una.",
     "openCatalog": "Solicitar cotización",
-    "actionGse": "Solicitar apoyo GSE",
-    "actionAircraftCare": "Consultar cuidado",
-    "actionObf": "Consultar OBF",
-    "actionPassengers": "Consultar asistencia",
-    "actionMaintenance": "Consultar mantenimiento",
-    "specialAsideTitle": "Servicios especiales: coordinación según el requerimiento de cada operación.",
-    "specialAsideLead": "El folleto describe también",
-    "viewSpecialScope": "Ver alcance de servicios especiales",
-    "equipmentHeading": "Funciones de los equipos de plataforma",
-    "equipmentIntro": "Seis equipos descritos en la guía operacional. Cada función explica qué aporta al movimiento de una aeronave en rampa.",
-    "equipmentCatalogLink": "Consultar capacidades por familia",
+    "actionGse": "Cotizar GSE",
+    "actionAircraftCare": "Cotizar cuidado de aeronaves",
+    "actionObf": "Cotizar OBF",
+    "actionPassengers": "Cotizar pasajeros",
+    "actionMaintenance": "Cotizar mantenimiento GSE",
+    "specialAsideTitle": "Servicios especiales",
+    "specialAsideLead": "Coordinación de servicios complementarios, bajo requerimiento de la operación.",
+    "viewSpecialScope": "Ver los 12 servicios especiales",
+    "equipmentHeading": "Equipos de plataforma",
+    "equipmentIntro": "Seis equipos que mueven la aeronave en rampa: qué hace cada uno y cuándo se usa.",
+    "equipmentCatalogLink": "Ver capacidades por familia",
     "requestTitle": "Indique el servicio, la aeronave y el contexto operativo.",
-    "requestDescription": "JMC recibe solicitudes para orientar el servicio especializado requerido.",
-    "footerDescription": "Servicios aeroportuarios en Maiquetía · INAC · RAV 111",
-    "footerNavLabel": "Navegación del pie de página",
-    "footerEnglish": "English",
-    "footerLocation": "Maiquetía, Venezuela"
+    "requestDescription": "Respondemos en horario de atención: lunes a sábado, 05:00–22:00 (VET).",
+    "indexLabel": "Índice",
+    "indexServices": "Capacidades",
+    "indexEquipment": "Equipos",
+    "indexSafety": "Seguridad",
+    "indexContact": "Contacto"
   },
   "media": {
     "alt": {
@@ -376,7 +356,12 @@
       "opsRampCoordination": "Personal de rampa coordinando la operación en plataforma",
       "opsRampTurnaround": "Operación de turnaround sobre la plataforma",
       "opsStandDetail": "Detalle de la plataforma de estacionamiento",
-      "opsUldInHold": "Contenedor ULD cargado dentro de la bodega"
+      "opsUldInHold": "Contenedor ULD cargado dentro de la bodega",
+      "familyRampGse": "Equipo GSE de JMC preparado para una operación en plataforma",
+      "familyAircraftCare": "Equipo de JMC realizando labores de limpieza y cuidado de equipos aeroportuarios",
+      "familyFboOperations": "Equipo de JMC en capacitación operacional",
+      "familyPassengerServices": "Equipo de JMC en formación para atención operacional",
+      "familyGseMaintenance": "Mantenimiento preventivo de un equipo de apoyo terrestre de JMC"
     }
   },
   "credentials": {
@@ -394,7 +379,6 @@
     "smsCode": "SMS",
     "smsTitle": "Safety Management System",
     "smsIssuer": "Capacitación y seguimiento de procesos",
-    "sectionLabel": "HABILITACIONES Y NORMATIVA",
-    "heading": "Operamos bajo habilitación oficial del INAC, con las condiciones técnicas y de seguridad que la normativa aeronáutica venezolana exige."
+    "sectionLabel": "HABILITACIONES Y NORMATIVA"
   }
 }

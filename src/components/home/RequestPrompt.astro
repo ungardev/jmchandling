@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
+import Button from '../ui/Button.astro';
 
 export interface Props {
   locale: Locale;
@@ -9,25 +10,59 @@ export interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const quotePath = locale === 'es' ? '/es/contacto?intent=quote' : '/en/contact?intent=quote';
-const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
 ---
 
-<section class="bg-cargo-light py-12 sm:py-14" aria-label={t('home.requestTitle')}>
-  <div class="container-max flex flex-col justify-between gap-7 md:flex-row md:items-center">
-    <div>
-      <h2 class="type-h2 max-w-xl text-cargo-deep">
-        {t('home.requestTitle')}
-      </h2>
-      <p class="type-body mt-4 max-w-2xl text-cargo-deep/85">{t('home.requestDescription')}</p>
-    </div>
-    <div class="flex flex-wrap gap-3">
-      <a href={quotePath} class="inline-flex items-center gap-3 bg-cargo-deep px-5 py-3.5 text-sm font-semibold text-cargo-white transition-colors hover:bg-cargo-ink">
-        {t('quote.submit')}
-        <span aria-hidden="true">↗</span>
-      </a>
-      <a href={contactPath} class="inline-flex items-center border border-cargo-deep/40 px-5 py-3.5 text-sm font-semibold text-cargo-deep transition-colors hover:bg-cargo-white/50">
-        {t('nav.contact')}
-      </a>
+<section class="bg-cargo-white text-cargo-ink" aria-labelledby="request-heading">
+  <div class="container-max py-16 md:py-24">
+    <div class="grid-12 items-start border-t border-cargo-deep/20 pt-10">
+      <div class="col-span-12 lg:col-span-6">
+        <h2 id="request-heading" class="type-h2 max-w-xl text-balance text-cargo-deep">
+          {t('home.requestTitle')}
+        </h2>
+        <p class="type-lead mt-5 max-w-lg text-cargo-ink/80">{t('home.requestDescription')}</p>
+        <Button href={quotePath} class="mt-8" arrow>
+          {t('quote.submit')}
+        </Button>
+      </div>
+
+      <dl class="col-span-12 mt-10 lg:col-span-5 lg:col-start-8 lg:mt-0">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
+          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
+            {t('footer.phoneLabelVzla')}
+          </dt>
+          <dd class="text-base font-semibold text-cargo-deep">
+            <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-ink">
+              {t('footer.phoneVzla')}
+            </a>
+          </dd>
+        </div>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
+          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
+            {t('footer.phoneLabelUsa')}
+          </dt>
+          <dd class="text-base font-semibold text-cargo-deep">
+            <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-ink">
+              {t('footer.phoneUsa')}
+            </a>
+          </dd>
+        </div>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
+          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
+            {t('footer.emailLabel')}
+          </dt>
+          <dd class="text-base font-semibold text-cargo-deep">
+            <a href={`mailto:${t('footer.emailPrimary')}`} class="transition-colors hover:text-cargo-ink">
+              {t('footer.emailPrimary')}
+            </a>
+          </dd>
+        </div>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
+          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
+            {t('contact.hoursLabel')}
+          </dt>
+          <dd class="text-base font-semibold text-cargo-deep">{t('contact.hours')}</dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>

@@ -2,10 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/global/Header.astro';
 import Footer from '../../components/global/Footer.astro';
-import ContactInfo from '../../components/contact/ContactInfo.astro';
-import QuoteForm from '../../components/contact/QuoteForm.astro';
-import FormStatus from '../../components/contact/FormStatus.astro';
-import Section from '../../components/ui/Section.astro';
+import ContactPage from '../../components/pages/ContactPage.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const locale = 'en';
@@ -18,29 +15,7 @@ const service = Astro.url.searchParams.get('service') ?? undefined;
 <Layout locale={locale} title={t('meta.contactTitle')} description={t('meta.contactDesc')} canonical="/en/contact">
   <Header locale={locale} />
   <main id="main-content" class="pt-[4.5rem]">
-    <Section background="deep" padY="xl" ariaLabel={t('contact.title')}>
-      <div class="grid gap-8 border-b border-cargo-light/20 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-        <p class="eyebrow eyebrow-on-dark">{t('contact.title')}</p>
-        <div>
-          <h1 class="max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-white sm:text-6xl">{intent === 'quote' ? t('contact.quoteTitle') : t('contact.subtitle')}</h1>
-        </div>
-      </div>
-    </Section>
-
-    <Section background="cargo-ink" padY="xl" ariaLabel={t('contact.formTitle')}>
-      {sent && <div class="mx-auto mb-14 max-w-3xl"><FormStatus locale={locale} /></div>}
-      <div class="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24" id="cotizar">
-        <ContactInfo locale={locale} />
-        <div>
-          <p class="eyebrow eyebrow-on-light">{t('contact.formTitle')}</p>
-          <h2 class="type-h2 mt-5 max-w-lg text-cargo-white">{t('contact.introTitle')}</h2>
-          <p class="type-body mt-4 max-w-lg text-cargo-white/85">{t('contact.intro')}</p>
-          <div class="mt-10 border-t border-cargo-light/20 pt-8">
-            <QuoteForm locale={locale} variant="full" selectedService={service} />
-          </div>
-        </div>
-      </div>
-    </Section>
+    <ContactPage locale={locale} sent={sent} intent={intent} service={service} />
   </main>
   <Footer locale={locale} />
 </Layout>

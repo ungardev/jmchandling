@@ -2,6 +2,7 @@
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
 import { serviceFamilies } from '../../data/siteContent';
+import Button from '../ui/Button.astro';
 
 export interface Props {
   locale: Locale;
@@ -39,14 +40,14 @@ const formAction = 'https://formsubmit.co/customer.service@jmchandling.com';
 
   <div class="grid gap-5 sm:grid-cols-2">
     <div>
-      <label for="quote-name" class="mb-2 block text-sm font-medium text-cargo-white/95">
+      <label for="quote-name" class="mb-2 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
         {t('quote.name')} <span class="text-cargo-light" aria-hidden="true">*</span>
       </label>
       <input type="text" id="quote-name" name="Empresa_o_Nombre" required autocomplete="organization" placeholder={t('quote.namePlaceholder')} class="field-control" aria-describedby="quote-name-error" />
       <p id="quote-name-error" data-error-for="quote-name" class="mt-2 hidden text-xs text-cargo-light" aria-live="polite"></p>
     </div>
     <div>
-      <label for="quote-email" class="mb-2 block text-sm font-medium text-cargo-white/95">
+      <label for="quote-email" class="mb-2 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
         {t('quote.email')} <span class="text-cargo-light" aria-hidden="true">*</span>
       </label>
       <input type="email" id="quote-email" name="Correo_Cliente" required autocomplete="email" placeholder={t('quote.emailPlaceholder')} class="field-control" aria-describedby="quote-email-error" />
@@ -56,11 +57,11 @@ const formAction = 'https://formsubmit.co/customer.service@jmchandling.com';
 
   <div class="grid gap-5 sm:grid-cols-2">
     <div>
-      <label for="quote-phone" class="mb-2 block text-sm font-medium text-cargo-white/95">{t('quote.phone')}</label>
+      <label for="quote-phone" class="mb-2 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">{t('quote.phone')}</label>
       <input type="tel" id="quote-phone" name="Telefono" autocomplete="tel" placeholder={t('quote.phonePlaceholder')} class="field-control" />
     </div>
     <div>
-      <label for="quote-service" class="mb-2 block text-sm font-medium text-cargo-white/95">
+      <label for="quote-service" class="mb-2 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
         {t('quote.service')} <span class="text-cargo-light" aria-hidden="true">*</span>
       </label>
       <select id="quote-service" name="Capacidad_Requerida" required class="field-control cursor-pointer" aria-describedby="quote-service-error">
@@ -77,28 +78,27 @@ const formAction = 'https://formsubmit.co/customer.service@jmchandling.com';
   {variant === 'full' && (
     <div class="grid gap-5 sm:grid-cols-2">
       <div>
-        <label for="quote-fleet" class="mb-2 block text-sm font-medium text-cargo-white/95">{t('quote.fleet')}</label>
+        <label for="quote-fleet" class="mb-2 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">{t('quote.fleet')}</label>
         <input type="text" id="quote-fleet" name="Tipo_Flota" placeholder={t('quote.fleetPlaceholder')} class="field-control" />
       </div>
       <div>
-        <label for="quote-stations" class="mb-2 block text-sm font-medium text-cargo-white/95">{t('quote.stations')}</label>
+        <label for="quote-stations" class="mb-2 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">{t('quote.stations')}</label>
         <input type="text" id="quote-stations" name="Estaciones" placeholder={t('quote.stationsPlaceholder')} class="field-control" />
       </div>
     </div>
   )}
 
   <div>
-    <label for="quote-message" class="mb-2 block text-sm font-medium text-cargo-white/95">
+    <label for="quote-message" class="mb-2 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
       {t('quote.message')} <span class="text-cargo-light" aria-hidden="true">*</span>
     </label>
     <textarea id="quote-message" name="Mensaje" rows={variant === 'full' ? 6 : 5} required placeholder={t('quote.messagePlaceholder')} class="field-control resize-y" aria-describedby="quote-message-error"></textarea>
     <p id="quote-message-error" data-error-for="quote-message" class="mt-2 hidden text-xs text-cargo-light" aria-live="polite"></p>
   </div>
 
-  <button type="submit" class="btn-primary w-full justify-between py-4 text-sm sm:text-base">
-    <span>{t('quote.submit')}</span>
-    <span aria-hidden="true">↗</span>
-  </button>
+  <Button type="submit" class="w-full justify-between py-4" arrow>
+    {t('quote.submit')}
+  </Button>
   <p class="text-sm leading-relaxed text-cargo-white/75">{t('quote.disclaimer')}</p>
 </form>
 

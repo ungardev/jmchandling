@@ -18,7 +18,6 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Inter', system-ui, sans-serif;
-    overflow-x: hidden;
   }
 
   *,
@@ -30,7 +29,6 @@
   body {
     @apply bg-cargo-mist text-cargo-ink antialiased;
     font-family: 'Inter', system-ui, sans-serif;
-    overflow-x: hidden;
   }
 
   ::selection {
@@ -63,6 +61,13 @@
 
   .badge-cert {
     @apply inline-flex items-center gap-2 rounded-sm border border-cargo-emerald/50 px-2.5 py-1 font-mono text-xs font-medium uppercase tracking-[0.08em] text-cargo-deep;
+  }
+
+  /* Retícula editorial de 12 columnas.
+     Regla de composicion: el titular ocupa 7-8 columnas, los metadatos 3-4.
+     Los hijos se posicionan con col-span-* dentro de este contenedor. */
+  .grid-12 {
+    @apply grid grid-cols-4 gap-x-6 gap-y-10 md:grid-cols-8 lg:grid-cols-12;
   }
 
   /* Etiqueta superior de seccion.
@@ -143,7 +148,7 @@
   }
 
   .field-control {
-    @apply w-full rounded-sm border border-cargo-light/20 bg-cargo-deep/60 px-4 py-3 text-sm text-cargo-white transition-colors duration-200 focus:border-cargo-emerald focus:outline-none focus:ring-1 focus:ring-cargo-emerald;
+    @apply w-full rounded-sm border border-cargo-white/25 bg-transparent px-4 py-3 text-sm text-cargo-white transition-colors duration-200 placeholder:text-cargo-white/45 focus:border-cargo-emerald focus:outline-none focus:ring-1 focus:ring-cargo-emerald;
   }
 
   .field-control:invalid:not(:placeholder-shown) {

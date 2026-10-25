@@ -1,0 +1,19 @@
+---
+export interface Props {
+  label: string;
+  /** light = sobre superficie clara · dark = sobre superficie profunda */
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { label, tone = 'light', class: className = '' } = Astro.props;
+
+const toneClasses = {
+  light: 'eyebrow-on-light',
+  dark: 'eyebrow-on-dark',
+};
+
+const classes = ['eyebrow', toneClasses[tone], className].filter(Boolean).join(' ');
+---
+
+<p class={classes}>{label}</p>

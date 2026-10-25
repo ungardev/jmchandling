@@ -13,26 +13,29 @@ const t = useTranslations(locale);
 ---
 
 <Section id="allies" class="scroll-mt-24" background="white" padY="lg" ariaLabel={t('allies.sectionLabel')}>
-  <div class="text-center">
-    <p class="eyebrow eyebrow-on-light">{t('allies.sectionLabel')}</p>
-    <h2 class="type-h2 mt-4 max-w-2xl text-balance text-cargo-deep">{t('allies.title')}</h2>
-    <p class="type-lead mt-4 mx-auto max-w-xl text-cargo-ink/80">{t('allies.subtitle')}</p>
-  </div>
+  <div class="grid-12 items-end">
+    <div class="col-span-12 lg:col-span-4">
+      <h2 class="type-h2 max-w-md text-balance text-cargo-deep">{t('allies.title')}</h2>
+      <p class="type-lead mt-5 max-w-md text-cargo-ink/80">{t('allies.subtitle')}</p>
+    </div>
 
-  <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-16">
-    {allies.map((ally) => (
-      <li class="group flex items-center justify-center">
-        <img
-          src={ally.logo}
-          alt={ally.name}
-          width={ally.width}
-          height={ally.height}
-          style={`height:${ally.displayHeight}px;width:auto`}
-          class={`max-w-[220px] object-contain transition-opacity duration-300 md:max-w-none ${ally.wordmark ? 'opacity-80' : 'opacity-95'} group-hover:opacity-100`}
-          loading="lazy"
-          decoding="async"
-        />
-      </li>
-    ))}
-  </ul>
+    <div class="col-span-12 lg:col-span-7 lg:col-start-6">
+      <ul class="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-3">
+        {allies.map((ally) => (
+          <li class="flex items-end border-t border-cargo-deep/20 pt-5">
+            <img
+              src={ally.logo}
+              alt={ally.name}
+              width={ally.width}
+              height={ally.height}
+              style={`height:${ally.displayHeight}px;width:auto`}
+              class={`max-w-[220px] object-contain transition-opacity duration-300 ${ally.wordmark ? 'opacity-80' : 'opacity-95'} hover:opacity-100`}
+              loading="lazy"
+              decoding="async"
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
 </Section>

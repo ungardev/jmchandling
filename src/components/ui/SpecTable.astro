@@ -1,0 +1,45 @@
+---
+export interface Props {
+  items: { term: string; detail?: string }[];
+  /** 1 = una columna de pares termino/valor · 2 = dos columnas de terminos */
+  columns?: 1 | 2;
+  /** light = sobre superficie clara · dark = sobre superficie profunda */
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { items, columns = 1, tone = 'light', class: className = '' } = Astro.props;
+
+const ruleClasses = {
+  light: 'border-cargo-deep/20',
+  dark: 'border-cargo-light/20',
+};
+
+const termClasses = {
+  light: 'text-cargo-deep',
+  dark: 'text-cargo-light',
+};
+
+const detailClasses = {
+  light: 'text-cargo-ink/85',
+  dark: 'text-cargo-white/85',
+};
+
+const layoutClasses =
+  columns === 2
+    ? 'gap-x-10 gap-y-6 sm:grid-cols-2'
+    : 'gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-1';
+---
+
+<dl class={['grid', layoutClasses, className].filter(Boolean).join(' ')}>
+  {items.map((item) => (
+    <div class={['border-t pt-3', ruleClasses[tone]].join(' ')}>
+      <dt class={['font-mono text-xs font-medium uppercase tracking-[0.1em]', termClasses[tone]].join(' ')}>
+        {item.term}
+      </dt>
+      {item.detail && (
+        <dd class={['type-body mt-2', detailClasses[tone]].join(' ')}>{item.detail}</dd>
+      )}
+    </div>
+  ))}
+</dl>

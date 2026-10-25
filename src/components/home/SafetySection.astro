@@ -17,8 +17,8 @@ const aboutPath = locale === 'es' ? '/es/sobre-jmc' : '/en/about-jmc';
 <Section id="safety" class="scroll-mt-24" background="deep" padY="xl" ariaLabel={t('safety.sectionLabel')}>
   <span id="seguridad" class="sr-only" aria-hidden="true"></span>
 
-  <div class="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-20">
-    <div>
+  <div class="grid-12 items-start">
+    <div class="col-span-12 lg:col-span-6">
       <p class="eyebrow eyebrow-on-dark">{t('safety.sectionLabel')}</p>
       <h2 class="type-h2 mt-5 max-w-xl text-balance text-cargo-white">{t('safety.title')}</h2>
       <p class="type-lead mt-6 max-w-xl text-cargo-white/90">{t('safety.subtitle')}</p>
@@ -26,7 +26,7 @@ const aboutPath = locale === 'es' ? '/es/sobre-jmc' : '/en/about-jmc';
         {t('safety.intro')}
       </p>
 
-      <div class="mt-12 grid gap-10 border-t border-cargo-light/20 pt-8 sm:grid-cols-2">
+      <div class="mt-12 grid gap-8 border-t border-cargo-light/20 pt-8 sm:grid-cols-2">
         <div>
           <h3 class="type-h3 text-cargo-white">{t('safety.smsLabel')}</h3>
           <p class="type-meta mt-3 max-w-lg text-cargo-white/80">{t('safety.smsText')}</p>
@@ -36,61 +36,53 @@ const aboutPath = locale === 'es' ? '/es/sobre-jmc' : '/en/about-jmc';
           <p class="type-meta mt-3 max-w-lg text-cargo-white/80">{t('safety.operatorText')}</p>
         </div>
       </div>
+
+      <figure class="mt-12">
+        <div class="overflow-hidden bg-cargo-ink">
+          <img
+            src="/assets/photos/families/safety-sms-640.webp"
+            srcset="/assets/photos/families/safety-sms-640.webp 640w, /assets/photos/families/safety-sms-1280.webp 1280w"
+            sizes="(min-width: 1024px) 48vw, 100vw"
+            alt={t('media.alt.safetySms')}
+            width="1280"
+            height="966"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/3] w-full object-cover"
+          />
+        </div>
+        <figcaption class="mt-3 flex flex-wrap items-center justify-between gap-3 font-mono text-xs uppercase tracking-[0.1em] text-cargo-white/85">
+          <span>{t('safety.teamCaption')}</span>
+          <a
+            href={aboutPath}
+            class="font-sans text-sm font-semibold normal-case tracking-normal text-cargo-light underline decoration-cargo-light/50 underline-offset-4 transition-colors hover:text-cargo-white"
+          >
+            {t('common.aboutCompanyLink')}
+          </a>
+        </figcaption>
+      </figure>
     </div>
 
-    <figure class="relative">
-      <div class="overflow-hidden border border-cargo-light/20 bg-cargo-mist">
-        <img
-          src="/assets/photos/families/safety-sms-640.webp"
-          srcset="/assets/photos/families/safety-sms-640.webp 640w, /assets/photos/families/safety-sms-1280.webp 1280w"
-          sizes="(min-width: 1024px) 600px, 100vw"
-          alt={t('media.alt.safetySms')}
-          width="1280"
-          height="966"
-          class="h-auto w-full object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <figcaption class="flex flex-col gap-3 border-b border-x border-cargo-light/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <span class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/85">{t('safety.teamCaption')}</span>
-        <a
-          href={aboutPath}
-          class="inline-flex items-center gap-2 text-sm font-semibold text-cargo-light transition-colors hover:text-cargo-white"
-        >
-          {t('common.aboutCompanyLink')}
-          <span aria-hidden="true">↗</span>
-        </a>
-      </figcaption>
-    </figure>
-  </div>
+    <div class="col-span-12 mt-14 lg:col-span-5 lg:col-start-8 lg:mt-0">
+      <p class="eyebrow eyebrow-on-dark">{t('credentials.sectionLabel')}</p>
+      <ul class="mt-6">
+        {credentials.map((credential) => (
+          <li>
+            <Credential
+              locale={locale}
+              code={t(credential.codeKey)}
+              title={t(credential.titleKey)}
+              issuer={t(credential.issuerKey)}
+              validity={credential.validityKey ? t(credential.validityKey) : undefined}
+              evidenceHref={credential.evidenceHref}
+            />
+          </li>
+        ))}
+      </ul>
 
-  <div class="mt-16 border-t border-cargo-light/20 pt-12 md:mt-20 md:pt-14">
-    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-      <div>
-        <p class="eyebrow eyebrow-on-dark">{t('credentials.sectionLabel')}</p>
-        <h3 class="type-h3 mt-4 max-w-xl text-cargo-white">{t('credentials.heading')}</h3>
-      </div>
-      <p class="font-mono text-sm text-cargo-light">
+      <p class="mt-10 border-t border-cargo-light/20 pt-5 font-mono text-sm text-cargo-light">
         {t('safety.rifLabel')}: {t('safety.rif')}
       </p>
     </div>
-
-    <ul class="mt-10 grid gap-5 sm:grid-cols-2">
-      {credentials.map((credential) => (
-        <li class="flex">
-          <Credential
-            locale={locale}
-            code={t(credential.codeKey)}
-            title={t(credential.titleKey)}
-            issuer={t(credential.issuerKey)}
-            validity={credential.validityKey ? t(credential.validityKey) : undefined}
-            evidenceHref={credential.evidenceHref}
-          />
-        </li>
-      ))}
-    </ul>
-
-    <p class="type-meta mt-8 max-w-3xl text-cargo-white/80">{t('safety.certificationParagraph')}</p>
   </div>
 </Section>

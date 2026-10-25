@@ -139,7 +139,7 @@
       "root": "legacy",
       "src": "EQUIPOS.jpeg",
       "group": "families",
-      "altKey": "services.media.rampAlt",
+      "altKey": "media.alt.familyRampGse",
       "curated": true,
       "widths": [640, 1280]
     },
@@ -148,7 +148,7 @@
       "root": "legacy",
       "src": "LIMPIENZA A LOS EQUIPOS.jpeg",
       "group": "families",
-      "altKey": "services.media.aircraftCareAlt",
+      "altKey": "media.alt.familyAircraftCare",
       "curated": true,
       "widths": [640, 1280]
     },
@@ -157,7 +157,7 @@
       "root": "legacy",
       "src": "Capacitacion para garantizar la seguridad operacional de nuestros clientes.jpeg",
       "group": "families",
-      "altKey": "services.media.operationsAlt",
+      "altKey": "media.alt.familyFboOperations",
       "curated": true,
       "widths": [640, 1280]
     },
@@ -166,7 +166,7 @@
       "root": "legacy",
       "src": "Entrenamiento continuo.jpeg",
       "group": "families",
-      "altKey": "services.media.passengerAlt",
+      "altKey": "media.alt.familyPassengerServices",
       "curated": true,
       "widths": [640, 1280]
     },
@@ -175,7 +175,7 @@
       "root": "legacy",
       "src": "CAMBIO DE ACEITE.jpeg",
       "group": "families",
-      "altKey": "services.media.maintenanceAlt",
+      "altKey": "media.alt.familyGseMaintenance",
       "curated": true,
       "widths": [640, 1280]
     },

@@ -2,6 +2,7 @@
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
 import { heroGseRamp } from '../../data/media.generated';
+import Button from '../ui/Button.astro';
 
 export interface Props {
   locale: Locale;
@@ -43,44 +44,24 @@ const tall = heroGseRamp.sets.tall;
     ></div>
   </figure>
 
-  <div class="container-max relative pt-[7rem] pb-14 sm:pt-[8rem] md:pb-20 lg:pb-24">
-    <div class="max-w-2xl">
-      <p class="eyebrow eyebrow-on-dark">{t('home.heroCompanyName')}</p>
-      <h1 class="mt-5 text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl xl:text-7xl">
-        {t('home.heroTitle')}
-      </h1>
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-cargo-white">
-        {t('home.heroSubtitle')}
-      </p>
-      <p class="mt-4 max-w-xl text-base italic leading-relaxed text-cargo-white/95">
-        “{t('hero.tagline')}”
-      </p>
-
-      <div class="mt-8 flex flex-wrap items-center gap-5">
-        <a href="#services" class="btn-primary">
-          {t('hero.ctaPrimary')}
-          <span aria-hidden="true">↓</span>
-        </a>
-        <a
-          href={quotePath}
-          class="inline-flex items-center gap-2 border-b border-cargo-white/60 pb-0.5 text-sm font-semibold text-cargo-white transition-colors hover:border-cargo-light hover:text-cargo-light"
-        >
-          {t('hero.ctaSecondary')}
-          <span aria-hidden="true">↗</span>
-        </a>
+  <div class="container-max relative pt-[7rem] pb-16 sm:pt-[8rem] lg:pb-28">
+    <div class="grid-12">
+      <div class="col-span-12 lg:col-span-7">
+        <h1 class="max-w-2xl text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl xl:text-7xl">
+          {t('home.heroTitle')}
+        </h1>
+        <p class="type-lead mt-8 max-w-xl text-cargo-white/90">
+          {t('home.heroSubtitle')}
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <Button href={quotePath} tone="dark" arrow>
+            {t('hero.ctaPrimary')}
+          </Button>
+          <Button href="#services" variant="quiet" tone="dark">
+            {t('hero.ctaSecondary')}
+          </Button>
+        </div>
       </div>
-
-      <p class="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-cargo-white/30 pt-5 text-sm text-cargo-white/95">
-        <span class="h-2 w-2 shrink-0 rounded-full bg-cargo-emerald" aria-hidden="true"></span>
-        {t('home.heroLocation')}
-      </p>
     </div>
   </div>
-
-  <figcaption class="border-t border-cargo-white/20 bg-cargo-ink/85">
-    <div class="container-max flex flex-wrap items-end justify-between gap-4 py-4 text-sm text-cargo-white/90">
-      <span>{t('home.heroMediaCaption')}</span>
-      <span class="font-mono uppercase tracking-[0.1em] text-cargo-light">{t('home.heroMediaContext')}</span>
-    </div>
-  </figcaption>
 </section>

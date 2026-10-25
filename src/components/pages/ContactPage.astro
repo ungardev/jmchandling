@@ -1,0 +1,46 @@
+---
+import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/utils';
+import ContactInfo from '../contact/ContactInfo.astro';
+import QuoteForm from '../contact/QuoteForm.astro';
+import FormStatus from '../contact/FormStatus.astro';
+import Section from '../ui/Section.astro';
+
+export interface Props {
+  locale: Locale;
+  /** Parametros de la URL: confirmacion de envio e intencion de cotizacion. */
+  sent: boolean;
+  intent: string | null;
+  service?: string;
+}
+
+const { locale, sent, intent, service } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<Section background="deep" padY="xl" ariaLabel={t('contact.title')}>
+  <div class="grid-12 items-end border-b border-cargo-light/20 pb-10">
+    <p class="eyebrow eyebrow-on-dark col-span-12 lg:col-span-3">{t('contact.title')}</p>
+    <div class="col-span-12 lg:col-span-8 lg:col-start-5">
+      <h1 class="max-w-3xl text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl">
+        {intent === 'quote' ? t('contact.quoteTitle') : t('contact.subtitle')}
+      </h1>
+    </div>
+  </div>
+</Section>
+
+<Section background="cargo-ink" padY="xl" ariaLabel={t('contact.formTitle')}>
+  {sent && <div class="mx-auto mb-14 max-w-3xl"><FormStatus locale={locale} /></div>}
+  <div class="grid-12 items-start" id="cotizar">
+    <div class="col-span-12 lg:col-span-4">
+      <ContactInfo locale={locale} />
+    </div>
+    <div class="col-span-12 mt-14 lg:col-span-7 lg:col-start-6 lg:mt-0">
+      <h2 class="type-h2 text-cargo-white">{t('contact.introTitle')}</h2>
+      <p class="type-lead mt-5 max-w-xl text-cargo-white/85">{t('contact.intro')}</p>
+      <div class="mt-10 border-t border-cargo-light/20 pt-8">
+        <QuoteForm locale={locale} variant="full" selectedService={service} />
+      </div>
+    </div>
+  </div>
+</Section>

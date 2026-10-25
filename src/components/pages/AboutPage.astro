@@ -1,0 +1,177 @@
+---
+import type { Locale } from '../../i18n/utils';
+import { getLocalizedArray, useTranslations } from '../../i18n/utils';
+import { credentials } from '../../data/credentials';
+import Section from '../ui/Section.astro';
+import Credential from '../ui/Credential.astro';
+import Button from '../ui/Button.astro';
+import ActionLink from '../ui/ActionLink.astro';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const values = getLocalizedArray(locale, 'about.valuesList');
+const contactPath = locale === 'es' ? '/es/contacto' : '/en/contact';
+const homePath = locale === 'es' ? '/es/' : '/en/';
+const milestones = [
+  { year: '2012', titleKey: 'about.milestone2012Title', textKey: 'about.milestone2012Text' },
+  { year: '2015', titleKey: 'about.milestone2015Title', textKey: 'about.milestone2015Text' },
+  { year: '+30', titleKey: 'about.milestoneTeamTitle', textKey: 'about.milestoneTeamText' },
+];
+---
+
+<Section background="deep" padY="xl" ariaLabel={t('about.sectionLabel')}>
+  <div class="grid-12 items-end border-b border-cargo-light/20 pb-10">
+    <p class="eyebrow eyebrow-on-dark col-span-12 lg:col-span-3">{t('about.sectionLabel')}</p>
+    <div class="col-span-12 lg:col-span-8 lg:col-start-5">
+      <h1 class="max-w-3xl text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl">
+        {t('about.title')}
+      </h1>
+      <p class="type-lead mt-6 max-w-2xl text-cargo-white/85">{t('about.subtitle')}</p>
+    </div>
+  </div>
+</Section>
+
+<Section background="white" padY="xl" ariaLabel={t('about.whoTitle')}>
+  <div class="grid-12 items-start">
+    <h2 class="type-h2 col-span-12 max-w-md text-cargo-deep lg:col-span-4">
+      {t('about.whoTitle')}
+    </h2>
+    <div class="col-span-12 space-y-6 lg:col-span-7 lg:col-start-6">
+      <p class="type-body text-cargo-ink/85">{t('about.intro')}</p>
+      <p class="type-body text-cargo-ink/85">{t('about.intro2')}</p>
+    </div>
+  </div>
+</Section>
+
+<Section background="mist" padY="xl" ariaLabel={t('about.timelineLabel')}>
+  <div class="grid-12 items-end border-b border-cargo-deep/20 pb-8">
+    <h2 class="type-h2 col-span-12 max-w-2xl text-balance text-cargo-deep lg:col-span-7">
+      {t('about.timelineTitle')}
+    </h2>
+  </div>
+
+  <div class="mt-4">
+    {milestones.map((milestone) => (
+      <div class="grid grid-cols-12 gap-x-6 gap-y-3 border-t border-cargo-deep/20 py-8">
+        <div class="col-span-4 sm:col-span-3 lg:col-span-2">
+          <span class="type-figure text-cargo-deep">{milestone.year}</span>
+        </div>
+        <div class="col-span-8 sm:col-span-9 lg:col-span-4">
+          <h3 class="type-h3 text-cargo-deep">{t(milestone.titleKey)}</h3>
+        </div>
+        <div class="col-span-12 lg:col-span-5 lg:col-start-8">
+          <p class="type-body text-cargo-ink/80">{t(milestone.textKey)}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</Section>
+
+<Section background="white" padY="xl" ariaLabel={t('about.missionVisionLabel')}>
+  <div class="grid-12 items-start">
+    <div class="col-span-12 lg:col-span-6">
+      <h3 class="type-h3 text-cargo-deep">{t('about.missionLabel')}</h3>
+      <p class="type-body mt-4 max-w-xl text-cargo-ink/85">{t('about.mission')}</p>
+    </div>
+    <div class="col-span-12 mt-12 lg:col-span-6 lg:mt-0">
+      <h3 class="type-h3 text-cargo-deep">{t('about.visionLabel')}</h3>
+      <p class="type-body mt-4 max-w-xl text-cargo-ink/85">{t('about.vision')}</p>
+    </div>
+  </div>
+</Section>
+
+<Section background="mist" padY="xl" ariaLabel={t('about.valuesTitle')}>
+  <div class="grid-12 items-end border-b border-cargo-deep/20 pb-8">
+    <h2 class="type-h2 col-span-12 max-w-2xl text-balance text-cargo-deep lg:col-span-7">
+      {t('about.valuesTitle')}
+    </h2>
+  </div>
+  <ul class="mt-4 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+    {values.map((value, position) => (
+      <li class="flex items-baseline gap-4 border-t border-cargo-deep/20 py-4">
+        <span class="font-mono text-xs text-cargo-deep/70">{String(position + 1).padStart(2, '0')}</span>
+        <span class="type-body text-cargo-ink/85">{value}</span>
+      </li>
+    ))}
+  </ul>
+</Section>
+
+<Section background="deep" padY="xl" ariaLabel={t('about.authorizationLabel')}>
+  <div class="grid-12 items-start">
+    <div class="col-span-12 lg:col-span-5">
+      <p class="eyebrow eyebrow-on-dark">{t('about.authorizationLabel')}</p>
+      <h2 class="type-h2 mt-5 max-w-md text-balance text-cargo-white">
+        {t('about.authorizationTitle')}
+      </h2>
+      <p class="type-body mt-6 max-w-lg text-cargo-white/85">{t('about.authorizationText')}</p>
+      <p class="mt-6 font-mono text-sm text-cargo-light">
+        {t('safety.rifLabel')}: {t('safety.rif')}
+      </p>
+    </div>
+
+    <div class="col-span-12 mt-12 lg:col-span-6 lg:col-start-7 lg:mt-0">
+      <ul>
+        {credentials.map((credential) => (
+          <li>
+            <Credential
+              locale={locale}
+              code={t(credential.codeKey)}
+              title={t(credential.titleKey)}
+              issuer={t(credential.issuerKey)}
+              validity={credential.validityKey ? t(credential.validityKey) : undefined}
+              evidenceHref={credential.evidenceHref}
+            />
+          </li>
+        ))}
+      </ul>
+
+      <figure class="mt-10 flex flex-wrap items-center gap-6 border-t border-cargo-light/20 pt-8">
+        <img
+          src="/assets/photos/families/cert-cesea-640.webp"
+          srcset="/assets/photos/families/cert-cesea-640.webp 640w"
+          sizes="160px"
+          alt={t('safety.mediaAlt')}
+          width="1113"
+          height="1471"
+          loading="lazy"
+          decoding="async"
+          class="h-32 w-auto border border-cargo-light/20 object-cover"
+        />
+        <figcaption class="max-w-xs">
+          <p class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/85">
+            {t('safety.mediaCaption')}
+          </p>
+          <ActionLink
+            href="/assets/photos/families/cert-cesea-1280.webp"
+            external
+            tone="dark"
+            class="mt-3"
+          >
+            {t('safety.mediaLink')}
+          </ActionLink>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</Section>
+
+<Section background="white" padY="lg" ariaLabel={t('about.ctaTitle')}>
+  <div class="grid-12 items-center border-t border-cargo-deep/20 pt-10">
+    <div class="col-span-12 lg:col-span-7">
+      <h2 class="type-h2 max-w-xl text-balance text-cargo-deep">{t('about.ctaTitle')}</h2>
+      <p class="type-body mt-4 max-w-xl text-cargo-ink/80">{t('about.ctaText')}</p>
+    </div>
+    <div class="col-span-12 mt-8 flex flex-wrap gap-3 lg:col-span-4 lg:col-start-9 lg:mt-0 lg:justify-end">
+      <Button href={contactPath} arrow>
+        {t('common.getQuote')}
+      </Button>
+      <Button href={`${homePath}#services`} variant="secondary">
+        {t('common.viewServices')}
+      </Button>
+    </div>
+  </div>
+</Section>

@@ -110,7 +110,7 @@ export const familyRampGse: MediaAsset = {
   src: "/assets/photos/families/family-ramp-gse-1280.webp",
   width: 1280,
   height: 960,
-  altKey: "services.media.rampAlt",
+  altKey: "media.alt.familyRampGse",
   srcset: "/assets/photos/families/family-ramp-gse-640.webp 640w, /assets/photos/families/family-ramp-gse-1280.webp 1280w",
 };
 
@@ -118,7 +118,7 @@ export const familyAircraftCare: MediaAsset = {
   src: "/assets/photos/families/family-aircraft-care-1280.webp",
   width: 1280,
   height: 960,
-  altKey: "services.media.aircraftCareAlt",
+  altKey: "media.alt.familyAircraftCare",
   srcset: "/assets/photos/families/family-aircraft-care-640.webp 640w, /assets/photos/families/family-aircraft-care-1280.webp 1280w",
 };
 
@@ -126,7 +126,7 @@ export const familyFboOperations: MediaAsset = {
   src: "/assets/photos/families/family-fbo-operations-1280.webp",
   width: 1280,
   height: 960,
-  altKey: "services.media.operationsAlt",
+  altKey: "media.alt.familyFboOperations",
   srcset: "/assets/photos/families/family-fbo-operations-640.webp 640w, /assets/photos/families/family-fbo-operations-1280.webp 1280w",
 };
 
@@ -134,7 +134,7 @@ export const familyPassengerServices: MediaAsset = {
   src: "/assets/photos/families/family-passenger-services-1280.webp",
   width: 1280,
   height: 960,
-  altKey: "services.media.passengerAlt",
+  altKey: "media.alt.familyPassengerServices",
   srcset: "/assets/photos/families/family-passenger-services-640.webp 640w, /assets/photos/families/family-passenger-services-1280.webp 1280w",
 };
 
@@ -142,7 +142,7 @@ export const familyGseMaintenance: MediaAsset = {
   src: "/assets/photos/families/family-gse-maintenance-1280.webp",
   width: 720,
   height: 1280,
-  altKey: "services.media.maintenanceAlt",
+  altKey: "media.alt.familyGseMaintenance",
   srcset: "/assets/photos/families/family-gse-maintenance-640.webp 640w, /assets/photos/families/family-gse-maintenance-1280.webp 720w",
 };
 

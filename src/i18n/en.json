@@ -11,19 +11,17 @@
     "switchToSpanish": "Switch to Spanish",
     "about": "About JMC"
   },
+  "operations": {
+    "sectionLabel": "RAMP OPERATIONS",
+    "title": "The ramp operation, in sequence",
+    "subtitle": "Own footage and images from operations in Maiquetía: equipment, cargo and baggage.",
+    "videoCaption": "Pushback on the apron · CCS"
+  },
   "hero": {
-    "tagline": "The success of every flight depends, essentially, on excellence on the ground.",
-    "ctaPrimary": "Find assistance",
-    "ctaSecondary": "View the full catalog"
+    "ctaPrimary": "Coordinate an operation",
+    "ctaSecondary": "View capabilities"
   },
   "services": {
-    "media": {
-      "rampAlt": "JMC ground support equipment ready for a ramp operation",
-      "aircraftCareAlt": "JMC team performing cleaning and care work on airport equipment",
-      "operationsAlt": "JMC team in operational training",
-      "passengerAlt": "JMC team in training for operational service",
-      "maintenanceAlt": "Preventive maintenance on JMC ground support equipment"
-    },
     "families": {
       "rampTitle": "Ramp and GSE",
       "rampDesc": "Ground support equipment for passenger and cargo aircraft on the ramp.",
@@ -113,20 +111,18 @@
   },
   "allies": {
     "sectionLabel": "COMMERCIAL ALLIES",
-    "title": "Meet some of our commercial allies",
-    "subtitle": "We operate with the main airlines that trust our operations in Maiquetía."
+    "title": "Airlines we operate with in Maiquetía",
+    "subtitle": "We operate on the ramp for leading airlines in Maiquetía."
   },
   "about": {
     "sectionLabel": "ABOUT US",
-    "title": "About us",
-    "subtitle": "JMC Servicios Especializados",
+    "title": "Servicios Especializados JMC, C.A.",
+    "subtitle": "Apron operations, aircraft care and passenger services in Maiquetía.",
     "metaTitle": "About JMC | Servicios Especializados JMC, C.A.",
     "metaDesc": "Learn about the history, mission, vision and authorizations of Servicios Especializados JMC in Maiquetía.",
-    "introLabel": "WHO WE ARE",
-    "whoLabel": "OUR COMPANY",
-    "whoTitle": "A Venezuelan company specialized in handling",
-    "intro": "We are a Venezuelan company specialized in handling, focused on assistance and platform operations for airlines. We accompany every stage of airport operations, attending to aircraft, passengers, baggage and cargo, with trained personnel and a fleet of ground support equipment (GSE).",
-    "intro2": "We have been present in Maiquetía since 2012 and have the authorization to provide our services since 2015. Our team brings together more than 30 years of experience in the sector, which allows us to understand the demands of each operation and respond in an organized and efficient manner.",
+    "whoTitle": "Our company",
+    "intro": "Venezuelan ground handling company specialised in assistance and apron operations for airlines. We cover the full airport operation: aircraft, passengers, baggage and cargo, with trained staff and our own ground support equipment (GSE) fleet.",
+    "intro2": "Founded in 2012, we started operations in Maiquetía in 2015. The team brings more than 30 years of experience in Venezuelan aviation: we know the demands of each operation and respond in an organised, predictable way.",
     "missionLabel": "Mission",
     "visionLabel": "Vision",
     "mission": "To be a reference in the Venezuelan airport market, recognized for offering tailored solutions and maintaining high standards of quality, safety and efficiency, evolving alongside the needs of the aeronautical industry.",
@@ -140,15 +136,12 @@
     "milestoneTeamTitle": "Accumulated experience",
     "milestoneTeamText": "Professionals with more than 30 years of experience in the Venezuelan aviation sector.",
     "missionVisionLabel": "MISSION AND VISION",
-    "valuesLabel": "VALUES",
     "valuesTitle": "Principles that guide our operations",
     "authorizationLabel": "AUTHORIZATION",
-    "authorizationTitle": "We operate under official authorization",
+    "authorizationTitle": "Official INAC authorisation",
     "authorizationText": "We are approved by INAC as a Specialized Airport Services Operator (CESEA-021), meeting the requirements established for the development of our activities.",
-    "rifLabel": "Tax ID",
-    "ctaLabel": "COORDINATE",
-    "ctaTitle": "Ready to operate with us?",
-    "ctaText": "Coordinate an operation or explore our capabilities to learn everything we can offer.",
+    "ctaTitle": "Schedule an operation in Maiquetía",
+    "ctaText": "Coordinate an operation or review the capabilities by service family.",
     "valuesList": [
       "Respect",
       "Tolerance",
@@ -175,36 +168,31 @@
     "beltDesc": "Vehicle equipped with an adjustable conveyor belt that elevates to the cargo hold door of the aircraft. It facilitates the manual loading and unloading of suitcases and bulk cargo, preventing injuries.",
     "gpuTitle": "GPU",
     "gpuDesc": "Ground Power Unit. Provides electrical power to the aircraft while it is parked with engines off. Keeps the aircraft's electrical systems running without consuming fuel.",
-    "asuTitle": "ASU",
-    "asuDesc": "Air Start Unit. Provides high-pressure compressed air to assist in starting the aircraft's main engines, indispensable when the APU is inoperative.",
-    "ctaLabel": "COORDINATE",
-    "ctaTitle": "Need GSE equipment for your operation?",
+    "ctaTitle": "GSE for your operation",
     "ctaText": "Request a quote or coordinate directly with our commercial team.",
     "tractorServiceTitle": "Apron Tractor",
     "tractorServiceDesc": "An apron towing unit with a driver seat, steering wheel and rear deck to move baggage carts and support equipment with autonomy and full visibility.",
-    "asuCtaTitle": "Need an ASU?",
-    "asuCtaText": "The air start unit is coordinated on operator request. Include it with the rest of your operation.",
-    "equipmentAltNote": "Photograph of the JMC fleet on the apron at Maiquetía airport."
+    "asuCtaTitle": "Air start unit (ASU)",
+    "asuCtaText": "The ASU is coordinated on the operator’s requirement and requested together with the rest of the operation."
   },
   "safety": {
-    "sectionLabel": "SAFETY DOSSIER",
-    "title": "Safety is not declared. It is operated.",
-    "subtitle": "Processes, training and authorization that support controlled ground operations.",
-    "intro": "JMC operates under Venezuelan Aeronautical Regulation 111 and a safety culture built by its team.",
-    "certificationParagraph": "We are approved by INAC (Instituto Nacional de Aeronáutica Civil) as a Specialized Airport Services Operator (CESEA-021), meeting the requirements established for the development of our activities.",
+    "sectionLabel": "OPERATIONAL SAFETY",
+    "title": "Operational safety",
+    "subtitle": "Processes, training and formal authorisation to sustain a controlled ground operation.",
+    "intro": "We operate under Venezuelan Aeronautical Regulation 111, with process follow-up and continuous staff training.",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
     "smsLabel": "Safety Management System (SMS)",
     "smsText": "Continuous training and process follow-up to strengthen operational safety.",
     "operatorLabel": "Certified operator",
-    "operatorText": "Specialized Airport Services Operator certification under the applicable authorization.",
+    "operatorText": "Certified as a Specialized Airport Services Operator (CESEA-021).",
     "rifLabel": "Tax ID",
     "rif": "J401336558",
     "mediaAlt": "CESEA-021 certification document for Servicios Especializados JMC",
     "mediaCaption": "Documentary evidence · CESEA-021",
     "mediaLink": "Review the evidence",
-    "teamCaption": "Ramp team · operational safety protocol"
+    "teamCaption": "Ramp crew on the apron"
   },
   "quote": {
     "title": "Coordinate an operation",
@@ -234,30 +222,23 @@
   },
   "contact": {
     "title": "Operational contact",
-    "subtitle": "Let us discuss your next operation in Maiquetía.",
+    "subtitle": "Tell us the aircraft, the frequency and the required services.",
     "quoteTitle": "Coordinate an operation",
     "introTitle": "Coordinate your next operation",
-    "intro": "We are ready to understand your airline's context and guide you to the specialized service you need.",
+    "intro": "We understand your airline’s context and guide you to the specialized service it requires.",
     "addressLabel": "Location",
     "address": "Simón Bolívar de Maiquetía International Airport, Level 1, Sector 8.2, Venezuela.",
     "certLabel": "Authorization",
-    "emailLabel": "Email",
-    "phoneLabelVzla": "Venezuela",
-    "phoneLabelUsa": "USA",
     "hoursLabel": "Service hours",
     "hours": "Monday – Saturday · 05:00 – 22:00 (VET)",
-    "formTitle": "Send us a message",
-    "primaryCta": "Coordinate an operation"
+    "formTitle": "Send us a message"
   },
   "footer": {
     "company": "Servicios Especializados JMC, C.A.",
     "description": "Specialized airport services for ground operations. CESEA-021 · INAC · RAV 111.",
-    "services": "Capabilities",
-    "stations": "Stations",
+    "stations": "Station",
     "stationValue": "CCS · Maiquetía",
-    "moreStations": "More stations coming soon",
     "contact": "Contact",
-    "office": "Main office",
     "officeLine1": "Simón Bolívar International Airport",
     "officeLine2": "Level 1, Sector 8.2",
     "officeLine3": "Maiquetía, Venezuela",
@@ -272,7 +253,9 @@
     "instagramLabel": "JMC Handling Instagram",
     "legal": "© 2026 Servicios Especializados JMC, C.A.",
     "allRights": "All rights reserved.",
-    "legalCert": "CESEA-021 · INAC RAV 111"
+    "legalCert": "CESEA-021 · INAC RAV 111",
+    "navLabel": "Footer navigation",
+    "navTitle": "Navigation"
   },
   "form": {
     "required": "This field is required",
@@ -292,32 +275,29 @@
     "twitterImageAlt": "JMC Handling - Handling, FBO and specialized services in Maiquetía"
   },
   "home": {
-    "heroCompanyName": "Servicios Especializados JMC, C.A.",
     "heroTitle": "Ground support for operations in Maiquetía.",
-    "heroSubtitle": "Airport services for aircraft, passengers, baggage and cargo. Find the assistance your operation needs.",
-    "heroLocation": "Simón Bolívar International Airport · Maiquetía, CCS",
-    "heroMediaCaption": "JMC tow tractor and train of baggage carts on the apron",
-    "heroMediaContext": "Ramp operation · CCS",
-    "taskHeading": "What support does your operation need?",
-    "taskIntro": "Choose a need to review the scope, included tasks and details to provide when requesting service.",
+    "heroSubtitle": "Airport services for aircraft, passengers, baggage and cargo. Tell us what your operation requires.",
+    "taskHeading": "What does your operation require?",
+    "taskIntro": "Five service families. Review the scope and the included tasks of each one.",
     "openCatalog": "Request a quote",
-    "actionGse": "Request GSE support",
-    "actionAircraftCare": "Ask about aircraft care",
-    "actionObf": "Ask about FBO services",
-    "actionPassengers": "Ask about passenger assistance",
-    "actionMaintenance": "Ask about maintenance",
-    "specialAsideTitle": "Special services are coordinated around each operation’s requirements.",
-    "specialAsideLead": "The brochure also describes",
-    "viewSpecialScope": "View special services scope",
-    "equipmentHeading": "Functions of ramp equipment",
-    "equipmentIntro": "Six units described in the operational guide. Each function explains its role in aircraft movement on the ramp.",
-    "equipmentCatalogLink": "Review capabilities by family",
+    "actionGse": "Quote GSE",
+    "actionAircraftCare": "Quote aircraft care",
+    "actionObf": "Quote OBF",
+    "actionPassengers": "Quote passenger services",
+    "actionMaintenance": "Quote GSE maintenance",
+    "specialAsideTitle": "Special services",
+    "specialAsideLead": "Coordination of complementary services, on the operation’s requirement.",
+    "viewSpecialScope": "View the 12 special services",
+    "equipmentHeading": "Ground support equipment",
+    "equipmentIntro": "Six units that move the aircraft on the ramp: what each one does and when it is used.",
+    "equipmentCatalogLink": "View capabilities by family",
     "requestTitle": "Tell us the service, aircraft and operational context.",
-    "requestDescription": "JMC receives requests to guide you toward the specialized service required.",
-    "footerDescription": "Airport services in Maiquetía · INAC · RAV 111",
-    "footerNavLabel": "Footer navigation",
-    "footerEnglish": "Español",
-    "footerLocation": "Maiquetía, Venezuela"
+    "requestDescription": "We reply during service hours: Monday to Saturday, 05:00–22:00 (VET).",
+    "indexLabel": "Index",
+    "indexServices": "Capabilities",
+    "indexEquipment": "Equipment",
+    "indexSafety": "Safety",
+    "indexContact": "Contact"
   },
   "media": {
     "alt": {
@@ -376,7 +356,12 @@
       "opsRampCoordination": "Ramp personnel coordinating apron operations",
       "opsRampTurnaround": "Turnaround operation on the apron",
       "opsStandDetail": "Detail of the parking stand",
-      "opsUldInHold": "ULD container loaded inside the aircraft hold"
+      "opsUldInHold": "ULD container loaded inside the aircraft hold",
+      "familyRampGse": "JMC ground support equipment ready for a ramp operation",
+      "familyAircraftCare": "JMC team performing cleaning and care work on airport equipment",
+      "familyFboOperations": "JMC team in operational training",
+      "familyPassengerServices": "JMC team in training for operational service",
+      "familyGseMaintenance": "Preventive maintenance on JMC ground support equipment"
     }
   },
   "credentials": {
@@ -394,7 +379,6 @@
     "smsCode": "SMS",
     "smsTitle": "Safety Management System",
     "smsIssuer": "Continuous training and process oversight",
-    "sectionLabel": "AUTHORISATIONS AND REGULATION",
-    "heading": "We operate under official INAC authorisation, meeting the technical and safety conditions required by Venezuelan civil aviation regulation."
+    "sectionLabel": "AUTHORISATIONS AND REGULATION"
   }
 }

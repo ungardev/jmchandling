@@ -1,53 +1,72 @@
 ---
+import ArrowUpRight from './icons/ArrowUpRight.astro';
+
 export interface Props {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'dark';
-  size?: 'sm' | 'md' | 'lg';
+  /** primary = relleno solido · secondary = borde · quiet = solo texto con subrayado */
+  variant?: 'primary' | 'secondary' | 'quiet';
+  /** light = sobre superficie clara · dark = sobre superficie profunda */
+  tone?: 'light' | 'dark';
+  size?: 'sm' | 'md';
   href?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  /** Muestra el icono de salida. Solo en acciones que cambian de contexto. */
+  arrow?: boolean;
   class?: string;
   ariaLabel?: string;
 }
 
 const {
   variant = 'primary',
+  tone = 'light',
   size = 'md',
   href,
   type = 'button',
   disabled = false,
+  arrow = false,
   class: className = '',
   ariaLabel,
 } = Astro.props;
 
-const baseClasses = 'inline-flex items-center justify-center gap-3 font-semibold transition-colors duration-200 active:-translate-y-px disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cargo-emerald focus-visible:ring-offset-2 focus-visible:ring-offset-cargo-mist';
-
-const variantClasses = {
-  primary: 'btn-primary',
-  secondary: 'btn-secondary',
-  ghost: 'btn-ghost',
-  dark: 'inline-flex items-center justify-center gap-3 rounded-sm border border-cargo-light/30 bg-cargo-deep px-6 py-3 font-semibold text-cargo-white transition-colors duration-200 hover:bg-cargo-ink active:-translate-y-px',
+const toneVariants = {
+  light: {
+    primary: 'bg-cargo-deep text-cargo-white hover:bg-cargo-ink',
+    secondary: 'border border-cargo-deep text-cargo-deep hover:bg-cargo-deep hover:text-cargo-white',
+    quiet: 'text-cargo-deep underline decoration-cargo-emerald underline-offset-[6px] hover:text-cargo-ink',
+  },
+  dark: {
+    primary: 'bg-cargo-white text-cargo-deep hover:bg-cargo-light',
+    secondary: 'border border-cargo-white/60 text-cargo-white hover:bg-cargo-white hover:text-cargo-deep',
+    quiet: 'text-cargo-white underline decoration-cargo-light underline-offset-[6px] hover:text-cargo-light',
+  },
 };
 
 const sizeClasses = {
-  sm: 'text-xs px-4 py-2',
-  md: 'text-sm px-6 py-3',
-  lg: 'text-base px-8 py-4',
+  sm: 'px-4 py-2 text-xs',
+  md: 'px-6 py-3 text-sm',
 };
 
 const classes = [
-  baseClasses,
-  variantClasses[variant],
+  'inline-flex items-center justify-center gap-3 font-semibold transition-colors duration-200',
+  'disabled:cursor-not-allowed disabled:opacity-50',
+  toneVariants[tone][variant],
   sizeClasses[size],
   className,
-].filter(Boolean).join(' ');
+]
+  .filter(Boolean)
+  .join(' ');
 ---
 
-{href ? (
-  <a href={href} class={classes} aria-label={ariaLabel}>
-    <slot />
-  </a>
-) : (
-  <button type={type} class={classes} disabled={disabled} aria-label={ariaLabel}>
-    <slot />
-  </button>
-)}
+{
+  href ? (
+    <a href={href} class={classes} aria-label={ariaLabel}>
+      <slot />
+      {arrow && <ArrowUpRight class="h-3.5 w-3.5" />}
+    </a>
+  ) : (
+    <button type={type} class={classes} disabled={disabled} aria-label={ariaLabel}>
+      <slot />
+      {arrow && <ArrowUpRight class="h-3.5 w-3.5" />}
+    </button>
+  )
+}
