@@ -75,12 +75,22 @@ reporta claves huérfanas. **Falla el build.**
 ## Section Anchors
 
 Section IDs are **English and stable in both locales**: `#services`, `#equipment`,
-`#allies`, `#about`, `#safety`. Each section keeps a legacy Spanish alias as a
+`#allies`, `#safety`. Each section keeps a legacy Spanish alias as a
 hidden span (`<span id="capacidades" class="sr-only" aria-hidden="true"></span>`).
 **Never delete the aliases** — external links use them.
 
 Legacy aliases in use: `capacidades` (services), `equipos` (equipment),
-`empresa` (about), `seguridad` (safety).
+`seguridad` (safety).
+
+`#about` and `#empresa` no longer point to a home section: the company block
+was consolidated into `/es/sobre-jmc` (`/en/about-jmc`). Both ids are still
+present on the home as hidden spans so legacy deep links keep resolving, and
+`vercel.json` redirects `/es/empresa` → `/es/sobre-jmc` and
+`/en/company` → `/en/about-jmc`.
+
+**No dupliques contenido entre la home y una pagina interna.** Si un bloque
+corporativo aparece completo en una pagina dedicada, la home lo enlaza, no lo
+repite. La home es: Hero → Allies → Servicios → Equipos → Seguridad → CTA.
 
 Deep-link targets that must keep resolving:
 - Service families on the home page: `#ramp-gse`, `#aircraft-care`,
@@ -129,12 +139,13 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 
 ### Custom utility classes (defined in `src/styles/global.css`)
 - `.btn-primary`, `.btn-secondary`, `.btn-ghost` — button variants
-- `.badge-cert` — certification badge pill
+- `.badge-cert` — certification badge pill (fondo claro: texto `cargo-deep`)
 - `.nav-link` — nav link with underline hover animation
 - `.field-control` — form input control
 - `.skip-to-content` — accessibility skip link
 - `.section-pad` — section vertical padding
 - `.container-max` — page container (`max-w-7xl`)
+- `.eyebrow`, `.eyebrow-on-light`, `.eyebrow-on-dark` — etiqueta superior de seccion
 - `.animate-fade-up`, `.animate-fade-in` — entrance animations
 
 > `.glass`, `.glass-dark`, `.text-gradient-emerald` and `.card-service` are **not
@@ -156,7 +167,25 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 - `prefers-reduced-motion` media query in `global.css` disables animations globally
 - Skip-to-content link in `Layout.astro`
 - Form inputs: `label` + `aria-label` on icon-only buttons
-- Color contrast: emerald-on-deep = 4.7:1 ✓, white-on-deep = 13.6:1 ✓
+- Color contrast: minimum **4.5:1** for normal text, **3:1** for large text
+  (>=24px, or >=18.66px bold). Measured ratios for the brand tokens:
+
+  | fg | bg | ratio |
+  |---|---|---|
+  | `cargo-white` | `cargo-deep` | 11.49:1 |
+  | `cargo-white` | `cargo-ink` | 16.88:1 |
+  | `cargo-light` | `cargo-deep` | 7.74:1 |
+  | `cargo-light` | `cargo-ink` | 11.38:1 |
+  | `cargo-deep` | `cargo-white` | 11.49:1 |
+  | `cargo-deep` | `cargo-mist` | 10.77:1 |
+  | `cargo-deep` | `cargo-light` | 7.74:1 |
+  | `cargo-emerald` | `cargo-deep` | **4.31:1 — NO usar como texto pequeno** |
+  | `cargo-emerald` | `cargo-white` | **2.67:1 — NO usar como texto** |
+
+  **Regla:** `cargo-emerald` es color de borde, subrayado y decoracion. Para
+  texto usar `cargo-deep` (sobre fondos claros) o `cargo-light` (sobre oscuros).
+  Para etiquetas de seccion usar siempre el token `.eyebrow` + `.eyebrow-on-light`
+  / `.eyebrow-on-dark`, nunca `text-cargo-emerald`.
 
 ---
 
@@ -165,11 +194,10 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 ```
 src/
 ├── components/
-│   ├── global/     Header.astro, Footer.astro, LangToggle.astro
+│   ├── global/     Header.astro, Footer.astro
 │   ├── home/       Hero, AlliesStrip, ServicesGrid, EquipmentGrid,
-│   │               About, SafetySection, RequestPrompt
-│   ├── services/   ServiceDetail.astro
-│   ├── contact/    QuoteForm.astro, ContactInfo.astro
+│   │               SafetySection, RequestPrompt
+│   ├── contact/    QuoteForm.astro, ContactInfo.astro, FormStatus.astro
 │   └── ui/         Button.astro, Badge.astro, Card.astro, Section.astro
 ├── data/           siteContent.ts, allies.ts, media.generated.ts (GENERATED)
 ├── i18n/           es.json, en.json, utils.ts
@@ -243,8 +271,24 @@ art-directed variants (one per breakpoint):
 
 - **Single photo, no carousel.** The hero uses `hero-gse-ramp` (art-directed:
   `wide` 16:9 for desktop, `tall` 4:5 for mobile).
-- Text sits over the **left** third; the overlay is a horizontal
-  `cargo-ink` gradient. Verify contrast stays ≥ 4.5:1 (measured ~18:1).
+- Text sits over the **left** third; the overlay combines a vertical and a
+  horizontal `cargo-ink` gradient. Verify contrast stays ≥ 4.5:1 in the
+  worst-case pixel of each text zone (measured ≥ 5.69:1 after the 2026
+  legibility pass; the caption bar carries its own `bg-cargo-ink/85`).
+
+### Ally logos (`public/assets/allies/`)
+
+- The SVG viewBox must be **cropped to the ink**. Several originals were
+  exports of a full web page and carried 70-85% empty canvas, which made the
+  logo render at a fraction of its box. Crop the viewBox (and any `width` /
+  `height` attributes that must stay in sync) so the content fills the box.
+- `src/data/allies.ts` carries `width`, `height` (intrinsic, for CLS) and
+  `displayHeight` (render size). `displayHeight` is set by **optical weight**,
+  not by a uniform height: lockups with a symbol (Copa, Laser) need more
+  height for their wordmark to match the single-line wordmarks.
+- A wordmark rendered via `<text>` with a web font is unreliable — an SVG in
+  an `<img>` is an isolated context and cannot load Google Fonts. Convert the
+  text to paths instead (the Aerotur wordmark is Inter SemiBold as paths).
 
 ---
 

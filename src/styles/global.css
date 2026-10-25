@@ -44,7 +44,7 @@
   }
 
   ::placeholder {
-    color: rgb(245 248 250 / 0.42);
+    color: rgb(245 248 250 / 0.62);
   }
 }
 
@@ -62,7 +62,26 @@
   }
 
   .badge-cert {
-    @apply inline-flex items-center gap-2 rounded-sm border border-cargo-emerald/50 px-2.5 py-1 font-mono text-xs font-medium uppercase tracking-[0.08em] text-cargo-emerald;
+    @apply inline-flex items-center gap-2 rounded-sm border border-cargo-emerald/50 px-2.5 py-1 font-mono text-xs font-medium uppercase tracking-[0.08em] text-cargo-deep;
+  }
+
+  /* Etiqueta superior de seccion.
+     Contraste medido (WCAG AA requiere 4.5:1 para texto pequeno):
+     - cargo-deep sobre cargo-white 11.49:1 · sobre cargo-mist 10.77:1 · sobre cargo-light 7.74:1
+     - cargo-light sobre cargo-deep 7.74:1 · sobre cargo-ink 11.38:1
+     cargo-emerald NO se usa como texto: 2.67:1 sobre blanco y 4.31:1 sobre
+     cargo-deep, ambos por debajo del umbral. Queda reservado para bordes,
+     subrayados y elementos decorativos. */
+  .eyebrow {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.12em];
+  }
+
+  .eyebrow-on-light {
+    @apply text-cargo-deep;
+  }
+
+  .eyebrow-on-dark {
+    @apply text-cargo-light;
   }
 
   .section-pad {

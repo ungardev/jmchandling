@@ -25,8 +25,11 @@ Los árboles de `src/i18n/es.json` y `src/i18n/en.json` deben ser **idénticos**
 (`/es/servicios` `/en/services` `/es/cotizacion` `/en/quote`).
 
 **Componentes home (en orden):**
-`Hero` → `AlliesStrip` → `ServicesGrid` → `EquipmentGrid` → `About` →
+`Hero` → `AlliesStrip` → `ServicesGrid` → `EquipmentGrid` →
 `SafetySection` → `RequestPrompt`.
+
+El bloque corporativo (misión, visión, valores, habilitación) vive en
+`/es/sobre-jmc` y `/en/about-jmc`. La home lo **enlaza**, no lo repite.
 
 ---
 
@@ -75,7 +78,15 @@ Los árboles de `src/i18n/es.json` y `src/i18n/en.json` deben ser **idénticos**
 19. `aria-label` en botones solo-icono. `aria-current="page"` en nav.
 20. **No eliminar** el bloque `prefers-reduced-motion` de `global.css`.
 21. Contraste ≥ 4.5:1 en texto normal, ≥ 3:1 en texto grande y bordes.
+    **`cargo-emerald` nunca es color de texto**: 2.67:1 sobre blanco y 4.31:1
+    sobre `cargo-deep` — ambos por debajo de AA. Es borde, subrayado y
+    decoración. Para texto usa `cargo-deep` (fondos claros) o `cargo-light`
+    (fondos oscuros). Para etiquetas de sección usa siempre el token
+    `.eyebrow` + `.eyebrow-on-light` / `.eyebrow-on-dark`.
 22. Targets táctiles ≥ 44×44 px en móvil.
+22b. Sobre fotografía, el contraste se mide contra el **píxel más brillante**
+    de la zona del texto, no contra un color medio. Si el scrim no basta,
+    sube la opacidad del overlay o ponle fondo propio al bloque de texto.
 
 ### Fotografía y medios
 23. **Solo fotografía real.** Nunca placeholders, nunca IA
@@ -86,14 +97,30 @@ Los árboles de `src/i18n/es.json` y `src/i18n/en.json` deben ser **idénticos**
     `family-passenger-services`, `family-gse-maintenance`).
 25. No inventar logos de aliados. Logos disponibles: Copa, Iberia, Laser,
     Avior, Aerotur, Estelar.
+25b. El `viewBox` de los SVG de aliados debe estar **recortado al ink**: hay
+    exports que traían 70-85% de canvas vacío y el logo se renderizaba a una
+    fracción de su caja. Si ajustas el `viewBox`, ajusta también `width` /
+    `height` del `<svg>` para no romper la proporción.
+25c. El tamaño en la franja se define en `src/data/allies.ts` por **peso
+    óptico** (`displayHeight`), no por altura uniforme: los lockups con
+    símbolo necesitan más alto para que su wordmark iguale en altura de
+    letra a los wordmarks de una línea.
+25d. Un wordmark dibujado con `<text>` y una fuente web es frágil (un SVG en
+    `<img>` no puede cargar Google Fonts). Conviértelo a paths.
 26. Toda imagen nueva: `srcset` + `sizes` + `width`/`height` + `loading="lazy"`
     (salvo hero: `eager` + `fetchpriority="high"`).
 
 ### Anclas y enlaces
 27. **IDs de sección estables en ambos idiomas:** `#services` `#equipment`
-    `#allies` `#about` `#safety`.
+    `#allies` `#safety`.
 28. **Alias legacy que nunca deben borrarse:** `capacidades` `equipos`
-    `empresa` `seguridad`.
+    `seguridad` `empresa` `about`. Los dos últimos ya no apuntan a una
+    sección de la home (el bloque corporativo vive en `/es/sobre-jmc` y
+    `/en/about-jmc`): se mantienen como spans ocultos para que los deep
+    links antiguos sigan resolviendo.
+28b. **No dupliques contenido entre la home y una página interna.** Si un
+    bloque corporativo aparece completo en una página dedicada, la home lo
+    enlaza, no lo repite.
 29. Deep links que deben resolver: `#ramp-gse` `#aircraft-care`
     `#fbo-operations` `#passenger-services` `#gse-maintenance`, y
     `#equipment-carrucha` `#equipment-tractor` `#equipment-tractorService`
@@ -118,18 +145,24 @@ estructura de información ni el copy.
 
 ## Alcance
 `src/components/home/*.astro` (Hero, AlliesStrip, ServicesGrid, EquipmentGrid,
-About, SafetySection, RequestPrompt) y `src/styles/global.css`.
+SafetySection, RequestPrompt) y `src/styles/global.css`.
+
+**La home ya no tiene sección "About"**: el bloque corporativo vive en
+`/es/sobre-jmc` y `/en/about-jmc`. Si necesitas contenido de empresa en la
+home, **enlaza** a esa página; no lo repitas.
 
 ## Hero (punto de partida, no rehacer)
 - **Una sola foto**, sin carrusel. Asset: `heroGseRamp` (art-directed:
   `sets.wide` 16:9 desktop, `sets.tall` 4:5 móvil), consumido con `<picture>`.
 - La foto **ya es el fondo** de la sección (`absolute inset-0 -z-10`), con dos
   gradientes `cargo-ink` superpuestos: uno vertical
-  (`from-cargo-ink/70 via-cargo-ink/10 to-cargo-ink/35`) y uno horizontal
-  (`from-cargo-ink/92 via-cargo-ink/45 to-transparent`).
-- El texto ocupa el **tercio izquierdo**; contraste medido **~18:1**.
+  (`from-cargo-ink/80 via-cargo-ink/25 to-cargo-ink/45`) y uno horizontal
+  (`from-cargo-ink/95 via-cargo-ink/70 to-cargo-ink/25`).
+- El texto ocupa el **tercio izquierdo**; contraste medido **≥ 5.69:1** en el
+  píxel más desfavorable de cada zona.
 - H1 único, `text-balance`, escala `text-4xl` → `xl:text-7xl`.
-- `figcaption` como banda inferior con borde `border-cargo-white/15`.
+- `figcaption` como banda inferior con `bg-cargo-ink/85` propio (el gradiente
+  horizontal no cubre la esquina inferior derecha).
 - **Objetivo:** refinar espaciado vertical, ritmo tipográfico y peso de la
   jerarquía visual. **No** cambiar a grid de 2 columnas. **No** añadir carrusel.
   **No** cambiar el encuadre de la foto.
@@ -147,9 +180,16 @@ About, SafetySection, RequestPrompt) y `src/styles/global.css`.
 - Cada `<article>` con `id={family.key}`.
 
 ## Aliados
-- Tiras de logos de aliados. Verificar que **todos** los logos listados existen
-  en `public/assets/allies/`. Si falta Aerotur o Estelar en PNG original, dejar
-  el SVG actual y **reportarlo** (pendiente de negocio).
+- Franja de logos de aliados. Los 6 SVG/WebP de `public/assets/allies/` tienen
+  el `viewBox` **recortado al ink** (≥96% de ocupación) y el wordmark de
+  Aerotur está **convertido a paths** (sin dependencia de fuentes web).
+- El tamaño se define en `src/data/allies.ts` por **peso óptico**
+  (`displayHeight`), no por altura uniforme. No cambies `displayHeight` sin
+  volver a simular la tira: si igualas la altura total, los textos salen con
+  tamaños muy distintos (la diferencia llega a 2x entre Copa y Estelar).
+- **Pendiente de negocio:** el logo de Aerotur es un wordmark propio, no el
+  logotipo oficial. Si el cliente entrega el original, reemplázalo — no lo
+  inventes.
 
 ## Reglas de diseño
 - Transiciones ≤ 500 ms, `ease-out`. Sin rebotes.

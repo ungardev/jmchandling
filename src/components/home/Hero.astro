@@ -34,27 +34,25 @@ const tall = heroGseRamp.sets.tall;
       />
     </picture>
     <div
-      class="absolute inset-0 bg-gradient-to-t from-cargo-ink/70 via-cargo-ink/10 to-cargo-ink/35"
+      class="absolute inset-0 bg-gradient-to-t from-cargo-ink/80 via-cargo-ink/25 to-cargo-ink/45"
       aria-hidden="true"
     ></div>
     <div
-      class="absolute inset-0 bg-gradient-to-r from-cargo-ink/92 via-cargo-ink/45 to-transparent"
+      class="absolute inset-0 bg-gradient-to-r from-cargo-ink/95 via-cargo-ink/70 to-cargo-ink/25"
       aria-hidden="true"
     ></div>
   </figure>
 
   <div class="container-max relative pt-[7rem] pb-14 sm:pt-[8rem] md:pb-20 lg:pb-24">
     <div class="max-w-2xl">
-      <p class="font-mono text-xs uppercase tracking-[0.16em] text-cargo-light">
-        {t('home.heroCompanyName')}
-      </p>
+      <p class="eyebrow eyebrow-on-dark">{t('home.heroCompanyName')}</p>
       <h1 class="mt-5 text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl xl:text-7xl">
         {t('home.heroTitle')}
       </h1>
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-cargo-white/90">
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-cargo-white">
         {t('home.heroSubtitle')}
       </p>
-      <p class="mt-4 max-w-xl text-sm italic leading-relaxed text-cargo-white/80">
+      <p class="mt-4 max-w-xl text-base italic leading-relaxed text-cargo-white/95">
         “{t('hero.tagline')}”
       </p>
 
@@ -65,22 +63,22 @@ const tall = heroGseRamp.sets.tall;
         </a>
         <a
           href={quotePath}
-          class="inline-flex items-center gap-2 border-b border-cargo-white/50 pb-0.5 text-sm font-semibold text-cargo-white transition-colors hover:border-cargo-light hover:text-cargo-light"
+          class="inline-flex items-center gap-2 border-b border-cargo-white/60 pb-0.5 text-sm font-semibold text-cargo-white transition-colors hover:border-cargo-light hover:text-cargo-light"
         >
           {t('hero.ctaSecondary')}
           <span aria-hidden="true">↗</span>
         </a>
       </div>
 
-      <p class="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-cargo-white/25 pt-5 text-sm text-cargo-white/85">
+      <p class="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-cargo-white/30 pt-5 text-sm text-cargo-white/95">
         <span class="h-2 w-2 shrink-0 rounded-full bg-cargo-emerald" aria-hidden="true"></span>
         {t('home.heroLocation')}
       </p>
     </div>
   </div>
 
-  <figcaption class="border-t border-cargo-white/15">
-    <div class="container-max flex flex-wrap items-end justify-between gap-4 py-4 text-xs text-cargo-white/75">
+  <figcaption class="border-t border-cargo-white/20 bg-cargo-ink/85">
+    <div class="container-max flex flex-wrap items-end justify-between gap-4 py-4 text-sm text-cargo-white/90">
       <span>{t('home.heroMediaCaption')}</span>
       <span class="font-mono uppercase tracking-[0.1em] text-cargo-light">{t('home.heroMediaContext')}</span>
     </div>

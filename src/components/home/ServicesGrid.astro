@@ -35,7 +35,7 @@ const specialServices = [
           {t('home.taskIntro')}
         </p>
       </div>
-      <a href={quotePath} class="inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald/70 underline-offset-4 transition-colors hover:text-cargo-emerald">
+      <a href={quotePath} class="inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald/70 underline-offset-4 transition-colors hover:text-cargo-ink">
         {t('home.openCatalog')}
         <span aria-hidden="true">↗</span>
       </a>
@@ -50,7 +50,7 @@ const specialServices = [
                 <h3 class="text-xl font-semibold tracking-[-0.025em] text-cargo-deep">{t(family.titleKey)}</h3>
                 <p class="mt-2 max-w-2xl text-sm leading-relaxed text-cargo-ink/75">{t(family.descriptionKey)}</p>
                 {family.serviceKeys.length > 0 && (
-                  <p class="mt-3 text-xs leading-relaxed text-cargo-ink/65">
+                  <p class="mt-3 text-sm leading-relaxed text-cargo-ink/75">
                     {family.serviceKeys.map((serviceKey) => {
                       const service = getService(serviceKey);
                       return service ? t(service.titleKey) : '';
@@ -60,7 +60,7 @@ const specialServices = [
               </div>
               <a
                 href={`${quotePath}&service=${encodeURIComponent(family.key)}`}
-                class="inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-ink"
                 aria-label={`${t(familyActionKeys[family.key])}: ${t(family.titleKey)}`}
               >
                 {t(familyActionKeys[family.key])}
@@ -78,7 +78,7 @@ const specialServices = [
         <p class="mt-4 text-sm leading-relaxed text-cargo-ink/75">
           {t('home.specialAsideLead')} {specialServices.join('; ')}.
         </p>
-        <a href="#passenger-services" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-emerald">
+        <a href="#passenger-services" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cargo-deep underline decoration-cargo-emerald underline-offset-4 transition-colors hover:text-cargo-ink">
           {t('home.viewSpecialScope')}
           <span aria-hidden="true">↗</span>
         </a>

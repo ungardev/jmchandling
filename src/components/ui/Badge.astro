@@ -8,7 +8,9 @@ export interface Props {
 const { variant = 'cert', size = 'md', class: className = '' } = Astro.props;
 
 const variantStyles = {
-  cert: 'border-cargo-emerald/60 text-cargo-emerald',
+  // El badge se usa sobre superficies oscuras (deep / ink): cargo-emerald
+  // daria 4.31:1 (por debajo de AA para texto pequeno), cargo-light da 7.74:1.
+  cert: 'border-cargo-emerald/60 text-cargo-light',
   inac: 'border-cargo-light/60 text-cargo-light',
   sms: 'border-cargo-white/40 text-cargo-white',
   esea: 'border-cargo-deep/50 text-cargo-deep',

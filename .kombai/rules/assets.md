@@ -85,6 +85,15 @@ Y nunca uses imágenes generadas por IA (`media-raw/_quarantine/`).
 - `wordmark: true` marca los que son tipográficos (Aerotur) para que se rendericen
   con menos contraste.
 - Aerotur es hoy el único wordmark: su logotipo oficial sigue pendiente de negocio.
+- El `viewBox` de cada SVG debe estar **recortado al ink** (≥96% de ocupación).
+  Los exports de página web traen 70-85% de canvas vacío y el logo se renderiza
+  a una fracción de su caja. Si cambias el `viewBox`, ajusta `width`/`height`.
+- `width` y `height` son las dimensiones intrínsecas (evitan layout shift);
+  `displayHeight` es el tamaño en pantalla, asignado por **peso óptico**:
+  los lockups con símbolo (Copa, Laser) necesitan más alto para que su
+  wordmark iguale en altura de letra a los wordmarks de una línea.
+- Un wordmark con `<text>` y fuente web es frágil: un SVG en `<img>` no puede
+  cargar Google Fonts. Conviértelo a paths (Aerotur usa Inter SemiBold como paths).
 
 ## Alt text
 

@@ -14,23 +14,25 @@ const t = useTranslations(locale);
 
 <Section id="allies" class="scroll-mt-24" background="white" padY="lg" ariaLabel={t('allies.sectionLabel')}>
   <div class="text-center">
-    <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('allies.sectionLabel')}</p>
+    <p class="eyebrow eyebrow-on-light">{t('allies.sectionLabel')}</p>
     <h2 class="mt-4 text-balance text-2xl font-semibold tracking-[-0.02em] text-cargo-deep sm:text-3xl">{t('allies.title')}</h2>
-    <p class="mt-3 max-w-xl mx-auto text-sm text-cargo-ink/70">{t('allies.subtitle')}</p>
+    <p class="mt-3 max-w-xl mx-auto text-sm text-cargo-ink/75">{t('allies.subtitle')}</p>
   </div>
 
-  <div class="mt-12 flex flex-wrap items-center justify-center gap-10 md:gap-16">
+  <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-16">
     {allies.map((ally) => (
-      <div class="group flex h-16 w-auto items-center justify-center opacity-70 transition-opacity duration-300 hover:opacity-100">
+      <li class="group flex items-center justify-center">
         <img
           src={ally.logo}
           alt={ally.name}
-          width="160"
-          height="48"
-          class="h-full w-auto object-contain"
+          width={ally.width}
+          height={ally.height}
+          style={`height:${ally.displayHeight}px;width:auto`}
+          class={`max-w-[220px] object-contain transition-opacity duration-300 md:max-w-none ${ally.wordmark ? 'opacity-80' : 'opacity-95'} group-hover:opacity-100`}
           loading="lazy"
+          decoding="async"
         />
-      </div>
+      </li>
     ))}
-  </div>
+  </ul>
 </Section>

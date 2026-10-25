@@ -3,8 +3,8 @@
 <!ENTITY ns_svg "http://www.w3.org/2000/svg">
 <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
 ]>
-<svg  version="1.1" id="Layer_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="285.582" height="46.053"
-viewBox="0 0 285.582 46.053" overflow="visible" enable-background="new 0 0 285.582 46.053" xml:space="preserve">
+<svg  version="1.1" id="Layer_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="285.582" height="35.16"
+viewBox="0 0.72 285.582 35.16" xml:space="preserve">
 <g>
 <path fill="#D8261A" d="M35.688,35.282h-10.25l-0.486-5.024H13.919l-2.646,5.024H0L19.111,4.571h11.212L35.688,35.282z
 M24.329,23.765l-1.09-11.201h-0.085L17.34,23.765H24.329z"/>

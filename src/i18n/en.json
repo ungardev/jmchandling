@@ -286,7 +286,8 @@
   "common": {
     "getQuote": "Coordinate an operation",
     "viewServices": "Explore capabilities",
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "aboutCompanyLink": "Learn more about the company"
   },
   "meta": {
     "homeTitle": "JMC Handling | Handling, FBO and specialized services in Maiquetía",
@@ -316,20 +317,6 @@
     "equipmentHeading": "Functions of ramp equipment",
     "equipmentIntro": "Six units described in the operational guide. Each function explains its role in aircraft movement on the ramp.",
     "equipmentCatalogLink": "Review capabilities by family",
-    "companyTitle": "Servicios Especializados JMC",
-    "companyIntro": "A Venezuelan company providing specialized airport services and ramp assistance. It supports aircraft, passengers, baggage and cargo with trained personnel and ground support equipment.",
-    "companyHistory": "Incorporated in 2012; providing services at Simón Bolívar International Airport in Maiquetía since 2015. Company documentation describes a group of professionals with more than 30 years of experience in Venezuelan aviation.",
-    "missionLabel": "Mission",
-    "mission": "To bring the Venezuelan specialized airport-services market a tailored alternative, through specialized personnel, innovative processes, and excellence and quality in the ground services airlines require.",
-    "visionLabel": "Vision",
-    "vision": "To consolidate leadership in specialized airport services in Venezuela’s aviation sector through standards of excellence and quality, innovation, adaptation and qualified personnel.",
-    "valuesLabel": "Organizational values:",
-    "values": "respect, tolerance, courtesy, commitment, justice, responsibility, honesty, innovation, self-improvement, quality, teamwork and excellence.",
-    "documentTitle": "Documented authorization and scope",
-    "documentDescription": "The organizational source links authorized services to Venezuelan Aeronautical Regulation 111 and INAC. Review certificate CESEA-021.",
-    "documentIssuer": "RAV 111 · Instituto Nacional de Aeronáutica Civil",
-    "certificateAlt": "CESEA-021 certificate for Servicios Especializados JMC",
-    "evidenceCaption": "CESEA-021 certificate · INAC",
     "requestTitle": "Tell us the service, aircraft and operational context.",
     "requestDescription": "JMC receives requests to guide you toward the specialized service required.",
     "footerDescription": "Airport services in Maiquetía · INAC · RAV 111",

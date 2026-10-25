@@ -286,7 +286,8 @@
   "common": {
     "getQuote": "Coordinar una operación",
     "viewServices": "Explorar capacidades",
-    "skipToContent": "Saltar al contenido principal"
+    "skipToContent": "Saltar al contenido principal",
+    "aboutCompanyLink": "Conocer la empresa en detalle"
   },
   "meta": {
     "homeTitle": "JMC Handling | Handling, FBO y servicios especializados en Maiquetía",
@@ -316,20 +317,6 @@
     "equipmentHeading": "Funciones de los equipos de plataforma",
     "equipmentIntro": "Seis equipos descritos en la guía operacional. Cada función explica qué aporta al movimiento de una aeronave en rampa.",
     "equipmentCatalogLink": "Consultar capacidades por familia",
-    "companyTitle": "Servicios Especializados JMC",
-    "companyIntro": "Empresa venezolana dedicada a servicios especializados aeroportuarios y asistencia en plataforma. Atiende aeronaves, pasajeros, equipaje y carga con personal capacitado y equipos de apoyo terrestre.",
-    "companyHistory": "Constituida en 2012; presta servicios en el Aeropuerto Internacional Simón Bolívar de Maiquetía desde 2015. La documentación describe a un grupo de profesionales con más de 30 años de experiencia en el sector aeronáutico venezolano.",
-    "missionLabel": "Misión",
-    "mission": "Aportar al mercado de servicios especializados aeroportuarios venezolano una alternativa hecha a la medida, con capital humano especializado, innovación en los procesos y excelencia y calidad en los servicios en tierra que demanden las aerolíneas.",
-    "visionLabel": "Visión",
-    "vision": "Consolidar el liderazgo en los servicios especializados aeroportuarios del sector aeronáutico venezolano mediante estándares de excelencia y calidad, innovación, adaptación y capital humano calificado.",
-    "valuesLabel": "Valores de la organización:",
-    "values": "respeto, tolerancia, cortesía, compromiso, justicia, responsabilidad, honestidad, innovación, superación, calidad, trabajo en equipo y excelencia.",
-    "documentTitle": "Autorización y alcance documentados",
-    "documentDescription": "La fuente organizacional vincula los servicios autorizados con la Regulación Aeronáutica Venezolana 111 y el INAC. Consulte el documento de certificación CESEA-021.",
-    "documentIssuer": "RAV 111 · Instituto Nacional de Aeronáutica Civil",
-    "certificateAlt": "Certificado CESEA-021 de Servicios Especializados JMC",
-    "evidenceCaption": "Certificado CESEA-021 · INAC",
     "requestTitle": "Indique el servicio, la aeronave y el contexto operativo.",
     "requestDescription": "JMC recibe solicitudes para orientar el servicio especializado requerido.",
     "footerDescription": "Servicios aeroportuarios en Maiquetía · INAC · RAV 111",

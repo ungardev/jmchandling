@@ -15,7 +15,7 @@ const t = useTranslations(locale);
   <main id="main-content" class="pt-[4.5rem]">
     <Section background="deep" padY="xl" ariaLabel={t('about.sectionLabel')}>
       <div class="grid gap-8 border-b border-cargo-light/20 pb-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-light">{t('about.sectionLabel')}</p>
+        <p class="eyebrow eyebrow-on-dark">{t('about.sectionLabel')}</p>
         <div>
           <h1 class="max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-cargo-white sm:text-6xl">{t('about.title')}</h1>
           <p class="mt-6 max-w-2xl text-base leading-relaxed text-cargo-white/75">{t('about.subtitle')}</p>
@@ -26,7 +26,7 @@ const t = useTranslations(locale);
     <Section background="white" padY="xl" ariaLabel={t('about.introLabel')}>
       <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-20">
         <div>
-          <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('about.whoLabel')}</p>
+          <p class="eyebrow eyebrow-on-light">{t('about.whoLabel')}</p>
           <h2 class="mt-5 max-w-xl text-3xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-4xl">{t('about.whoTitle')}</h2>
         </div>
         <div class="space-y-6">
@@ -38,7 +38,7 @@ const t = useTranslations(locale);
 
     <Section background="mist" padY="xl" ariaLabel={t('about.timelineLabel')}>
       <div class="text-center">
-        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('about.timelineLabel')}</p>
+        <p class="eyebrow eyebrow-on-light">{t('about.timelineLabel')}</p>
         <h2 class="mt-5 max-w-3xl mx-auto text-balance text-4xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-5xl">{t('about.timelineTitle')}</h2>
       </div>
 
@@ -64,11 +64,11 @@ const t = useTranslations(locale);
     <Section background="white" padY="xl" ariaLabel={t('about.missionVisionLabel')}>
       <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('about.missionLabel')}</p>
+          <p class="eyebrow eyebrow-on-light">{t('about.missionLabel')}</p>
           <p class="mt-6 text-base leading-relaxed text-cargo-ink/80">{t('about.mission')}</p>
         </div>
         <div>
-          <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('about.visionLabel')}</p>
+          <p class="eyebrow eyebrow-on-light">{t('about.visionLabel')}</p>
           <p class="mt-6 text-base leading-relaxed text-cargo-ink/80">{t('about.vision')}</p>
         </div>
       </div>
@@ -76,7 +76,7 @@ const t = useTranslations(locale);
 
     <Section background="mist" padY="xl" ariaLabel={t('about.valuesLabel')}>
       <div class="text-center">
-        <p class="font-mono text-xs uppercase tracking-[0.12em] text-cargo-emerald">{t('about.valuesLabel')}</p>
+        <p class="eyebrow eyebrow-on-light">{t('about.valuesLabel')}</p>
         <h2 class="mt-5 max-w-3xl mx-auto text-balance text-4xl font-semibold tracking-[-0.04em] text-cargo-deep sm:text-5xl">{t('about.valuesTitle')}</h2>
       </div>
       <div class="mt-12 flex flex-wrap justify-center gap-3">
@@ -96,7 +96,7 @@ const t = useTranslations(locale);
           </div>
           <h2 class="mt-8 max-w-xl text-3xl font-semibold tracking-[-0.04em] text-cargo-white sm:text-4xl">{t('about.authorizationTitle')}</h2>
           <p class="mt-6 max-w-xl text-base leading-relaxed text-cargo-white/75">{t('about.authorizationText')}</p>
-          <p class="mt-4 font-mono text-sm text-cargo-white/60">{t('about.rifLabel')}: {t('safety.rif')}</p>
+          <p class="mt-4 font-mono text-sm text-cargo-white/80">{t('about.rifLabel')}: {t('safety.rif')}</p>
         </div>
         <figure class="relative">
           <div class="overflow-hidden border border-cargo-light/20 bg-cargo-mist">
@@ -112,7 +112,7 @@ const t = useTranslations(locale);
             />
           </div>
           <figcaption class="flex flex-col gap-3 border-b border-x border-cargo-light/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <span class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/65">{t('safety.mediaCaption')}</span>
+            <span class="font-mono text-xs uppercase tracking-[0.08em] text-cargo-white/85">{t('safety.mediaCaption')}</span>
             <a href="/assets/photos/families/cert-cesea-1280.webp" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cargo-light transition-colors hover:text-cargo-white">{t('safety.mediaLink')} <span aria-hidden="true">↗</span></a>
           </figcaption>
         </figure>
