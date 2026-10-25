@@ -8,13 +8,18 @@ Crea una página nueva. **Siempre en pareja**: español e inglés.
 
    | Concepto | ES | EN |
    |---|---|---|
-   | Servicios | `/es/servicios` | `/en/services` |
+   | Inicio | `/es/` | `/en/` |
    | Contacto | `/es/contacto` | `/en/contact` |
-   | Cotización | `/es/cotizacion` | `/en/quote` |
    | Sobre la empresa | `/es/sobre-jmc` | `/en/about-jmc` |
    | Carreras | `/es/carreras` | `/en/careers` |
    | Preguntas frecuentes | `/es/faq` | `/en/faq` |
    | Legal | `/es/legal` | `/en/legal` |
+
+   ⚠️ `/es/servicios`, `/en/services`, `/es/cotizacion` y `/en/quote` son
+   **stubs de redirect 301** hacia la home (`#services`) y la página de
+   contacto. **No son páginas reales.** Si necesitas una página de servicios
+   de verdad, crea `/es/servicios` **como página real** (no stub) y actualiza
+   `vercel.json`, `ROUTE_SLUGS` en `src/i18n/utils.ts` y el sitemap.
 
 2. **Crea los dos archivos** en `src/pages/es/` y `src/pages/en/`.
 

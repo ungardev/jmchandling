@@ -10,7 +10,10 @@ npm run i18n:check     # árboles ES/EN idénticos, sin claves inexistentes, alt
 npm run check          # astro check — 0 errores, 0 warnings
 npm run build          # build estático
 npm run lint           # eslint
+npm run check:links    # enlaces internos + fragmentos (#id) contra dist/
 ```
+
+`npm run verify` encadena i18n:check + check + build + check:links.
 
 ## Verificaciones manuales obligatorias
 
@@ -24,16 +27,15 @@ grep -rl "react\|preact\|vue\|svelte" dist/_assets/ || echo "0 framework JS ✓"
 **Objetivo: 0 kB de JS de framework.** Presupuesto total ≤ 10 kB gzip por página.
 Si aparece un chunk de framework, es un fallo crítico.
 
-### 2. Rutas de medios
+### 2. Rutas de medios y enlaces internos
 
 ```bash
-# Cada src/href local debe existir en dist/
-grep -rhoE '(src|href)="/[^"]+"' dist/**/*.html | sed 's/^[a-z]*="//;s/"$//' | sort -u | while read p; do
-  [ -e "dist$p" ] || echo "ROTO: $p"
-done
+npm run check:links
 ```
 
-Cero rotas. Revisa en particular `/assets/allies/*` y `/assets/photos/*`.
+Valida cada `href`/`src` interno contra `dist/` (rutas HTML + archivos
+estáticos) y cada fragmento `#id` contra el DOM de la propia página.
+Debe salir "OK — sin enlaces internos rotos".
 
 ### 3. Alt y dimensiones
 
@@ -92,6 +94,7 @@ i18n        OK / FALLA — N claves, N errores
 astro check OK / FALLA — N errores, N warnings
 build       OK / FALLA — N páginas
 lint        OK / FALLA — N problemas
+links       OK / FALLA — N rotos
 JS          N bytes — <detalle>
 assets      N rotos
 alt/dims    OK / FALLA

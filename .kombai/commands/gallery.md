@@ -15,14 +15,15 @@ Crea la sección de galería fotográfica de la portada. Es una sección nueva.
   `galleryNightAircraft`, `galleryBeltLoading`, `galleryCargoContainer`,
   `galleryLoadedCart`, `galleryRampTeam`, `galleryBeltLoaderOps`,
   `galleryUldRamp`, `galleryAircraftDay`, `galleryAircraftRamp`.
-- La biblioteca completa (58 medios) está en `public/assets/photos/manifest.json`.
+- La biblioteca completa (61 medios) está en `public/assets/photos/manifest.json`.
 
 ## Formato — vertical-first
 
-- **50 de 51 fotos son verticales.** La galería debe ser vertical-first:
-  tarjetas `aspect-[4/5]` con `object-cover`.
-- La única horizontal (`heroRampNight`) **no** va en la tira: se reserva como
-  banda a sangre en la sección de operaciones.
+- **La gran mayoría de las fotos son verticales.** La galería debe ser
+  vertical-first: tarjetas `aspect-[4/5]` con `object-cover`.
+- El hero (`heroGseRamp`, art-directed con `sets.wide` 16:9 y `sets.tall` 4:5)
+  **no** va en la tira: está reservado como banda a sangre en la cabecera.
+- `heroRampNight` (4:3, la otra horizontal) tampoco va en la tira.
 
 ## Interacción
 
