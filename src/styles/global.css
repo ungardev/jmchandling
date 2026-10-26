@@ -199,7 +199,91 @@
   }
 
   /* ------------------------------------------------------------------
-     Logo de aliado en el muro de logos.
+     Cinta de aliados: liston horizontal en movimiento continuo.
+
+     No es un carrusel. No hay paginacion, ni posiciones, ni flechas: la
+     cinta recorre su propio ciclo y se detiene al hover o al foco.
+
+     Mecanica (0 kB de JS, CSS puro):
+     - El DOM contiene DOS listados identicos. Los dos se animan con el
+       mismo keyframe, asi que el segundo queda siempre a una vuelta de
+       distancia del primero y el bucle no tiene costura.
+     - La traslacion final es -(100% + gap), es decir, el ancho del propio
+       listado mas el hueco que lo separa del siguiente. Al terminar el
+       ciclo, el segundo listado ocupa exactamente el lugar del primero.
+     - El degradado (mask) disuelve los extremos: los logos entran y
+       salen en lugar de cortarse en seco.
+     - La pausa por hover y por :focus-within es OBLIGATORIA: quien navega
+       con el teclado o con el puntero tiene que poder parar el movimiento
+       para leer.
+
+     prefers-reduced-motion: el bloque global cancela la animacion, y
+     aqui la cinta se convierte en una fila desplazable con el dedo.
+     ------------------------------------------------------------------ */
+  .ally-marquee {
+    --ally-gap: 48px;
+    --ally-duration: 37s;
+
+    display: flex;
+    overflow: hidden;
+    gap: var(--ally-gap);
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+
+  .ally-marquee-track {
+    display: flex;
+    flex: 0 0 auto;
+    gap: var(--ally-gap);
+    /* flex-start, no center: con center el desplazamiento del logo se
+       aplicaria a la mitad (el navegador centra la caja de margenes), y
+       las lineas de cap dejarian de coincidir. Con flex-start el margen
+       superior del logo es exactamente el desplazamiento de la linea de
+       cap, y los seis wordmarks quedan al mismo nivel. */
+    align-items: flex-start;
+    animation: ally-marquee-scroll var(--ally-duration) linear infinite;
+  }
+
+  .ally-marquee:hover .ally-marquee-track,
+  .ally-marquee:focus-within .ally-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .ally-marquee-item {
+    flex: 0 0 auto;
+  }
+
+  @keyframes ally-marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--ally-gap)));
+    }
+  }
+
+  @media (min-width: 640px) {
+    .ally-marquee {
+      --ally-gap: 64px;
+      --ally-duration: 50s;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .ally-marquee {
+      --ally-gap: 72px;
+      --ally-duration: 52s;
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Logo de aliado en la cinta.
 
      La altura de render NO es uniforme: se calcula por peso optico, de
      forma que la altura de letra (cap height) sea la misma en los seis
@@ -208,23 +292,30 @@
 
      `--ally-h` trae la caja ya normalizada (ver src/data/allies.ts).
      `--ally-cap` trae el desplazamiento vertical que alinea la linea de
-     cap de todos los wordmarks en la misma linea de la banda.
+     cap de todos los wordmarks en la misma linea de la cinta.
 
-     El factor 0.82 reduce el tamano en movil, donde la celda es mas
-     estrecha y el logo mas ancho (Laser) no cabe a tamano completo.
-     Se aplica tambien al desplazamiento, para que la alineacion se
-     mantenga en cualquier escala.
+     El factor de escala reduce el tamano en movil, donde el logo mas
+     ancho (Laser) debe guardarse proporcion con la pantalla. Se aplica
+     tambien al desplazamiento, para que la alineacion se mantenga en
+     cualquier escala.
 
      `max-width: 100%` + `object-fit: contain` son la red de seguridad:
      si el logo llegara a exceder su celda, se reescala en vez de
      deformarse o desbordar la rejilla.
      ------------------------------------------------------------------ */
   .ally-logo {
-    height: calc(var(--ally-h) * 0.82);
-    margin-top: calc(var(--ally-cap) * 0.82);
+    height: calc(var(--ally-h) * 0.58);
+    margin-top: calc(var(--ally-cap) * 0.58);
     width: auto;
     max-width: 100%;
     object-fit: contain;
+  }
+
+  @media (min-width: 640px) {
+    .ally-logo {
+      height: calc(var(--ally-h) * 0.82);
+      margin-top: calc(var(--ally-cap) * 0.82);
+    }
   }
 
   @media (min-width: 1024px) {
@@ -492,6 +583,22 @@
 
   .strip-item {
     scroll-snap-align: center;
+  }
+
+  /* La cinta de aliados pierde el movimiento: pasa a ser una fila
+     desplazable con el dedo, navegable con el teclado y con snap. */
+  .ally-marquee {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+  }
+
+  .ally-marquee-track {
+    animation: none;
+  }
+
+  .ally-marquee-item {
+    scroll-snap-align: start;
   }
 
   .scroll-progress {

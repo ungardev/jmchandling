@@ -9,52 +9,61 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-
-const manifest = allies.map((ally) => ally.shortName).join('  ·  ');
 ---
 
-<!-- Banda ledger. No es una seccion a pantalla completa: se dimensiona por
-     contenido y se lee como una franja deliberada dentro del ritmo de la home.
+<!-- Cinta de aliados: liston horizontal en movimiento continuo.
+
+     No es un carrusel: no hay paginacion, ni posiciones, ni flechas. La
+     cinta recorre su propio ciclo en CSS y se detiene al hover o al foco.
+
+     La copia duplicada del listado lleva aria-hidden, de modo que el
+     lector de pantalla anuncie seis logos y no doce.
 
      Fondo blanco obligatorio: los logotipos oficiales son de color y sobre
      cargo-deep el wordmark de Aerotur (#0F3E51) seria invisible (1.00:1).
      Sobre blanco los seis superan 3:1 (WCAG 1.4.11). -->
-<section id="allies" class="relative isolate scroll-mt-24 bg-cargo-white">
-  <div class="container-max py-24 sm:py-28 lg:py-32">
-    <div class="grid-12 items-end gap-y-6 border-t border-cargo-deep pt-8">
-      <div class="col-span-12 lg:col-span-6">
-        <p class="eyebrow eyebrow-on-light">{t('allies.sectionLabel')}</p>
-        <h2 class="type-h2 mt-4 max-w-lg text-balance text-cargo-deep">{t('allies.title')}</h2>
-      </div>
-      <div class="col-span-12 lg:col-span-5 lg:col-start-8">
-        <p class="type-lead text-cargo-ink/80">{t('allies.subtitle')}</p>
-      </div>
-    </div>
+<section id="allies" class="relative isolate scroll-mt-24 bg-cargo-white pb-24 sm:pb-28 lg:pb-32">
+  <div class="container-max pt-24 sm:pt-28 lg:pt-32">
+    <h2 class="type-h2 max-w-4xl text-balance text-cargo-deep">{t('allies.title')}</h2>
+  </div>
 
-    <!-- Los wordmarks se alinean por linea de cap, no por caja: cada logo
-         lleva su propio desplazamiento (capOffset) para que la letra quede
-         al mismo nivel. Ver src/data/allies.ts. -->
-    <ul class="mt-16 grid grid-cols-1 gap-x-16 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
+  <div
+    class="ally-marquee mt-12 sm:mt-14"
+    role="group"
+    tabindex="0"
+    aria-label={t('allies.ariaLabel')}
+  >
+    <ul class="ally-marquee-track">
       {allies.map((ally) => (
-        <li class="flex items-start border-t border-cargo-deep/25 pt-6">
+        <li class="ally-marquee-item">
           <img
             src={ally.logo}
             alt={ally.name}
             width={ally.width}
             height={ally.height}
             style={`--ally-h: ${ally.displayHeight}px; --ally-cap: ${ally.capOffset}px`}
-            class={`ally-logo ${ally.wordmark ? 'opacity-75' : ''} transition-opacity duration-300 hover:opacity-100`}
+            class={`ally-logo ${ally.wordmark ? 'opacity-75' : ''}`}
             loading="lazy"
             decoding="async"
           />
         </li>
       ))}
     </ul>
-
-    <p
-      class="mt-16 border-t border-cargo-deep pt-4 font-mono text-xs uppercase tracking-[0.18em] text-cargo-ink/70"
-    >
-      {manifest}
-    </p>
+    <ul class="ally-marquee-track" aria-hidden="true">
+      {allies.map((ally) => (
+        <li class="ally-marquee-item">
+          <img
+            src={ally.logo}
+            alt=""
+            width={ally.width}
+            height={ally.height}
+            style={`--ally-h: ${ally.displayHeight}px; --ally-cap: ${ally.capOffset}px`}
+            class={`ally-logo ${ally.wordmark ? 'opacity-75' : ''}`}
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
+      ))}
+    </ul>
   </div>
 </section>

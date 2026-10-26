@@ -202,13 +202,22 @@ home, **enlaza** a esa página; no lo repitas.
 - Cada `<details>` con `id={family.key}` y `IndexLabel` 01–05.
 
 ## Aliados
-- Franja de logos de aliados. Los 6 SVG/WebP de `public/assets/allies/` tienen
-  el `viewBox` **recortado al ink** (≥96% de ocupación) y el wordmark de
-  Aerotur está **convertido a paths** (sin dependencia de fuentes web).
+- **Cinta horizontal en movimiento** (no carrusel, no muro estático). Los 6
+  SVG/WebP de `public/assets/allies/` tienen el `viewBox` **recortado al ink**
+  (≥96% de ocupación) y el wordmark de Aerotur está **convertido a paths**
+  (sin dependencia de fuentes web).
 - El tamaño se define en `src/data/allies.ts` por **peso óptico**
   (`displayHeight`), no por altura uniforme. No cambies `displayHeight` sin
-  volver a simular la tira: si igualas la altura total, los textos salen con
+  volver a simular la cinta: si igualas la altura total, los textos salen con
   tamaños muy distintos (la diferencia llega a 2x entre Copa y Estelar).
+- La cinta es **CSS puro, 0 kB de JS**. Dos listados idénticos con el mismo
+  keyframe; el segundo queda una vuelta por delante. La pausa por `:hover` y
+  `:focus-within` es obligatoria. La copia duplicada lleva `aria-hidden`, así
+  que **no se cuelgan enlaces dentro de la cinta**.
+- `align-items: flex-start` en `.ally-marquee-track`, nunca `center`: con
+  `center` el margen se aplica a la mitad y las líneas de cap se separan.
+- La sección tiene **un único titular**. Sin eyebrow, sin subtítulo, sin línea
+  de manifiesto: el titular no cuenta los logos.
 - **Pendiente de negocio:** el logo de Aerotur es un wordmark propio, no el
   logotipo oficial. Si el cliente entrega el original, reemplázalo — no lo
   inventes.

@@ -239,7 +239,7 @@ Reglas:
 | `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, enlaces + `Button` + link de idioma |
 | `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink`, retícula de 4 bloques con reglas, link ES/EN |
 | `Hero` | `src/components/home/Hero.astro` | Pantalla completa (`100svh`), foto única + scrims, banda superior de contraste, texto en el tercio izquierdo, 2 CTA |
-| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, banda ledger dimensionada por contenido, muro de 6 logos alineados por línea de cap + índice mono |
+| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, cinta horizontal en movimiento (0 kB de JS), 6 logos alineados por línea de cap, un único titular |
 | `ServiceAccordion` | `src/components/home/ServiceAccordion.astro` | `id="services"`, 5 familias en `<details>` numerados + 12 servicios especiales |
 | `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
 | `OperationsBand` | `src/components/home/OperationsBand.astro` | Vídeo de pushback + tira horizontal de 6 fotos pilotada por scroll |
@@ -355,11 +355,21 @@ taller.** No reutilices una foto de rampa para simular esas actividades: usa la 
 heredada que sí corresponde (`family-aircraft-care`, `family-passenger-services`,
 `family-gse-maintenance`) o un tratamiento tipográfico.
 
-### Muro de aliados (`AlliesStrip`)
+### Cinta de aliados (`AlliesStrip`)
 
-Banda *ledger* dentro del ritmo de la home. **No** es una sección a pantalla
-completa: se dimensiona por contenido y se lee como una franja deliberada
-entre el hero y los servicios. Fondo `bg-cargo-white`.
+Listón horizontal en movimiento continuo dentro del ritmo de la home.
+**No** es una sección a pantalla completa: se dimensiona por contenido y se lee
+como una franja deliberada entre el hero y los servicios. Fondo `bg-cargo-white`.
+
+**No es un carrusel.** No hay paginación, ni posiciones, ni flechas, ni estado
+en JavaScript. Es una cinta: recorre su propio ciclo y se detiene al hover o
+al foco. La diferencia importa —un carrusel hides contenido detrás de un
+botón; una cinta no esconde nada, solo lo desplaza.
+
+**Una sola afirmación.** La sección tiene un único titular y nada más: sin
+eyebrow, sin subtítulo, sin línea de manifiesto. El titular no cuenta los
+logos ("Seis aerolíneas…") porque ese número ata la frase a una aritmética y
+obliga al titular a partirse en dos líneas. La evidencia la dan los logos.
 
 **El fondo blanco no es una decisión estética, es una restricción de contraste.**
 Los logotipos son de marca y sus colores son fijos. Medidos sobre `cargo-deep`:
@@ -367,10 +377,10 @@ Copa 2.08:1, Avior 2.30:1, Laser gris 1.99:1 y **Aerotur 1.00:1 — invisible**
 (son exactamente el mismo color). Sobre `cargo-white` los seis superan 3:1.
 
 **Tamaño por peso óptico, no uniforme.** La altura de render de cada logo se
-deriva de su *cap height* (altura de letra) real, normalizada a 28px:
+deriva de su *cap height* (altura de letra) real, normalizada a 40px:
 
 ```
-displayHeight = 28 * (alto de caja / altura de letra)
+displayHeight = 40 * (alto de caja / altura de letra)
 ```
 
 Sin esto, Estelar renderizaba sus letras a 11.4px frente a las 24-33px de los
@@ -381,22 +391,58 @@ composiciones distintas (Copa apila el wordmark en script sobre "Airlines";
 Laser e Iberia son lockups horizontales con símbolo al lado; Estelar y Aerotur
 llevan lema o trazo debajo). Por eso cada logo lleva un `capOffset`: el
 desplazamiento en px que sitúa su línea de cap en el mismo sitio que las
-demás. La utilidad `.ally-logo` lee `--ally-h` y `--ally-cap` y aplica un
-factor 0.82 por debajo de `lg`, donde la celda es más estrecha y el logo más
-ancho (Laser) no cabe a tamaño completo. El factor se aplica también al
-desplazamiento, para que la alineación se mantenga en cualquier escala.
+demás. La utilidad `.ally-logo` lee `--ally-h` y `--ally-cap`.
+
+El factor de escala es 1 en escritorio, 0.82 entre 640px y 1024px y 0.58 por
+debajo de 640px, para que el logo más ancho (Laser) guarde proporción con la
+pantalla. Se aplica también al desplazamiento, así que la alineación se
+mantiene en cualquier escala.
+
+**`align-items: flex-start`, no `center`.** Con `center` el navegador centra la
+caja de *márgenes* del logo, y el desplazamiento se aplicaría a la mitad: las
+líneas de cap dejarían de coincidir. Con `flex-start` el margen superior es
+exactamente el desplazamiento de la línea de cap. Dispersión medida: 0.73px.
 
 La banda de letra de cada recurso se midió sobre el SVG/WebP renderizado
 (fila por fila), no a ojo:
 
 | Logo | Banda de letra (px intrínsecos) | Caja | `displayHeight` | `capOffset` |
 |---|---|---|---|---|
-| Copa | 0–49 | 433×114 | 66 | 6 |
-| Avior | 2–34 | 286×35 | 31 | 4 |
-| Laser | 14–79 | 773×104 | 45 | 0 |
-| Estelar | 0–55 | 359×76 | 39 | 6 |
-| Iberia | 8–52 | 400×88 | 56 | 1 |
-| Aerotur | 0–16 | 104×19 | 33 | 6 |
+| Copa | 0–49 | 433×114 | 93 | 9 |
+| Avior | 2–34 | 286×35 | 44 | 6 |
+| Laser | 14–79 | 773×104 | 64 | 0 |
+| Estelar | 0–55 | 359×76 | 55 | 9 |
+| Iberia | 8–52 | 400×88 | 80 | 1 |
+| Aerotur | 0–16 | 104×19 | 48 | 9 |
+
+**Mecánica de la cinta (0 kB de JS, CSS puro).**
+
+- El DOM contiene **dos listados idénticos**. Los dos se animan con el mismo
+  keyframe, así que el segundo queda siempre a una vuelta de distancia del
+  primero y el bucle no tiene costura.
+- La traslación final es `-(100% + gap)`: el ancho del propio listado más el
+  hueco que lo separa del siguiente. Al terminar el ciclo, el segundo listado
+  ocupa exactamente el lugar del primero.
+- El **degradado (`mask-image`)** disuelve los extremos: los logos entran y
+  salen en lugar de cortarse en seco. Es el detalle que separa una cinta de
+  un banner.
+- La **pausa por `:hover` y `:focus-within`** es obligatoria: quien navega con
+  el teclado o con el puntero tiene que poder parar el movimiento para leer.
+- Velocidad: ~48 px/s (48px de hueco, 52s por vuelta en escritorio). Lento, se
+  lee como una cinta de aeropuerto, no como un banner.
+
+**Accesibilidad de la cinta.**
+
+- La copia duplicada lleva `aria-hidden="true"`: el lector de pantalla
+  anuncia seis logos, no doce.
+- La cinta es `role="group"` con `tabindex="0"`: una región desplazable
+  debe ser alcanzable por teclado (WCAG 2.1.1). Con el foco dentro, la
+  animación se pausa y las flechas desplazan la cinta.
+- `prefers-reduced-motion` cancela la animación y la cinta pasa a ser una fila
+  desplazable con el dedo y con `scroll-snap`.
+- No se cuelgan enlaces dentro de la cinta: la copia duplicada está oculta a
+  lectores de pantalla, así que un enlace dentro quedaría inalcanzable para
+  ellos.
 
 **Los logos raster no se envían con caja de color.** Estelar llegó como
 PNG plano con la caja navy `#001E54` horneada y sin canal alfa. `scripts/optimize-assets.mjs`

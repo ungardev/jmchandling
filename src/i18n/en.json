@@ -111,9 +111,8 @@
     "scopeLabel": "SCOPE"
   },
   "allies": {
-    "sectionLabel": "MAIQUETÍA · RAMP",
-    "title": "Six airlines on the ramp at Maiquetía",
-    "subtitle": "Ramp, cargo and passenger support at the Maiquetía platform."
+    "title": "Airlines we operate with on the ramp",
+    "ariaLabel": "Airlines we operate with on the ramp"
   },
   "about": {
     "sectionLabel": "ABOUT US",

@@ -343,26 +343,41 @@ art-directed variants (one per breakpoint):
   logo render at a fraction of its box. Crop the viewBox (and any `width` /
   `height` attributes that must stay in sync) so the content fills the box.
 - `src/data/allies.ts` carries `width`, `height` (intrinsic, for CLS),
-  `displayHeight` (render size), `capOffset` (vertical offset) and
-  `shortName` (the mono manifest line at the foot of the wall).
+  `displayHeight` (render size) and `capOffset` (vertical offset).
   `displayHeight` is set by **optical weight**, not by a uniform height:
   lockups with a symbol (Copa, Laser) need more height for their wordmark to
   match the single-line wordmarks. The value is derived from the **cap
   height** of each logo, normalised to a common target:
-  `displayHeight = 28 * (box height / cap height)`.
+  `displayHeight = 40 * (box height / cap height)`.
   Because the six boxes have different compositions (Copa stacks a script
   wordmark over "Airlines", Laser and Iberia are horizontal lockups with a
   symbol, Estelar and Aerotur carry a tagline or a stroke), the boxes do
   **not** share a cap position. Each logo therefore declares a `capOffset`
   in px so every wordmark sits on the same cap line:
   `capOffset = max(capTop) - capTop`.
-  The CSS utility `.ally-logo` reads `--ally-h` and `--ally-cap` and applies
-  a 0.82 factor below `lg` so the widest logo (Laser) still fits its grid
-  cell on mobile — the factor applies to the offset too, so the alignment
-  holds at every scale.
-- The allies wall is a **static ledger band**, not a full-screen section and
-  not a carousel. It is sized by its content (`py-24 sm:py-28 lg:py-32`,
-  no `100svh`) so it reads as a deliberate band in the home rhythm.
+  The CSS utility `.ally-logo` reads `--ally-h` and `--ally-cap`; the scale
+  factor is 1 on desktop, 0.82 between 640px and 1024px and 0.58 below
+  640px — it applies to the offset too, so the alignment holds at every scale.
+- The allies band is a **moving tape**, not a full-screen section and not a
+  carousel. It is sized by its content (no `100svh`) so it reads as a
+  deliberate band in the home rhythm.
+- **The tape is CSS-only. Keep it at 0 kB of JS.** The DOM holds two
+  identical lists; both run the same keyframe, so the second always sits one
+  lap ahead and the loop has no seam. The final translate is
+  `-(100% + gap)` — the list's own width plus the gap that separates it from
+  the next one.
+- The **pause on `:hover` and `:focus-within` is mandatory**. Anyone using
+  the keyboard or the pointer has to be able to stop the motion to read.
+- The duplicated list carries `aria-hidden="true"` so screen readers announce
+  six logos, not twelve. Because of that, **never put a link inside the
+  tape** — it would be unreachable for them.
+- The tape is `role="group"` with `tabindex="0"`: a scrollable region must be
+  keyboard reachable (WCAG 2.1.1). Under `prefers-reduced-motion` the
+  animation is cancelled and the tape becomes a swipeable row with
+  `scroll-snap`.
+- `.ally-marquee-track` uses **`align-items: flex-start`**, never `center`:
+  with `center` the browser centres the logo's *margin box*, so the cap
+  offset would only be applied by half and the cap lines would drift apart.
 - A **raster** logo must not ship with a solid colour box baked in. Estelar
   arrived as white-on-navy in a flat PNG; `scripts/optimize-assets.mjs`
   applies a **knockout** (declared per ally in `ALLY_KNOCKOUTS`) that turns
