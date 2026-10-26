@@ -343,68 +343,6 @@
      invisible en el primer pintado.
      ------------------------------------------------------------------ */
 
-  /* Tira horizontal de fotos pilotada por el scroll vertical.
-     El contenedor alto (300vh) da la distancia de scroll; el track queda
-     fijo con position: sticky y se desplaza en horizontal.
-
-     El rango "contain" de un sujeto mas alto que el viewport coincide
-     exactamente con la ventana en la que el track esta anclado (de la
-     esquina superior del contenedor a la inferior). Por eso el paneo
-     termina justo cuando termina el anclaje.
-
-     overflow-x: clip (y no hidden) recorta el desborde horizontal sin
-     crear un contenedor de scroll: sticky sigue anclandose al viewport.
-
-     container-type: inline-size habilita las unidades de consulta (cqw) para
-     medir el ancho real de la seccion. Se usa 100cqw y no 100vw porque vw
-     incluye el ancho de la barra de scroll y el paneo terminaria con la
-     ultima foto cortada por el borde. */
-  .strip-tall {
-    height: 300vh;
-    overflow-x: clip;
-    container-type: inline-size;
-    view-timeline-name: --jmc-strip;
-  }
-
-  .strip-track {
-    position: sticky;
-    top: 0;
-    display: flex;
-    width: max-content;
-    height: 100vh;
-    height: 100svh;
-    /* La banda del header fijo (~4.5rem) no debe tapar la primera foto. */
-    padding-top: 4.5rem;
-    align-items: center;
-    gap: clamp(1rem, 2vw, 2rem);
-  }
-
-  .strip-item {
-    flex: 0 0 auto;
-    /* El alto sale del aspect-ratio 3/4 de la figura: ancho * 4/3.
-       El termino svh acota el ancho para que la foto siempre quepa entre
-       la banda del header y el borde inferior. */
-    width: min(86vw, 32rem, calc(75svh - 3.375rem));
-  }
-
-  /* Alto util de la tira: deja libre la banda del header fijo.
-     El alto sale del aspect-ratio a partir del ancho, de modo que el track
-     crece con el contenido y el paneo es proporcional al scroll vertical. */
-  .strip-figure {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-  }
-
-  @supports (animation-timeline: view()) {
-    .strip-track {
-      animation: jmc-strip-pan 1ms linear both;
-      animation-timeline: --jmc-strip;
-      animation-range: contain 0% contain 100%;
-    }
-  }
-
   /* Header transparente sobre el hero que se vuelve solido al hacer scroll.
      El estado solido es el estandar: si el navegador no soporta scroll
      timelines, el header nunca queda transparente sobre una seccion clara
@@ -499,18 +437,6 @@
   }
 }
 
-@keyframes jmc-strip-pan {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* -100% mueve el track completo hacia la izquierda; + 100cqw lo deja
-       terminar justo en el borde derecho de la seccion (no del viewport,
-       que incluiria el ancho de la barra de scroll). */
-    transform: translateX(calc(-100% + 100cqw));
-  }
-}
-
 @keyframes jmc-parallax {
   from {
     transform: translateY(-7%);
@@ -566,27 +492,6 @@
     scroll-behavior: auto !important;
   }
 
-  /* El motion reducido elimina el movimiento, no lo ralentiza: la tira
-     horizontal deja de pilotarse con el scroll y pasa a ser un contenedor
-     horizontal con snap, navegable con el dedo y con el teclado. */
-  .strip-tall {
-    height: auto;
-    overflow-x: visible;
-  }
-
-  .strip-track {
-    position: static;
-    width: auto;
-    height: auto;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 1rem;
-  }
-
-  .strip-item {
-    scroll-snap-align: center;
-  }
-
   /* La cinta de aliados pierde el movimiento: pasa a ser una fila
      desplazable con el dedo, navegable con el teclado y con snap. */
   .ally-marquee {
@@ -611,7 +516,6 @@
      bloque animado por scroll se queda congelado en un estado intermedio. */
   .reveal,
   .parallax-media,
-  .strip-track,
   .header-overlay {
     animation: none !important;
     animation-timeline: none !important;

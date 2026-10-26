@@ -144,7 +144,6 @@ en Chrome/Edge 115+, Safari 26+ y Firefox 159+.
 |---|---|---|
 | `.reveal` | entrada con desplazamiento | `view()` + `entry 0%` → `entry 100%` |
 | `.parallax` / `.parallax-media` | paneo lento de la foto | `--jmc-parallax` + `cover 0%` → `cover 100%` |
-| `.strip-tall` / `.strip-track` | tira horizontal anclada | `--jmc-strip` + `contain 0%` → `contain 100%` |
 | `.header-overlay` | header sólido al hacer scroll | `scroll(root block)` + `0` → `120px` |
 | `.scroll-progress` | barra de lectura | `scroll(root block)` |
 
@@ -153,10 +152,6 @@ Reglas:
 - El estado "oculto" (`opacity: 0`) **solo dentro de `@supports`**: sin soporte
   el contenido queda visible.
 - `.reveal` solo por debajo del fold. El hero ocupa la primera pantalla.
-- La tira usa `overflow-x: clip`, no `hidden`: recorta sin crear contenedor de
-  scroll, para que `position: sticky` siga anclándose al viewport.
-- `100cqw` (no `100vw`) para medir el ancho de la sección: `vw` incluye la
-  barra de scroll y el paneo terminaría con la última foto cortada.
 
 Toda animación debe quedar anulada bajo `prefers-reduced-motion` (el bloque global en
 `src/styles/global.css` ya lo hace; añade `motion-reduce:transform-none` si creas una).

@@ -11,12 +11,6 @@
     "switchToSpanish": "Cambiar a español",
     "about": "Sobre JMC"
   },
-  "operations": {
-    "sectionLabel": "OPERACIÓN EN PLATAFORMA",
-    "title": "La operación de rampa, en secuencia",
-    "subtitle": "Imágenes y video propios de la operación en Maiquetía: equipos, carga y equipaje.",
-    "videoCaption": "Pushback en plataforma · CCS"
-  },
   "hero": {
     "ctaPrimary": "Coordinar una operación",
     "ctaSecondary": "Ver capacidades"

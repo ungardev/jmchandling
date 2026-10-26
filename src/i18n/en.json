@@ -11,12 +11,6 @@
     "switchToSpanish": "Switch to Spanish",
     "about": "About JMC"
   },
-  "operations": {
-    "sectionLabel": "RAMP OPERATIONS",
-    "title": "The ramp operation, in sequence",
-    "subtitle": "Own footage and images from operations in Maiquetía: equipment, cargo and baggage.",
-    "videoCaption": "Pushback on the apron · CCS"
-  },
   "hero": {
     "ctaPrimary": "Coordinate an operation",
     "ctaSecondary": "View capabilities"

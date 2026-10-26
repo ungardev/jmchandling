@@ -12,7 +12,7 @@ media-raw/                       maestros (504 MB) — IGNORADO POR GIT
 public/assets/
 ├── photos/{hero,equipment,services,families}/   derivados WebP — VERSIONADOS
 ├── photos/manifest.json                          biblioteca completa (0 kB de JS)
-├── photos/video/                                 pushback.webm/.mp4 + poster
+├── photos/video/                                 pushback.webm/.mp4 + poster (reservado)
 ├── allies/                                       logos SVG/WebP kebab-case
 ├── brand/                                        isotipo y wordmark
 └── og/                                           jmc-og-{es,en}.png 1200×630

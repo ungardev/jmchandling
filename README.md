@@ -56,7 +56,7 @@ src/
 ├── components/
 │   ├── global/       Header, Footer, LangToggle
 │   ├── home/         Hero, AlliesStrip, ServiceAccordion,
-│   │                 EquipmentGrid, OperationsBand, SafetySection, RequestPrompt
+│   │                 EquipmentGrid, SafetySection, RequestPrompt
 │   ├── services/     ServiceDetail
 │   ├── contact/      QuoteForm, ContactInfo, FormStatus
 │   └── ui/           Button, Badge, Card, Section

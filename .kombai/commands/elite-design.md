@@ -83,7 +83,6 @@ degradacion segura: **el estado "oculto" solo se declara dentro de
 |---|---|---|
 | `.reveal` | entrada con desplazamiento | `view()` + `entry 0%` → `entry 100%` |
 | `.parallax` / `.parallax-media` | paneo lento de la foto | `view-timeline-name: --jmc-parallax` + `cover 0%` → `cover 100%` |
-| `.strip-tall` / `.strip-track` | tira horizontal anclada | `view-timeline-name: --jmc-strip` + `contain 0%` → `contain 100%` |
 | `.header-overlay` | header solido al hacer scroll | `scroll(root block)` + `0` → `120px` |
 | `.scroll-progress` | barra de lectura | `scroll(root block)` |
 
@@ -91,14 +90,9 @@ Reglas:
 
 - `.reveal` solo en bloques **por debajo del fold**. El hero ocupa la primera
   pantalla: un `.reveal` alli quedaria invisible en el primer pintado.
-- La tira usa `overflow-x: clip` (no `hidden`): recorta el desborde sin crear
-  un contenedor de scroll, de modo que `position: sticky` sigue anclandose al
-  viewport.
-- `100cqw` (no `100vw`) para medir el ancho de la seccion: `vw` incluye la
-  barra de scroll y el paneo terminaria con la ultima foto cortada.
 - `prefers-reduced-motion` desconecta las animaciones por completo
-  (`animation: none`, `timeline: none`) y convierte la tira en un carrusel
-  horizontal con `snap`.
+  (`animation: none`, `timeline: none`) y convierte la cinta de aliados en una
+  fila desplazable con `snap`.
 
 ---
 
@@ -240,7 +234,7 @@ Ademas, antes de entregar:
 6. Repasa la lista anti-slop del punto 1b sobre el resultado.
 7. Confirma que ningun `.reveal` quedo en el primer viewport (contenido
    invisible en el primer pintado) y que `prefers-reduced-motion` degrada bien
-   la tira horizontal.
+   la cinta de aliados.
 
 ---
 

@@ -26,7 +26,7 @@ Los árboles de `src/i18n/es.json` y `src/i18n/en.json` deben ser **idénticos**
 
 **Componentes home (en orden):**
 `Hero` → `AlliesStrip` → `ServiceAccordion` → `EquipmentGrid` →
-`OperationsBand` → `SafetySection` → `RequestPrompt`.
+`SafetySection` → `RequestPrompt`.
 
 El bloque corporativo (misión, visión, valores, habilitación) vive en
 `/es/sobre-jmc` y `/en/about-jmc`. La home lo **enlaza**, no lo repite.
@@ -165,7 +165,7 @@ estructura de información ni el copy.
 
 ## Alcance
 `src/components/home/*.astro` (Hero, AlliesStrip, ServiceAccordion,
-EquipmentGrid, OperationsBand, SafetySection, RequestPrompt) y
+EquipmentGrid, SafetySection, RequestPrompt) y
 `src/styles/global.css`.
 
 **La home ya no tiene sección "About"**: el bloque corporativo vive en

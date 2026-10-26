@@ -75,7 +75,7 @@ reporta claves huérfanas. **Falla el build.**
 ## Section Anchors
 
 Section IDs are **English and stable in both locales**: `#services`, `#equipment`,
-`#allies`, `#operations`, `#safety`. Each section keeps a legacy Spanish alias as a
+`#allies`, `#safety`. Each section keeps a legacy Spanish alias as a
 hidden span (`<span id="capacidades" class="sr-only" aria-hidden="true"></span>`).
 **Never delete the aliases** — external links use them.
 
@@ -88,10 +88,13 @@ present on the home as hidden spans so legacy deep links keep resolving, and
 `vercel.json` redirects `/es/empresa` → `/es/sobre-jmc` and
 `/en/company` → `/en/about-jmc`.
 
+`#operations` is a **retired** section id. The "Operación en plataforma" band
+was removed from the home (2026-10-26), but the id survives as a hidden span
+between Equipos and Seguridad so old external deep links still resolve.
+
 **No dupliques contenido entre la home y una pagina interna.** Si un bloque
 corporativo aparece completo en una pagina dedicada, la home lo enlaza, no lo
-repite. La home es: Hero → Allies → Servicios → Equipos → Operación
-→ Seguridad → CTA.
+repite. La home es: Hero → Allies → Servicios → Equipos → Seguridad → CTA.
 
 Deep-link targets that must keep resolving:
 - Service families on the home page: `#ramp-gse`, `#aircraft-care`,
@@ -296,7 +299,7 @@ src/
 ├── components/
 │   ├── global/     Header.astro, Footer.astro
 │   ├── home/       Hero, AlliesStrip, ServiceAccordion,
-│   │               EquipmentGrid, OperationsBand, SafetySection, RequestPrompt
+│   │               EquipmentGrid, SafetySection, RequestPrompt
 │   ├── pages/      AboutPage.astro, ContactPage.astro (compartidos ES/EN)
 │   ├── contact/    QuoteForm.astro, ContactInfo.astro, FormStatus.astro
 │   └── ui/         Button.astro, ActionLink.astro, Badge.astro, Section.astro,
@@ -321,7 +324,7 @@ media-raw/                 photo masters, NOT tracked by git (504 MB)
 public/assets/
 ├── photos/{hero,equipment,services,families}/   WebP derivatives (tracked)
 ├── photos/manifest.json                          full library, 0 kB of JS
-├── photos/video/                                 pushback.webm/.mp4 + poster
+├── photos/video/                                 pushback.webm/.mp4 + poster (reservado, sin uso)
 ├── allies/                                       SVG/WebP, kebab-case
 ├── brand/                                        isotipo and wordmark
 └── og/                                           jmc-og-{es,en}.png
@@ -352,6 +355,17 @@ scripts/
   photo to depict another activity.**
 - Never use AI-generated images (`media-raw/_quarantine/`). Never use placeholders.
 - Photo masters are never committed. Only the WebP derivatives are.
+- **The 15 `gallery-*` photos are a curated library, not dead code.** None of
+  them is rendered by a component today: the home band that used six of them
+  ("Operación en plataforma") was removed on 2026-10-26, and nine had already
+  been retired before that. They stay in `scripts/media-map.json` with their
+  `altKey` in `media.alt.*` **on purpose** — `check-i18n.mjs` errors out if a
+  mapped image loses its `altKey`, and the library is the ready source for a
+  future band. Reusing a `gallery-*` photo does **not** require touching
+  `media-map.json`. The same applies to `public/assets/photos/video/`
+  (`pushback.webm` / `.mp4` + poster): it is unreferenced but kept in the repo.
+  Delete any of these only with the client's approval — `media-raw/` is not
+  tracked by git, so the master is not recoverable from the repository.
 
 ### Art-directed crops (`sets`)
 

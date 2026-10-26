@@ -23,12 +23,15 @@ El inglés es una versión secundaria *nativa*, no una traducción literal.
 Rutas: `/es/…` (por defecto) y `/en/…`.
 
 **Identificadores de sección:** en inglés y estables, idénticos en ambos idiomas
-(`#services`, `#equipment`, `#allies`, `#operations`, `#safety`). Los alias legacy en
+(`#services`, `#equipment`, `#allies`, `#safety`). Los alias legacy en
 español (`#capacidades`, `#equipos`, `#empresa`, `#seguridad`) existen como
 `<span class="sr-only">` dentro de la sección y **no deben eliminarse**.
 
-**Orden de la home:** Hero → Índice → Allies → Servicios → Equipos → Operación
-→ Seguridad → CTA.
+`#operations` es un id **retirado**: la banda "Operación en plataforma" se
+eliminó de la home (2026-10-26). El id sobrevive como `<span class="sr-only">`
+entre Equipos y Seguridad para que los deep links externos sigan resolviendo.
+
+**Orden de la home:** Hero → Allies → Servicios → Equipos → Seguridad → CTA.
 
 ---
 
@@ -205,7 +208,6 @@ Chrome/Edge 115+, Safari 26+, Firefox 159+.
 |---|---|---|
 | `.reveal` | entrada con desplazamiento | `view()` + `entry 0%` → `entry 100%` |
 | `.parallax` / `.parallax-media` | paneo lento de la foto | `--jmc-parallax` + `cover 0%` → `cover 100%` |
-| `.strip-tall` / `.strip-track` | tira horizontal anclada | `--jmc-strip` + `contain 0%` → `contain 100%` |
 | `.header-overlay` | header sólido al hacer scroll | `scroll(root block)` + `0` → `120px` |
 | `.scroll-progress` | barra de lectura | `scroll(root block)` |
 
@@ -242,7 +244,6 @@ Reglas:
 | `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, cinta horizontal en movimiento (0 kB de JS), 6 logos alineados por línea de cap, un único titular |
 | `ServiceAccordion` | `src/components/home/ServiceAccordion.astro` | `id="services"`, 5 familias en `<details>` numerados + 12 servicios especiales |
 | `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
-| `OperationsBand` | `src/components/home/OperationsBand.astro` | Vídeo de pushback + tira horizontal de 6 fotos pilotada por scroll |
 | `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, Q&A de airlines (pregunta → respuesta) + foto de equipo |
 | `RequestPrompt` | `src/components/home/RequestPrompt.astro` | Cierre con los tres canales de contacto directo |
 | `AboutPage` / `ContactPage` | `src/components/pages/` | Contenido compartido por ES/EN, sin duplicar entre idiomas |
@@ -262,8 +263,7 @@ Reglas:
 `.skip-to-content` · `.eyebrow` · `.eyebrow-on-light` · `.eyebrow-on-dark` ·
 `.type-h2` · `.type-h3` · `.type-lead` · `.type-body` · `.type-meta` ·
 `.type-figure` · `.grid-12` · `.hero-full` · `.header-overlay` · `.reveal` ·
-`.parallax` / `.parallax-media` · `.strip-tall` / `.strip-track` /
-`.strip-item` / `.strip-figure` · `.ally-logo` · `.scroll-progress`
+`.parallax` / `.parallax-media` · `.ally-logo` · `.scroll-progress`
 
 > `.glass`, `.glass-dark`, `.text-gradient-emerald` y `.card-service` **no**
 > están definidas. No las referencies: créalas si hacen falta o evita usarlas.
@@ -352,6 +352,8 @@ npm run optimize:assets
 - Formato: WebP, calidad 78, esfuerzo 6, sin upscale, sin recorte. Anchos 640 / 1280
   (hero: 1280 / 1920).
 - Vídeo: `public/assets/photos/video/pushback.{mp4,webm}` + `pushback-poster.webp`.
+  Sin página que lo referencie (la banda "Operación en plataforma" se eliminó el
+  2026-10-26): se conserva como material de reserva, no como código muerto.
 - OG: `public/assets/og/jmc-og-{es,en}.png` (1200×630).
 
 ### Cómo consumir un medio

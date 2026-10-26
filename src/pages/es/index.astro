@@ -6,7 +6,6 @@ import Hero from '../../components/home/Hero.astro';
 import AlliesStrip from '../../components/home/AlliesStrip.astro';
 import ServiceAccordion from '../../components/home/ServiceAccordion.astro';
 import EquipmentGrid from '../../components/home/EquipmentGrid.astro';
-import OperationsBand from '../../components/home/OperationsBand.astro';
 import SafetySection from '../../components/home/SafetySection.astro';
 import RequestPrompt from '../../components/home/RequestPrompt.astro';
 import { useTranslations } from '../../i18n/utils';
@@ -25,7 +24,7 @@ const t = useTranslations(locale);
     <AlliesStrip locale={locale} />
     <ServiceAccordion locale={locale} />
     <EquipmentGrid locale={locale} />
-    <OperationsBand locale={locale} />
+    <span id="operations" class="sr-only" aria-hidden="true"></span>
     <SafetySection locale={locale} />
     <RequestPrompt locale={locale} />
   </main>
