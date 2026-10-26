@@ -125,6 +125,15 @@ mismo ritmo en servicios, equipos, seguridad y contacto. Nunca numerar ad hoc
 | Entrada | 600 ms | `cubic-bezier(0.16, 1, 0.3, 1)` (`.animate-fade-up`) |
 | Aparición | 400 ms | `ease-out` (`.animate-fade-in`) |
 
+### Navegación (`Header.astro`)
+
+| Patrón | Regla |
+|---|---|
+| Centrado del nav | grid `1fr auto 1fr` en `lg`: las columnas laterales son iguales, así el nav cae sobre el eje de la página |
+| Hover de link | **sin línea**: solo cambia el color de la fuente (`white/75` → `white`) |
+| Página actual | línea de 1 px `cargo-light` (`.nav-link.active`) — un solo elemento activo a la vez |
+| Anillo de foco en el header | `cargo-light` (`.header-nav :focus-visible`); el global `cargo-deep` sería invisible sobre `cargo-deep` |
+
 ### Movimiento por scroll (CSS nativo, 0 kB)
 
 No hay librerías de animación. El scroll-driven es CSS puro

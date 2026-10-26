@@ -236,7 +236,7 @@ Reglas:
 
 | Componente | Ruta | Notas |
 |---|---|---|
-| `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, enlaces + `Button` + link de idioma |
+| `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, nav de 3 links centrada sobre el eje de la página (grid `1fr auto 1fr`), botón "Contacto" + link de idioma a la derecha |
 | `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink`, retícula de 4 bloques con reglas, link ES/EN |
 | `Hero` | `src/components/home/Hero.astro` | Pantalla completa (`100svh`), foto única + scrims, banda superior de contraste, texto en el tercio izquierdo, 2 CTA |
 | `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, cinta horizontal en movimiento (0 kB de JS), 6 logos alineados por línea de cap, un único titular |
@@ -258,7 +258,7 @@ Reglas:
 ### Primitivas disponibles en `src/styles/global.css`
 
 `.btn-primary` · `.btn-secondary` · `.btn-ghost` · `.badge-cert` ·
-`.nav-link` · `.field-control` · `.section-pad` · `.container-max` ·
+`.nav-link` · `.header-nav` · `.field-control` · `.section-pad` · `.container-max` ·
 `.skip-to-content` · `.eyebrow` · `.eyebrow-on-light` · `.eyebrow-on-dark` ·
 `.type-h2` · `.type-h3` · `.type-lead` · `.type-body` · `.type-meta` ·
 `.type-figure` · `.grid-12` · `.hero-full` · `.header-overlay` · `.reveal` ·
@@ -271,6 +271,42 @@ Reglas:
 > `.card-service` y las utilidades `.glass*` / `.text-gradient-emerald` **no existen
 > todavía en `global.css`**: créalas como parte del trabajo si las vas a usar, o
 > evita referenciarlas.
+
+### Header (`Header.astro`)
+
+Retícula de 3 columnas. El nav va **centrado sobre el eje de la página**, no
+centrado en el espacio sobrante:
+
+```
+grid-cols-[1fr_auto]                             → móvil: logo | botón de menú
+lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] → escritorio
+```
+
+Las dos columnas laterales son iguales por construcción (`1fr` = `1fr`), así que
+la columna central `auto` cae exactamente sobre el eje. Con
+`flex justify-between` el nav se desplaza hacia el lado en cuanto los bloques
+laterales no miden lo mismo.
+
+| Bloque | Contenido | Alineación |
+|---|---|---|
+| 1 | logo (isotipo + wordmark) | `justify-self-start` |
+| 2 | nav: Inicio · Capacidades · Sobre JMC | `justify-self-center` |
+| 3 | botón "Contacto" + selector ES/EN | `justify-self-end` |
+
+- Un solo DOM para los dos layouts: bajo `lg` el grupo central es
+  `display:none`, no ocupa celda, y el logo y el botón de menú caen en las
+  columnas 1 y 2.
+- **El hover de un link no dibuja línea.** Solo cambia el color de la fuente
+  (`white/75` → `white`, 7.23:1 → 11.49:1). La línea de 1 px (`cargo-light`)
+  queda reservada a `.nav-link.active`, el estado de página actual: como mucho
+  un elemento activo a la vez.
+- Un enlace a un ancla (`/#services`) **no** es la página actual: la home ya
+  está marcada por "Inicio".
+- "Contacto" no es un link del nav: es el botón de la derecha (`nav.contact`).
+  "Enviar solicitud" (`quote.submit`) queda para las CTAs de la home y el
+  submit del formulario. El botón marca `aria-current="page"` con
+  `Button current` cuando la ruta es la de contacto.
+- 0 kB de JS: el grid, el hover y el estado activo son CSS.
 
 ### Patrón de componente Astro (obligatorio)
 
@@ -471,6 +507,9 @@ la salida es un logo monocromo alternativo de Laser, no un ajuste de la web.
   `cargo-emerald` queda descartado para el anillo: 2.67:1 sobre blanco y 2.50:1
   sobre mist, por debajo del 3:1 que exige 1.4.11 (contraste no textual);
   `cargo-deep` da 11.49:1 y 10.77:1.
+- **El header es la excepción**: su fondo es `cargo-deep`, donde el anillo global
+  sería invisible. `.header-nav :focus-visible` lo cambia a `cargo-light`
+  (7.74:1 sobre `cargo-deep`). Nunca elimines el anillo del header.
 - Todo elemento interactivo alcanzable por teclado y con `:focus-visible` visible.
 - Iconos solos: `aria-label` + `aria-hidden` en el SVG.
 - `prefers-reduced-motion` desactiva **toda** animación.

@@ -146,9 +146,20 @@
     @apply absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-cargo-light transition-transform duration-200;
   }
 
-  .nav-link:hover::after,
+  /* Sin linea en hover: el unico cambio es el color de la fuente. La linea de
+     1px queda reservada al estado de pagina actual. */
+  .nav-link.active {
+    @apply text-cargo-white;
+  }
+
   .nav-link.active::after {
     @apply scale-x-100;
+  }
+
+  /* El anillo de foco global es cargo-deep: sobre el header (cargo-deep) seria
+     invisible. Aqui se usa cargo-light (7.74:1 sobre cargo-deep). */
+  .header-nav :focus-visible {
+    outline-color: var(--color-cargo-light);
   }
 
   .field-control {

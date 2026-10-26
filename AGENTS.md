@@ -134,6 +134,32 @@ const { locale, variant = 'primary', class: className = '' } = Astro.props;
 ### HTML lang attribute
 Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 
+### Header / Navigation
+
+`src/components/global/Header.astro` — the header is a **3-column grid**:
+
+```
+grid-cols-[1fr_auto]                              (movil: logo | boton de menu)
+lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]  (escritorio)
+```
+
+- Cell 1: logo (`justify-self-start`). Cell 2: nav links (`justify-self-center`).
+  Cell 3: CTA + ES/EN (`justify-self-end`).
+- The nav is centered **on the page axis**, not inside the remaining space: the
+  two `1fr` side columns are equal by construction, so the `auto` center column
+  lands exactly on the page axis. Do not replace the grid with `flex justify-between`
+  — that centers the nav in the leftover space, not on the page axis.
+- Below `lg` the nav group is `display:none`, so it is not a grid item: the logo
+  falls in column 1 and the menu button in column 2. One DOM serves both layouts.
+- **Primary nav = Inicio · Capacidades · Sobre JMC.** "Contacto" is the button on
+  the right, not a nav link. The button reuses the `nav.contact` key; `quote.submit`
+  ("Enviar solicitud") belongs to the in-page CTAs and the form submit.
+- Only one item may be current at a time. An in-page anchor (`/#services`) is
+  **not** a current page: the home is already marked by "Inicio".
+- The header is `bg-cargo-deep`, so the global focus ring (`cargo-deep`) would be
+  invisible on it. `.header-nav :focus-visible` overrides it with `cargo-light`
+  (7.74:1 on `cargo-deep`).
+
 ---
 
 ## CSS / Tailwind Conventions
@@ -141,7 +167,10 @@ Layout sets `<html lang={locale}>` automatically. Pages pass `locale` to Layout.
 ### Custom utility classes (defined in `src/styles/global.css`)
 - `.btn-primary`, `.btn-secondary`, `.btn-ghost` — button variants
 - `.badge-cert` — certification badge pill (fondo claro: texto `cargo-deep`)
-- `.nav-link` — nav link with underline hover animation
+- `.nav-link` — nav link: hover = solo cambio de color de fuente (sin linea).
+  La linea de 1px queda reservada al estado de pagina actual (`.nav-link.active`).
+- `.header-nav` — scope del header. Redefine el anillo de foco a `cargo-light`
+  (el global `cargo-deep` seria invisible sobre el fondo `cargo-deep`).
 - `.field-control` — form input control
 - `.skip-to-content` — accessibility skip link
 - `.section-pad` — section vertical padding

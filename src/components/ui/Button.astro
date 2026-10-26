@@ -12,6 +12,11 @@ export interface Props {
   disabled?: boolean;
   /** Muestra el icono de salida. Solo en acciones que cambian de contexto. */
   arrow?: boolean;
+  /**
+   * Marca el enlace como la pagina actual: emite aria-current="page" y un
+   * relleno sutil. Solo tiene sentido con variant="secondary".
+   */
+  current?: boolean;
   class?: string;
   ariaLabel?: string;
 }
@@ -24,6 +29,7 @@ const {
   type = 'button',
   disabled = false,
   arrow = false,
+  current = false,
   class: className = '',
   ariaLabel,
 } = Astro.props;
@@ -41,6 +47,13 @@ const toneVariants = {
   },
 };
 
+/** Relleno del estado actual. No usa `border-*` para no competir con el
+ *  `border-cargo-white/60` de la variante secondary. */
+const currentClasses = {
+  light: 'bg-cargo-deep/10',
+  dark: 'bg-cargo-white/10',
+};
+
 const sizeClasses = {
   sm: 'px-4 py-2 text-xs',
   md: 'px-6 py-3 text-sm',
@@ -51,6 +64,7 @@ const classes = [
   'disabled:cursor-not-allowed disabled:opacity-50',
   toneVariants[tone][variant],
   sizeClasses[size],
+  current && variant === 'secondary' ? currentClasses[tone] : '',
   className,
 ]
   .filter(Boolean)
@@ -59,7 +73,12 @@ const classes = [
 
 {
   href ? (
-    <a href={href} class={classes} aria-label={ariaLabel}>
+    <a
+      href={href}
+      class={classes}
+      aria-label={ariaLabel}
+      aria-current={current ? 'page' : undefined}
+    >
       <slot />
       {arrow && <ArrowUpRight class="h-3.5 w-3.5" />}
     </a>
