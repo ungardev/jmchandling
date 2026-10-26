@@ -36,8 +36,12 @@
     color: var(--color-cargo-ink);
   }
 
+  /* El anillo de foco usa cargo-deep, no cargo-emerald: emerald sobre
+     cargo-white da 2.67:1 y sobre cargo-mist 2.50:1, ambos por debajo del
+     3:1 que exige WCAG 1.4.11 (contraste no textual). cargo-deep da
+     11.49:1 sobre blanco y 10.77:1 sobre mist. */
   :focus-visible {
-    outline: 2px solid var(--color-cargo-emerald);
+    outline: 2px solid var(--color-cargo-deep);
     outline-offset: 3px;
   }
 
@@ -203,8 +207,13 @@
      para que su wordmark alcance la altura de letra de los demas.
 
      `--ally-h` trae la caja ya normalizada (ver src/data/allies.ts).
+     `--ally-cap` trae el desplazamiento vertical que alinea la linea de
+     cap de todos los wordmarks en la misma linea de la banda.
+
      El factor 0.82 reduce el tamano en movil, donde la celda es mas
      estrecha y el logo mas ancho (Laser) no cabe a tamano completo.
+     Se aplica tambien al desplazamiento, para que la alineacion se
+     mantenga en cualquier escala.
 
      `max-width: 100%` + `object-fit: contain` son la red de seguridad:
      si el logo llegara a exceder su celda, se reescala en vez de
@@ -212,6 +221,7 @@
      ------------------------------------------------------------------ */
   .ally-logo {
     height: calc(var(--ally-h) * 0.82);
+    margin-top: calc(var(--ally-cap) * 0.82);
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -220,6 +230,7 @@
   @media (min-width: 1024px) {
     .ally-logo {
       height: var(--ally-h);
+      margin-top: var(--ally-cap);
     }
   }
 

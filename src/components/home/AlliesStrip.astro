@@ -9,33 +9,40 @@ export interface Props {
 
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+
+const manifest = allies.map((ally) => ally.shortName).join('  ·  ');
 ---
 
-<!-- Seccion a pantalla completa. Fondo blanco obligatorio: los logotipos
-     oficiales son de color y sobre cargo-deep el wordmark de Aerotur
-     (#0F3E51) seria invisible (1.00:1). Sobre blanco los seis superan
-     3:1 (WCAG 1.4.11). -->
-<section id="allies" class="hero-full relative isolate flex flex-col scroll-mt-24 bg-cargo-white">
-  <div class="container-max flex w-full flex-1 flex-col justify-center py-24 sm:py-28 lg:py-32">
-    <div class="grid-12 items-end gap-y-6">
-      <div class="col-span-12 lg:col-span-5">
+<!-- Banda ledger. No es una seccion a pantalla completa: se dimensiona por
+     contenido y se lee como una franja deliberada dentro del ritmo de la home.
+
+     Fondo blanco obligatorio: los logotipos oficiales son de color y sobre
+     cargo-deep el wordmark de Aerotur (#0F3E51) seria invisible (1.00:1).
+     Sobre blanco los seis superan 3:1 (WCAG 1.4.11). -->
+<section id="allies" class="relative isolate scroll-mt-24 bg-cargo-white">
+  <div class="container-max py-24 sm:py-28 lg:py-32">
+    <div class="grid-12 items-end gap-y-6 border-t border-cargo-deep pt-8">
+      <div class="col-span-12 lg:col-span-6">
         <p class="eyebrow eyebrow-on-light">{t('allies.sectionLabel')}</p>
-        <h2 class="type-h2 mt-4 max-w-md text-balance text-cargo-deep">{t('allies.title')}</h2>
+        <h2 class="type-h2 mt-4 max-w-lg text-balance text-cargo-deep">{t('allies.title')}</h2>
       </div>
-      <div class="col-span-12 lg:col-span-6 lg:col-start-7">
-        <p class="type-lead max-w-md text-cargo-ink/80">{t('allies.subtitle')}</p>
+      <div class="col-span-12 lg:col-span-5 lg:col-start-8">
+        <p class="type-lead text-cargo-ink/80">{t('allies.subtitle')}</p>
       </div>
     </div>
 
-    <ul class="reveal mt-12 grid grid-cols-1 gap-x-6 gap-y-7 sm:grid-cols-2 lg:mt-14 xl:grid-cols-3">
+    <!-- Los wordmarks se alinean por linea de cap, no por caja: cada logo
+         lleva su propio desplazamiento (capOffset) para que la letra quede
+         al mismo nivel. Ver src/data/allies.ts. -->
+    <ul class="mt-16 grid grid-cols-1 gap-x-16 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
       {allies.map((ally) => (
-        <li class="flex items-center border-t border-cargo-deep/20 pt-5">
+        <li class="flex items-start border-t border-cargo-deep/25 pt-6">
           <img
             src={ally.logo}
             alt={ally.name}
             width={ally.width}
             height={ally.height}
-            style={`--ally-h: ${ally.displayHeight}px`}
+            style={`--ally-h: ${ally.displayHeight}px; --ally-cap: ${ally.capOffset}px`}
             class={`ally-logo ${ally.wordmark ? 'opacity-75' : ''} transition-opacity duration-300 hover:opacity-100`}
             loading="lazy"
             decoding="async"
@@ -43,5 +50,11 @@ const t = useTranslations(locale);
         </li>
       ))}
     </ul>
+
+    <p
+      class="mt-16 border-t border-cargo-deep pt-4 font-mono text-xs uppercase tracking-[0.18em] text-cargo-ink/70"
+    >
+      {manifest}
+    </p>
   </div>
 </section>

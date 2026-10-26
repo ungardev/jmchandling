@@ -239,7 +239,7 @@ Reglas:
 | `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, enlaces + `Button` + link de idioma |
 | `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink`, retícula de 4 bloques con reglas, link ES/EN |
 | `Hero` | `src/components/home/Hero.astro` | Pantalla completa (`100svh`), foto única + scrims, banda superior de contraste, texto en el tercio izquierdo, 2 CTA |
-| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, pantalla completa (`100svh`), muro de 6 logos con tamaño por peso óptico |
+| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, banda ledger dimensionada por contenido, muro de 6 logos alineados por línea de cap + índice mono |
 | `ServiceAccordion` | `src/components/home/ServiceAccordion.astro` | `id="services"`, 5 familias en `<details>` numerados + 12 servicios especiales |
 | `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
 | `OperationsBand` | `src/components/home/OperationsBand.astro` | Vídeo de pushback + tira horizontal de 6 fotos pilotada por scroll |
@@ -357,24 +357,46 @@ heredada que sí corresponde (`family-aircraft-care`, `family-passenger-services
 
 ### Muro de aliados (`AlliesStrip`)
 
-Sección a pantalla completa (`100svh`), fondo `bg-cargo-white`.
+Banda *ledger* dentro del ritmo de la home. **No** es una sección a pantalla
+completa: se dimensiona por contenido y se lee como una franja deliberada
+entre el hero y los servicios. Fondo `bg-cargo-white`.
 
-**El fondo blanco no es una decisión estética, es unaconstraint de contraste.**
+**El fondo blanco no es una decisión estética, es una restricción de contraste.**
 Los logotipos son de marca y sus colores son fijos. Medidos sobre `cargo-deep`:
 Copa 2.08:1, Avior 2.30:1, Laser gris 1.99:1 y **Aerotur 1.00:1 — invisible**
 (son exactamente el mismo color). Sobre `cargo-white` los seis superan 3:1.
 
 **Tamaño por peso óptico, no uniforme.** La altura de render de cada logo se
-deriva de su *cap height* (altura de letra) real, normalizada a 24px:
+deriva de su *cap height* (altura de letra) real, normalizada a 28px:
 
 ```
-displayHeight = 24 * (alto de caja / altura de letra)
+displayHeight = 28 * (alto de caja / altura de letra)
 ```
 
 Sin esto, Estelar renderizaba sus letras a 11.4px frente a las 24-33px de los
-demás: se leía un 2.6× más pequeño. La utilidad `.ally-logo` lee `--ally-h` y
-aplica un factor 0.82 por debajo de `lg`, donde la celda es más estrecha y el
-logo más ancho (Laser) no cabe a tamaño completo.
+demás: se leía un 2.6× más pequeño.
+
+**Alineación por línea de cap, no por caja.** Las cajas de los seis logos tienen
+composiciones distintas (Copa apila el wordmark en script sobre "Airlines";
+Laser e Iberia son lockups horizontales con símbolo al lado; Estelar y Aerotur
+llevan lema o trazo debajo). Por eso cada logo lleva un `capOffset`: el
+desplazamiento en px que sitúa su línea de cap en el mismo sitio que las
+demás. La utilidad `.ally-logo` lee `--ally-h` y `--ally-cap` y aplica un
+factor 0.82 por debajo de `lg`, donde la celda es más estrecha y el logo más
+ancho (Laser) no cabe a tamaño completo. El factor se aplica también al
+desplazamiento, para que la alineación se mantenga en cualquier escala.
+
+La banda de letra de cada recurso se midió sobre el SVG/WebP renderizado
+(fila por fila), no a ojo:
+
+| Logo | Banda de letra (px intrínsecos) | Caja | `displayHeight` | `capOffset` |
+|---|---|---|---|---|
+| Copa | 0–49 | 433×114 | 66 | 6 |
+| Avior | 2–34 | 286×35 | 31 | 4 |
+| Laser | 14–79 | 773×104 | 45 | 0 |
+| Estelar | 0–55 | 359×76 | 39 | 6 |
+| Iberia | 8–52 | 400×88 | 56 | 1 |
+| Aerotur | 0–16 | 104×19 | 33 | 6 |
 
 **Los logos raster no se envían con caja de color.** Estelar llegó como
 PNG plano con la caja navy `#001E54` horneada y sin canal alfa. `scripts/optimize-assets.mjs`
@@ -395,7 +417,10 @@ la salida es un logo monocromo alternativo de Laser, no un ajuste de la web.
 ## 8. Accesibilidad (WCAG 2.1 AA)
 
 - Cada `<img>` tiene `alt` con texto real. Decorativas: `alt=""` + `aria-hidden="true"`.
-- Foco visible: `outline: 2px solid var(--color-cargo-emerald)` (ya global). No lo elimines.
+- Foco visible: `outline: 2px solid var(--color-cargo-deep)` (global). No lo elimines.
+  `cargo-emerald` queda descartado para el anillo: 2.67:1 sobre blanco y 2.50:1
+  sobre mist, por debajo del 3:1 que exige 1.4.11 (contraste no textual);
+  `cargo-deep` da 11.49:1 y 10.77:1.
 - Todo elemento interactivo alcanzable por teclado y con `:focus-visible` visible.
 - Iconos solos: `aria-label` + `aria-hidden` en el SVG.
 - `prefers-reduced-motion` desactiva **toda** animación.

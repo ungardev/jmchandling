@@ -74,7 +74,8 @@ El bloque corporativo (misión, visión, valores, habilitación) vive en
 17. `alt` describe **lo visible en la foto**, no lo idealizado. Verifica la foto
     antes de escribir el alt.
 18. Todo elemento interactivo alcanzable por teclado. `focus-visible` con
-    `outline: 2px solid var(--color-cargo-emerald)` (ya global).
+    `outline: 2px solid var(--color-cargo-deep)` (ya global). `cargo-emerald`
+    no: 2.67:1 sobre blanco y 2.50:1 sobre mist, bajo el 3:1 de WCAG 1.4.11.
 19. `aria-label` en botones solo-icono. `aria-current="page"` en nav.
 20. **No eliminar** el bloque `prefers-reduced-motion` de `global.css`.
 21. Contraste ≥ 4.5:1 en texto normal, ≥ 3:1 en texto grande y bordes.
@@ -293,7 +294,7 @@ Todo `src/`. Prioridad: `Header.astro`, `Footer.astro`, `QuoteForm.astro`,
 2. **skip link** — visible al enfocar, con `outline` visible, destino existente.
 3. **encabezados** — exactamente un `<h1>` por página, sin saltos de nivel
    (`h1 → h2 → h3`). Reporta y corrige.
-4. **foco visible** — `:focus-visible` de 2px `cargo-emerald` visible sobre
+4. **foco visible** — `:focus-visible` de 2px `cargo-deep` visible sobre
    fondos claros Y oscuros. Si un componente lo anula
    (`focus:outline-none focus:ring-1`), **corrígelo** (mínimo 2px).
 5. **menú móvil** — `aria-expanded` refleja el estado, `aria-controls` apunta a

@@ -215,7 +215,10 @@ template:
 
 - Every `<img>` must have `alt` text (decorative images: `alt=""` + `aria-hidden="true"`)
 - Every interactive element must be keyboard reachable
-- `focus-visible` must use emerald outline: `outline: 2px solid var(--color-cargo-emerald)`
+- `focus-visible` must use the deep outline: `outline: 2px solid var(--color-cargo-deep)`.
+  `cargo-emerald` is **not** allowed on the focus ring — 2.67:1 on `cargo-white`
+  and 2.50:1 on `cargo-mist`, both below the 3:1 that WCAG 1.4.11 requires for
+  non-text contrast. `cargo-deep` gives 11.49:1 and 10.77:1.
 - `prefers-reduced-motion` media query in `global.css` disables animations globally
 - Skip-to-content link in `Layout.astro`
 - Form inputs: `label` + `aria-label` on icon-only buttons
@@ -238,6 +241,7 @@ template:
   texto usar `cargo-deep` (sobre fondos claros) o `cargo-light` (sobre oscuros).
   Para etiquetas de seccion usar siempre el token `.eyebrow` + `.eyebrow-on-light`
   / `.eyebrow-on-dark`, nunca `text-cargo-emerald`.
+  `cargo-emerald` tampoco se usa en el anillo de foco (ver arriba).
 
 ---
 
@@ -338,14 +342,27 @@ art-directed variants (one per breakpoint):
   exports of a full web page and carried 70-85% empty canvas, which made the
   logo render at a fraction of its box. Crop the viewBox (and any `width` /
   `height` attributes that must stay in sync) so the content fills the box.
-- `src/data/allies.ts` carries `width`, `height` (intrinsic, for CLS) and
-  `displayHeight` (render size). `displayHeight` is set by **optical weight**,
-  not by a uniform height: lockups with a symbol (Copa, Laser) need more
-  height for their wordmark to match the single-line wordmarks.
-  The value is derived from the **cap height** of each logo, normalised to a
-  common target: `displayHeight = 24 * (box height / cap height)`. The CSS
-  utility `.ally-logo` reads `--ally-h` and applies a 0.82 factor below
-  `lg` so the widest logo (Laser) still fits its grid cell on mobile.
+- `src/data/allies.ts` carries `width`, `height` (intrinsic, for CLS),
+  `displayHeight` (render size), `capOffset` (vertical offset) and
+  `shortName` (the mono manifest line at the foot of the wall).
+  `displayHeight` is set by **optical weight**, not by a uniform height:
+  lockups with a symbol (Copa, Laser) need more height for their wordmark to
+  match the single-line wordmarks. The value is derived from the **cap
+  height** of each logo, normalised to a common target:
+  `displayHeight = 28 * (box height / cap height)`.
+  Because the six boxes have different compositions (Copa stacks a script
+  wordmark over "Airlines", Laser and Iberia are horizontal lockups with a
+  symbol, Estelar and Aerotur carry a tagline or a stroke), the boxes do
+  **not** share a cap position. Each logo therefore declares a `capOffset`
+  in px so every wordmark sits on the same cap line:
+  `capOffset = max(capTop) - capTop`.
+  The CSS utility `.ally-logo` reads `--ally-h` and `--ally-cap` and applies
+  a 0.82 factor below `lg` so the widest logo (Laser) still fits its grid
+  cell on mobile — the factor applies to the offset too, so the alignment
+  holds at every scale.
+- The allies wall is a **static ledger band**, not a full-screen section and
+  not a carousel. It is sized by its content (`py-24 sm:py-28 lg:py-32`,
+  no `100svh`) so it reads as a deliberate band in the home rhythm.
 - A **raster** logo must not ship with a solid colour box baked in. Estelar
   arrived as white-on-navy in a flat PNG; `scripts/optimize-assets.mjs`
   applies a **knockout** (declared per ally in `ALLY_KNOCKOUTS`) that turns
