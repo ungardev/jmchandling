@@ -101,6 +101,13 @@ Deep-link targets that must keep resolving:
   `#equipment-tractorService`, `#equipment-water`, `#equipment-belt`,
   `#equipment-gpu`.
 
+These deep links are **read**, never **written**. `ServiceAccordion.astro` opens
+the panel that matches `location.hash` on load and on `hashchange`, but it does
+not put the fragment back into the URL when a panel is clicked. If it did, that
+URL would land in the browser history and the omnibox would complete it when
+the user types the domain — entering the site would always open a panel
+instead of the home.
+
 ---
 
 ## Component Conventions
@@ -160,6 +167,10 @@ lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]  (escritorio)
 - The header is `bg-cargo-deep`, so the global focus ring (`cargo-deep`) would be
   invisible on it. `.header-nav :focus-visible` overrides it with `cargo-light`
   (7.74:1 on `cargo-deep`).
+- The header never rewrites the URL. The nav does not write the fragment of a
+  service family when a panel is opened (see "Section Anchors"): a rewritten
+  URL would sit in the browser history and the omnibox would complete it when
+  the user types the domain.
 
 ---
 

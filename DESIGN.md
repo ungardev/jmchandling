@@ -528,6 +528,11 @@ la salida es un logo monocromo alternativo de Laser, no un ajuste de la web.
   mínimo o en CSS. Presupuesto: **≤ 10 kB gzip de JS por página**. Hoy el sitio
   envía **0 kB** de JS externo; el único script inline es el del menú móvil y el
   que abre el acordeón por hash.
+- **El acordeón lee el hash, nunca lo escribe.** `ServiceAccordion.astro`
+  abre el panel que coincide con `location.hash` al cargar y en `hashchange`,
+  pero no reescribe la URL al abrir un panel: esa URL quedaría en el historial
+  y el omnibox la completaría al escribir el dominio, de modo que entrar al
+  sitio abriría siempre un panel en vez de la home.
 - Sin `<script>` sin `is:inline` salvo que necesite bundling.
 - Sin librerías de UI externas (Bootstrap, jQuery, Swiper, Embla, Mobirise).
 - Sin librerías de animación (GSAP, Lenis, AOS, Motion, React Bits). El

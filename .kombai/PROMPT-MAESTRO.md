@@ -126,6 +126,10 @@ El bloque corporativo (misión, visión, valores, habilitación) vive en
     `#fbo-operations` `#passenger-services` `#gse-maintenance`, y
     `#equipment-carrucha` `#equipment-tractor` `#equipment-tractorService`
     `#equipment-water` `#equipment-belt` `#equipment-gpu`.
+    Se **leen**, nunca se escriben: el acordeón abre el panel que coincide con
+    `location.hash`, pero no pone el fragmento en la URL al hacer clic (si lo
+    hiciera, el omnibox completaría esa URL al escribir el dominio y entrar al
+    sitio abriría siempre un panel en vez de la home).
 30. Los CTA de familia deben llevar `?service=<familyKey>` **directamente** a
     `/es/contacto` o `/en/contact` (nunca a través de un stub de redirect, que
     perdería la query).

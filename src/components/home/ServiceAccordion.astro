@@ -185,6 +185,11 @@ const families = serviceFamilies.map((family, position) => {
 <script is:inline>
   // El accordion es nativo (<details>), pero los enlaces profundos a una familia
   // (#ramp-gse, #aircraft-care...) deben abrir el panel correspondiente.
+  //
+  // El script SOLO lee el hash: no lo escribe. Si al abrir un panel se
+  // reescribiera la URL con "#<familia>", esa URL quedaria en el historial del
+  // navegador y el omnibox la completaria al escribir el dominio, de modo que
+  // entrar al sitio abriria siempre un panel en vez de la home.
   const families = document.querySelectorAll('#services details');
 
   const openFromHash = () => {
@@ -197,12 +202,4 @@ const families = serviceFamilies.map((family, position) => {
 
   openFromHash();
   window.addEventListener('hashchange', openFromHash);
-
-  families.forEach((family) => {
-    family.addEventListener('toggle', () => {
-      if (family.open) {
-        window.history.replaceState(null, '', `#${family.id}`);
-      }
-    });
-  });
 </script>

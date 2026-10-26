@@ -43,19 +43,52 @@ This document covers deployment of the JMC Handling Astro site to Vercel (recomm
    - Click **"Deploy"**
    - Vercel builds automatically on every push to `main`
 
-4. **Custom Domain (optional)**
-   - Project Settings → Domains → Add `jmchandling.com`
+4. **Custom Domain**
+   - Project Settings → Domains → Add `jmc-handling.com`
    - Update DNS at your registrar to point to Vercel
+
+5. **Dominio principal: el apex, no `www`** (recomendado)
+
+   Vercel añade automáticamente `www.jmc-handling.com` y, si el host principal
+   quedara siendo `www`, el apex responde con un **308** a `www`. Eso obliga a
+   la URL canónica, al sitemap y a los `hreflang` a apuntar a un host que
+   redirige, y añade un salto extra en cada visita.
+
+   - Project Settings → Domains → **Make Primary** en `jmc-handling.com`
+   - El repo ya apunta al apex: `astro.config.mjs` (`site`), `Layout.astro`
+     (`siteUrl`, de donde salen canonical, `hreflang`, `og:url` y el JSON-LD) y
+     `public/robots.txt` (`Sitemap:`).
+   - Resultado: `jmc-handling.com` → `/es/` sin saltos y sin `www`.
+
+   > **No añadas un redirect `www → apex` en `vercel.json`.** Si Vercel mantiene
+   > `www` como principal, ese redirect junto al 308 de Vercel formaría un bucle
+   > de redirección infinito.
 
 ### Vercel Configuration
 
 The `astro.config.mjs` is pre-configured for static export:
 ```js
 output: 'static',  // ✅ compatible with Vercel
-site: 'https://jmchandling.vercel.app',
+site: 'https://jmc-handling.com',  // dominio canónico (apex)
 ```
 
-No Vercel configuration file (`vercel.json`) is needed for static sites.
+`vercel.json` **sí** se usa: define la redirección de la raíz (`/` → `/es/`,
+302), los stubs de redirect (`/es/servicios`, `/es/cotizacion`, …) y las
+cabeceras de seguridad y caché.
+
+### Canonical, sitemap y `www`
+
+El host que se sirve y el host que se declara deben ser el mismo:
+
+| Dónde | Valor |
+|---|---|
+| `astro.config.mjs` → `site` | `https://jmc-handling.com` |
+| `src/layouts/Layout.astro` → `siteUrl` | `https://jmc-handling.com` |
+| `public/robots.txt` → `Sitemap:` | `https://jmc-handling.com/sitemap-index.xml` |
+| Dominio principal en Vercel | `jmc-handling.com` (apex) |
+
+Si alguna vez se cambia el host principal en Vercel, hay que actualizar los
+tres sitios del repo a la vez.
 
 ---
 
@@ -95,7 +128,7 @@ No Vercel configuration file (`vercel.json`) is needed for static sites.
    - All files — 644
 
 5. **Verify**
-   - Visit `https://jmchandling.com` (or your domain)
+   - Visit `https://jmc-handling.com` (or your domain)
    - All 9 routes should resolve:
      - `/es/`, `/es/servicios`, `/es/contacto`, `/es/cotizacion`
      - `/en/`, `/en/services`, `/en/contact`, `/en/quote`
