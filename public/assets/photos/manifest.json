@@ -295,7 +295,7 @@
     {
       "id": "family-ramp-gse",
       "group": "families",
-      "altKey": "services.media.rampAlt",
+      "altKey": "media.alt.familyRampGse",
       "curated": true,
       "src": "/assets/photos/families/family-ramp-gse-1280.webp",
       "width": 1280,
@@ -317,7 +317,7 @@
     {
       "id": "family-aircraft-care",
       "group": "families",
-      "altKey": "services.media.aircraftCareAlt",
+      "altKey": "media.alt.familyAircraftCare",
       "curated": true,
       "src": "/assets/photos/families/family-aircraft-care-1280.webp",
       "width": 1280,
@@ -339,7 +339,7 @@
     {
       "id": "family-fbo-operations",
       "group": "families",
-      "altKey": "services.media.operationsAlt",
+      "altKey": "media.alt.familyFboOperations",
       "curated": true,
       "src": "/assets/photos/families/family-fbo-operations-1280.webp",
       "width": 1280,
@@ -361,7 +361,7 @@
     {
       "id": "family-passenger-services",
       "group": "families",
-      "altKey": "services.media.passengerAlt",
+      "altKey": "media.alt.familyPassengerServices",
       "curated": true,
       "src": "/assets/photos/families/family-passenger-services-1280.webp",
       "width": 1280,
@@ -383,7 +383,7 @@
     {
       "id": "family-gse-maintenance",
       "group": "families",
-      "altKey": "services.media.maintenanceAlt",
+      "altKey": "media.alt.familyGseMaintenance",
       "curated": true,
       "src": "/assets/photos/families/family-gse-maintenance-1280.webp",
       "width": 720,

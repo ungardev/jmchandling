@@ -138,6 +138,109 @@ function kebab(name) {
     .toLowerCase();
 }
 
+/* ------------------------------------------------------------------ *
+ * Aliados raster con caja de color horneada ("knockout")
+ * ------------------------------------------------------------------ */
+
+/**
+ * Logotipos que llegan como tinta clara sobre una caja de color opaca
+ * grabada en el raster (sin canal alfa). Renderizar eso sobre una pagina
+ * clara produce un bloque de color que compite con el texto.
+ *
+ * El knockout proyecta cada pixel sobre el eje fondo -> tinta: el color de
+ * fondo se vuelve transparente y la tinta conserva su antialias. Al final
+ * la tinta se retonifica al color de marca para que el logotipo sobreviva
+ * sobre fondo blanco.
+ *
+ * `bg` e `ink` se declaran de forma explicita: un detector automatico es
+ * fragil con logotipos multicolores (Laser, Copa, Iberia) y con fuentes que
+ * cambian de exportacion.
+ */
+const ALLY_KNOCKOUTS = {
+  // Estelar: wordmark blanco sobre caja navy (#001E54) horneada en el PNG,
+  // con un marco blanco de 1px alrededor. Se retonifica a cargo-deep.
+  estelar: { bg: [0, 36, 94], ink: [254, 254, 254], tone: [0x0f, 0x3e, 0x51] },
+};
+
+/**
+ * Convierte un logo con fondo solido en tinta sobre alfa transparente.
+ * Devuelve { data, info } con el recorte ajustado al ink real.
+ */
+async function knockoutAlly(inputPath, spec, sharp) {
+  const { data, info } = await sharp(inputPath)
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  const { width: w, height: h, channels: ch } = info;
+
+  const [br, bgc, bb] = spec.bg;
+  const d = [spec.ink[0] - br, spec.ink[1] - bgc, spec.ink[2] - bb];
+  const dd = d[0] * d[0] + d[1] * d[1] + d[2] * d[2];
+
+  // 1) Caja del fondo solido (la mancha de color uniforme).
+  let nx0 = w, ny0 = h, nx1 = -1, ny1 = -1;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x;
+      const r = data[i * ch], g = data[i * ch + 1], b = data[i * ch + 2];
+      if (Math.abs(r - br) < 14 && Math.abs(g - bgc) < 14 && Math.abs(b - bb) < 14) {
+        if (x < nx0) nx0 = x;
+        if (x > nx1) nx1 = x;
+        if (y < ny0) ny0 = y;
+        if (y > ny1) ny1 = y;
+      }
+    }
+  }
+  // Erosionar 2px: descarta los blends del borde caja/fondo exterior.
+  nx0 += 2; ny0 += 2; nx1 -= 2; ny1 -= 2;
+
+  const out = Buffer.alloc(w * h * 4);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x;
+      const o = i * 4;
+      if (x < nx0 || x > nx1 || y < ny0 || y > ny1) {
+        out[o + 3] = 0; // marco exterior
+        continue;
+      }
+      const p = [
+        data[i * ch] - br,
+        data[i * ch + 1] - bgc,
+        data[i * ch + 2] - bb,
+      ];
+      let a = (p[0] * d[0] + p[1] * d[1] + p[2] * d[2]) / dd;
+      if (a < 0) a = 0;
+      if (a > 1) a = 1;
+      out[o] = spec.tone[0];
+      out[o + 1] = spec.tone[1];
+      out[o + 2] = spec.tone[2];
+      out[o + 3] = Math.round(a * 255);
+    }
+  }
+
+  // 2) Recorte al ink real (sharp.trim no mira el canal alfa).
+  let bx0 = w, by0 = h, bx1 = -1, by1 = -1;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      if (out[(y * w + x) * 4 + 3] > 32) {
+        if (x < bx0) bx0 = x;
+        if (x > bx1) bx1 = x;
+        if (y < by0) by0 = y;
+        if (y > by1) by1 = y;
+      }
+    }
+  }
+
+  const cw = bx1 - bx0 + 1;
+  const chh = by1 - by0 + 1;
+  const cropped = await sharp(out, { raw: { width: w, height: h, channels: 4 } })
+    .extract({ left: bx0, top: by0, width: cw, height: chh })
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  return { data: cropped.data, info: { width: cropped.info.width, height: cropped.info.height, channels: 4 } };
+}
+
 /**
  * Renombrado seguro en sistemas de archivos case-insensitive (WSL /mnt/c).
  * Un rm() previo del destino borraria el propio origen cuando el cambio es
@@ -420,9 +523,9 @@ export function getMedia(id: MediaId): MediaAsset {
 `;
   await writeFile(join(ROOT, 'src', 'data', 'media.generated.ts'), ts);
 
-  /* -------------------------------------------------------------- *
-   * aliados: fuentes -> kebab-case, PNG -> WebP
-   * -------------------------------------------------------------- */
+/* -------------------------------------------------------------- *
+ * aliados: fuentes -> kebab-case, PNG -> WebP
+ * -------------------------------------------------------------- */
   const alliesDir = join(ROOT, 'public', 'assets', 'allies');
   const alliesSrc = join(ROOT, 'media-raw', 'allies');
   await ensureDir(alliesDir);
@@ -433,6 +536,21 @@ export function getMedia(id: MediaId): MediaAsset {
       if (!/\.(png|jpe?g)$/i.test(file)) continue;
       const id = kebab(file.replace(/\.(png|jpe?g)$/i, ''));
       const out = join(alliesDir, `${id}.webp`);
+
+      const ko = ALLY_KNOCKOUTS[id];
+      if (ko) {
+        // Logotipo con caja de color horneada: se hace "knockout" para que
+        // la tinta quede sobre fondo transparente (ver knockoutAlly).
+        const knockout = await knockoutAlly(join(alliesSrc, file), ko, sharp);
+        await sharp(knockout.data, { raw: knockout.info })
+          .webp({ quality: 92, alphaQuality: 100, effort: 6 })
+          .toFile(out);
+        console.log(
+          `  ✓ aliados: ${file} -> ${id}.webp (knockout ${knockout.info.width}x${knockout.info.height}, alfa)`
+        );
+        continue;
+      }
+
       await sharp(join(alliesSrc, file), { failOn: 'none' })
         .trim({ background: '#ffffff' })
         .webp({ quality: 92, alphaQuality: 100 })

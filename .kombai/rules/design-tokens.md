@@ -36,9 +36,9 @@ decoración. Para texto: `cargo-deep` sobre fondos claros, `cargo-light` sobre
 fondos oscuros. Para etiquetas de sección, usar siempre `.eyebrow` +
 `.eyebrow-on-light` / `.eyebrow-on-dark`.
 
-**Ritmo de superficies:** la home alterna `ink (hero) → mist (índice) → white
-(aliados) → mist (servicios) → white (equipos) → mist (operación) → deep
-(seguridad) → white (cierre)`. Nunca dos secciones seguidas con el mismo fondo.
+**Ritmo de superficies:** la home alterna `ink (hero) → white (aliados) → mist
+(servicios) → white (equipos) → mist (operación) → deep (seguridad) → white
+(cierre)`. Nunca dos secciones seguidas con el mismo fondo.
 
 ## Tipografía
 

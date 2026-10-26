@@ -195,6 +195,35 @@
   }
 
   /* ------------------------------------------------------------------
+     Logo de aliado en el muro de logos.
+
+     La altura de render NO es uniforme: se calcula por peso optico, de
+     forma que la altura de letra (cap height) sea la misma en los seis
+     logos. Un logo con simbolo (Copa, Laser) necesita una caja mas alta
+     para que su wordmark alcance la altura de letra de los demas.
+
+     `--ally-h` trae la caja ya normalizada (ver src/data/allies.ts).
+     El factor 0.82 reduce el tamano en movil, donde la celda es mas
+     estrecha y el logo mas ancho (Laser) no cabe a tamano completo.
+
+     `max-width: 100%` + `object-fit: contain` son la red de seguridad:
+     si el logo llegara a exceder su celda, se reescala en vez de
+     deformarse o desbordar la rejilla.
+     ------------------------------------------------------------------ */
+  .ally-logo {
+    height: calc(var(--ally-h) * 0.82);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  @media (min-width: 1024px) {
+    .ally-logo {
+      height: var(--ally-h);
+    }
+  }
+
+  /* ------------------------------------------------------------------
      Animaciones pilotadas por scroll — CSS nativo, 0 kB de JS.
 
      Soporte: Chrome/Edge 115+, Safari 26+, Firefox 159+.

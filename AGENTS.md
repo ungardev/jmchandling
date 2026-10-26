@@ -90,7 +90,7 @@ present on the home as hidden spans so legacy deep links keep resolving, and
 
 **No dupliques contenido entre la home y una pagina interna.** Si un bloque
 corporativo aparece completo en una pagina dedicada, la home lo enlaza, no lo
-repite. La home es: Hero → Índice → Allies → Servicios → Equipos → Operación
+repite. La home es: Hero → Allies → Servicios → Equipos → Operación
 → Seguridad → CTA.
 
 Deep-link targets that must keep resolving:
@@ -247,7 +247,7 @@ template:
 src/
 ├── components/
 │   ├── global/     Header.astro, Footer.astro
-│   ├── home/       Hero, SectionIndex, AlliesStrip, ServiceAccordion,
+│   ├── home/       Hero, AlliesStrip, ServiceAccordion,
 │   │               EquipmentGrid, OperationsBand, SafetySection, RequestPrompt
 │   ├── pages/      AboutPage.astro, ContactPage.astro (compartidos ES/EN)
 │   ├── contact/    QuoteForm.astro, ContactInfo.astro, FormStatus.astro
@@ -342,6 +342,15 @@ art-directed variants (one per breakpoint):
   `displayHeight` (render size). `displayHeight` is set by **optical weight**,
   not by a uniform height: lockups with a symbol (Copa, Laser) need more
   height for their wordmark to match the single-line wordmarks.
+  The value is derived from the **cap height** of each logo, normalised to a
+  common target: `displayHeight = 24 * (box height / cap height)`. The CSS
+  utility `.ally-logo` reads `--ally-h` and applies a 0.82 factor below
+  `lg` so the widest logo (Laser) still fits its grid cell on mobile.
+- A **raster** logo must not ship with a solid colour box baked in. Estelar
+  arrived as white-on-navy in a flat PNG; `scripts/optimize-assets.mjs`
+  applies a **knockout** (declared per ally in `ALLY_KNOCKOUTS`) that turns
+  the solid background transparent, keeps the antialiasing and retones the
+  ink to `cargo-deep`. Never ship the boxed original.
 - A wordmark rendered via `<text>` with a web font is unreliable — an SVG in
   an `<img>` is an isolated context and cannot load Google Fonts. Convert the
   text to paths instead (the Aerotur wordmark is Inter SemiBold as paths).

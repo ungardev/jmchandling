@@ -74,7 +74,7 @@ español (`#capacidades`, `#equipos`, `#empresa`, `#seguridad`) existen como
 Las secciones alternan para marcar avance narrativo. La home actual:
 
 ```
-hero cargo-ink → índice cargo-mist → aliados cargo-white → servicios cargo-mist
+hero cargo-ink → aliados cargo-white → servicios cargo-mist
 → equipos cargo-white → operación cargo-mist → seguridad cargo-deep → cierre cargo-white
 ```
 
@@ -239,8 +239,7 @@ Reglas:
 | `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, enlaces + `Button` + link de idioma |
 | `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink`, retícula de 4 bloques con reglas, link ES/EN |
 | `Hero` | `src/components/home/Hero.astro` | Pantalla completa (`100svh`), foto única + scrims, banda superior de contraste, texto en el tercio izquierdo, 2 CTA |
-| `SectionIndex` | `src/components/home/SectionIndex.astro` | Índice de bloques de la home con sus anclas |
-| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, 6 logos con tamaño por peso óptico |
+| `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, pantalla completa (`100svh`), muro de 6 logos con tamaño por peso óptico |
 | `ServiceAccordion` | `src/components/home/ServiceAccordion.astro` | `id="services"`, 5 familias en `<details>` numerados + 12 servicios especiales |
 | `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
 | `OperationsBand` | `src/components/home/OperationsBand.astro` | Vídeo de pushback + tira horizontal de 6 fotos pilotada por scroll |
@@ -264,7 +263,7 @@ Reglas:
 `.type-h2` · `.type-h3` · `.type-lead` · `.type-body` · `.type-meta` ·
 `.type-figure` · `.grid-12` · `.hero-full` · `.header-overlay` · `.reveal` ·
 `.parallax` / `.parallax-media` · `.strip-tall` / `.strip-track` /
-`.strip-item` / `.strip-figure` · `.scroll-progress`
+`.strip-item` / `.strip-figure` · `.ally-logo` · `.scroll-progress`
 
 > `.glass`, `.glass-dark`, `.text-gradient-emerald` y `.card-service` **no**
 > están definidas. No las referencies: créalas si hacen falta o evita usarlas.
@@ -355,6 +354,41 @@ certificado, capacitación, seguridad).
 taller.** No reutilices una foto de rampa para simular esas actividades: usa la foto
 heredada que sí corresponde (`family-aircraft-care`, `family-passenger-services`,
 `family-gse-maintenance`) o un tratamiento tipográfico.
+
+### Muro de aliados (`AlliesStrip`)
+
+Sección a pantalla completa (`100svh`), fondo `bg-cargo-white`.
+
+**El fondo blanco no es una decisión estética, es unaconstraint de contraste.**
+Los logotipos son de marca y sus colores son fijos. Medidos sobre `cargo-deep`:
+Copa 2.08:1, Avior 2.30:1, Laser gris 1.99:1 y **Aerotur 1.00:1 — invisible**
+(son exactamente el mismo color). Sobre `cargo-white` los seis superan 3:1.
+
+**Tamaño por peso óptico, no uniforme.** La altura de render de cada logo se
+deriva de su *cap height* (altura de letra) real, normalizada a 24px:
+
+```
+displayHeight = 24 * (alto de caja / altura de letra)
+```
+
+Sin esto, Estelar renderizaba sus letras a 11.4px frente a las 24-33px de los
+demás: se leía un 2.6× más pequeño. La utilidad `.ally-logo` lee `--ally-h` y
+aplica un factor 0.82 por debajo de `lg`, donde la celda es más estrecha y el
+logo más ancho (Laser) no cabe a tamaño completo.
+
+**Los logos raster no se envían con caja de color.** Estelar llegó como
+PNG plano con la caja navy `#001E54` horneada y sin canal alfa. `scripts/optimize-assets.mjs`
+aplica un *knockout* (declarado por aliado en `ALLY_KNOCKOUTS`): proyecta cada
+píxel sobre el eje fondo → tinta, deja el fondo transparente, conserva el
+antialiasing y retonifica la tinta a `cargo-deep`. El resultado son 359×76 px
+sobre alfa, con el wordmark legible al mismo tamaño que el resto.
+
+**Excepción de contraste documentada:** el swoosh amarillo de Laser
+(`#FDDB03`) queda en 1.37:1 sobre blanco. Es un color de marca de terceros:
+no se puede alterar sin falsear el logotipo. El wordmark "LASER" (verde,
+3.06:1) y "AIRLINES" (gris, 5.77:1) sí superan el umbral, y el texto propio
+de la sección cumple AA con holgura. Si el cliente exige el umbral completo,
+la salida es un logo monocromo alternativo de Laser, no un ajuste de la web.
 
 ---
 

@@ -299,15 +299,7 @@
     "equipmentIntro": "Six units that move the aircraft on the ramp: what each one does and when it is used.",
     "equipmentCatalogLink": "View capabilities by family",
     "requestTitle": "Tell us the service, aircraft and operational context.",
-    "requestDescription": "We reply during service hours: Monday to Saturday, 05:00–22:00 (VET).",
-    "indexLabel": "Index",
-    "indexAllies": "Airlines",
-    "indexServices": "Capabilities",
-    "indexEquipment": "Equipment",
-    "indexOperations": "Operations",
-    "indexSafety": "Safety",
-    "indexContact": "Contact",
-    "indexIntro": "The page in order: from the airlines we work with to the certification that underpins the operation."
+    "requestDescription": "We reply during service hours: Monday to Saturday, 05:00–22:00 (VET)."
   },
   "media": {
     "alt": {

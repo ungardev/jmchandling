@@ -299,15 +299,7 @@
     "equipmentIntro": "Seis equipos que mueven la aeronave en rampa: qué hace cada uno y cuándo se usa.",
     "equipmentCatalogLink": "Ver capacidades por familia",
     "requestTitle": "Indique el servicio, la aeronave y el contexto operativo.",
-    "requestDescription": "Respondemos en horario de atención: lunes a sábado, 05:00–22:00 (VET).",
-    "indexLabel": "Índice",
-    "indexAllies": "Aerolíneas",
-    "indexServices": "Capacidades",
-    "indexEquipment": "Equipos",
-    "indexOperations": "Operación",
-    "indexSafety": "Seguridad",
-    "indexContact": "Contacto",
-    "indexIntro": "El recorrido de la página, en orden: del equipo con el que operamos hasta la habilitación que sostiene la operación."
+    "requestDescription": "Respondemos en horario de atención: lunes a sábado, 05:00–22:00 (VET)."
   },
   "media": {
     "alt": {

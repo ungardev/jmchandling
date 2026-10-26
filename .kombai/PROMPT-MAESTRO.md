@@ -25,7 +25,7 @@ Los árboles de `src/i18n/es.json` y `src/i18n/en.json` deben ser **idénticos**
 (`/es/servicios` `/en/services` `/es/cotizacion` `/en/quote`).
 
 **Componentes home (en orden):**
-`Hero` → `SectionIndex` → `AlliesStrip` → `ServiceAccordion` → `EquipmentGrid` →
+`Hero` → `AlliesStrip` → `ServiceAccordion` → `EquipmentGrid` →
 `OperationsBand` → `SafetySection` → `RequestPrompt`.
 
 El bloque corporativo (misión, visión, valores, habilitación) vive en
@@ -159,7 +159,7 @@ El bloque corporativo (misión, visión, valores, habilitación) vive en
 estructura de información ni el copy.
 
 ## Alcance
-`src/components/home/*.astro` (Hero, SectionIndex, AlliesStrip, ServiceAccordion,
+`src/components/home/*.astro` (Hero, AlliesStrip, ServiceAccordion,
 EquipmentGrid, OperationsBand, SafetySection, RequestPrompt) y
 `src/styles/global.css`.
 
