@@ -371,6 +371,10 @@ eyebrow, sin subtítulo, sin línea de manifiesto. El titular no cuenta los
 logos ("Seis aerolíneas…") porque ese número ata la frase a una aritmética y
 obliga al titular a partirse en dos líneas. La evidencia la dan los logos.
 
+El titular va **centrado sobre el eje de la página** (`mx-auto max-w-4xl
+text-center`): es un titular aislado, no texto corrido, y la simetría frente a
+la cinta full-bleed es el efecto buscado.
+
 **El fondo blanco no es una decisión estética, es una restricción de contraste.**
 Los logotipos son de marca y sus colores son fijos. Medidos sobre `cargo-deep`:
 Copa 2.08:1, Avior 2.30:1, Laser gris 1.99:1 y **Aerotur 1.00:1 — invisible**
@@ -512,7 +516,7 @@ plantilla y está prohibido:
 | Frases de efecto ("La seguridad no se declara. Se opera.") | Suenan a eslogan; se sustituye por una afirmación verificable |
 | Imperativos de plantilla ("Explore nuestras capacidades") | El titular dice qué hay, no que hay que hacer clic |
 | Tarjetas con sombra, radio y fondo propio | La estructura la dan las reglas horizontales, no las cajas |
-| `text-center` en secciones de contenido | El contenido operativo se alinea a la izquierda |
+| `text-center` en texto corrido | El contenido operativo se alinea a la izquierda; solo un titular aislado puede centrarse (el de la cinta de aliados) |
 | Muro de texto con `;` | Un hecho por frase, con punto |
 | Repetir la misma CTA en tres sitios | Un CTA principal y uno secundario por página |
 | Icono + etiqueta redundantes | El icono acompaña a la acción, no la sustituye ni la duplica |

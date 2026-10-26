@@ -164,7 +164,7 @@ Prohibido en este sitio:
 - Frases de efecto ("La seguridad no se declara. Se opera.").
 - Imperativos de plantilla ("Explore nuestras capacidades").
 - Tarjetas con sombra + radio + fondo propio.
-- `text-center` en secciones de contenido.
+- `text-center` en texto corrido. Solo un titular aislado puede centrarse.
 - Muros de texto unidos por `;`.
 - El mismo CTA repetido tres veces en una página.
 - Icono + etiqueta redundantes.

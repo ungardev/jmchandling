@@ -204,7 +204,9 @@ template:
 - Effect phrases ("La seguridad no se declara. Se opera.").
 - Template imperatives ("Explore nuestras capacidades").
 - Cards with shadow + radius + own background — structure comes from rules.
-- `text-center` on declarative sections — operational content aligns left.
+- `text-center` on body copy — operational content aligns left. A lone display
+  heading may be centred (the allies tape does), but never a paragraph, a grid
+  of content, or a list.
 - Text walls joined with `;` — one fact per sentence.
 - The same CTA repeated three times on one page.
 - Icon + label redundancy.
@@ -361,6 +363,10 @@ art-directed variants (one per breakpoint):
 - The allies band is a **moving tape**, not a full-screen section and not a
   carousel. It is sized by its content (no `100svh`) so it reads as a
   deliberate band in the home rhythm.
+- The tape's single heading is **centred on the page axis**
+  (`mx-auto max-w-4xl text-center`). It is a lone display heading, not body
+  copy, and the symmetry against the full-bleed tape is the point. Do not
+  "fix" it back to left.
 - **The tape is CSS-only. Keep it at 0 kB of JS.** The DOM holds two
   identical lists; both run the same keyframe, so the second always sits one
   lap ahead and the loop has no seam. The final translate is
