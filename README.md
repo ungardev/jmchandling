@@ -55,7 +55,8 @@ npm run optimize:assets
 src/
 ├── components/
 │   ├── global/       Header, Footer, LangToggle
-│   ├── home/         Hero, ServicesGrid, SafetySection, StatsStrip
+│   ├── home/         Hero, SectionIndex, AlliesStrip, ServiceAccordion,
+│   │                 EquipmentGrid, OperationsBand, SafetySection, RequestPrompt
 │   ├── services/     ServiceDetail
 │   ├── contact/      QuoteForm, ContactInfo, FormStatus
 │   └── ui/           Button, Badge, Card, Section

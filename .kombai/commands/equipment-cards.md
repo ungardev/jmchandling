@@ -1,6 +1,6 @@
 # /equipment-cards — Refinar la retícula de equipos GSE
 
-Refina la sección de equipos de apoyo terrestre. **No toques el ServicesGrid.**
+Refina la sección de equipos de apoyo terrestre. **No toques el ServiceAccordion.**
 
 > Prefiere el prompt maestro: `.kombai/PROMPT-MAESTRO.md` → `/improve-ui`.
 

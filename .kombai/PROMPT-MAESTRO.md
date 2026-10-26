@@ -25,8 +25,8 @@ Los árboles de `src/i18n/es.json` y `src/i18n/en.json` deben ser **idénticos**
 (`/es/servicios` `/en/services` `/es/cotizacion` `/en/quote`).
 
 **Componentes home (en orden):**
-`Hero` → `AlliesStrip` → `ServicesGrid` → `EquipmentGrid` →
-`SafetySection` → `RequestPrompt`.
+`Hero` → `SectionIndex` → `AlliesStrip` → `ServiceAccordion` → `EquipmentGrid` →
+`OperationsBand` → `SafetySection` → `RequestPrompt`.
 
 El bloque corporativo (misión, visión, valores, habilitación) vive en
 `/es/sobre-jmc` y `/en/about-jmc`. La home lo **enlaza**, no lo repite.
@@ -159,8 +159,9 @@ El bloque corporativo (misión, visión, valores, habilitación) vive en
 estructura de información ni el copy.
 
 ## Alcance
-`src/components/home/*.astro` (Hero, AlliesStrip, ServicesGrid, EquipmentGrid,
-SafetySection, RequestPrompt) y `src/styles/global.css`.
+`src/components/home/*.astro` (Hero, SectionIndex, AlliesStrip, ServiceAccordion,
+EquipmentGrid, OperationsBand, SafetySection, RequestPrompt) y
+`src/styles/global.css`.
 
 **La home ya no tiene sección "About"**: el bloque corporativo vive en
 `/es/sobre-jmc` y `/en/about-jmc`. Si necesitas contenido de empresa en la
@@ -169,12 +170,17 @@ home, **enlaza** a esa página; no lo repitas.
 ## Hero (punto de partida, no rehacer)
 - **Una sola foto**, sin carrusel. Asset: `heroGseRamp` (art-directed:
   `sets.wide` 16:9 desktop, `sets.tall` 4:5 móvil), consumido con `<picture>`.
-- La foto **ya es el fondo** de la sección (`absolute inset-0 -z-10`), con dos
+- La foto **ya es el fondo** de la sección (`absolute inset-0 -z-10`), con
   gradientes `cargo-ink` superpuestos: uno vertical
-  (`from-cargo-ink/80 via-cargo-ink/25 to-cargo-ink/45`) y uno horizontal
-  (`from-cargo-ink/95 via-cargo-ink/70 to-cargo-ink/25`).
-- El texto ocupa el **tercio izquierdo**; contraste medido **≥ 5.69:1** en el
-  píxel más desfavorable de cada zona.
+  (`from-cargo-ink/80 via-cargo-ink/40 to-transparent`) y otro horizontal
+  (`from-cargo-ink/95 via-cargo-ink/70 to-cargo-ink/25`), más una **banda
+  superior** `bg-gradient-to-b from-cargo-ink/80 via-cargo-ink/40 to-transparent`
+  que sostiene el header fijo superpuesto.
+- El texto ocupa el **tercio izquierdo**; contraste medido **≥ 5.04:1** en el
+  píxel más desfavorable de cada zona (incluye la banda superior).
+- La sección ocupa **una pantalla completa**: `.hero-full` (`100vh` + `100svh`).
+  El header va **superpuesto** (`<Header overlay />`) y se vuelve sólido al
+  hacer scroll.
 - H1 único, `text-balance`, escala `text-4xl` → `xl:text-7xl`.
 - `figcaption` como banda inferior con `bg-cargo-ink/85` propio (el gradiente
   horizontal no cubre la esquina inferior derecha).
@@ -190,9 +196,9 @@ home, **enlaza** a esa página; no lo repitas.
   `motion-reduce:transition-none`.
 
 ## Servicios
-- 5 familias en `divide-y` + `aside` de servicios especiales con
-  `border-l-2 border-cargo-emerald`.
-- Cada `<article>` con `id={family.key}`.
+- 5 familias en un acordeón nativo `<details>` (0 kB, teclado, indexable). El
+  primero abre por defecto.
+- Cada `<details>` con `id={family.key}` y `IndexLabel` 01–05.
 
 ## Aliados
 - Franja de logos de aliados. Los 6 SVG/WebP de `public/assets/allies/` tienen

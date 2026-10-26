@@ -107,7 +107,8 @@
       "Reparación de componentes",
       "Certificación de equipos críticos",
       "Servicio en estación"
-    ]
+    ],
+    "scopeLabel": "ALCANCE"
   },
   "allies": {
     "sectionLabel": "ALIADOS COMERCIALES",
@@ -179,20 +180,24 @@
     "sectionLabel": "SEGURIDAD OPERACIONAL",
     "title": "Seguridad operacional",
     "subtitle": "Procesos, capacitación y habilitación formal para sostener una operación controlada en tierra.",
-    "intro": "Operamos bajo la Regulación Aeronáutica Venezolana 111, con seguimiento de procesos y capacitación continua del personal.",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
-    "smsLabel": "Safety Management System (SMS)",
-    "smsText": "Capacitación constante y seguimiento de procesos para fortalecer la seguridad operacional.",
-    "operatorLabel": "Explotador certificado",
-    "operatorText": "Certificado como Explotador de Servicios Especializados Aeroportuarios (CESEA-021).",
     "rifLabel": "RIF",
     "rif": "J401336558",
     "mediaAlt": "Documento de certificación CESEA-021 de Servicios Especializados JMC",
     "mediaCaption": "Evidencia documental · CESEA-021",
     "mediaLink": "Revisar la evidencia",
-    "teamCaption": "Equipo de rampa en plataforma"
+    "teamCaption": "Equipo de rampa en plataforma",
+    "qaLabel": "PREGUNTAS DE HABILITACIÓN",
+    "qCesea": "¿Opera JMC con certificación de explotador en plataforma?",
+    "aCesea": "Sí. Explotador de Servicios Especializados Aeroportuarios (CESEA-021), emitido por el Instituto Nacional de Aeronáutica Civil.",
+    "qRav": "¿Bajo qué normativa se rigen sus operaciones?",
+    "aRav": "Operamos bajo la Regulación Aeronáutica Venezolana 111, con habilitación permanente y seguimiento de procesos.",
+    "qInac": "¿Qué alcance tiene la habilitación en plataforma?",
+    "aInac": "Equipos de apoyo terrestre en las secciones 1 a 8, y operación de base fija (OBF) en las secciones 1, 4, 6 y 7.",
+    "qSms": "¿Cómo se sostiene la seguridad operacional del personal?",
+    "aSms": "Capacitación constante y seguimiento de procesos mediante un Safety Management System (SMS)."
   },
   "quote": {
     "title": "Coordinar una operación",
@@ -301,7 +306,8 @@
     "indexEquipment": "Equipos",
     "indexOperations": "Operación",
     "indexSafety": "Seguridad",
-    "indexContact": "Contacto"
+    "indexContact": "Contacto",
+    "indexIntro": "El recorrido de la página, en orden: del equipo con el que operamos hasta la habilitación que sostiene la operación."
   },
   "media": {
     "alt": {
@@ -382,7 +388,6 @@
     "inacIssuer": "Gerencia General de Seguridad Aeronáutica",
     "smsCode": "SMS",
     "smsTitle": "Safety Management System",
-    "smsIssuer": "Capacitación y seguimiento de procesos",
-    "sectionLabel": "HABILITACIONES Y NORMATIVA"
+    "smsIssuer": "Capacitación y seguimiento de procesos"
   }
 }

@@ -84,9 +84,15 @@ mismo ritmo en servicios, equipos, seguridad y contacto. Nunca numerar ad hoc
 
 - **El documento de certificación no se muestra en la home.** Se declara la
   credencial y el documento queda a un clic.
-- `src/components/ui/Credential.astro` es el formato único:
-  código mono en `cargo-light` con punto `cargo-emerald` → título → separador
-  `border-cargo-white/15` → emisor → vigencia (mono 12px) → link de evidencia.
+- En la **home** el formato es de airlines: **pregunta → respuesta**, en un
+  `<dl>`. La pregunta va en el idioma del lector ("¿Qué habilita la
+  credencial CESEA-021?"), la respuesta explica el alcance operativo en una
+  frase, y una **línea mono** cierra con los datos verificables:
+  `código · emisor · vigencia`.
+- `src/components/ui/Credential.astro` es el formato de fila para páginas
+  internas: código mono en `cargo-light` con punto `cargo-emerald` → título →
+  separador `border-cargo-white/15` → emisor → vigencia (mono 12px) → link de
+  evidencia.
 - `src/data/credentials.ts` es la lista. Los hechos (código, emisor, vigencia)
   vienen de la fuente primaria: el certificado CESEA-021 emitido por el INAC.
 - La evidencia abre en pestaña nueva con `rel="noopener noreferrer"`.
@@ -110,12 +116,38 @@ mismo ritmo en servicios, equipos, seguridad y contacto. Nunca numerar ad hoc
 
 ## Movimiento
 
+### Microinteracción (CSS normal)
+
 | Patrón | Duración | Curva |
 |---|---|---|
 | Hover de color | 200 ms | `transition-colors` |
 | Hover de imagen | 500 ms | `ease-out` + `group-hover:scale-[1.03]` |
 | Entrada | 600 ms | `cubic-bezier(0.16, 1, 0.3, 1)` (`.animate-fade-up`) |
 | Aparición | 400 ms | `ease-out` (`.animate-fade-in`) |
+
+### Movimiento por scroll (CSS nativo, 0 kB)
+
+No hay librerías de animación. El scroll-driven es CSS puro
+(`animation-timeline` + `view-timeline-name` + `animation-range`), con soporte
+en Chrome/Edge 115+, Safari 26+ y Firefox 159+.
+
+| Clase | Efecto | Timeline / rango |
+|---|---|---|
+| `.reveal` | entrada con desplazamiento | `view()` + `entry 0%` → `entry 100%` |
+| `.parallax` / `.parallax-media` | paneo lento de la foto | `--jmc-parallax` + `cover 0%` → `cover 100%` |
+| `.strip-tall` / `.strip-track` | tira horizontal anclada | `--jmc-strip` + `contain 0%` → `contain 100%` |
+| `.header-overlay` | header sólido al hacer scroll | `scroll(root block)` + `0` → `120px` |
+| `.scroll-progress` | barra de lectura | `scroll(root block)` |
+
+Reglas:
+
+- El estado "oculto" (`opacity: 0`) **solo dentro de `@supports`**: sin soporte
+  el contenido queda visible.
+- `.reveal` solo por debajo del fold. El hero ocupa la primera pantalla.
+- La tira usa `overflow-x: clip`, no `hidden`: recorta sin crear contenedor de
+  scroll, para que `position: sticky` siga anclándose al viewport.
+- `100cqw` (no `100vw`) para medir el ancho de la sección: `vw` incluye la
+  barra de scroll y el paneo terminaría con la última foto cortada.
 
 Toda animación debe quedar anulada bajo `prefers-reduced-motion` (el bloque global en
 `src/styles/global.css` ya lo hace; añade `motion-reduce:transform-none` si creas una).

@@ -5,9 +5,14 @@ import Button from '../ui/Button.astro';
 
 export interface Props {
   locale: Locale;
+  /**
+   * El header se superpone a una imagen a pantalla completa (hero).
+   * Arriba es transparente y se vuelve solido al hacer scroll.
+   */
+  overlay?: boolean;
 }
 
-const { locale } = Astro.props;
+const { locale, overlay = false } = Astro.props;
 const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
 
@@ -37,7 +42,13 @@ const navLinks = [
 ---
 
 <header class="fixed inset-x-0 top-0 z-50">
-  <nav class="border-b border-cargo-light/15 bg-cargo-deep text-cargo-white" aria-label={t('nav.primaryNav')}>
+  <nav
+    class:list={[
+      'border-b border-cargo-light/15 bg-cargo-deep text-cargo-white',
+      overlay && 'header-overlay',
+    ]}
+    aria-label={t('nav.primaryNav')}
+  >
     <div class="container-max">
       <div class="flex min-h-[4.5rem] items-center justify-between gap-6">
         <a href={homePath} class="flex shrink-0 items-center gap-3" aria-label="JMC Handling">

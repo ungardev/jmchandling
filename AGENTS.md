@@ -75,7 +75,7 @@ reporta claves huérfanas. **Falla el build.**
 ## Section Anchors
 
 Section IDs are **English and stable in both locales**: `#services`, `#equipment`,
-`#allies`, `#safety`. Each section keeps a legacy Spanish alias as a
+`#allies`, `#operations`, `#safety`. Each section keeps a legacy Spanish alias as a
 hidden span (`<span id="capacidades" class="sr-only" aria-hidden="true"></span>`).
 **Never delete the aliases** — external links use them.
 
@@ -90,12 +90,13 @@ present on the home as hidden spans so legacy deep links keep resolving, and
 
 **No dupliques contenido entre la home y una pagina interna.** Si un bloque
 corporativo aparece completo en una pagina dedicada, la home lo enlaza, no lo
-repite. La home es: Hero → Allies → Servicios → Equipos → Seguridad → CTA.
+repite. La home es: Hero → Índice → Allies → Servicios → Equipos → Operación
+→ Seguridad → CTA.
 
 Deep-link targets that must keep resolving:
 - Service families on the home page: `#ramp-gse`, `#aircraft-care`,
   `#fbo-operations`, `#passenger-services`, `#gse-maintenance`
-  (each `<article>` in `ServicesGrid.astro` carries `id={family.key}`).
+  (each `<details>` in `ServiceAccordion.astro` carries `id={family.key}`).
 - Equipment cards: `#equipment-carrucha`, `#equipment-tractor`,
   `#equipment-tractorService`, `#equipment-water`, `#equipment-belt`,
   `#equipment-gpu`.
@@ -246,7 +247,7 @@ template:
 src/
 ├── components/
 │   ├── global/     Header.astro, Footer.astro
-│   ├── home/       Hero, SectionIndex, AlliesStrip, ServicesGrid,
+│   ├── home/       Hero, SectionIndex, AlliesStrip, ServiceAccordion,
 │   │               EquipmentGrid, OperationsBand, SafetySection, RequestPrompt
 │   ├── pages/      AboutPage.astro, ContactPage.astro (compartidos ES/EN)
 │   ├── contact/    QuoteForm.astro, ContactInfo.astro, FormStatus.astro

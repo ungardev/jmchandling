@@ -27,18 +27,18 @@ const strip = [
 ];
 ---
 
-<section id="operations" class="scroll-mt-24 bg-cargo-mist py-16 text-cargo-ink md:py-20" aria-labelledby="operations-heading">
-  <div class="container-max">
+<section id="operations" class="scroll-mt-24 bg-cargo-mist text-cargo-ink" aria-labelledby="operations-heading">
+  <div class="container-max py-20 md:py-28">
     <div class="grid-12 items-start border-b border-cargo-deep/20 pb-8">
       <div class="col-span-12 lg:col-span-5">
         <p class="eyebrow eyebrow-on-light">{t('operations.sectionLabel')}</p>
-        <h2 id="operations-heading" class="type-h2 mt-5 max-w-md text-balance text-cargo-deep">
+        <h2 id="operations-heading" class="reveal type-h2 mt-5 max-w-md text-balance text-cargo-deep">
           {t('operations.title')}
         </h2>
         <p class="type-lead mt-5 max-w-md text-cargo-ink/80">{t('operations.subtitle')}</p>
       </div>
 
-      <figure class="col-span-12 lg:col-span-6 lg:col-start-7">
+      <figure class="col-span-12 mt-10 lg:col-span-6 lg:col-start-7 lg:mt-0">
         <div class="overflow-hidden bg-cargo-ink">
           <video
             class="aspect-video w-full object-cover"
@@ -57,23 +57,27 @@ const strip = [
         </figcaption>
       </figure>
     </div>
+  </div>
 
-    <ul class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+  <div class="strip-tall">
+    <div class="strip-track">
       {strip.map((media) => (
-        <li class="overflow-hidden bg-cargo-white">
-          <img
-            src={media.src}
-            srcset={media.srcset}
-            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 30vw, 45vw"
-            alt={t(media.altKey)}
-            width={media.width}
-            height={media.height}
-            loading="lazy"
-            decoding="async"
-            class="aspect-[3/4] w-full object-cover"
-          />
-        </li>
+        <div class="strip-item">
+          <figure class="strip-figure overflow-hidden bg-cargo-white">
+            <img
+              src={media.src}
+              srcset={media.srcset}
+              sizes="(min-width: 1024px) 30rem, 72vw"
+              alt={t(media.altKey)}
+              width={media.width}
+              height={media.height}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover"
+            />
+          </figure>
+        </div>
       ))}
-    </ul>
+    </div>
   </div>
 </section>

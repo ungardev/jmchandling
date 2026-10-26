@@ -5,7 +5,7 @@ import Footer from '../../components/global/Footer.astro';
 import Hero from '../../components/home/Hero.astro';
 import SectionIndex from '../../components/home/SectionIndex.astro';
 import AlliesStrip from '../../components/home/AlliesStrip.astro';
-import ServicesGrid from '../../components/home/ServicesGrid.astro';
+import ServiceAccordion from '../../components/home/ServiceAccordion.astro';
 import EquipmentGrid from '../../components/home/EquipmentGrid.astro';
 import OperationsBand from '../../components/home/OperationsBand.astro';
 import SafetySection from '../../components/home/SafetySection.astro';
@@ -17,14 +17,15 @@ const t = useTranslations(locale);
 ---
 
 <Layout locale={locale} title={t('meta.homeTitle')} description={t('meta.homeDesc')} canonical="/es/">
-  <Header locale={locale} />
+  <Header locale={locale} overlay />
+  <div class="scroll-progress" aria-hidden="true"></div>
   <main id="main-content">
     <span id="about" class="sr-only" aria-hidden="true"></span>
     <span id="empresa" class="sr-only" aria-hidden="true"></span>
     <Hero locale={locale} />
     <SectionIndex locale={locale} />
     <AlliesStrip locale={locale} />
-    <ServicesGrid locale={locale} />
+    <ServiceAccordion locale={locale} />
     <EquipmentGrid locale={locale} />
     <OperationsBand locale={locale} />
     <SafetySection locale={locale} />

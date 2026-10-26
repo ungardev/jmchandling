@@ -1,0 +1,208 @@
+---
+import type { Locale } from '../../i18n/utils';
+import { getLocalizedArray, useTranslations } from '../../i18n/utils';
+import { getService, serviceFamilies, type ServiceFamilyKey } from '../../data/siteContent';
+import {
+  familyAircraftCare,
+  familyFboOperations,
+  familyGseMaintenance,
+  familyPassengerServices,
+  familyRampGse,
+} from '../../data/media.generated';
+import ActionLink from '../ui/ActionLink.astro';
+import Button from '../ui/Button.astro';
+import IndexLabel from '../ui/IndexLabel.astro';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const quotePath = locale === 'es' ? '/es/contacto?intent=quote' : '/en/contact?intent=quote';
+
+const familyActionKeys: Record<ServiceFamilyKey, string> = {
+  'ramp-gse': 'home.actionGse',
+  'aircraft-care': 'home.actionAircraftCare',
+  'fbo-operations': 'home.actionObf',
+  'passenger-services': 'home.actionPassengers',
+  'gse-maintenance': 'home.actionMaintenance',
+};
+
+const familyMedia: Record<ServiceFamilyKey, {
+  src: string;
+  srcset: string;
+  altKey: string;
+  width: number;
+  height: number;
+}> = {
+  'ramp-gse': familyRampGse,
+  'aircraft-care': familyAircraftCare,
+  'fbo-operations': familyFboOperations,
+  'passenger-services': familyPassengerServices,
+  'gse-maintenance': familyGseMaintenance,
+};
+
+const specialServices = [
+  ...getLocalizedArray(locale, 'services.specialHeadlineBullets'),
+  ...getLocalizedArray(locale, 'services.specialBullets'),
+];
+
+const families = serviceFamilies.map((family, position) => {
+  const scoped = family.serviceKeys
+    .map((serviceKey) => getService(serviceKey))
+    .filter((service) => service !== undefined)
+    .map((service) => ({
+      key: service.key,
+      title: t(service.titleKey),
+      description: t(service.descriptionKey),
+      bullets: service.key === 'special' ? [] : getLocalizedArray(locale, service.bulletsKey),
+    }));
+
+  return {
+    key: family.key,
+    index: String(position + 1).padStart(2, '0'),
+    title: t(family.titleKey),
+    description: t(family.descriptionKey),
+    media: familyMedia[family.key],
+    mediaAlt: t(familyMedia[family.key].altKey),
+    services: scoped,
+    isSpecial: family.key === 'passenger-services',
+    actionLabel: t(familyActionKeys[family.key]),
+    actionHref: `${quotePath}&service=${encodeURIComponent(family.key)}`,
+  };
+});
+---
+
+<section id="services" class="scroll-mt-24 bg-cargo-mist py-20 text-cargo-ink md:py-28" aria-labelledby="task-heading">
+  <span id="capacidades" class="sr-only" aria-hidden="true"></span>
+  <div class="container-max">
+    <div class="grid-12 items-end border-b border-cargo-deep/20 pb-8">
+      <div class="col-span-12 lg:col-span-7">
+        <h2 id="task-heading" class="reveal type-h2 max-w-2xl text-balance text-cargo-deep">
+          {t('home.taskHeading')}
+        </h2>
+        <p class="type-lead mt-5 max-w-xl text-cargo-ink/80">
+          {t('home.taskIntro')}
+        </p>
+      </div>
+      <div class="col-span-12 lg:col-span-3 lg:col-start-10">
+        <Button href={quotePath} variant="secondary" size="sm" arrow>
+          {t('home.openCatalog')}
+        </Button>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      {
+        families.map((family) => (
+          <details
+            id={family.key}
+            open={family.index === '01'}
+            class="group scroll-mt-24 border-b border-cargo-deep/20"
+          >
+            <summary class="flex cursor-pointer list-none items-start gap-x-6 gap-y-3 py-7 md:gap-x-10 md:py-9 [&::-webkit-details-marker]:hidden">
+              <IndexLabel index={family.index} class="mt-1.5 shrink-0" />
+              <span class="flex-1">
+                <span class="type-h3 block text-cargo-deep">{family.title}</span>
+                <span class="type-body mt-2 block max-w-2xl text-cargo-ink/75">{family.description}</span>
+              </span>
+              <span
+                class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center border border-cargo-deep/30 text-cargo-deep transition-colors group-open:border-cargo-deep group-open:bg-cargo-deep group-open:text-cargo-white"
+                aria-hidden="true"
+              >
+                <span class="relative block h-3 w-3">
+                  <span class="absolute left-0 top-1/2 block h-px w-3 -translate-y-1/2 bg-current" />
+                  <span class="absolute left-1/2 top-0 block h-3 w-px -translate-x-1/2 bg-current transition-transform duration-300 group-open:rotate-90 group-open:opacity-0" />
+                </span>
+              </span>
+            </summary>
+
+            <div class="grid-12 items-start pb-12 pt-2 md:pb-16">
+              <figure class="parallax col-span-12 aspect-[4/3] overflow-hidden bg-cargo-white lg:col-span-5">
+                <img
+                  class="parallax-media object-cover"
+                  src={family.media.src}
+                  srcset={family.media.srcset}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  alt={family.mediaAlt}
+                  width={family.media.width}
+                  height={family.media.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+
+              <div class="col-span-12 mt-10 lg:col-span-6 lg:col-start-7 lg:mt-0">
+                <p class="eyebrow eyebrow-on-light">{t('services.scopeLabel')}</p>
+                <ul class="mt-5">
+                  {family.services.map((service) => (
+                    <li class="border-t border-cargo-deep/20 py-5">
+                      <h3 class="type-h3 text-cargo-deep">{service.title}</h3>
+                      <p class="type-body mt-2 max-w-xl text-cargo-ink/80">{service.description}</p>
+                      {service.bullets.length > 0 && (
+                        <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                          {service.bullets.map((bullet) => (
+                            <li class="type-meta text-cargo-ink/70 before:mr-2 before:content-['—']">{bullet}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+
+                {family.isSpecial && (
+                  <div class="mt-8 border-t border-cargo-deep/20 pt-6">
+                    <h3 class="type-h3 text-cargo-deep">{t('home.specialAsideTitle')}</h3>
+                    <p class="type-body mt-2 max-w-xl text-cargo-ink/80">{t('home.specialAsideLead')}</p>
+                    <ul class="mt-5 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                      {specialServices.map((service) => (
+                        <li class="type-meta text-cargo-ink/75">{service}</li>
+                      ))}
+                    </ul>
+                    <ActionLink href={quotePath} class="mt-6">
+                      {t('home.viewSpecialScope')}
+                    </ActionLink>
+                  </div>
+                )}
+
+                <ActionLink
+                  href={family.actionHref}
+                  class="mt-8"
+                  aria-label={`${family.actionLabel}: ${family.title}`}
+                >
+                  {family.actionLabel}
+                </ActionLink>
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  // El accordion es nativo (<details>), pero los enlaces profundos a una familia
+  // (#ramp-gse, #aircraft-care...) deben abrir el panel correspondiente.
+  const families = document.querySelectorAll('#services details');
+
+  const openFromHash = () => {
+    const target = window.location.hash.slice(1);
+    if (!target) return;
+    families.forEach((family) => {
+      if (family.id === target) family.open = true;
+    });
+  };
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+
+  families.forEach((family) => {
+    family.addEventListener('toggle', () => {
+      if (family.open) {
+        window.history.replaceState(null, '', `#${family.id}`);
+      }
+    });
+  });
+</script>

@@ -107,7 +107,8 @@
       "Component repair and replacement",
       "Critical equipment certification",
       "Station service"
-    ]
+    ],
+    "scopeLabel": "SCOPE"
   },
   "allies": {
     "sectionLabel": "COMMERCIAL ALLIES",
@@ -179,20 +180,24 @@
     "sectionLabel": "OPERATIONAL SAFETY",
     "title": "Operational safety",
     "subtitle": "Processes, training and formal authorisation to sustain a controlled ground operation.",
-    "intro": "We operate under Venezuelan Aeronautical Regulation 111, with process follow-up and continuous staff training.",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
-    "smsLabel": "Safety Management System (SMS)",
-    "smsText": "Continuous training and process follow-up to strengthen operational safety.",
-    "operatorLabel": "Certified operator",
-    "operatorText": "Certified as a Specialized Airport Services Operator (CESEA-021).",
     "rifLabel": "Tax ID",
     "rif": "J401336558",
     "mediaAlt": "CESEA-021 certification document for Servicios Especializados JMC",
     "mediaCaption": "Documentary evidence · CESEA-021",
     "mediaLink": "Review the evidence",
-    "teamCaption": "Ramp crew on the apron"
+    "teamCaption": "Ramp crew on the apron",
+    "qaLabel": "AUTHORISATION QUESTIONS",
+    "qCesea": "Does JMC operate with a certified apron operator approval?",
+    "aCesea": "Yes. Specialized Airport Services Operator (CESEA-021), issued by the National Institute of Civil Aeronautics.",
+    "qRav": "Which regulations govern your operations?",
+    "aRav": "We operate under Venezuelan Aeronautical Regulation 111, with permanent authorisation and process oversight.",
+    "qInac": "What is the scope of the apron authorisation?",
+    "aInac": "Ground support equipment in sections 1 to 8, and fixed base operation (OBF) in sections 1, 4, 6 and 7.",
+    "qSms": "How is the crew's operational safety sustained?",
+    "aSms": "Continuous training and process oversight through a Safety Management System (SMS)."
   },
   "quote": {
     "title": "Coordinate an operation",
@@ -301,7 +306,8 @@
     "indexEquipment": "Equipment",
     "indexOperations": "Operations",
     "indexSafety": "Safety",
-    "indexContact": "Contact"
+    "indexContact": "Contact",
+    "indexIntro": "The page in order: from the airlines we work with to the certification that underpins the operation."
   },
   "media": {
     "alt": {
@@ -382,7 +388,6 @@
     "inacIssuer": "General Directorate of Aeronautical Safety",
     "smsCode": "SMS",
     "smsTitle": "Safety Management System",
-    "smsIssuer": "Continuous training and process oversight",
-    "sectionLabel": "AUTHORISATIONS AND REGULATION"
+    "smsIssuer": "Continuous training and process oversight"
   }
 }

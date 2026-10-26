@@ -23,9 +23,12 @@ El inglés es una versión secundaria *nativa*, no una traducción literal.
 Rutas: `/es/…` (por defecto) y `/en/…`.
 
 **Identificadores de sección:** en inglés y estables, idénticos en ambos idiomas
-(`#services`, `#equipment`, `#allies`, `#about`, `#safety`). Los alias legacy en
+(`#services`, `#equipment`, `#allies`, `#operations`, `#safety`). Los alias legacy en
 español (`#capacidades`, `#equipos`, `#empresa`, `#seguridad`) existen como
 `<span class="sr-only">` dentro de la sección y **no deben eliminarse**.
+
+**Orden de la home:** Hero → Índice → Allies → Servicios → Equipos → Operación
+→ Seguridad → CTA.
 
 ---
 
@@ -133,7 +136,12 @@ inventar tamaños sueltos.
 
 Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
 
-- Componente único: `src/components/ui/Credential.astro`.
+- En la **home** el formato es de airlines: **pregunta → respuesta** dentro de
+  un `<dl>`. La pregunta va en el idioma del lector ("¿Qué habilita la
+  credencial CESEA-021?"), la respuesta explica el alcance operativo en una
+  frase, y una **línea mono** cierra con los datos verificables:
+  `código · emisor · vigencia`.
+- Componente de fila para páginas internas: `src/components/ui/Credential.astro`.
   Formato: código mono en `cargo-light` (con punto `cargo-emerald`) → título →
   separador `border-cargo-white/15` → emisor → vigencia (mono 12 px) → link de
   evidencia.
@@ -178,12 +186,40 @@ Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
 
 ## 5. Movimiento
 
+### Microinteracción (CSS normal)
+
 | Patrón | Duración | Curva | Uso |
 |---|---|---|---|
 | Hover de color | 200 ms | `ease` / `transition-colors` | Botones, enlaces, bordes |
 | Hover de tarjeta | 500 ms | `ease-out` | `group-hover:scale-[1.03]` sobre la imagen |
 | Entrada | 600 ms | `cubic-bezier(0.16, 1, 0.3, 1)` | `.animate-fade-up` (translateY 14 px → 0) |
 | Aparición | 400 ms | `ease-out` | `.animate-fade-in` |
+
+### Movimiento por scroll (CSS nativo, 0 kB)
+
+No hay librerías de animación. Todo el movimiento por scroll es CSS puro
+(`animation-timeline`, `view-timeline-name`, `animation-range`). Soporte:
+Chrome/Edge 115+, Safari 26+, Firefox 159+.
+
+| Clase | Efecto | Timeline / rango |
+|---|---|---|
+| `.reveal` | entrada con desplazamiento | `view()` + `entry 0%` → `entry 100%` |
+| `.parallax` / `.parallax-media` | paneo lento de la foto | `--jmc-parallax` + `cover 0%` → `cover 100%` |
+| `.strip-tall` / `.strip-track` | tira horizontal anclada | `--jmc-strip` + `contain 0%` → `contain 100%` |
+| `.header-overlay` | header sólido al hacer scroll | `scroll(root block)` + `0` → `120px` |
+| `.scroll-progress` | barra de lectura | `scroll(root block)` |
+
+Reglas:
+
+- El estado "oculto" (`opacity: 0`) **se declara solo dentro de `@supports`**.
+  Sin soporte, el contenido queda visible y la página se ve completa.
+- `.reveal` solo en bloques **por debajo del fold**: el hero ocupa la primera
+  pantalla, y un reveal allí quedaría invisible en el primer pintado.
+- La tira usa `overflow-x: clip`, no `hidden`: recorta el desborde horizontal
+  sin crear un contenedor de scroll, para que `position: sticky` siga
+  anclándose al viewport.
+- `100cqw` (no `100vw`) para medir el ancho de la sección: `vw` incluye el
+  ancho de la barra de scroll y el paneo terminaría con la última foto cortada.
 
 - **Toda animación debe estar anulada por `prefers-reduced-motion`.** El bloque global
   en `src/styles/global.css` ya lo hace; si añades animaciones nuevas, añade
@@ -202,13 +238,13 @@ Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
 |---|---|---|
 | `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, enlaces + `Button` + link de idioma |
 | `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink`, retícula de 4 bloques con reglas, link ES/EN |
-| `Hero` | `src/components/home/Hero.astro` | Foto única + scrim de dos gradientes, texto en el tercio izquierdo, 2 CTA |
+| `Hero` | `src/components/home/Hero.astro` | Pantalla completa (`100svh`), foto única + scrims, banda superior de contraste, texto en el tercio izquierdo, 2 CTA |
 | `SectionIndex` | `src/components/home/SectionIndex.astro` | Índice de bloques de la home con sus anclas |
 | `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, 6 logos con tamaño por peso óptico |
-| `ServicesGrid` | `src/components/home/ServicesGrid.astro` | `id="services"`, 5 familias numeradas + índice lateral de 12 servicios |
+| `ServiceAccordion` | `src/components/home/ServiceAccordion.astro` | `id="services"`, 5 familias en `<details>` numerados + 12 servicios especiales |
 | `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
-| `OperationsBand` | `src/components/home/OperationsBand.astro` | Vídeo de pushback + tira de 6 fotos de la operación |
-| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, credenciales en filas + foto de equipo |
+| `OperationsBand` | `src/components/home/OperationsBand.astro` | Vídeo de pushback + tira horizontal de 6 fotos pilotada por scroll |
+| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, Q&A de airlines (pregunta → respuesta) + foto de equipo |
 | `RequestPrompt` | `src/components/home/RequestPrompt.astro` | Cierre con los tres canales de contacto directo |
 | `AboutPage` / `ContactPage` | `src/components/pages/` | Contenido compartido por ES/EN, sin duplicar entre idiomas |
 | `Credential` | `src/components/ui/Credential.astro` | Fila de credencial (código mono → título → emisor → vigencia → evidencia) |
@@ -226,7 +262,9 @@ Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
 `.nav-link` · `.field-control` · `.section-pad` · `.container-max` ·
 `.skip-to-content` · `.eyebrow` · `.eyebrow-on-light` · `.eyebrow-on-dark` ·
 `.type-h2` · `.type-h3` · `.type-lead` · `.type-body` · `.type-meta` ·
-`.type-figure`
+`.type-figure` · `.grid-12` · `.hero-full` · `.header-overlay` · `.reveal` ·
+`.parallax` / `.parallax-media` · `.strip-tall` / `.strip-track` /
+`.strip-item` / `.strip-figure` · `.scroll-progress`
 
 > `.glass`, `.glass-dark`, `.text-gradient-emerald` y `.card-service` **no**
 > están definidas. No las referencies: créalas si hacen falta o evita usarlas.
@@ -338,10 +376,14 @@ heredada que sí corresponde (`family-aircraft-care`, `family-passenger-services
 
 - `output: 'static'`. Sin backend. El formulario va a FormSubmit.co.
 - **Cero JavaScript de framework.** No se usa React/Vue/Svelte ni islas `client:*`.
-  Si necesitas interactividad, escríbela en un `<script>` vanilla o en CSS.
-  Presupuesto: **≤ 10 kB gzip de JS por página**. Hoy el sitio envía **0 kB**.
+  Si necesitas interactividad, escríbela en un `<script is:inline>` vanilla
+  mínimo o en CSS. Presupuesto: **≤ 10 kB gzip de JS por página**. Hoy el sitio
+  envía **0 kB** de JS externo; el único script inline es el del menú móvil y el
+  que abre el acordeón por hash.
 - Sin `<script>` sin `is:inline` salvo que necesite bundling.
 - Sin librerías de UI externas (Bootstrap, jQuery, Swiper, Embla, Mobirise).
+- Sin librerías de animación (GSAP, Lenis, AOS, Motion, React Bits). El
+  movimiento por scroll es CSS nativo.
 - Tailwind v3.4 con las utilidades del sistema. Sin `@apply` en estilos de componente
   (usa clases de utilidad directamente). Sin `!important` salvo override de a11y.
 - `npm run verify` (= `i18n:check` + `astro check` + `astro build`) debe quedar en verde
@@ -377,6 +419,9 @@ plantilla y está prohibido:
 | No | Por qué |
 |---|---|
 | No reintroducir React/Vue ni islas hidratadas | Anula la ventaja de 0 kB JS |
+| No usar `100vw` para medir el ancho de una sección | `vw` incluye la barra de scroll: el paneo termina con la última foto cortada. Usa `100cqw` |
+| No poner `.reveal` en el primer viewport | El hero ocupa la primera pantalla: el bloque quedaría invisible en el primer pintado |
+| No declarar `opacity: 0` fuera de `@supports` | En un navegador sin scroll-timelines el contenido no se vería nunca |
 | No hardcodear hex ni `bg-[#...]` | Rompe el sistema de tokens |
 | No escribir texto visible sin `t()` | Rompe ES/EN y el checker i18n |
 | No añadir claves i18n a un solo diccionario | `npm run i18n:check` falla |

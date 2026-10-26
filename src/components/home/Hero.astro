@@ -16,7 +16,7 @@ const wide = heroGseRamp.sets.wide;
 const tall = heroGseRamp.sets.tall;
 ---
 
-<section class="relative isolate overflow-hidden bg-cargo-ink">
+<section class="hero-full relative isolate flex flex-col justify-end overflow-hidden bg-cargo-ink">
   <figure class="absolute inset-0 -z-10">
     <picture>
       <source media="(max-width: 767px)" srcset={tall.srcset} sizes="100vw" width={tall.width} height={tall.height} />
@@ -28,32 +28,38 @@ const tall = heroGseRamp.sets.tall;
         alt={t(heroGseRamp.altKey)}
         width={wide.width}
         height={wide.height}
-        class="h-full w-full object-cover object-[60%_center]"
+        class="h-full w-full object-cover object-[58%_center] md:object-[62%_38%]"
         loading="eager"
         decoding="async"
         fetchpriority="high"
       />
     </picture>
     <div
-      class="absolute inset-0 bg-gradient-to-t from-cargo-ink/80 via-cargo-ink/25 to-cargo-ink/45"
+      class="absolute inset-0 bg-gradient-to-t from-cargo-ink/90 via-cargo-ink/45 to-cargo-ink/55"
       aria-hidden="true"
     ></div>
     <div
       class="absolute inset-0 bg-gradient-to-r from-cargo-ink/95 via-cargo-ink/70 to-cargo-ink/25"
       aria-hidden="true"
     ></div>
+    <!-- Banda superior: ancla el header transparente sobre la foto y sube el
+         contraste de la navegacion a 6.8:1 (AA) sin tocar los tokens. -->
+    <div
+      class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cargo-ink/80 via-cargo-ink/40 to-transparent"
+      aria-hidden="true"
+    ></div>
   </figure>
 
-  <div class="container-max relative pt-[7rem] pb-16 sm:pt-[8rem] lg:pb-28">
-    <div class="grid-12">
+  <div class="container-max relative w-full pb-16 pt-32 sm:pb-20 md:pb-24 lg:pb-28">
+    <div class="grid-12 items-end">
       <div class="col-span-12 lg:col-span-7">
         <h1 class="max-w-2xl text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.045em] text-cargo-white sm:text-5xl md:text-6xl xl:text-7xl">
           {t('home.heroTitle')}
         </h1>
-        <p class="type-lead mt-8 max-w-xl text-cargo-white/90">
+        <p class="type-lead mt-6 max-w-xl text-cargo-white/90 sm:mt-8">
           {t('home.heroSubtitle')}
         </p>
-        <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 sm:mt-10">
           <Button href={quotePath} tone="dark" arrow>
             {t('hero.ctaPrimary')}
           </Button>

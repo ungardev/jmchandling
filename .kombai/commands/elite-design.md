@@ -71,6 +71,37 @@ fuerte, metadatos en mono. Prohibido:
 
 ---
 
+## 1c. Movimiento (CSS scroll-driven, 0 kB)
+
+El sitio no usa librerias de animacion. Todo el movimiento por scroll es CSS
+nativo (`animation-timeline`, `view-timeline-name`, `animation-range`), con
+degradacion segura: **el estado "oculto" solo se declara dentro de
+`@supports`**, de modo que un navegador sin soporte nunca deja contenido en
+`opacity: 0`.
+
+| Clase | Efecto | Timeline / rango |
+|---|---|---|
+| `.reveal` | entrada con desplazamiento | `view()` + `entry 0%` → `entry 100%` |
+| `.parallax` / `.parallax-media` | paneo lento de la foto | `view-timeline-name: --jmc-parallax` + `cover 0%` → `cover 100%` |
+| `.strip-tall` / `.strip-track` | tira horizontal anclada | `view-timeline-name: --jmc-strip` + `contain 0%` → `contain 100%` |
+| `.header-overlay` | header solido al hacer scroll | `scroll(root block)` + `0` → `120px` |
+| `.scroll-progress` | barra de lectura | `scroll(root block)` |
+
+Reglas:
+
+- `.reveal` solo en bloques **por debajo del fold**. El hero ocupa la primera
+  pantalla: un `.reveal` alli quedaria invisible en el primer pintado.
+- La tira usa `overflow-x: clip` (no `hidden`): recorta el desborde sin crear
+  un contenedor de scroll, de modo que `position: sticky` sigue anclandose al
+  viewport.
+- `100cqw` (no `100vw`) para medir el ancho de la seccion: `vw` incluye la
+  barra de scroll y el paneo terminaria con la ultima foto cortada.
+- `prefers-reduced-motion` desconecta las animaciones por completo
+  (`animation: none`, `timeline: none`) y convierte la tira en un carrusel
+  horizontal con `snap`.
+
+---
+
 ## 2. Formato de credenciales
 
 **No muestres el documento de certificacion en la home.** Un escaneo vertical
@@ -79,6 +110,23 @@ autoridad y hace que la empresa parezca una tramitadora en vez de una elite
 operacional.
 
 Las credenciales se **declaran**, el documento se **consulta bajo demanda**.
+
+### En la home: formato de airlines (pregunta → respuesta)
+
+La seccion de seguridad se lee como un **Q&A operativo**, no como una ficha
+administrativa. Cada credencial es una fila de `<dl>`:
+
+```
+pregunta   (16px, cargo-white)   "¿Que habilita la credencial CESEA-021?"
+---------
+respuesta  (16px, cargo-white/85)
+linea mono (12px)  "CESEA-021 . INAC . hasta 16/08/2027"
+```
+
+- La **pregunta** va en el idioma del lector, no el nombre del certificado.
+- La **respuesta** explica el alcance operativo en una frase.
+- La **linea mono** lleva los datos verificables: codigo, emisor, vigencia.
+- Sin chips, sin muros de valores, sin iconos redundantes.
 
 ### Componente
 
@@ -156,7 +204,10 @@ clave y de donde sale (documento de marca, certificado, web del cliente).
 Se aplican **todas** las restricciones duras del `PROMPT-MAESTRO.md`.
 Ademas, en este comando:
 
-- **0 kB de JS.** Nada de framework, nada de islas. CSS-first.
+- **0 kB de JS de framework.** Nada de islas, nada de librerias. CSS-first:
+  el movimiento por scroll es CSS nativo (ver 1c). El unico JS permitido es un
+  `<script is:inline>` minimo y local (por ejemplo, abrir el acordeon por
+  hash), siempre por debajo de 1 kB.
 - **Solo tokens `cargo-*`.** Ni un hex, ni `rgb()`, ni `bg-[#...]`.
 - **Contraste AA obligatorio.** `cargo-emerald` nunca es color de texto
   (2.67:1 sobre blanco). Para texto: `cargo-deep` en claro, `cargo-light` en
@@ -187,6 +238,9 @@ Ademas, antes de entregar:
 4. Revisa el orden de las secciones: `H2 -> lead -> contenido -> apoyo`.
 5. Confirma que ningun `<h3>` quedo mas pequeno que su parrafo.
 6. Repasa la lista anti-slop del punto 1b sobre el resultado.
+7. Confirma que ningun `.reveal` quedo en el primer viewport (contenido
+   invisible en el primer pintado) y que `prefers-reduced-motion` degrada bien
+   la tira horizontal.
 
 ---
 
