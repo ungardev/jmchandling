@@ -131,7 +131,7 @@ mismo ritmo en servicios, equipos, seguridad y contacto. Nunca numerar ad hoc
 |---|---|
 | Centrado del nav | grid `1fr auto 1fr` en `lg`: las columnas laterales son iguales, así el nav cae sobre el eje de la página |
 | Hover de link | **sin línea**: solo cambia el color de la fuente (`white/75` → `white`) |
-| Página actual | línea de 1 px `cargo-light` (`.nav-link.active`) — un solo elemento activo a la vez |
+| Página actual | **sin línea**: fuente en blanco pleno (`.nav-link.active`) — un solo elemento activo a la vez |
 | Anillo de foco en el header | `cargo-light` (`.header-nav :focus-visible`); el global `cargo-deep` sería invisible sobre `cargo-deep` |
 
 ### Movimiento por scroll (CSS nativo, 0 kB)

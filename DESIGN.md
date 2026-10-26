@@ -296,10 +296,10 @@ laterales no miden lo mismo.
 - Un solo DOM para los dos layouts: bajo `lg` el grupo central es
   `display:none`, no ocupa celda, y el logo y el botón de menú caen en las
   columnas 1 y 2.
-- **El hover de un link no dibuja línea.** Solo cambia el color de la fuente
-  (`white/75` → `white`, 7.23:1 → 11.49:1). La línea de 1 px (`cargo-light`)
-  queda reservada a `.nav-link.active`, el estado de página actual: como mucho
-  un elemento activo a la vez.
+- **El nav no dibuja línea.** Ni en hover ni en la página actual. El único
+  indicador es el color de la fuente: inactivo `white/75` (7.22:1) → hover y
+  página actual `white` (11.49:1). `.nav-link.active` pone la fuente en blanco
+  pleno; no hay pseudo-elemento ni subrayado.
 - Un enlace a un ancla (`/#services`) **no** es la página actual: la home ya
   está marcada por "Inicio".
 - "Contacto" no es un link del nav: es el botón de la derecha (`nav.contact`).

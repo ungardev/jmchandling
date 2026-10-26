@@ -155,7 +155,8 @@ lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]  (escritorio)
   the right, not a nav link. The button reuses the `nav.contact` key; `quote.submit`
   ("Enviar solicitud") belongs to the in-page CTAs and the form submit.
 - Only one item may be current at a time. An in-page anchor (`/#services`) is
-  **not** a current page: the home is already marked by "Inicio".
+  **not** a current page: the home is already marked by "Inicio". The current
+  page is marked by the source color alone (`aria-current="page"` too).
 - The header is `bg-cargo-deep`, so the global focus ring (`cargo-deep`) would be
   invisible on it. `.header-nav :focus-visible` overrides it with `cargo-light`
   (7.74:1 on `cargo-deep`).
@@ -167,8 +168,9 @@ lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]  (escritorio)
 ### Custom utility classes (defined in `src/styles/global.css`)
 - `.btn-primary`, `.btn-secondary`, `.btn-ghost` — button variants
 - `.badge-cert` — certification badge pill (fondo claro: texto `cargo-deep`)
-- `.nav-link` — nav link: hover = solo cambio de color de fuente (sin linea).
-  La linea de 1px queda reservada al estado de pagina actual (`.nav-link.active`).
+- `.nav-link` — nav link: el unico indicador de estado es el color de la fuente
+  (`white/75` -> `white`). Nunca dibuja linea, ni en hover ni en la pagina actual
+  (`.nav-link.active` = fuente en blanco pleno).
 - `.header-nav` — scope del header. Redefine el anillo de foco a `cargo-light`
   (el global `cargo-deep` seria invisible sobre el fondo `cargo-deep`).
 - `.field-control` — form input control
