@@ -84,17 +84,20 @@ mismo ritmo en servicios, equipos, seguridad y contacto. Nunca numerar ad hoc
 
 - **El documento de certificación no se muestra en la home.** Se declara la
   credencial y el documento queda a un clic.
-- En la **home** el formato es de airlines: **pregunta → respuesta**, en un
-  `<dl>`. La pregunta va en el idioma del lector ("¿Qué habilita la
-  credencial CESEA-021?"), la respuesta explica el alcance operativo en una
-  frase, y una **línea mono** cierra con los datos verificables:
-  `código · emisor · vigencia`.
+- En la **home** el formato es un **registro de acreditaciones**: tres
+  columnas con reglas, cada una con marca alegórica → código mono → título →
+  emisor → vigencia. Sin preguntas, sin párrafos, sin foto.
+- La **marca alegórica** (`src/components/ui/CredentialMark.astro`) dibuja el
+  concepto de la credencial, no una institución: escudo = autorización, red de
+  nodos = sistema gestionado, regla graduada = norma. Sin laurel, sin escudo
+  de Estado, sin cinta. Va `aria-hidden`; el dato verificable va en el texto.
 - `src/components/ui/Credential.astro` es el formato de fila para páginas
   internas: código mono en `cargo-light` con punto `cargo-emerald` → título →
   separador `border-cargo-white/15` → emisor → vigencia (mono 12px) → link de
   evidencia.
 - `src/data/credentials.ts` es la lista. Los hechos (código, emisor, vigencia)
-  vienen de la fuente primaria: el certificado CESEA-021 emitido por el INAC.
+  vienen de la fuente primaria: los certificados CESEA-021 y CASMS-079
+  emitidos por el INAC.
 - La evidencia abre en pestaña nueva con `rel="noopener noreferrer"`.
 - Grid `sm:grid-cols-2`. Borde `border-cargo-white/15`, fondo
   `bg-cargo-white/[0.04]`, hover `border-cargo-emerald/50`.

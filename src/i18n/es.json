@@ -170,27 +170,17 @@
     "asuCtaText": "La ASU se coordina bajo requerimiento del operador y se solicita junto al resto de la operación."
   },
   "safety": {
-    "sectionLabel": "SEGURIDAD OPERACIONAL",
     "title": "Seguridad operacional",
-    "subtitle": "Procesos, capacitación y habilitación formal para sostener una operación controlada en tierra.",
+    "subtitle": "Habilitación formal bajo la normativa aeronáutica venezolana, con seguimiento permanente de los procesos de seguridad operacional.",
+    "credentialsLink": "Ver la acreditación completa",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
     "rifLabel": "RIF",
     "rif": "J401336558",
     "mediaAlt": "Documento de certificación CESEA-021 de Servicios Especializados JMC",
-    "mediaCaption": "Evidencia documental · CESEA-021",
-    "mediaLink": "Revisar la evidencia",
-    "teamCaption": "Equipo de rampa en plataforma",
-    "qaLabel": "PREGUNTAS DE HABILITACIÓN",
-    "qCesea": "¿Opera JMC con certificación de explotador en plataforma?",
-    "aCesea": "Sí. Explotador de Servicios Especializados Aeroportuarios (CESEA-021), emitido por el Instituto Nacional de Aeronáutica Civil.",
-    "qRav": "¿Bajo qué normativa se rigen sus operaciones?",
-    "aRav": "Operamos bajo la Regulación Aeronáutica Venezolana 111, con habilitación permanente y seguimiento de procesos.",
-    "qInac": "¿Qué alcance tiene la habilitación en plataforma?",
-    "aInac": "Equipos de apoyo terrestre en las secciones 1 a 8, y operación de base fija (OBF) en las secciones 1, 4, 6 y 7.",
-    "qSms": "¿Cómo se sostiene la seguridad operacional del personal?",
-    "aSms": "Capacitación constante y seguimiento de procesos mediante un Safety Management System (SMS)."
+    "mediaCaption": "Evidencia documental",
+    "mediaLink": "Revisar la evidencia"
   },
   "quote": {
     "title": "Coordinar una operación",
@@ -264,8 +254,7 @@
   "common": {
     "getQuote": "Coordinar una operación",
     "viewServices": "Explorar capacidades",
-    "skipToContent": "Saltar al contenido principal",
-    "aboutCompanyLink": "Conocer la empresa en detalle"
+    "skipToContent": "Saltar al contenido principal"
   },
   "meta": {
     "homeTitle": "JMC Handling | Handling, FBO y servicios especializados en Maiquetía",
@@ -327,7 +316,7 @@
       "galleryAircraftDay": "Aeronave estacionada en la plataforma durante la operación diurna",
       "galleryAircraftRamp": "Aeronave posicionada en la rampa del aeropuerto de Maiquetía",
       "certCesea": "Certificación CESEA-021 de Servicios Especializados JMC",
-      "safetySms": "Personal de rampa con equipo de seguridad operacional",
+      "safetySms": "Certificado de aceptación del sistema de gestión de la seguridad operacional CASMS-079, emitido por el INAC",
       "opsAircraftOnStand": "Aeronave en su posición de estacionamiento",
       "opsAircraftWithGse": "Aeronave en la plataforma con equipos de apoyo en tierra",
       "opsBaggageConsolidated": "Equipaje consolidado y listo para su embarque",
@@ -368,11 +357,9 @@
     "ravTitle": "Regulación Aeronáutica Venezolana 111",
     "ravIssuer": "Autoridad Aeronáutica Civil",
     "ravValidity": "Habilitación permanente",
-    "inacCode": "INAC",
-    "inacTitle": "Explotador certificado de servicios en plataforma",
-    "inacIssuer": "Gerencia General de Seguridad Aeronáutica",
-    "smsCode": "SMS",
-    "smsTitle": "Safety Management System",
-    "smsIssuer": "Capacitación y seguimiento de procesos"
+    "smsCode": "CASMS-079",
+    "smsTitle": "Aceptación del sistema de gestión de la seguridad operacional",
+    "smsIssuer": "Instituto Nacional de Aeronáutica Civil",
+    "smsValidity": "Emitido el 29 de agosto de 2023"
   }
 }

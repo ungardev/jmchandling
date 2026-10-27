@@ -170,27 +170,17 @@
     "asuCtaText": "The ASU is coordinated on the operator’s requirement and requested together with the rest of the operation."
   },
   "safety": {
-    "sectionLabel": "OPERATIONAL SAFETY",
     "title": "Operational safety",
-    "subtitle": "Processes, training and formal authorisation to sustain a controlled ground operation.",
+    "subtitle": "Formal authorisation under Venezuelan aeronautical regulations, with permanent oversight of operational safety processes.",
+    "credentialsLink": "See the full accreditation",
     "inacBadge": "INAC",
     "ceseaBadge": "CESEA-021",
     "rav111": "RAV 111",
     "rifLabel": "Tax ID",
     "rif": "J401336558",
     "mediaAlt": "CESEA-021 certification document for Servicios Especializados JMC",
-    "mediaCaption": "Documentary evidence · CESEA-021",
-    "mediaLink": "Review the evidence",
-    "teamCaption": "Ramp crew on the apron",
-    "qaLabel": "AUTHORISATION QUESTIONS",
-    "qCesea": "Does JMC operate with a certified apron operator approval?",
-    "aCesea": "Yes. Specialized Airport Services Operator (CESEA-021), issued by the National Institute of Civil Aeronautics.",
-    "qRav": "Which regulations govern your operations?",
-    "aRav": "We operate under Venezuelan Aeronautical Regulation 111, with permanent authorisation and process oversight.",
-    "qInac": "What is the scope of the apron authorisation?",
-    "aInac": "Ground support equipment in sections 1 to 8, and fixed base operation (OBF) in sections 1, 4, 6 and 7.",
-    "qSms": "How is the crew's operational safety sustained?",
-    "aSms": "Continuous training and process oversight through a Safety Management System (SMS)."
+    "mediaCaption": "Documentary evidence",
+    "mediaLink": "Review the evidence"
   },
   "quote": {
     "title": "Coordinate an operation",
@@ -264,8 +254,7 @@
   "common": {
     "getQuote": "Coordinate an operation",
     "viewServices": "Explore capabilities",
-    "skipToContent": "Skip to main content",
-    "aboutCompanyLink": "Learn more about the company"
+    "skipToContent": "Skip to main content"
   },
   "meta": {
     "homeTitle": "JMC Handling | Handling, FBO and specialized services in Maiquetía",
@@ -327,7 +316,7 @@
       "galleryAircraftDay": "Aircraft parked on the apron during daytime operations",
       "galleryAircraftRamp": "Aircraft positioned on the Maiquetía airport ramp",
       "certCesea": "CESEA-021 certificate issued to Servicios Especializados JMC",
-      "safetySms": "Ramp personnel wearing operational safety equipment",
+      "safetySms": "INAC certificate of acceptance of the operational safety management system, CASMS-079",
       "opsAircraftOnStand": "Aircraft at its parking stand",
       "opsAircraftWithGse": "Aircraft on the apron with ground support equipment",
       "opsBaggageConsolidated": "Consolidated baggage ready for loading",
@@ -368,11 +357,9 @@
     "ravTitle": "Venezuelan Aeronautical Regulation 111",
     "ravIssuer": "Civil Aviation Authority",
     "ravValidity": "Permanent authorisation",
-    "inacCode": "INAC",
-    "inacTitle": "Certified apron services operator",
-    "inacIssuer": "General Directorate of Aeronautical Safety",
-    "smsCode": "SMS",
-    "smsTitle": "Safety Management System",
-    "smsIssuer": "Continuous training and process oversight"
+    "smsCode": "CASMS-079",
+    "smsTitle": "Acceptance of the operational safety management system",
+    "smsIssuer": "National Institute of Civil Aeronautics",
+    "smsValidity": "Issued on August 29, 2023"
   }
 }

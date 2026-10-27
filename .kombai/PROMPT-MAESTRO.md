@@ -144,10 +144,15 @@ El bloque corporativo (misión, visión, valores, habilitación) vive en
      acompaña.** Si el titular queda por debajo del cuerpo, sube el titular.
 30d. **Orden canónico de sección:** `eyebrow → H2 → lead → contenido → apoyo`.
      El eyebrow abre siempre; nunca aparece después del bloque que introduce.
-30e. **Las credenciales se declaran, el documento se consulta.** El certificado
-     CESEA-021 no se muestra en la home: credenciales en
-     `src/components/ui/Credential.astro`, evidencia a un clic en pestaña
-     nueva. Un documento grayscale con sello baja la percepción de marca.
+30e. **Las credenciales se declaran, el documento se consulta.** Los
+     certificados CESEA-021 y CASMS-079 no se muestran en la home: la home
+     lleva un registro de tres acreditaciones con marca alegórica
+     (`src/components/ui/CredentialMark.astro`) y un enlace a la página
+     interna, donde el documento abre a un clic en pestaña nueva. Un
+     documento grayscale con sello baja la percepción de marca.
+30f. **La marca de credencial es alegórica, nunca un sello oficial.** Sin
+     laurel, sin escudo de Estado, sin cinta, sin estrellas. El hecho
+     verificable viaja siempre en el texto, no en el dibujo.
 
 ### Gate
 31. Antes de entregar, debe pasar:
@@ -413,10 +418,12 @@ operativo esta en `.kombai/commands/elite-design.md`.
    queda por debajo del cuerpo, sube el titular.
 3. **Orden canonico:** `eyebrow -> H2 -> lead -> contenido -> apoyo`. El
    eyebrow abre siempre.
-4. **Las credenciales se declaran, el documento se consulta.** El certificado
-   CESEA-021 no se muestra en la home: se declara la credencial y el link
-   abre el original en pestana nueva. Formato unico:
-   `src/components/ui/Credential.astro`, datos en `src/data/credentials.ts`.
+4. **Las credenciales se declaran, el documento se consulta.** Los
+   certificados CESEA-021 y CASMS-079 no se muestran en la home: se declara
+   la credencial (marca alegorica + codigo + emisor + vigencia) y el link
+   abre el original en pestana nueva. Formatos: `src/components/ui/Credential.astro`
+   (paginas internas) y `src/components/ui/CredentialMark.astro` (marca SVG),
+   datos en `src/data/credentials.ts`.
 5. **Los hechos vienen de la fuente primaria** (el certificado, el brochure).
    No inventes vigencias, codigos ni autoridades. Si falta un dato, reportalo
    como pendiente de negocio; no lo escribas.

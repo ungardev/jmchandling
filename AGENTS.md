@@ -223,10 +223,17 @@ lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]  (escritorio)
 - **One numbering system.** Block numbers (`01`, `02`…) live in the margin via
   `IndexLabel.astro` and follow the same rhythm in services, equipment,
   safety and contact. Never number ad hoc ("01 ·", "1.").
-- **Credentials are declared, documents are consulted.** The CESEA-021
-  certificate scan must not be displayed on the home page. Credentials render
-  through `src/components/ui/Credential.astro` (data in
-  `src/data/credentials.ts`); the original opens on demand in a new tab.
+- **Credentials are declared, documents are consulted.** The CESEA-021 and
+  CASMS-079 certificate scans must not be displayed on the home page. The home
+  shows a **register of three accreditations**: allegorical mark → code →
+  title → issuer → validity. The internal pages render the full row through
+  `src/components/ui/Credential.astro` (data in `src/data/credentials.ts`);
+  the original opens on demand in a new tab.
+- **The credential mark is allegorical, never an official seal.**
+  `src/components/ui/CredentialMark.astro` draws the *concept* (authorisation,
+  managed system, norm). No wreaths, no state arms, no ribbons, no stars —
+  nothing that could read as a government or third-party seal. The mark is
+  `aria-hidden`; the verifiable fact always travels as text.
 - **Facts come from the primary source** (the INAC certificate, the brand
   brochure). Never invent validity dates, codes or issuing authorities —
   report them as pending business validation instead.
@@ -303,7 +310,8 @@ src/
 │   ├── pages/      AboutPage.astro, ContactPage.astro (compartidos ES/EN)
 │   ├── contact/    QuoteForm.astro, ContactInfo.astro, FormStatus.astro
 │   └── ui/         Button.astro, ActionLink.astro, Badge.astro, Section.astro,
-│                   Credential.astro, IndexLabel.astro, Label.astro,
+│                   Credential.astro, CredentialMark.astro, IndexLabel.astro,
+│                   Label.astro,
 │                   Figure.astro, SpecTable.astro, icons/
 ├── data/           siteContent.ts, allies.ts, credentials.ts,
 │                   media.generated.ts (GENERATED)

@@ -139,17 +139,22 @@ inventar tamaños sueltos.
 
 Las credenciales **se declaran**, el documento **se consulta bajo demanda**.
 
-- En la **home** el formato es de airlines: **pregunta → respuesta** dentro de
-  un `<dl>`. La pregunta va en el idioma del lector ("¿Qué habilita la
-  credencial CESEA-021?"), la respuesta explica el alcance operativo en una
-  frase, y una **línea mono** cierra con los datos verificables:
-  `código · emisor · vigencia`.
+- En la **home** el formato es un **registro de acreditaciones**: tres
+  columnas separadas por reglas, cada una con **marca alegórica** →
+  código mono → título → emisor → vigencia. Sin preguntas, sin párrafos
+  largos, sin foto: el bloque es un dato, no un relato.
+- La **marca alegórica** (`src/components/ui/CredentialMark.astro`) es un
+  pictograma del *concepto* —autorización, sistema gestionado, norma—, no un
+  emblema oficial. Sin laurel, sin escudo de Estado, sin cinta: nada que
+  pueda leerse como un sello oficial. Va `aria-hidden`; el hecho verificable
+  vive siempre en el texto.
 - Componente de fila para páginas internas: `src/components/ui/Credential.astro`.
   Formato: código mono en `cargo-light` (con punto `cargo-emerald`) → título →
   separador `border-cargo-white/15` → emisor → vigencia (mono 12 px) → link de
   evidencia.
 - Datos en `src/data/credentials.ts`. Los hechos vienen de la fuente primaria
-  (el certificado CESEA-021 del INAC): código, emisor y vigencia.
+  (los certificados CESEA-021 y CASMS-079 del INAC): código, emisor y
+  vigencia.
 - **El escaneo del certificado no se muestra en la home.** Un documento
   grayscale con sello ocupa más espacio que la propia declaración de
   autoridad y baja la percepción de marca. El link abre el original en
@@ -244,10 +249,11 @@ Reglas:
 | `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, cinta horizontal en movimiento (0 kB de JS), 6 logos alineados por línea de cap, un único titular |
 | `ServiceAccordion` | `src/components/home/ServiceAccordion.astro` | `id="services"`, 5 familias en `<details>` numerados + 12 servicios especiales |
 | `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
-| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, Q&A de airlines (pregunta → respuesta) + foto de equipo |
+| `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, registro de 3 acreditaciones con marca alegórica |
 | `RequestPrompt` | `src/components/home/RequestPrompt.astro` | Cierre con los tres canales de contacto directo |
 | `AboutPage` / `ContactPage` | `src/components/pages/` | Contenido compartido por ES/EN, sin duplicar entre idiomas |
 | `Credential` | `src/components/ui/Credential.astro` | Fila de credencial (código mono → título → emisor → vigencia → evidencia) |
+| `CredentialMark` | `src/components/ui/CredentialMark.astro` | Marca alegórica SVG de acreditación (escudo · red · regla) |
 | `Button` | `src/components/ui/Button.astro` | Única primitiva de acción: `primary` / `secondary` / `quiet` |
 | `ActionLink` | `src/components/ui/ActionLink.astro` | Enlace de acción con flecha SVG inline |
 | `IndexLabel` / `Label` | `src/components/ui/` | Número de bloque y rótulo de dato, ambos en mono |

@@ -105,24 +105,26 @@ operacional.
 
 Las credenciales se **declaran**, el documento se **consulta bajo demanda**.
 
-### En la home: formato de airlines (pregunta → respuesta)
+### En la home: registro de acreditaciones
 
-La seccion de seguridad se lee como un **Q&A operativo**, no como una ficha
-administrativa. Cada credencial es una fila de `<dl>`:
+La seccion de seguridad es un **registro**, no un Q&A. Tres columnas
+separadas por reglas horizontales:
 
 ```
-pregunta   (16px, cargo-white)   "¿Que habilita la credencial CESEA-021?"
----------
-respuesta  (16px, cargo-white/85)
-linea mono (12px)  "CESEA-021 . INAC . hasta 16/08/2027"
+[marca alegorica]  (48x48 SVG, cargo-light, marco hairline)
+codigo   (14px mono, cargo-light)     "CESEA-021"
+titulo   (20px, cargo-white)          "Explotador de Servicios..."
+emisor   (16px, cargo-white/75)
+vigencia (12px mono, cargo-light/90)  [opcional]
 ```
 
-- La **pregunta** va en el idioma del lector, no el nombre del certificado.
-- La **respuesta** explica el alcance operativo en una frase.
-- La **linea mono** lleva los datos verificables: codigo, emisor, vigencia.
-- Sin chips, sin muros de valores, sin iconos redundantes.
+- La **marca alegorica** (`CredentialMark.astro`) dibuja el concepto, no la
+  institucion: escudo = autorizacion, red de nodos = sistema gestionado,
+  regla graduada = norma. Nunca un sello oficial.
+- Sin preguntas, sin chips, sin muros de valores, sin iconos redundantes.
+- Un solo enlace al final de la seccion, hacia la pagina interna.
 
-### Componente
+### Componentes
 
 `src/components/ui/Credential.astro` — ya existe. No lo reescribas sin
 motivo; ajusta lo que la seccion necesite.
@@ -136,6 +138,10 @@ vigencia (12px mono, cargo-light/90)   [opcional]
 Ver documento original (icono SVG)   [solo si hay evidencia]
 ```
 
+`src/components/ui/CredentialMark.astro` — marcas SVG, monolinea, trazo 1.6
+sobre retícula de 48, `currentColor`, `aria-hidden`. El acento se cambia con
+`accentClass` (por defecto `text-cargo-emerald`).
+
 ### Datos
 
 `src/data/credentials.ts` — la lista y las claves i18n. Los hechos vienen de
@@ -144,9 +150,8 @@ la fuente primaria (el certificado CESEA-021 del INAC), no de invencion:
 | Codigo | Que es | Emisor | Vigencia |
 |---|---|---|---|
 | CESEA-021 | Explotador de Servicios Especializados Aeroportuarios | INAC | hasta 16/08/2027 |
+| CASMS-079 | Aceptación del sistema de gestión de la seguridad operacional | INAC | emitido 29/08/2023 |
 | RAV 111 | Regulación Aeronáutica Venezolana 111 | Autoridad Aeronáutica Civil | permanente |
-| INAC | Explotador certificado de servicios en plataforma | Gerencia General de Seguridad Aeronáutica | — |
-| SMS | Safety Management System | Capacitación y seguimiento de procesos | — |
 
 **No agregues ni quites credenciales sin verificarlas en el documento.** Si
 necesitas una nueva, lee la fuente primero y confirma con el negocio.

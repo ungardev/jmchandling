@@ -2,7 +2,13 @@
 export interface Props {
   id?: string;
   class?: string;
+  /**
+   * Nombre accesible de la seccion. Se prefiere `ariaLabelledBy` (apunta al
+   * `<h2>`) para no repetir el mismo texto en el titulo visible y en el
+   * nombre de la region.
+   */
   ariaLabel?: string;
+  ariaLabelledBy?: string;
   background?: 'deep' | 'mist' | 'transparent' | 'white' | 'cargo-light' | 'cargo-ink';
   padY?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
@@ -11,6 +17,7 @@ const {
   id,
   class: className = '',
   ariaLabel,
+  ariaLabelledBy,
   background = 'deep',
   padY = 'lg',
 } = Astro.props;
@@ -35,7 +42,12 @@ const padClasses = {
 const classes = [bgClasses[background], padClasses[padY], className].filter(Boolean).join(' ');
 ---
 
-<section id={id} class={classes} aria-label={ariaLabel}>
+<section
+  id={id}
+  class={classes}
+  aria-label={ariaLabelledBy ? undefined : ariaLabel}
+  aria-labelledby={ariaLabelledBy}
+>
   <div class="container-max">
     <slot />
   </div>
