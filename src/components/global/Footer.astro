@@ -23,7 +23,7 @@ const legalYear = t('footer.legal').includes('2026')
 ---
 
 <footer class="bg-cargo-deep text-cargo-white" aria-labelledby="footer-heading">
-  <h2 id="footer-heading" class="sr-only">{t('footer.company')}</h2>
+  <h2 id="footer-heading" class="sr-only">{t('company.legalName')}</h2>
   <div class="container-max py-16 md:py-20">
     <div class="grid-12 border-b border-cargo-light/20 pb-12">
       <div class="col-span-12 lg:col-span-4">
@@ -78,37 +78,57 @@ const legalYear = t('footer.legal').includes('2026')
         </ul>
       </nav>
 
+      {/* Estacion: el unico dato que no vive en la CTA ni en la pagina de
+          contacto. */}
       <div class="col-span-6 lg:col-span-2">
-        <p class="eyebrow eyebrow-on-dark">{t('footer.stations')}</p>
-        <p class="mt-5 text-sm text-cargo-white/80">{t('footer.stationValue')}</p>
-        <p class="mt-6 font-mono text-xs uppercase tracking-[0.1em] text-cargo-light/80">{t('contact.hoursLabel')}</p>
-        <p class="mt-2 text-sm text-cargo-white/80">{t('contact.hours')}</p>
+        <p class="eyebrow eyebrow-on-dark">{t('company.stationLabel')}</p>
+        <p class="mt-5 font-mono text-sm text-cargo-white/85">{t('company.station')}</p>
+        <address class="mt-5 not-italic">
+          <p class="text-sm text-cargo-white/70">{t('company.addressLine1')}</p>
+          <p class="text-sm text-cargo-white/70">{t('company.addressLine2')}</p>
+          <p class="text-sm text-cargo-white/70">{t('company.addressLine3')}</p>
+        </address>
       </div>
 
+      {/* Referencia tecnica de contacto: mono, sin etiquetas, en una sola
+          columna. Es el registro completo; la CTA de la home solo enlaza. */}
       <div class="col-span-12 mt-10 lg:col-span-3 lg:col-start-10 lg:mt-0">
         <p class="eyebrow eyebrow-on-dark">{t('footer.contact')}</p>
-        <address class="mt-5 not-italic">
-          <p class="text-sm text-cargo-white/85">{t('footer.officeLine1')}</p>
-          <p class="text-sm text-cargo-white/85">{t('footer.officeLine2')}</p>
-          <p class="text-sm text-cargo-white/85">{t('footer.officeLine3')}</p>
-        </address>
-        <div class="mt-5 space-y-1">
-          <a href={`mailto:${t('footer.emailPrimary')}`} class="block text-sm text-cargo-white/85 transition-colors hover:text-cargo-white">
-            {t('footer.emailPrimary')}
-          </a>
-          <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="block text-sm text-cargo-white/85 transition-colors hover:text-cargo-white">
-            {t('footer.phoneVzla')}
-          </a>
-          <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="block text-sm text-cargo-white/85 transition-colors hover:text-cargo-white">
-            {t('footer.phoneUsa')}
-          </a>
-        </div>
+        <ul class="mt-5 space-y-2 font-mono text-xs text-cargo-white/80">
+          <li>
+            <a
+              href={`mailto:${t('company.email')}`}
+              class="block transition-colors hover:text-cargo-white"
+            >
+              {t('company.email')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`tel:${t('company.phoneVzla').replaceAll(' ', '')}`}
+              class="block transition-colors hover:text-cargo-white"
+            >
+              {t('company.phoneVzla')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`tel:${t('company.phoneUsa').replaceAll(' ', '')}`}
+              class="block transition-colors hover:text-cargo-white"
+            >
+              {t('company.phoneUsa')}
+            </a>
+          </li>
+          <li class="pt-2 text-cargo-light/80">{t('company.hours')}</li>
+        </ul>
       </div>
     </div>
 
     <div class="flex flex-col gap-2 pt-6 text-xs text-cargo-white/75 sm:flex-row sm:items-center sm:justify-between">
       <p>{legalYear} {t('footer.allRights')}</p>
-      <p class="font-mono uppercase tracking-[0.08em]">{t('footer.legalCert')} · {t('footer.rifLabel')}: {t('footer.rif')}</p>
+      <p class="font-mono uppercase tracking-[0.08em]">
+        {t('company.certCodes')} · {t('company.rifLabel')}: {t('company.rif')}
+      </p>
     </div>
   </div>
 </footer>

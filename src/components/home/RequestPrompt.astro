@@ -25,44 +25,43 @@ const quotePath = locale === 'es' ? '/es/contacto?intent=quote' : '/en/contact?i
         </Button>
       </div>
 
-      <dl class="col-span-12 mt-10 lg:col-span-5 lg:col-start-8 lg:mt-0">
-        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
-          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
-            {t('footer.phoneLabelVzla')}
-          </dt>
-          <dd class="text-base font-semibold text-cargo-deep">
-            <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-ink">
-              {t('footer.phoneVzla')}
+      {/* Rail de contacto: una sola linea, no una ficha. El bloque completo
+          vive en el pie y en la pagina de contacto. */}
+      <div class="col-span-12 mt-12 lg:col-span-5 lg:col-start-8 lg:mt-0">
+        <p class="font-mono text-xs uppercase tracking-[0.1em] text-cargo-deep/70">
+          {t('company.hoursLabel')}
+        </p>
+        <p class="mt-2 font-mono text-sm text-cargo-deep">{t('company.hours')}</p>
+
+        <ul class="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-2 font-mono text-sm text-cargo-ink/80">
+          <li>
+            <a
+              href={`tel:${t('company.phoneVzla').replaceAll(' ', '')}`}
+              class="transition-colors hover:text-cargo-ink"
+            >
+              {t('company.phoneVzla')}
             </a>
-          </dd>
-        </div>
-        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
-          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
-            {t('footer.phoneLabelUsa')}
-          </dt>
-          <dd class="text-base font-semibold text-cargo-deep">
-            <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-ink">
-              {t('footer.phoneUsa')}
+          </li>
+          <li aria-hidden="true" class="text-cargo-deep/60">·</li>
+          <li>
+            <a
+              href={`tel:${t('company.phoneUsa').replaceAll(' ', '')}`}
+              class="transition-colors hover:text-cargo-ink"
+            >
+              {t('company.phoneUsa')}
             </a>
-          </dd>
-        </div>
-        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
-          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
-            {t('footer.emailLabel')}
-          </dt>
-          <dd class="text-base font-semibold text-cargo-deep">
-            <a href={`mailto:${t('footer.emailPrimary')}`} class="transition-colors hover:text-cargo-ink">
-              {t('footer.emailPrimary')}
+          </li>
+          <li aria-hidden="true" class="text-cargo-deep/60">·</li>
+          <li>
+            <a
+              href={`mailto:${t('company.email')}`}
+              class="transition-colors hover:text-cargo-ink"
+            >
+              {t('company.email')}
             </a>
-          </dd>
-        </div>
-        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-cargo-deep/20 py-4">
-          <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-deep">
-            {t('contact.hoursLabel')}
-          </dt>
-          <dd class="text-base font-semibold text-cargo-deep">{t('contact.hours')}</dd>
-        </div>
-      </dl>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

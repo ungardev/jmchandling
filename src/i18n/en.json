@@ -173,11 +173,6 @@
     "title": "Operational safety",
     "subtitle": "Formal authorisation under Venezuelan aeronautical regulations, with permanent oversight of operational safety processes.",
     "credentialsLink": "See the full accreditation",
-    "inacBadge": "INAC",
-    "ceseaBadge": "CESEA-021",
-    "rav111": "RAV 111",
-    "rifLabel": "Tax ID",
-    "rif": "J401336558",
     "mediaAlt": "CESEA-021 certification document for Servicios Especializados JMC",
     "mediaCaption": "Documentary evidence",
     "mediaLink": "Review the evidence"
@@ -215,35 +210,18 @@
     "introTitle": "Coordinate your next operation",
     "intro": "We understand your airline’s context and guide you to the specialized service it requires.",
     "addressLabel": "Location",
-    "address": "Simón Bolívar de Maiquetía International Airport, Level 1, Sector 8.2, Venezuela.",
+    "address": "Simón Bolívar International Airport, Level 1, Sector 8.2, Maiquetía, Venezuela.",
     "certLabel": "Authorization",
-    "hoursLabel": "Service hours",
-    "hours": "Monday – Saturday · 05:00 – 22:00 (VET)",
     "formTitle": "Send us a message",
     "fichaTitle": "To quote accurately",
     "fichaLead": "With these details we answer with a concrete operating proposal, not a catalogue of services."
   },
   "footer": {
-    "company": "Servicios Especializados JMC, C.A.",
-    "description": "Specialized airport services for ground operations. CESEA-021 · INAC · RAV 111.",
-    "stations": "Station",
-    "stationValue": "CCS · Maiquetía",
+    "description": "Specialized airport services for ground operations.",
     "contact": "Contact",
-    "officeLine1": "Simón Bolívar International Airport",
-    "officeLine2": "Level 1, Sector 8.2",
-    "officeLine3": "Maiquetía, Venezuela",
-    "emailPrimary": "customer.service@jmchandling.com",
-    "emailLabel": "Commercial email",
-    "phoneVzla": "+58 414 118 0806",
-    "phoneUsa": "+1 954 470 4217",
-    "phoneLabelVzla": "Venezuela",
-    "phoneLabelUsa": "USA",
-    "rifLabel": "Tax ID",
-    "rif": "J401336558",
     "instagramLabel": "JMC Handling Instagram",
     "legal": "© 2026 Servicios Especializados JMC, C.A.",
     "allRights": "All rights reserved.",
-    "legalCert": "CESEA-021 · INAC RAV 111",
     "navLabel": "Footer navigation",
     "navTitle": "Navigation"
   },
@@ -281,7 +259,7 @@
     "equipmentIntro": "Six units that move the aircraft on the ramp: what each one does and when it is used.",
     "equipmentCatalogLink": "View capabilities by family",
     "requestTitle": "Tell us the service, aircraft and operational context.",
-    "requestDescription": "We reply during service hours: Monday to Saturday, 05:00–22:00 (VET)."
+    "requestDescription": "We reply during service hours and coordinate the operation with your team."
   },
   "media": {
     "alt": {
@@ -361,5 +339,24 @@
     "smsTitle": "Acceptance of the operational safety management system",
     "smsIssuer": "National Institute of Civil Aeronautics",
     "smsValidity": "Issued on August 29, 2023"
+  },
+  "company": {
+    "legalName": "Servicios Especializados JMC, C.A.",
+    "email": "customer.service@jmchandling.com",
+    "emailLabel": "Commercial email",
+    "phoneVzla": "+58 414 118 0806",
+    "phoneVzlaLabel": "Venezuela",
+    "phoneUsa": "+1 954 470 4217",
+    "phoneUsaLabel": "USA",
+    "hours": "Monday – Saturday · 05:00 – 22:00 (VET)",
+    "hoursLabel": "Service hours",
+    "addressLine1": "Simón Bolívar International Airport",
+    "addressLine2": "Level 1, Sector 8.2",
+    "addressLine3": "Maiquetía, Venezuela",
+    "station": "CCS · Maiquetía",
+    "stationLabel": "Station",
+    "rif": "J401336558",
+    "rifLabel": "Tax ID",
+    "certCodes": "CESEA-021 · INAC RAV 111"
   }
 }

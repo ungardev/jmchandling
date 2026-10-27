@@ -41,10 +41,15 @@ Tailwind classes: `bg-cargo-deep`, `text-cargo-emerald`, `border-cargo-light`, e
 ### Key naming
 Dot-notation, lowercase: `services.gseTitle`, `awb.track`, `nav.home`
 
-Top-level namespaces: `nav`, `hero`, `services`, `allies`, `about`, `equipment`, `safety`, `quote`, `contact`, `footer`, `form`, `common`, `meta`, `home`, `media`
+Top-level namespaces: `nav`, `hero`, `services`, `allies`, `about`, `equipment`, `safety`, `quote`, `contact`, `company`, `footer`, `form`, `common`, `meta`, `home`, `media`
 
 - `home.*` — copy de las secciones de la portada
 - `media.alt.*` — texto alternativo de cada imagen (obligatorio: una clave por medio)
+- `company.*` — **fuente única de los datos de identidad**: razón social,
+  correo, teléfonos, horario, dirección, estación, RIF y códigos de
+  certificación. Ningún otro namespace repite estos valores. Los valores
+  técnicos que no son copy (endpoint del formulario, `_cc`) viven en
+  `src/data/company.ts`.
 
 ### Translation function
 ```ts
@@ -237,6 +242,25 @@ lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]  (escritorio)
 - **Facts come from the primary source** (the INAC certificate, the brand
   brochure). Never invent validity dates, codes or issuing authorities —
   report them as pending business validation instead.
+
+### One job per surface
+
+Contact information appears in three places, and each has a **single** job.
+Never let two of them render the same block:
+
+| Surface | Job | Renders |
+|---|---|---|
+| `RequestPrompt` (home CTA) | **Convert.** | headline + lead + button + a one-line contact rail (mono, no labels) |
+| `Footer` (every page) | **Locate.** technical reference | station, address, email, phones, hours, RIF, cert codes — in mono, small |
+| `ContactInfo` (contact page) | **Operate.** full register | the same facts, labelled, next to the form |
+
+The CTA's rail and the Footer's list do overlap on purpose: the rail is a
+shortcut for someone deciding whether to call now, the Footer is the
+reference. What is forbidden is the CTA growing a **labelled `<dl>`** of
+contact fields — that is what made the two blocks look identical.
+
+The CTA must never restate the hours in prose *and* list them again: one
+mention, in the rail.
 
 ---
 

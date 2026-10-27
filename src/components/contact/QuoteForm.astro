@@ -2,6 +2,7 @@
 import type { Locale } from '../../i18n/utils';
 import { useTranslations } from '../../i18n/utils';
 import { serviceFamilies } from '../../data/siteContent';
+import { companyEmailCc, quoteFormEndpoint } from '../../data/company';
 import Button from '../ui/Button.astro';
 
 export interface Props {
@@ -19,7 +20,7 @@ const serviceOptions = serviceFamilies.map((family) => ({
 }));
 const selectedFamily = serviceFamilies.find((family) => family.key === selectedService || family.serviceKeys.includes(selectedService ?? ''))?.key;
 const nextPath = successPath ?? (locale === 'es' ? '/es/contacto?sent=true' : '/en/contact?sent=true');
-const formAction = 'https://formsubmit.co/customer.service@jmchandling.com';
+const formAction = quoteFormEndpoint;
 ---
 
 <form
@@ -32,7 +33,7 @@ const formAction = 'https://formsubmit.co/customer.service@jmchandling.com';
   data-email-message={t('form.invalidEmail')}
   novalidate
 >
-  <input type="hidden" name="_cc" value="carlos.wood@jmchandling.com" />
+  <input type="hidden" name="_cc" value={companyEmailCc} />
   <input type="hidden" name="_captcha" value="true" />
   <input type="hidden" name="_subject" value={t('quote.subject')} />
   <input type="hidden" name="_next" value={`${Astro.url.origin}${nextPath}`} />

@@ -28,4 +28,41 @@ const isSuccess = variant === 'success';
   <p class="type-body mt-3 text-cargo-white/85">
     {isSuccess ? t('quote.successText') : t('quote.errorText')}
   </p>
+
+  {
+    !isSuccess && (
+      <ul class="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-2 font-mono text-sm text-cargo-white/85">
+        <li>
+          <a
+            href={`tel:${t('company.phoneVzla').replaceAll(' ', '')}`}
+            class="underline decoration-cargo-light/50 underline-offset-4 transition-colors hover:text-cargo-white"
+          >
+            {t('company.phoneVzla')}
+          </a>
+        </li>
+        <li aria-hidden="true" class="text-cargo-white/60">
+          ·
+        </li>
+        <li>
+          <a
+            href={`tel:${t('company.phoneUsa').replaceAll(' ', '')}`}
+            class="underline decoration-cargo-light/50 underline-offset-4 transition-colors hover:text-cargo-white"
+          >
+            {t('company.phoneUsa')}
+          </a>
+        </li>
+        <li aria-hidden="true" class="text-cargo-white/60">
+          ·
+        </li>
+        <li>
+          <a
+            href={`mailto:${t('company.email')}`}
+            class="underline decoration-cargo-light/50 underline-offset-4 transition-colors hover:text-cargo-white"
+          >
+            {t('company.email')}
+          </a>
+        </li>
+      </ul>
+    )
+  }
 </div>

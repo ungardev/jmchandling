@@ -244,13 +244,13 @@ Reglas:
 | Componente | Ruta | Notas |
 |---|---|---|
 | `Header` | `src/components/global/Header.astro` | Fondo `cargo-deep`, nav de 3 links centrada sobre el eje de la página (grid `1fr auto 1fr`), botón "Contacto" + link de idioma a la derecha |
-| `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-ink`, retícula de 4 bloques con reglas, link ES/EN |
+| `Footer` | `src/components/global/Footer.astro` | Fondo `cargo-deep`, retícula de 4 bloques con reglas, columna de contacto en mono (referencia técnica), link ES/EN |
 | `Hero` | `src/components/home/Hero.astro` | Pantalla completa (`100svh`), foto única + scrims, banda superior de contraste, texto en el tercio izquierdo, 2 CTA |
 | `AlliesStrip` | `src/components/home/AlliesStrip.astro` | `id="allies"`, cinta horizontal en movimiento (0 kB de JS), 6 logos alineados por línea de cap, un único titular |
 | `ServiceAccordion` | `src/components/home/ServiceAccordion.astro` | `id="services"`, 5 familias en `<details>` numerados + 12 servicios especiales |
 | `EquipmentGrid` | `src/components/home/EquipmentGrid.astro` | `id="equipment"`, 6 equipos en 3×2 con reglas, ASU como fila de texto |
 | `SafetySection` | `src/components/home/SafetySection.astro` | `id="safety"`, registro de 3 acreditaciones con marca alegórica |
-| `RequestPrompt` | `src/components/home/RequestPrompt.astro` | Cierre con los tres canales de contacto directo |
+| `RequestPrompt` | `src/components/home/RequestPrompt.astro` | Cierre de conversión: titular + lead + botón + rail de contacto en una línea |
 | `AboutPage` / `ContactPage` | `src/components/pages/` | Contenido compartido por ES/EN, sin duplicar entre idiomas |
 | `Credential` | `src/components/ui/Credential.astro` | Fila de credencial (código mono → título → emisor → vigencia → evidencia) |
 | `CredentialMark` | `src/components/ui/CredentialMark.astro` | Marca alegórica SVG de acreditación (escudo · red · regla) |

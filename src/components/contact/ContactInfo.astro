@@ -26,46 +26,45 @@ const t = useTranslations(locale);
         {t('contact.certLabel')}
       </dt>
       <dd class="mt-3 flex flex-wrap gap-2">
-        <Badge variant="cert" size="sm">{t('safety.ceseaBadge')}</Badge>
-        <Badge variant="inac" size="sm">{t('safety.inacBadge')}</Badge>
-        <Badge variant="sms" size="sm">{t('safety.rav111')}</Badge>
+        <Badge variant="cert" size="sm">{t('credentials.ceseaCode')}</Badge>
+        <Badge variant="inac" size="sm">{t('credentials.ravCode')}</Badge>
       </dd>
     </div>
     <div class="border-t border-cargo-light/20 py-4">
       <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
-        {t('footer.emailLabel')}
+        {t('company.emailLabel')}
       </dt>
       <dd class="type-body mt-2 text-cargo-white/85">
-        <a href={`mailto:${t('footer.emailPrimary')}`} class="transition-colors hover:text-cargo-white">
-          {t('footer.emailPrimary')}
+        <a href={`mailto:${t('company.email')}`} class="transition-colors hover:text-cargo-white">
+          {t('company.email')}
         </a>
       </dd>
     </div>
     <div class="border-t border-cargo-light/20 py-4">
       <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
-        {t('footer.phoneLabelVzla')}
+        {t('company.phoneVzlaLabel')}
       </dt>
       <dd class="type-body mt-2 text-cargo-white/85">
-        <a href={`tel:${t('footer.phoneVzla').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-white">
-          {t('footer.phoneVzla')}
+        <a href={`tel:${t('company.phoneVzla').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-white">
+          {t('company.phoneVzla')}
         </a>
       </dd>
     </div>
     <div class="border-t border-cargo-light/20 py-4">
       <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
-        {t('footer.phoneLabelUsa')}
+        {t('company.phoneUsaLabel')}
       </dt>
       <dd class="type-body mt-2 text-cargo-white/85">
-        <a href={`tel:${t('footer.phoneUsa').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-white">
-          {t('footer.phoneUsa')}
+        <a href={`tel:${t('company.phoneUsa').replaceAll(' ', '')}`} class="transition-colors hover:text-cargo-white">
+          {t('company.phoneUsa')}
         </a>
       </dd>
     </div>
     <div class="border-t border-cargo-light/20 py-4">
       <dt class="font-mono text-xs font-medium uppercase tracking-[0.1em] text-cargo-light">
-        {t('contact.hoursLabel')}
+        {t('company.hoursLabel')}
       </dt>
-      <dd class="type-body mt-2 text-cargo-white/85">{t('contact.hours')}</dd>
+      <dd class="type-body mt-2 text-cargo-white/85">{t('company.hours')}</dd>
     </div>
   </dl>
 </div>
